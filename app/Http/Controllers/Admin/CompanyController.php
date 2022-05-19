@@ -7,6 +7,7 @@ use App\Helper\Upload;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CompanyRequest;
 use App\Models\Company;
+use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
 class CompanyController extends Controller
@@ -31,7 +32,10 @@ class CompanyController extends Controller
             ->addColumn('logo', function ($raw) {
                 return '<img src="' . $raw->image . '">';
             })
-            ->rawColumns(['logo' => 'logo'])
+            ->addColumn('check_item', function ($raw) {
+                return view('admin.includes.check_item', compact('raw'));
+            })
+            ->rawColumns(['logo' => 'logo', 'check_item' => 'check_item'])
             ->make(true);
 
     }//end of data function
@@ -121,6 +125,17 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $company = Company::findOrFail($id);
+        $company->delete();
+        return $this->setDeletedSuccess();
+
     }
+
+    public function bulkDelete(Request $request)
+    {
+        parse_str($request->ids, $items);
+        Company::destroy($items['items']);
+        return $this->setDeletedSuccess();
+
+    }//end of bulkDelete function
 }

@@ -22,6 +22,81 @@
 
                 </li>
 
+                <li class="sidebar-list">
+                    <a class="sidebar-link sidebar-title link-nav" href="{{route('blogs.index')}}">
+                        <img src="{{asset('assets/dashboard')}}/images/icons/safe.png" alt="">
+                        <span>المقالات</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-list">
+                    <a class="sidebar-link sidebar-title link-nav" href="{{route('services.index')}}">
+                        <img src="{{asset('assets/dashboard')}}/images/icons/safe.png" alt="">
+                        <span>الخدمات</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-list">
+                    <a class="sidebar-link sidebar-title link-nav" href="{{route('sliders.index')}}">
+                        <img src="{{asset('assets/dashboard')}}/images/icons/safe.png" alt="">
+                        <span>الأسليدر</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-list">
+                    <a class="sidebar-link sidebar-title link-nav" href="{{route('packages.index')}}">
+                        <img src="{{asset('assets/dashboard')}}/images/icons/safe.png" alt="">
+                        <span>الباقات</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-list">
+                    <a class="sidebar-link sidebar-title link-nav" href="{{route('clients.index')}}">
+                        <img src="{{asset('assets/dashboard')}}/images/icons/safe.png" alt="">
+                        <span>العملاء</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-list">
+                    <a class="sidebar-link sidebar-title link-nav show_modal" href="{{route('settings.index')}}">
+                        <img src="{{asset('assets/dashboard')}}/images/icons/setting.png" alt="">
+                        <span>الإعدادات</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-list">
+                    <a class="sidebar-link sidebar-title link-nav show_modal" href="{{route('about.index')}}">
+                        <img src="{{asset('assets/dashboard')}}/images/icons/setting.png" alt="">
+                        <span>من نحن</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-list">
+                    <a class="sidebar-link sidebar-title link-nav show_modal" href="{{route('terms.index')}}">
+                        <img src="{{asset('assets/dashboard')}}/images/icons/setting.png" alt="">
+                        <span>الشروط والأحكام</span>
+                    </a>
+                </li>
+
+
+                {{--                <li class="sidebar-list">--}}
+                {{--                    <a class="sidebar-link sidebar-title link-nav" href="">--}}
+                {{--                        <img src="{{asset('assets/dashboard')}}/images/icons/setting.png" alt="">--}}
+                {{--                        <span>الباقات</span>--}}
+                {{--                    </a>--}}
+                {{--                </li>--}}
+                {{--                <li class="sidebar-list">--}}
+                {{--                    <a class="sidebar-link sidebar-title link-nav" href="">--}}
+                {{--                        <img src="{{asset('assets/dashboard')}}/images/icons/setting.png" alt="">--}}
+                {{--                        <span>الخدمات</span>--}}
+                {{--                    </a>--}}
+                {{--                </li>--}}
+                {{--                <li class="sidebar-list">--}}
+                {{--                    <a class="sidebar-link sidebar-title link-nav" href="">--}}
+                {{--                        <img src="{{asset('assets/dashboard')}}/images/icons/setting.png" alt="">--}}
+                {{--                        <span>تواصل معنا</span>--}}
+                {{--                    </a>--}}
+                {{--                </li>--}}
 
             </ul>
             <div class="road">

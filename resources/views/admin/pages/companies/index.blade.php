@@ -5,7 +5,7 @@
         <div class="card-header">
             <h3>{{$data['page_title']}}</h3>
             <div class="btns-header">
-                <a href="#" class="btn btn-danger btn-air-danger btn-icon">
+                <a href="#" id="delete_all" class="d-none btn  btn-danger btn-air-danger btn-icon">
                     <i class="fa fa-trash"></i>
                     حذف الكل
                 </a>
@@ -35,25 +35,32 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered datatable text-center">
-                    <thead>
-                    <tr>
-                        <th>
-                            <div class="checkbox checkbox-primary">
-                                <input id="inline-1" type="checkbox">
-                                <label for="inline-1">تحديد الكل</label>
-                            </div>
-                        </th>
+                <form id="delete_all_form" action="{{route('companies.bulkDelete')}}" method="post">
+                    @csrf
+                    <table class="table table-bordered datatable text-center">
+                        <thead>
+                        <tr>
+                            <th>
+                                <div class="checkbox checkbox-primary">
+                                    <input id="check_all" type="checkbox">
+                                    <label for="check_all">تحديد الكل</label>
+                                </div>
+                            </th>
 
-                        <th>إسم المؤسسه</th>
-                        <th>الشعار</th>
-                        <th>التحكم</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+                            <th>إسم المؤسسه</th>
+                            <th>الشعار</th>
+                            <th>التحكم</th>
+                        </tr>
+                        </thead>
 
-                    </tbody>
-                </table>
+
+                        <tbody>
+
+
+                        </tbody>
+
+                    </table>
+                </form>
             </div>
         </div>
     </div>
@@ -72,9 +79,8 @@
                 url: '{{route('companies.data')}}'
             },
             columns: [
-
                 {
-                    name: 'id', data: 'id'
+                    name: 'check_item', data: 'check_item', sortable: false, searchable: false
                 },
                 {
                     name: 'name', data: 'name'
