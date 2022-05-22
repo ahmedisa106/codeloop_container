@@ -20,7 +20,7 @@ class SliderRequest extends FormRequest
     {
         return [
             'title' => 'required|string|unique:packages,title',
-            'photo' => 'sometimes|nullable|image|mimes:png,jpeg,jpg',
+            'photo' => 'required|image|mimes:png,jpeg,jpg',
         ];
 
     }//end of onStore function

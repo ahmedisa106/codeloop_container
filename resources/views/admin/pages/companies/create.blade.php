@@ -54,7 +54,7 @@
 
                 <div class="col-md-6 form-group">
                     <label class="form-label">الشعار</label>
-                    <input name="logo" class="form-control" id="photo" type="file">
+                    <input name="logo" class="form-control photo" id="photo" type="file">
                 </div>
                 <div class="col-md-6">
                     <img id="pic-prev" src="{{asset('default/default.png')}}" class="out-img pic-prev">

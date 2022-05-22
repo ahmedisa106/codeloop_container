@@ -6,8 +6,8 @@
                 <div class="card-body">
                     <div class="media static-widget">
                         <div class="media-body">
-                            <h6 class="font-roboto">الخزن</h6>
-                            <h4 class="mb-0 counter">6659</h4>
+                            <h6 class="font-roboto">المؤسسات</h6>
+                            <h4 class="mb-0 counter">{{$companies_count}}</h4>
                         </div>
                         <svg class="fill-secondary" width="48" height="48" viewBox="0 0 48 48" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
@@ -33,8 +33,8 @@
                 <div class="card-body">
                     <div class="media static-widget">
                         <div class="media-body">
-                            <h6 class="font-roboto">الحاويات</h6>
-                            <h4 class="mb-0 counter">9856</h4>
+                            <h6 class="font-roboto">الخدمات</h6>
+                            <h4 class="mb-0 counter">{{$services_count}}</h4>
                         </div>
                         <svg class="fill-success" width="45" height="39" viewBox="0 0 45 39" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
@@ -63,8 +63,8 @@
                 <div class="card-body">
                     <div class="media static-widget">
                         <div class="media-body">
-                            <h6 class="font-roboto">الشاحنات</h6>
-                            <h4 class="mb-0 counter">893</h4>
+                            <h6 class="font-roboto">المقالات</h6>
+                            <h4 class="mb-0 counter">{{$blogs_count}}</h4>
                         </div>
                         <svg class="fill-primary" width="44" height="46" viewBox="0 0 44 46"
                              xmlns="http://www.w3.org/2000/svg">
@@ -84,8 +84,8 @@
                 <div class="card-body">
                     <div class="media static-widget">
                         <div class="media-body">
-                            <h6 class="font-roboto">المصروفات</h6>
-                            <h4 class="mb-0 counter">45631</h4>
+                            <h6 class="font-roboto">الباقات</h6>
+                            <h4 class="mb-0 counter">{{$packages_count}}</h4>
                         </div>
                         <svg class="fill-danger" width="41" height="46" viewBox="0 0 41 46"
                              xmlns="http://www.w3.org/2000/svg">
@@ -108,7 +108,7 @@
         <div class="col-sm-12 col-md-6">
             <div class="card">
                 <div class="card-header border-bottom-0">
-                    <h3>الطلبات</h3>
+                    <h3>المؤسسات</h3>
                 </div>
                 <div class="card-body pt-0">
                     <div id="chartone" class="chart"></div>
@@ -164,7 +164,7 @@
                 containLabel: true
             },
             xAxis: [{
-                data: ['Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr'],
+                data: {!! $month_list !!},
                 axisLabel: {
                     textStyle: {
                         fontSize: 14,
@@ -176,51 +176,21 @@
                 type: 'value'
             }],
             series: [{
-                name: 'الطلبات',
+                name: 'المؤسسات',
                 type: 'bar',
                 barWidth: '45%',
-                data: [{
-                    value: 35,
-                    itemStyle: {
-                        color: '#69F0AE'
-                    }
-                },
+                data: [
+                        @foreach($companies_list as $index=> $package)
                     {
-                        value: 30,
+                        value: {{$package['count']}},
                         itemStyle: {
-                            color: '#FFAB40'
+                            color: '{{$package['color']}}'
                         }
                     },
-                    {
-                        value: 25,
-                        itemStyle: {
-                            color: '#41C4FF'
-                        }
-                    },
-                    {
-                        value: 20,
-                        itemStyle: {
-                            color: '#536DFE'
-                        }
-                    },
-                    {
-                        value: 15,
-                        itemStyle: {
-                            color: '#FF4081'
-                        }
-                    },
-                    {
-                        value: 10,
-                        itemStyle: {
-                            color: '#26A69A'
-                        }
-                    },
-                    {
-                        value: 5,
-                        itemStyle: {
-                            color: '#D4E157'
-                        }
-                    }
+                    @endforeach
+
+
+
                 ]
             }]
         };
