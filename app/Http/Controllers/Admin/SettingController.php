@@ -30,9 +30,11 @@ class SettingController extends Controller
         $setting = Setting::first();
         if ($setting) {
             $data['logo'] = $request->hasFile('logo') ? $this->upload($request->logo, 'settings', true, $setting->logo) : $setting->logo;
+            $data['footer_logo'] = $request->hasFile('footer_logo') ? $this->upload($request->footer_logo, 'settings', true, $setting->footer_logo) : $setting->footer_logo;
             $setting->update($data);
         } else {
             $data['logo'] = $request->hasFile('logo') ? $this->upload($request->logo, 'settings') : '';
+            $data['footer_logo'] = $request->hasFile('footer_logo') ? $this->upload($request->footer_logo, 'settings') : '';
 
             Setting::create($data);
         }

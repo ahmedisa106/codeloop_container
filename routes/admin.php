@@ -64,4 +64,13 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
     Route::post('/terms', 'TermController@update')->name('terms.store');
     // end about
 
+    //contact us
+    // packages routes
+    Route::get('contact-us/data', 'ContactUsController@data')->name('contact-us.data');
+    Route::post('contact-us/bulkDelete', 'ContactUsController@bulkDelete')->name('contact-us.bulkDelete');
+    Route::resource('contact-us', 'ContactUsController');
+    // end packages routes
+
+    //end contact us
+
 });

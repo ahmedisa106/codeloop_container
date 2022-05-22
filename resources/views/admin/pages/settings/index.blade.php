@@ -37,11 +37,11 @@
                 <div class="row">
                     <div class="col-md-10 form-group">
                         <label class="form-label">الشعار</label>
-                        <input name="logo" class="form-control" id="photo" type="file">
+                        <input name="logo" class="form-control photo" id="photo" type="file">
                     </div>
                     <div class="col-md-2  form-group">
 
-                        <img id="pic-prev" src="{{isset($setting)? $setting->image : asset('default/default.png')}}" class="out-img"/>
+                        <img id="pic-prev" src="{{isset($setting)? $setting->image : asset('default/default.png')}}" class="out-img pic-prev"/>
 
                     </div>
                 </div>
@@ -49,6 +49,22 @@
 
             </div>
 
+            <div class="col-md-6 form-group">
+                <div class="row">
+                    <div class="col-md-10 form-group">
+                        <label class="form-label">شعار الفوتر</label>
+                        <input name="footer_logo" class="form-control photo" id="photo" type="file">
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <img id="pic-prev" src="{{isset($setting)? $setting->image : asset('default/default.png')}}" class="out-img pic-prev"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 form-group">
+                <label class="form-label">الخريطه</label>
+                <input value="{{isset($setting) ? $setting->map:''}}" name="map" class="form-control" type="text" placeholder="">
+            </div>
             <div class="modal-footer">
                 <button class="btn btn-primary btn-air-primary btn-icon" type="submit">
                     <i class="fa fa-save"></i>

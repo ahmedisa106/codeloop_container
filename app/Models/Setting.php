@@ -8,7 +8,7 @@ class Setting extends Model
 {
     protected $table = 'settings';
     protected $guarded = [];
-    protected $appends = ['image'];
+    protected $appends = ['image', 'footer'];
 
     public function getImageAttribute()
     {
@@ -18,4 +18,14 @@ class Setting extends Model
         return asset('images/settings/' . $this->logo);
 
     }//end of getImageAttribute function
+
+
+    public function getFooterAttribute()
+    {
+        if (!$this->footer_logo) {
+            return asset('default/default.png');
+        }
+        return asset('images/settings/' . $this->footer_logo);
+
+    }//end of getFooterLogoAttribute function
 }

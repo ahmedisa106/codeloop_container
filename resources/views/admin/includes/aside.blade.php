@@ -72,6 +72,13 @@
                 </li>
 
                 <li class="sidebar-list">
+                    <a class="sidebar-link sidebar-title link-nav " href="{{route('contact-us.index')}}">
+                        <img src="{{asset('assets/dashboard')}}/images/icons/setting.png" alt="">
+                        <span>طلبات التواصل</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-list">
                     <a class="sidebar-link sidebar-title link-nav show_modal" href="{{route('terms.index')}}">
                         <img src="{{asset('assets/dashboard')}}/images/icons/setting.png" alt="">
                         <span>الشروط والأحكام</span>
