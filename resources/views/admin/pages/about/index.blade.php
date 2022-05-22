@@ -22,10 +22,10 @@
                 <div class="row">
                     <div class="col-md-11 form-group">
                         <label class="form-label">الصوره</label>
-                        <input name="photo" class="form-control" id="photo" type="file">
+                        <input name="photo" class="form-control photo" id="photo" type="file">
                     </div>
                     <div class="col-md-1  form-group">
-                        <img id="pic-prev" src="{{isset($about)? $about->image : asset('default/default.png')}}" class="out-img"/>
+                        <img id="pic-prev" src="{{isset($about)? $about->image : asset('default/default.png')}}" class="out-img pic-prev"/>
                     </div>
                 </div>
 

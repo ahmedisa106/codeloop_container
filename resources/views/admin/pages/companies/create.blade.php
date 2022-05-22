@@ -57,7 +57,7 @@
                     <input name="logo" class="form-control" id="photo" type="file">
                 </div>
                 <div class="col-md-6">
-                    <img id="pic-prev" src="{{asset('default/default.png')}}" class="out-img">
+                    <img id="pic-prev" src="{{asset('default/default.png')}}" class="out-img pic-prev">
                 </div>
 
 

@@ -30,7 +30,9 @@ class SettingRequest extends FormRequest
             'mobile' => 'sometimes|nullable|integer',
             'logo' => 'sometimes|nullable',
             'facebook' => 'sometimes|nullable|url',
-            'instagram' => 'sometimes|nullable|url'
+            'instagram' => 'sometimes|nullable|url',
+            'footer_logo' => 'sometimes|nullable',
+            'map' => 'sometimes|nullable',
         ];
     }
 
@@ -45,6 +47,8 @@ class SettingRequest extends FormRequest
             'address' => 'العنوان',
             'facebook' => 'الفيس بوك',
             'instagram' => 'إنستجرام',
+            'footer_logo' => 'شعار الفوتر',
+            'map' => 'الخريطه',
         ];
     }//end of attributes function
 }

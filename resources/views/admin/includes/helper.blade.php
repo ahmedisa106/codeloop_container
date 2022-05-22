@@ -75,10 +75,11 @@
     // when ajax complete
     $(document).ajaxComplete(function () {
         // preview image
-        $('#photo').on('change', function (e) {
+        $('.photo').on('change', function (e) {
             let file = e.target.files[0],
-                url = URL.createObjectURL(file);
-            $('#pic-prev').attr('src', url);
+                url = URL.createObjectURL(file),
+                preview = $(this).parent().parent().find(('.pic-prev'))
+            preview.attr('src', url);
         });
         // end preview image
 
@@ -188,6 +189,8 @@
                             timeout: 3500,
                         });
                         $('.table.datatable').DataTable().ajax.reload();
+                        $('#check_all').prop('checked', false);
+                        $('#delete_all').addClass('d-none');
                     }
                 })
 

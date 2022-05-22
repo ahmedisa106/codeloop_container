@@ -22,6 +22,9 @@ class CreateSettingsTable extends Migration
             $table->string('facebook')->nullable();
             $table->string('instagram')->nullable();
             $table->string('logo')->nullable();
+            $table->string('footer_logo')->nullable();
+            $table->string('breadcrumb')->nullable();
+            $table->text('map')->nullable();
             $table->timestamps();
         });
     }
