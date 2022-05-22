@@ -9,24 +9,7 @@
                     <i class="fa fa-trash"></i>
                     حذف الكل
                 </a>
-                <div class="dropdown-basic">
-                    <div class="dropdown">
-                        <button class="dropbtn btn-info btn-air-info btn-icon" type="button">
-                            <span><i class="fa fa-chevron-down"></i></span>
-                            استيراد وتحميل
-                        </button>
-                        <div class="dropdown-content">
-                            <a href="#">
-                                <i class="fa fa-download"></i>
-                                تحميل مثال
-                            </a>
-                            <a href="#">
-                                <i class="fa fa-cloud-upload"></i>
-                                استيراد بيانات
-                            </a>
-                        </div>
-                    </div>
-                </div>
+
                 <a href="{{route('services.create')}}" class="btn btn-primary show_modal btn-air-primary btn-icon">
                     <i class="fa fa-plus"></i>
                     {{$data['create']}}

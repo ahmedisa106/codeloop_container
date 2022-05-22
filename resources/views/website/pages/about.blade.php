@@ -15,7 +15,7 @@
                         <div class="welcome__img-box wow slideInRight" data-wow-delay="100ms"
                              data-wow-duration="2500ms">
                             <div class="welcome__img">
-                                <img src="{{asset('assets/website')}}/images/resources/welcome-img-1.jpg" alt="">
+                                <img src="{{isset($about)?$about->image:''}}" alt="">
                             </div>
                         </div>
                     </div>
