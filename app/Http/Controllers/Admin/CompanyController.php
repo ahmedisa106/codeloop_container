@@ -7,6 +7,7 @@ use App\Helper\Upload;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CompanyRequest;
 use App\Models\Company;
+use App\Models\Package;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -52,7 +53,8 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.companies.create', ['data' => $this->data]);
+        $packages = Package::get(['id', 'title']);
+        return view('admin.pages.companies.create', compact('packages'), ['data' => $this->data]);
     }
 
     /**
@@ -94,7 +96,8 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        return view('admin.pages.companies.edit', ['data' => $this->data], compact('company'));
+        $packages = Package::get(['id', 'title']);
+        return view('admin.pages.companies.edit', ['data' => $this->data], compact('company', 'packages'));
     }
 
     /**
