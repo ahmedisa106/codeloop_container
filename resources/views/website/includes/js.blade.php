@@ -22,4 +22,17 @@
 <script src="{{asset('assets/website')}}/vendors/timepicker/timePicker.js"></script>
 <script src="{{asset('assets/website')}}/js/script.js"></script>
 <script rel="stylesheet" src="{{asset('assets/website/plugins/toaster/js/toastr.min.js')}}"></script>
+
+<script>
+        $(document).ready(function () {
+        // preview image
+        $('.photo').on('change', function (e) {
+            let file = e.target.files[0],
+                url = URL.createObjectURL(file),
+                preview = $(this).parent().parent().find(('.pic-prev'))
+            preview.attr('src', url);
+        });
+        // end preview image
+    });
+</script>
 @stack('js')

@@ -49703,6 +49703,15 @@ table thead th {
     white-space: nowrap;
 }
 
+.seo-div {
+    margin-top: 15px;
+}
+
+.seo-div h4{
+    color: #f44336;
+    font-weight: bold; 
+}
+
 
 /* abdo respnsive*/
 
