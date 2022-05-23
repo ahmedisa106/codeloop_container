@@ -74,7 +74,7 @@
                     <div class="manage-waste__inner">
                         <h3 class="manage-waste__title">إدارة النفايات بشكل فعال <br> وتقليل الأثر البيئي</h3>
                         <div class="manage-waste__btn-box">
-                            <a href="contact.html" class="thm-btn manage-waste__btn-2">تواصل معنا</a>
+                            <a href="{{url('contact-us')}}" class="thm-btn manage-waste__btn-2">تواصل معنا</a>
                         </div>
                     </div>
                 </div>

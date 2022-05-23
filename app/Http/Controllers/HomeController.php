@@ -60,7 +60,7 @@ class HomeController extends Controller
 
     public function blogs()
     {
-        $page_title = 'المقاللات';
+        $page_title = 'المقالات';
         $blogs = Blog::get();
 
         return view('website.pages.blogs.index', compact('page_title', 'blogs'));

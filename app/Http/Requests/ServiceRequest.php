@@ -22,6 +22,9 @@ class ServiceRequest extends FormRequest
             'title' => 'required|string|unique:services,title',
             'description' => 'required|string',
             'photo' => 'sometimes|nullable|image|mimes:png,jpeg,jpg',
+            'meta_title' => 'sometimes|nullable|string',
+            'meta_description' => 'sometimes|nullable|string',
+            'meta_keywords' => 'sometimes|nullable|string',
         ];
 
     }//end of onStore function
@@ -32,6 +35,9 @@ class ServiceRequest extends FormRequest
             'title' => 'required|string|unique:services,title,' . request()->id,
             'description' => 'required|string',
             'photo' => 'sometimes|nullable|image|mimes:png,jpeg,jpg',
+            'meta_title' => 'sometimes|nullable|string',
+            'meta_description' => 'sometimes|nullable|string',
+            'meta_keywords' => 'sometimes|nullable|string',
         ];
 
 

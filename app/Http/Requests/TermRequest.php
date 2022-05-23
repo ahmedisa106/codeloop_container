@@ -24,7 +24,10 @@ class TermRequest extends FormRequest
     public function rules()
     {
         return [
-            'body' => 'required'
+            'body' => 'required',
+            'meta_title' => 'sometimes|nullable|string',
+            'meta_description' => 'sometimes|nullable|string',
+            'meta_keywords' => 'sometimes|nullable|string',
         ];
     }
 

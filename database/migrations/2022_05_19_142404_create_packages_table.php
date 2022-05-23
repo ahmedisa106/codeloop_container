@@ -19,6 +19,10 @@ class CreatePackagesTable extends Migration
             $table->string('period')->default(0);
             $table->decimal('price', 10, 2);
             $table->string('photo')->nullable();
+            // seo
+            $table->string('meta_title')->nullable();
+            $table->string('meta_description')->nullable();
+            $table->string('meta_keywords')->nullable();
             $table->timestamps();
         });
     }

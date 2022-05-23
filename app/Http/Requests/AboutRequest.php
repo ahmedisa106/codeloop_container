@@ -26,7 +26,10 @@ class AboutRequest extends FormRequest
         return [
             'title' => 'required|string',
             'description' => 'required|string',
-            'photo' => 'sometimes|nullable|image'
+            'photo' => 'sometimes|nullable|image',
+            'meta_title' => 'sometimes|nullable|string',
+            'meta_description' => 'sometimes|nullable|string',
+            'meta_keywords' => 'sometimes|nullable|string',
         ];
     }
 
