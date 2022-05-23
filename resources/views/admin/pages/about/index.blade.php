@@ -11,12 +11,12 @@
             <div class="col-md-12 form-group">
                 <label class="form-label">العنوان</label>
                 <input value="{{isset($about) ? $about->title:''}}" name="title" class="form-control" type="text"
-                    placeholder="">
+                       placeholder="">
             </div>
             <div class="col-md-12 form-group">
                 <label class="form-label">التفاصيل</label>
                 <textarea name="description" class="editor" id="" cols="203"
-                    rows="10">{!! isset($about)?$about->description:'' !!}</textarea>
+                          rows="10">{!! isset($about)?$about->description:'' !!}</textarea>
             </div>
 
 
@@ -28,7 +28,7 @@
                     </div>
                     <div class="col-md-1  form-group">
                         <img id="pic-prev" src="{{isset($about)? $about->image : asset('default/default.png')}}"
-                            class="out-img pic-prev" />
+                             class="out-img pic-prev"/>
                     </div>
                 </div>
             </div>
@@ -39,35 +39,35 @@
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label class="form-label">عنوان الميتا</label>
-                            <input value="" name="title" class="form-control"
-                                type="text" placeholder="">
+                            <input value="" name="meta_title" class="form-control"
+                                   type="text" placeholder="">
                         </div>
                         <div class="col-md-6 form-group">
                             <label class="form-label">وصف الميتا</label>
-                            <input value="" name="title" class="form-control"
-                                type="text" placeholder="">
+                            <input value="" name="meta_description" class="form-control"
+                                   type="text" placeholder="">
                         </div>
                         <div class="col-md-6 form-group">
                             <label class="form-label">الكلمات الدلالية</label>
-                            <input value="" name="title" class="form-control"
-                                type="text" placeholder="">
+                            <input value="" name="meta_keywords" class="form-control"
+                                   type="text" placeholder="">
                         </div>
                     </div>
                 </div>
             </div>
 
 
-    <div class="modal-footer">
-        <button class="btn btn-primary btn-air-primary btn-icon" type="submit">
-            <i class="fa fa-save"></i>
-            حفظ
-        </button>
-        <button class="btn btn-danger exsit_modal btn-air-danger btn-icon" type="button" data-bs-dismiss="modal">
-            <i class="fa fa-times"></i>
-            خروج
-        </button>
+            <div class="modal-footer">
+                <button class="btn btn-primary btn-air-primary btn-icon" type="submit">
+                    <i class="fa fa-save"></i>
+                    حفظ
+                </button>
+                <button class="btn btn-danger exsit_modal btn-air-danger btn-icon" type="button" data-bs-dismiss="modal">
+                    <i class="fa fa-times"></i>
+                    خروج
+                </button>
+            </div>
+        </form>
     </div>
-    </form>
-</div>
 
 </div>
