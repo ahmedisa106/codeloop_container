@@ -56,7 +56,7 @@
                         <input name="footer_logo" class="form-control photo" id="photo" type="file">
                     </div>
                     <div class="col-md-2  form-group">
-                        <img id="pic-prev" src="{{isset($setting)? $setting->image : asset('default/default.png')}}" class="out-img pic-prev"/>
+                        <img id="pic-prev" src="{{isset($setting)? $setting->footer : asset('default/default.png')}}" class="out-img pic-prev"/>
                     </div>
                 </div>
             </div>
