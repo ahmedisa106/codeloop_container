@@ -22,70 +22,47 @@
 @yield('content')
 
 <!--Brand One Start-->
-{{--    <section class="brand-one brand-three">--}}
-{{--        <div class="container">--}}
-{{--            <div class="thm-swiper__slider swiper-container" data-swiper-options='{"spaceBetween": 100, "slidesPerView": 5, "autoplay": { "delay": 5000 }, "breakpoints": {--}}
-{{--                    "0": {--}}
-{{--                        "spaceBetween": 30,--}}
-{{--                        "slidesPerView": 2--}}
-{{--                    },--}}
-{{--                    "375": {--}}
-{{--                        "spaceBetween": 30,--}}
-{{--                        "slidesPerView": 2--}}
-{{--                    },--}}
-{{--                    "575": {--}}
-{{--                        "spaceBetween": 30,--}}
-{{--                        "slidesPerView": 3--}}
-{{--                    },--}}
-{{--                    "767": {--}}
-{{--                        "spaceBetween": 50,--}}
-{{--                        "slidesPerView": 4--}}
-{{--                    },--}}
-{{--                    "991": {--}}
-{{--                        "spaceBetween": 50,--}}
-{{--                        "slidesPerView": 5--}}
-{{--                    },--}}
-{{--                    "1199": {--}}
-{{--                        "spaceBetween": 100,--}}
-{{--                        "slidesPerView": 5--}}
-{{--                    }--}}
-{{--                }}'>--}}
-{{--                <div class="swiper-wrapper">--}}
-{{--                    <div class="swiper-slide">--}}
-{{--                        <img src="{{asset('assets/website')}}/images/brand/brand-1-1.png" alt="">--}}
-{{--                    </div><!-- /.swiper-slide -->--}}
-{{--                    <div class="swiper-slide">--}}
-{{--                        <img src="{{asset('assets/website')}}/images/brand/brand-1-2.png" alt="">--}}
-{{--                    </div><!-- /.swiper-slide -->--}}
-{{--                    <div class="swiper-slide">--}}
-{{--                        <img src="{{asset('assets/website')}}/images/brand/brand-1-3.png" alt="">--}}
-{{--                    </div><!-- /.swiper-slide -->--}}
-{{--                    <div class="swiper-slide">--}}
-{{--                        <img src="{{asset('assets/website')}}/images/brand/brand-1-4.png" alt="">--}}
-{{--                    </div><!-- /.swiper-slide -->--}}
-{{--                    <div class="swiper-slide">--}}
-{{--                        <img src="{{asset('assets/website')}}/images/brand/brand-1-5.png" alt="">--}}
-{{--                    </div><!-- /.swiper-slide -->--}}
-{{--                    <div class="swiper-slide">--}}
-{{--                        <img src="{{asset('assets/website')}}/images/brand/brand-1-1.png" alt="">--}}
-{{--                    </div><!-- /.swiper-slide -->--}}
-{{--                    <div class="swiper-slide">--}}
-{{--                        <img src="{{asset('assets/website')}}/images/brand/brand-1-2.png" alt="">--}}
-{{--                    </div><!-- /.swiper-slide -->--}}
-{{--                    <div class="swiper-slide">--}}
-{{--                        <img src="{{asset('assets/website')}}/images/brand/brand-1-3.png" alt="">--}}
-{{--                    </div><!-- /.swiper-slide -->--}}
-{{--                    <div class="swiper-slide">--}}
-{{--                        <img src="{{asset('assets/website')}}/images/brand/brand-1-4.png" alt="">--}}
-{{--                    </div><!-- /.swiper-slide -->--}}
-{{--                    <div class="swiper-slide">--}}
-{{--                        <img src="{{asset('assets/website')}}/images/brand/brand-1-5.png" alt="">--}}
-{{--                    </div><!-- /.swiper-slide -->--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </section>--}}
-<!--Brand One End-->
+    <section class="brand-one brand-three">
+        <div class="container">
+            <div class="thm-swiper__slider swiper-container" data-swiper-options='{"spaceBetween": 100, "slidesPerView": 5, "autoplay": { "delay": 5000 }, "breakpoints": {
+                    "0": {
+                        "spaceBetween": 30,
+                        "slidesPerView": 2
+                    },
+                    "375": {
+                        "spaceBetween": 30,
+                        "slidesPerView": 2
+                    },
+                    "575": {
+                        "spaceBetween": 30,
+                        "slidesPerView": 3
+                    },
+                    "767": {
+                        "spaceBetween": 50,
+                        "slidesPerView": 4
+                    },
+                    "991": {
+                        "spaceBetween": 50,
+                        "slidesPerView": 5
+                    },
+                    "1199": {
+                        "spaceBetween": 100,
+                        "slidesPerView": 5
+                    }
+                }}'>
+                <div class="swiper-wrapper">
+                    @foreach($clients as $client)
+                        <div class="swiper-slide">
+                            <img src="{{$client->image}}" alt="">
+                        </div><!-- /.swiper-slide -->
+                    @endforeach
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Brand One End-->
 
 
     @include('website.includes.footer')
