@@ -43,18 +43,18 @@
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label class="form-label">عنوان الميتا</label>
-                            <input value="" name="title" class="form-control"
-                                type="text" placeholder="">
+                            <input value="" name="meta_title" class="form-control"
+                                   type="text" placeholder="">
                         </div>
                         <div class="col-md-6 form-group">
                             <label class="form-label">وصف الميتا</label>
-                            <input value="" name="title" class="form-control"
-                                type="text" placeholder="">
+                            <input value="" name="meta_description" class="form-control"
+                                   type="text" placeholder="">
                         </div>
                         <div class="col-md-6 form-group">
                             <label class="form-label">الكلمات الدلالية</label>
-                            <input value="" name="title" class="form-control"
-                                type="text" placeholder="">
+                            <input value="" name="meta_keywords" class="form-control"
+                                   type="text" placeholder="">
                         </div>
                     </div>
                 </div>
