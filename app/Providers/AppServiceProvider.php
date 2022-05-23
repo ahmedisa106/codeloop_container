@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 
+use App\Models\Company;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
@@ -29,8 +30,10 @@ class AppServiceProvider extends ServiceProvider
     {
         if (Schema::hasTable('settings')) {
             $setting = Setting::first();
-            View::composer('*', function ($view) use ($setting) {
+            $clients = Company::get(['id', 'logo']);
+            View::composer('*', function ($view) use ($setting, $clients) {
                 $view->with(['setting' => $setting]);
+                $view->with(['clients' => $clients]);
             });
         }
         Schema::defaultStringLength(191);
