@@ -25,6 +25,11 @@ class CreateSettingsTable extends Migration
             $table->string('footer_logo')->nullable();
             $table->string('breadcrumb')->nullable();
             $table->text('map')->nullable();
+            // seo
+            $table->string('meta_title')->nullable();
+            $table->string('meta_description')->nullable();
+            $table->string('meta_keywords')->nullable();
+
             $table->timestamps();
         });
     }

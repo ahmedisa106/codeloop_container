@@ -33,6 +33,9 @@ class SettingRequest extends FormRequest
             'instagram' => 'sometimes|nullable|url',
             'footer_logo' => 'sometimes|nullable',
             'map' => 'sometimes|nullable',
+            'meta_title' => 'sometimes|nullable|string',
+            'meta_description' => 'sometimes|nullable|string',
+            'meta_keywords' => 'sometimes|nullable|string',
         ];
     }
 

@@ -16,6 +16,10 @@ class CreateTermsTable extends Migration
         Schema::create('terms', function (Blueprint $table) {
             $table->id();
             $table->longText('body');
+            // seo
+            $table->string('meta_title')->nullable();
+            $table->string('meta_description')->nullable();
+            $table->string('meta_keywords')->nullable();
             $table->timestamps();
         });
     }

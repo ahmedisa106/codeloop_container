@@ -23,6 +23,9 @@ class PackageRequest extends FormRequest
             'price' => 'required|numeric',
             'period' => 'required|string',
             'photo' => 'sometimes|nullable|image|mimes:png,jpeg,jpg',
+            'meta_title' => 'sometimes|nullable|string',
+            'meta_description' => 'sometimes|nullable|string',
+            'meta_keywords' => 'sometimes|nullable|string',
         ];
 
     }//end of onStore function
@@ -34,6 +37,9 @@ class PackageRequest extends FormRequest
             'price' => 'required|numeric',
             'period' => 'required|string',
             'photo' => 'sometimes|nullable|image|mimes:png,jpeg,jpg',
+            'meta_title' => 'sometimes|nullable|string',
+            'meta_description' => 'sometimes|nullable|string',
+            'meta_keywords' => 'sometimes|nullable|string',
         ];
 
 

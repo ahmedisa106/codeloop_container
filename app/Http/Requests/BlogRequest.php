@@ -32,6 +32,9 @@ class BlogRequest extends FormRequest
             'title' => 'required|string|unique:blogs,title',
             'description' => 'required|string',
             'photo' => 'sometimes|nullable|image|mimes:png,jpeg,jpg',
+            'meta_title' => 'sometimes|nullable|string',
+            'meta_description' => 'sometimes|nullable|string',
+            'meta_keywords' => 'sometimes|nullable|string',
         ];
 
     }//end of onStore function
@@ -42,6 +45,9 @@ class BlogRequest extends FormRequest
             'title' => 'required|string|unique:blogs,title,' . request()->id,
             'description' => 'required|string',
             'photo' => 'sometimes|nullable|image|mimes:png,jpeg,jpg',
+            'meta_title' => 'sometimes|nullable|string',
+            'meta_description' => 'sometimes|nullable|string',
+            'meta_keywords' => 'sometimes|nullable|string',
         ];
 
 

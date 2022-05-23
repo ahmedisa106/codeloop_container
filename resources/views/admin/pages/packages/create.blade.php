@@ -13,9 +13,11 @@
                 <input value="{{isset($package) ? $package->title:''}}" name="title" class="form-control" type="text" placeholder="">
             </div>
             <div class="col-md-12 form-group">
-                <label class="form-label">مده الباقه</label>
-                <input type="string" name="period" class="form-control">
+                <label class="form-label">مده الباقه <span class="text-danger"> ( بالشهور )  </span></label>
+                <input type="number" min="1" name="period" class="form-control">
             </div>
+
+
             <div class="col-md-12 form-group">
                 <label class="form-label">سعر الباقه</label>
                 <input type="number" min="0" name="price" class="form-control">
