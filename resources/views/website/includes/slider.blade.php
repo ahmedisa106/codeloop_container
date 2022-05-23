@@ -49,6 +49,5 @@
             </div>
         </div>
     </div>
-
 </section>
 <!--Main Slider End-->
