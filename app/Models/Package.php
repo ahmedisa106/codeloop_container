@@ -23,7 +23,6 @@ class Package extends Model
 
     public function getImageAttribute()
     {
-
         if (!$this->photo) {
             return asset('default/default.png');
         }
@@ -31,4 +30,11 @@ class Package extends Model
 
 
     }//end of getImageAttribute function
+
+    public function companies()
+    {
+        return $this->hasMany(Company::class);
+
+
+    }//end of companies function
 }

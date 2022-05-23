@@ -37,6 +37,25 @@
                     <input name="password" class="form-control" type="password" placeholder="">
                 </div>
 
+                <div class="col-md-6 form-group">
+                    <label class="form-label">الباقه</label>
+                    <select name="package_id" class="form-control" id="">
+                        <option value="" selected disabled>إختر باقه</option>
+                        @foreach($packages as $package)
+                            <option value="{{$package->id}}">{{$package->title}}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+
+                <div class="col-md-6 form-group">
+                    <label class="form-label">الشعار</label>
+                    <input name="logo" class="form-control photo" id="photo" type="file">
+                </div>
+                <div class="col-md-6 form-group">
+                    <img id="pic-prev" src="{{asset('default/default.png')}}" class="out-img pic-prev">
+                </div>
+
 
                 <div class="col-md-6 form-group">
                     <div class="switch-showcase">
@@ -50,14 +69,6 @@
                             <label class="col-form-label">غير نشط</label>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-md-6 form-group">
-                    <label class="form-label">الشعار</label>
-                    <input name="logo" class="form-control photo" id="photo" type="file">
-                </div>
-                <div class="col-md-6">
-                    <img id="pic-prev" src="{{asset('default/default.png')}}" class="out-img pic-prev">
                 </div>
 
 

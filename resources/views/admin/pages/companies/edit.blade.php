@@ -39,6 +39,24 @@
                     <input name="password" class="form-control" type="password" placeholder="">
                 </div>
 
+                <div class="col-md-6 form-group">
+                    <label class="form-label">الباقه</label>
+                    <select name="package_id" class="form-control" id="">
+                        <option value="" selected disabled>إختر باقه</option>
+                        @foreach($packages as $package)
+                            <option {{$package->id == $company->package_id ? 'selected':''}} value="{{$package->id}}">{{$package->title}}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+
+                <div class="col-md-6 form-group">
+                    <label class="form-label">الشعار</label>
+                    <input name="logo" class="form-control photo" id="photo" type="file">
+                </div>
+                <div class="col-md-6">
+                    <img id="pic-prev" src="{{$company->image}}" class="out-img pic-prev">
+                </div>
 
                 <div class="col-md-6 form-group">
                     <div class="switch-showcase">
@@ -53,15 +71,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-6 form-group">
-                    <label class="form-label">الشعار</label>
-                    <input name="logo" class="form-control" id="photo" type="file">
-                </div>
-                <div class="col-md-6">
-                    <img id="pic-prev" src="{{$company->image}}" class="out-img pic-prev">
-                </div>
-
 
                 <div class="modal-footer">
                     <button class="btn btn-primary btn-air-primary btn-icon" type="submit">
