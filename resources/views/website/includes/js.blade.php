@@ -21,5 +21,5 @@
 <script src="{{asset('assets/website')}}/vendors/jquery-ui/jquery-ui.js"></script>
 <script src="{{asset('assets/website')}}/vendors/timepicker/timePicker.js"></script>
 <script src="{{asset('assets/website')}}/js/script.js"></script>
-<script rel="stylesheet" src="{{asset('assets/website/plugins/toaster/js/toastr.min.js')}}"></script>.
+<script rel="stylesheet" src="{{asset('assets/website/plugins/toaster/js/toastr.min.js')}}"></script>
 @stack('js')

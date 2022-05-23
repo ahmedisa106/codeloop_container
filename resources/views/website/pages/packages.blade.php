@@ -24,7 +24,7 @@
                             </div>
                             <div class="pricing__tab-content-right">
                                 <div class="pricing__tab-content-order">
-                                    <p class="pricing__tab-content-rate"><span>$</span>{{$package->price}}</p>
+                                    <p class="pricing__tab-content-rate">{{$package->price}}<span>ر.س</span></p>
                                     <a href="{{url('contact-us')}}" class="thm-btn pricing__order-btn">اطلب الآن</a>
                                 </div>
                             </div>

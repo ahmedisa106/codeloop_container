@@ -7324,9 +7324,10 @@ padding: 20px;padding-left: 59px;}
 }
 
 .pricing__tab-content-rate span {
-  font-size: 20px;
+  font-size: 18px;
   position: relative;
-  top: -7px;
+  top: 0;
+  right: 5px;
 }
 
 /*--------------------------------------------------------------
