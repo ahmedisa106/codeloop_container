@@ -226,18 +226,9 @@
     $(document).on('change', '.package_id', function () {
 
         let package_id = $(this).val();
-        let current_package_id = $('#current_package_id').val();
-        if (current_package_id && current_package_id === package_id) {
 
-            $('.discount').val($('#current_discount').val());
-            $('.price_after_discount').val($('#current_price_after_discount').val());
-            $('.package_price').val($('#current_package_price').val());
-        } else {
-            $('.discount').val(0);
-            $('.price_after_discount').val(0);
-            getPackageData(package_id);
-        }
 
+        getPackageData(package_id);
 
     });
 
@@ -253,15 +244,23 @@
             data: {
                 package_id: package_id
             },
+            beforeSend: function () {
+                $('.lds-facebook').removeClass('d-none');
+                $('.package_details ').toggleClass('d-none');
+
+            },
             success: function (res) {
                 $('.package_price').val(res.data.price);
-
                 let date = new Date();
                 let year = date.getFullYear();
                 let month = date.getMonth() + 1 + +res.data.period;
                 let day = date.getDate();
                 $('.package_finish_at').val(year + '-' + (month < 9 ? '0' + month : month) + '-' + (day < 9 ? '0' + day : day));
                 $('.price_after_discount').val(res.data.price);
+            },
+            complete: function () {
+                $('.lds-facebook ').addClass('d-none');
+                $('.package_details ').removeClass('d-none');
             }
         })
     }

@@ -21,7 +21,7 @@ class CreateCompanyPackagesTable extends Migration
             $table->integer('package_price')->nullable();
             $table->integer('discount')->default(0);
             $table->integer('price_after_discount')->default(0);
-            $table->enum('status', ['subscribed', 'unsubscribed', 'finished'])->default('unsubscribed');
+            $table->enum('status', ['subscribed', 'pending', 'finished'])->default('pending');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->foreign('package_id')->references('id')->on('packages')->onDelete('cascade');
             $table->timestamps();
