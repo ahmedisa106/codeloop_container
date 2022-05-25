@@ -8,6 +8,6 @@ class CompanyPackage extends Model
 {
     protected $table = 'company_packages';
     protected $guarded = [];
-   
+
 
 }
