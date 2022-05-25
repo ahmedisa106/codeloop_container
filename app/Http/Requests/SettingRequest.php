@@ -27,7 +27,7 @@ class SettingRequest extends FormRequest
             'name' => 'required|string',
             'email' => 'required|email',
             'address' => 'required',
-            'mobile' => 'sometimes|nullable|integer',
+            'mobile' => 'sometimes|nullable|numeric',
             'logo' => 'sometimes|nullable',
             'facebook' => 'sometimes|nullable|url',
             'instagram' => 'sometimes|nullable|url',

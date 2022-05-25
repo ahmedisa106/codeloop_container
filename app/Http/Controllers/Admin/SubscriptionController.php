@@ -87,6 +87,8 @@ class SubscriptionController extends Controller
 
         if (!empty($company) && $company->status == 'subscribed') {
             return response()->json(['error' => 'المؤسسه بالفعل مشتركه في باقه'], 401);
+        } elseif (!empty($company) && $company->status == 'pending') {
+            return response()->json(['error' => 'المؤسسه بالفعل مشتركه في باقه ومنتظره التفعيل'], 401);
         }
         CompanyPackage::create($data);
 
