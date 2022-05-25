@@ -4,6 +4,10 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/website')}}/images/favicons/favicon-16x16.png"/>
+    <meta name="title" content="{{isset($setting)?$setting->meta_title:''}}">
+    <meta name="keywords" content="{{isset($setting)?$setting->meta_keywords:''}}">
+    <meta name="description" content="{{isset($setting)?$setting->meta_description:''}}">
+    @stack('seo')
     <title>{{isset($setting)?$setting->name:''}} | @stack('title')</title>
     @include('website.includes.css')
 </head>

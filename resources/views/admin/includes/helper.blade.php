@@ -91,6 +91,29 @@
             });
         });
 
+        // Single Date Picker
+        $('.datepicker-here').daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: true,
+            parentEl: ".modal .modal-body",
+            locale: {
+                format: 'YYYY-MM-DD',
+            },
+            autoUpdateInput: false,
+        });
+
+        $('.datepicker').daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: true,
+            locale: {
+                format: 'YYYY-MM-DD',
+            },
+            autoUpdateInput: false,
+        });
+        $('.datepicker-here').on('apply.daterangepicker', function (ev, picker) {
+            $(this).val(picker.startDate.format('YYYY-MM-DD'));
+        });
+
     });
     //end  when ajax complete
 
@@ -198,5 +221,51 @@
         });
     })
     //end  click on delete all
+
+    // change package
+    $(document).on('change', '.package_id', function () {
+
+        let package_id = $(this).val();
+        let current_package_id = $('#current_package_id').val();
+        if (current_package_id && current_package_id === package_id) {
+
+            $('.discount').val($('#current_discount').val());
+            $('.price_after_discount').val($('#current_price_after_discount').val());
+            $('.package_price').val($('#current_package_price').val());
+        } else {
+            $('.discount').val(0);
+            $('.price_after_discount').val(0);
+            getPackageData(package_id);
+        }
+
+
+    });
+
+    $(document).on('input', '.discount', function () {
+        let package_price = $('.package_price').val();
+        $('.price_after_discount').val(+package_price - +$(this).val());
+    })
+
+    function getPackageData(package_id) {
+        $.ajax({
+            type: 'get',
+            url: "{{route('packages.getPackage')}}",
+            data: {
+                package_id: package_id
+            },
+            success: function (res) {
+                $('.package_price').val(res.data.price);
+
+                let date = new Date();
+                let year = date.getFullYear();
+                let month = date.getMonth() + 1 + +res.data.period;
+                let day = date.getDate();
+                $('.package_finish_at').val(year + '-' + (month < 9 ? '0' + month : month) + '-' + (day < 9 ? '0' + day : day));
+                $('.price_after_discount').val(res.data.price);
+            }
+        })
+    }
+
+    // end  change package
 
 </script>

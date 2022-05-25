@@ -39,6 +39,7 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
     // packages routes
     Route::get('packages/data', 'PackageController@data')->name('packages.data');
     Route::post('packages/bulkDelete', 'PackageController@bulkDelete')->name('packages.bulkDelete');
+    Route::get('packages/getPackage', 'PackageController@getPackage')->name('packages.getPackage');
     Route::resource('packages', 'PackageController');
     // end packages routes
 

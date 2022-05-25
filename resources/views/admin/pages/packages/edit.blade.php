@@ -43,17 +43,17 @@
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label class="form-label">عنوان الميتا</label>
-                            <input value="" name="meta_title" class="form-control"
+                            <input value="{{$package->meta_title}}" name="meta_title" class="form-control"
                                    type="text" placeholder="">
                         </div>
                         <div class="col-md-6 form-group">
                             <label class="form-label">وصف الميتا</label>
-                            <input value="" name="meta_description" class="form-control"
+                            <input value="{{$package->meta_description}}" name="meta_description" class="form-control"
                                    type="text" placeholder="">
                         </div>
                         <div class="col-md-6 form-group">
                             <label class="form-label">الكلمات الدلالية</label>
-                            <input value="" name="meta_keywords" class="form-control"
+                            <input value="{{$package->meta_keywords}}" name="meta_keywords" class="form-control"
                                    type="text" placeholder="">
                         </div>
                     </div>

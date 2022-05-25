@@ -50,12 +50,7 @@ class PackageController extends Controller
         return view('admin.pages.packages.create', ['data' => $this->data]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(PackageRequest $request)
     {
         $data = $request->validated();
@@ -66,35 +61,19 @@ class PackageController extends Controller
         return $this->setAddedSuccess();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Package $package)
     {
         return view('admin.pages.packages.edit', ['data' => $this->data], compact('package'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(PackageRequest $request, Package $package)
     {
         $data = $request->validated();
@@ -105,12 +84,7 @@ class PackageController extends Controller
         return $this->setUpdatedSuccess();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Package $package)
     {
         $package->delete();
@@ -125,4 +99,11 @@ class PackageController extends Controller
         return $this->setDeletedSuccess();
 
     }//end of bulkDelete function
+
+
+    public function getPackage(Request $request)
+    {
+        $package = Package::findOrFail($request->package_id, ['id', 'period', 'price']);
+        return response()->json(['data' => $package], 200);
+    }//end of getPackage function
 }

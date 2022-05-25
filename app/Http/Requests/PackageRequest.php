@@ -26,6 +26,7 @@ class PackageRequest extends FormRequest
             'meta_title' => 'sometimes|nullable|string',
             'meta_description' => 'sometimes|nullable|string',
             'meta_keywords' => 'sometimes|nullable|string',
+
         ];
 
     }//end of onStore function
