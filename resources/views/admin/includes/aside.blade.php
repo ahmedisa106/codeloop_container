@@ -22,7 +22,7 @@
                 </li>
 
                 <li class="sidebar-list">
-                    <a class="sidebar-link sidebar-title link-nav" href="#">
+                    <a class="sidebar-link sidebar-title link-nav" href="{{route('subscriptions.index')}}">
                         <img src="{{asset('assets/dashboard')}}/images/icons/gift.png" alt="">
                         <span>الإشتراكات</span>
                     </a>

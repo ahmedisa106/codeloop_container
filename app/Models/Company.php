@@ -10,7 +10,7 @@ class Company extends Model
     protected $table = 'companies';
     protected $guarded = [];
     protected $appends = ['image'];
-    protected $with = ['packages', 'package'];
+
 
     public function getImageAttribute()
     {
@@ -26,7 +26,6 @@ class Company extends Model
         static::deleting(function ($model) {
             File::delete(public_path('images/companies/' . $model->logo));
         });
-
     }
 
     public function packages()
@@ -36,7 +35,7 @@ class Company extends Model
 
     public function package()
     {
-        return $this->hasOne(CompanyPackage::class)->oldest('package_finish_at');
+        return $this->hasOne(CompanyPackage::class)->latest('id');
 
     }//end of package function
 }
