@@ -245,8 +245,8 @@
                 package_id: package_id
             },
             beforeSend: function () {
-                $('.lds-facebook').removeClass('d-none');
-                $('.package_details ').toggleClass('d-none');
+                $('.loader-div').removeClass('d-none');
+                $('.package_details').toggleClass('d-none');
 
             },
             success: function (res) {
@@ -259,8 +259,8 @@
                 $('.price_after_discount').val(res.data.price);
             },
             complete: function () {
-                $('.lds-facebook ').addClass('d-none');
-                $('.package_details ').removeClass('d-none');
+                $('.loader-div').addClass('d-none');
+                $('.package_details').removeClass('d-none');
             }
         })
     }
