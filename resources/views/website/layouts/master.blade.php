@@ -30,11 +30,11 @@
         <div class="container">
             <div class="thm-swiper__slider swiper-container" data-swiper-options='{"spaceBetween": 100, "slidesPerView": 5, "autoplay": { "delay": 5000 }, "breakpoints": {
                     "0": {
-                        "spaceBetween": 30,
+                        "spaceBetween": 20,
                         "slidesPerView": 2
                     },
                     "375": {
-                        "spaceBetween": 30,
+                        "spaceBetween": 20,
                         "slidesPerView": 2
                     },
                     "575": {

@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 @foreach($blogs as $blog)
-                    <div class="col-xl-4 col-lg-6">
+                    <div class="col-lg-4 col-sm-6">
                         <!--News One Single-->
                         <div class="news-one__single">
                             <div class="news-one__img">

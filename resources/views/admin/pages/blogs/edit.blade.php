@@ -20,7 +20,7 @@
             </div>
 
 
-            <div class="col-md-12-group">
+            <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-11 form-group">
                         <label class="form-label">الصوره</label>
@@ -32,9 +32,9 @@
                 </div>
             </div>
 
-            <div class="col-md-12-group">
+            <div class="col-md-12">
                 <div class="seo-div">
-                    <h4>بياتنات السيو (SEO)</h4>
+                    <h4>بيانات السيو (SEO)</h4>
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label class="form-label">عنوان الميتا</label>

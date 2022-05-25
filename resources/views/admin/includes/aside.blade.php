@@ -23,7 +23,7 @@
 
                 <li class="sidebar-list">
                     <a class="sidebar-link sidebar-title link-nav" href="#">
-                        <img src="{{asset('assets/dashboard')}}/images/icons/gift.png" alt="">
+                        <img src="{{asset('assets/dashboard')}}/images/icons/membership.png" alt="">
                         <span>الإشتراكات</span>
                     </a>
                 </li>
