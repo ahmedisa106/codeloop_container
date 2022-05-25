@@ -1,4 +1,9 @@
 @extends('website.layouts.master')
+@push('seo')
+    <meta name="title" content="{{isset($current_blog)?$current_blog->meta_title:''}}">
+    <meta name="keywords" content="{{isset($current_blog)?$current_blog->meta_keywords:''}}">
+    <meta name="description" content="{{isset($current_blog)?$current_blog->meta_description:''}}">
+@endpush
 @push('title',$page_title)
 @section('content')
     @include('website.includes.breadcramp')
@@ -10,7 +15,7 @@
                 <div class="col-xl-8 col-lg-7">
                     <div class="news-details__left">
                         <div class="news-details__img">
-                            <img src="{{$current_blog->image}}" alt="">
+                            <img src="{{$current_blog->image}}" alt="{{$current_blog->title}}" title="{{$current_blog->title}}">
                             <div class="news-details__date">
                                 <p>{{\Carbon\Carbon::create($current_blog->created_at)->format('d M')}}</p>
                             </div>
@@ -31,11 +36,11 @@
                                 @foreach($blogs as $blog)
                                     <li style="background-color: {{$blog->id == $current_blog->id ? 'white':''}}">
                                         <div class="sidebar__post-image">
-                                            <img src="{{$blog->image}}" alt="">
+                                            <img src="{{$blog->image}}" alt="{{$blog->title}}" title="{{$blog->title}}">
                                         </div>
                                         <div class="sidebar__post-content">
                                             <h3>
-                                                <a href="{{route('website.blogs.show',$blog->id)}}">
+                                                <a href="{{route('website.blogs.show',$blog->id)}}" title="{{$blog->title}}">
                                                     {{$blog->title}}
                                                 </a>
                                             </h3>

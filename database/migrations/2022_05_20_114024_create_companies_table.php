@@ -15,7 +15,6 @@ class CreateCompaniesTable extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('package_id');
             $table->string('name');
             $table->string('username');
             $table->string('email');
@@ -24,9 +23,8 @@ class CreateCompaniesTable extends Migration
             $table->bigInteger('commercial_number');
             $table->bigInteger('tax_card_number');
             $table->string('logo')->nullable();
-            $table->enum('status', ['active', 'inactive'])->default('inactive');
             $table->timestamps();
-            $table->foreign('package_id')->references('id')->on('packages')->onDelete('cascade');
+
         });
     }
 

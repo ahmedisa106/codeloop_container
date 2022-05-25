@@ -33,7 +33,7 @@ class Package extends Model
 
     public function companies()
     {
-        return $this->hasMany(Company::class);
+        return $this->belongsToMany(Company::class, 'company_packages', 'company_id', 'package_id');
 
 
     }//end of companies function

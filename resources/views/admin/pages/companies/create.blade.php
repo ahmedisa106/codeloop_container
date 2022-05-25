@@ -37,36 +37,15 @@
                     <input name="password" class="form-control" type="password" placeholder="">
                 </div>
 
-                <div class="col-md-6 form-group">
-                    <label class="form-label">الباقه</label>
-                    <select name="package_id" class="form-control" id="">
-                        <option value="" selected disabled>إختر باقه</option>
-                        @foreach($packages as $package)
-                            <option value="{{$package->id}}">{{$package->title}}</option>
-                        @endforeach
-                    </select>
-                </div>
 
-
-                <div class="col-md-6 form-group">
-                    <label class="form-label">الشعار</label>
-                    <input name="logo" class="form-control photo" id="photo" type="file">
-                </div>
-                <div class="col-md-6 form-group">
-                    <img id="pic-prev" src="{{asset('default/default.png')}}" class="out-img pic-prev">
-                </div>
-
-
-                <div class="col-md-6 form-group">
-                    <div class="switch-showcase">
-                        <div class="media">
-                            <label class="col-form-label">نشط</label>
-                            <div class="icon-state">
-                                <label class="switch">
-                                    <input name="status" value="active" type="checkbox" checked=""><span class="switch-state"></span>
-                                </label>
-                            </div>
-                            <label class="col-form-label">غير نشط</label>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <label class="form-label">الشعار</label>
+                            <input name="logo" class="form-control photo" id="photo" type="file">
+                        </div>
+                        <div class="col-md-2">
+                            <img id="pic-prev" src="{{asset('default/default.png')}}" class="out-img pic-prev">
                         </div>
                     </div>
                 </div>

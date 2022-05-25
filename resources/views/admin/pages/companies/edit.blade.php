@@ -39,16 +39,6 @@
                     <input name="password" class="form-control" type="password" placeholder="">
                 </div>
 
-                <div class="col-md-6 form-group">
-                    <label class="form-label">الباقه</label>
-                    <select name="package_id" class="form-control" id="">
-                        <option value="" selected disabled>إختر باقه</option>
-                        @foreach($packages as $package)
-                            <option {{$package->id == $company->package_id ? 'selected':''}} value="{{$package->id}}">{{$package->title}}</option>
-                        @endforeach
-                    </select>
-                </div>
-
 
                 <div class="col-md-6 form-group">
                     <label class="form-label">الشعار</label>
@@ -58,19 +48,6 @@
                     <img id="pic-prev" src="{{$company->image}}" class="out-img pic-prev">
                 </div>
 
-                <div class="col-md-6 form-group">
-                    <div class="switch-showcase">
-                        <div class="media">
-                            <label class="col-form-label">نشط</label>
-                            <div class="icon-state">
-                                <label class="switch">
-                                    <input {{$company->status == 'active' ?'checked':''}} name="status" value="active" type="checkbox"><span class="switch-state"></span>
-                                </label>
-                            </div>
-                            <label class="col-form-label">غير نشط</label>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="modal-footer">
                     <button class="btn btn-primary btn-air-primary btn-icon" type="submit">

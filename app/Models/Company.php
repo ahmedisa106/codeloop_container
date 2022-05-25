@@ -10,6 +10,7 @@ class Company extends Model
     protected $table = 'companies';
     protected $guarded = [];
     protected $appends = ['image'];
+    protected $with = ['packages', 'package'];
 
     public function getImageAttribute()
     {
@@ -28,10 +29,14 @@ class Company extends Model
 
     }
 
+    public function packages()
+    {
+        return $this->belongsToMany(Package::class, 'company_packages', 'package_id', 'company_id')->withTimestamps();
+    }//end of package function
+
     public function package()
     {
-        return $this->belongsTo(Package::class, 'package_id');
-
+        return $this->hasOne(CompanyPackage::class)->oldest('package_finish_at');
 
     }//end of package function
 }

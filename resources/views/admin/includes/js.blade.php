@@ -20,7 +20,8 @@
 <script src="{{asset('assets/dashboard')}}/js/datatable/datatable-extension/buttons.html5.min.js"></script>
 <script src="{{asset('assets/dashboard')}}/js/datatable/datatable-extension/buttons.print.min.js"></script>
 <script src="{{asset('assets/dashboard')}}/js/select2/select2.full.min.js"></script>
-<script src="{{asset('assets/dashboard')}}/js/datepicker/datepicker.js"></script>
+<script src="{{asset('assets/dashboard/js/datepicker/moment.min.js')}}"></script>
+<script src="{{asset('assets/dashboard/js/datepicker/datepicker.js')}}"></script>
 <script src="{{asset('assets/dashboard')}}/js/script.js"></script>
 <script src="{{asset('assets/dashboard/plugins/metro/js/design.js')}}"></script>
 <script src="{{asset('assets/dashboard/plugins/sweetalert/swal.js')}}"></script>

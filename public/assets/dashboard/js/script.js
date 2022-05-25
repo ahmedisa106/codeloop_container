@@ -438,6 +438,7 @@ $(".select2-custom").select2({
 
 // // Single Date Picker
 
+// Single Date Picker
 $(function () {
     $('.datepicker').daterangepicker({
         singleDatePicker: true,

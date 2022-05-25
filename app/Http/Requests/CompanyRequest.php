@@ -33,12 +33,12 @@ class CompanyRequest extends FormRequest
             'commercial_number' => 'required|unique:companies,commercial_number',
             'tax_card_number' => 'required|unique:companies,tax_card_number',
             'username' => 'required|unique:companies,username',
-            'email' => 'required|unique:companies,email',
+            'email' => 'required|unique:companies,email|email',
             'password' => 'required',
             'logo' => 'sometimes|nullable|image',
-            'status' => 'in:active,inactive',
             'phone' => 'required|unique:companies,phone',
-            'package_id' => 'required|exists:packages,id',
+
+
         ];
 
 
@@ -52,12 +52,10 @@ class CompanyRequest extends FormRequest
             'commercial_number' => 'required|unique:companies,commercial_number,' . request()->id,
             'tax_card_number' => 'required|unique:companies,tax_card_number,' . request()->id,
             'username' => 'required|unique:companies,username,' . request()->id,
-            'email' => 'required|unique:companies,email,' . request()->id,
+            'email' => 'required||email|unique:companies,email,' . request()->id,
             'password' => 'sometimes|nullable',
             'logo' => 'sometimes|nullable|image',
-            'status' => 'in:active,inactive',
             'phone' => 'required|unique:companies,phone,' . request()->id,
-            'package_id' => 'required|exists:packages,id',
         ];
 
     }//end of onUpdate function
@@ -74,8 +72,6 @@ class CompanyRequest extends FormRequest
             'commercial_number' => 'رقم السجل التجاري',
             'tax_card_number' => 'رقم البطاقه الضريبيه',
             'logo' => 'الشعار',
-            'status' => 'الحاله',
-            'package_id' => 'الباقه',
 
         ];
 

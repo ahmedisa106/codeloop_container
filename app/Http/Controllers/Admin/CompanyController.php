@@ -9,6 +9,7 @@ use App\Http\Requests\CompanyRequest;
 use App\Models\Company;
 use App\Models\Package;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
 class CompanyController extends Controller
@@ -67,11 +68,13 @@ class CompanyController extends Controller
     {
         $data = $request->validated();
         if ($request->hasFile('logo')) {
-
             $data['logo'] = $this->upload($request->logo, 'companies');
         }
         $data['password'] = bcrypt($request->password);
+
+        DB::beginTransaction();
         Company::create($data);
+        DB::commit();
 
         return $this->setAddedSuccess();
 
@@ -114,8 +117,13 @@ class CompanyController extends Controller
             $data['logo'] = $this->upload($request->logo, 'companies', true, $company->logo);
         }
         $data['password'] = $request->password ? bcrypt($request->password) : $company->password;
-        $data['status'] = $request->status ? 'active' : 'inactive';
-        $company->update($data);
+
+
+        DB::beginTransaction();
+        $company = $company->update($data);
+
+        DB::commit();
+
 
         return $this->setUpdatedSuccess();
     }
