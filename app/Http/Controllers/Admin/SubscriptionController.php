@@ -9,6 +9,7 @@ use App\Models\Company;
 use App\Models\CompanyPackage;
 use App\Models\Package;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
 
 class SubscriptionController extends Controller
@@ -30,14 +31,12 @@ class SubscriptionController extends Controller
     public function data()
     {
 
-        $subscriptions = CompanyPackage::get();
+        $subscriptions = CompanyPackage::latest()->get()->unique('company_id');
+
         $model = 'subscriptions';
         return DataTables::of($subscriptions)
             ->addColumn('actions', function ($raw) use ($model) {
                 return view('admin.includes.actions', compact('raw', 'model'));
-            })
-            ->addColumn('check_item', function ($raw) {
-                return view('admin.includes.check_item', compact('raw'));
             })
             ->addColumn('company_id', function ($raw) {
                 return $raw->company->name;
@@ -95,52 +94,63 @@ class SubscriptionController extends Controller
         return $this->setAddedSuccess();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public
-    function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public
-    function edit($id)
+    public function changePending(Request $request)
     {
-        //
-    }
+        $package = Package::find($request->package_id)->period;
+        $subscription = CompanyPackage::find($request->id);
+        $new_data = now()->addMonths($package)->toDateString();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public
-    function update(Request $request, $id)
-    {
-        //
-    }
+        $subscription->update(
+            [
+                'package_finish_at' => $new_data,
+                'status' => 'subscribed',
+            ]
+        );
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public
-    function destroy($id)
+        return $this->setUpdatedSuccess();
+
+    }//end of changePending function
+
+    public function companyResubscribed($id)
     {
-        //
-    }
+        $subscription = CompanyPackage::find($id);
+        $packages = Package::get(['id', 'title']);
+
+        $this->data['create'] = 'تجديد الإشتراك';
+        return view('admin.pages.subscriptions.resubscription', ['data' => $this->data], compact('packages', 'subscription'));
+    }//end of companyResubscribed function
+
+    public function subscribed(Request $request, $id)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'company_id' => 'required|exists:companies,id',
+            'package_id' => 'required|exists:packages,id',
+            'package_price' => 'required|min:0|gte:discount',
+            'package_finish_at' => 'required|date',
+            'discount' => 'required|lte:package_price|min:0',
+            'price_after_discount' => 'required|lte:package_price|min:0',
+        ], [], [
+
+            'company_id' => 'المؤسسه',
+            'package_id' => 'الباقه',
+            'package_price' => 'سعر الباقه',
+            'package_finish_at' => 'تاريخ إنتهاء الباقه',
+            'discount' => 'الخصم',
+            'price_after_discount' => 'سعر الباثه بعد الخصم',
+        ]);
+        if ($validator->fails()) {
+
+            return $this->setError($validator->errors()->first());
+        }
+        $data = $validator->validated();
+
+        $data['status'] = 'subscribed';
+        CompanyPackage::create($data);
+
+        return $this->setAddedSuccess('تم  تجديد الإشتراك بنجاح');
+
+
+    }//end of subscribed function
 }

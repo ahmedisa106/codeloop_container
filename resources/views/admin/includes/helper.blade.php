@@ -224,12 +224,8 @@
 
     // change package
     $(document).on('change', '.package_id', function () {
-
         let package_id = $(this).val();
-
-
         getPackageData(package_id);
-
     });
 
     $(document).on('input', '.discount', function () {
@@ -263,8 +259,33 @@
                 $('.package_details ').removeClass('d-none');
             }
         })
-    }
+    }// end  change package
 
-    // end  change package
+    // change company subscription status
+    $(document).on('change', '.pending_company', function () {
+        let id = $(this).data('id');
+        let package_id = $(this).data('package_id');
+        $.ajax({
+            type: 'post',
+            url: '{{route('subscriptions.changePending')}}',
+            data: {
+                '_token': '{{csrf_token()}}',
+                'id': id,
+                'package_id': package_id
+            },
+            success: function (response) {
+                $.Notify({
+                    caption: 'نجاح',
+                    content: response.data,
+                    type: 'success',
+                    timeout: 3500,
+                });
+
+                $('.table.datatable').DataTable().ajax.reload();
+            }
+        })
+
+    });
+    //end  change company subscription status
 
 </script>

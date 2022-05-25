@@ -1,5 +1,23 @@
 @if($model =='subscriptions')
 
+    @if($raw->status === 'pending')
+        <div class="switch-showcase">
+            <div class="media">
+                <label class="col-form-label">تفعيل</label>
+                <div class="icon-state">
+                    <label class="switch">
+                        <input name="status" data-package_id="{{$raw->package_id}}" data-id="{{$raw->id}}" value="active" class="pending_company" type="checkbox"><span class="switch-state"></span>
+                    </label>
+                </div>
+
+            </div>
+        </div>
+    @elseif($raw->status === 'finished')
+        <a href="{{route('subscriptions.resubscribed',$raw->id)}}" class="btn btn-primary show_modal">تجديد</a>
+    @else
+        <a href="" class="btn btn-success">مشترك</a>
+    @endif
+
 
 @else
     @if($model != 'contact-us')
