@@ -72,7 +72,9 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
     //end contact us
 
     Route::get('subscriptions/data', 'SubscriptionController@data')->name('subscriptions.data');
-    Route::post('subscriptions/bulkDelete', 'SubscriptionController@bulkDelete')->name('subscriptions.bulkDelete');
+    Route::post('subscriptions/company-pending', 'SubscriptionController@changePending')->name('subscriptions.changePending');
+    Route::get('subscriptions/company-resubscribed/{id}', 'SubscriptionController@companyResubscribed')->name('subscriptions.resubscribed');
+    Route::put('subscriptions/company-resubscribed/{id}', 'SubscriptionController@subscribed')->name('subscriptions.subscribed');
     Route::resource('subscriptions', 'SubscriptionController');
 
 });
