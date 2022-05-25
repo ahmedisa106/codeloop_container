@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="col-xl-12">
                                     <div class="contact-one__form-input-box text-message-box">
-                                        <textarea name="body" placeholder="رسالتك"></textarea>
+                                        <textarea name="body" rows="4" placeholder="رسالتك"></textarea>
                                     </div>
                                     <div class="contact-one__btn-box">
                                         <button type="submit" class="thm-btn contact-one__btn">ارسال

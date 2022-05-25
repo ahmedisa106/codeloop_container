@@ -14,7 +14,7 @@
             </div>
 
 
-            <div class="col-md-12-group">
+            <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-11 form-group">
                         <label class="form-label">الصوره</label>

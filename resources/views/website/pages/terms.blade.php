@@ -9,7 +9,6 @@
                 <div class="col-sm-12">
                     <div class="et_pb_text_inner">
                         {!! isset($term)?$term->body:'' !!}
-
                     </div>
                 </div>
             </div>
