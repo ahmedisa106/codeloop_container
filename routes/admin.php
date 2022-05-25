@@ -66,12 +66,13 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
     // end about
 
     //contact us
-    // packages routes
     Route::get('contact-us/data', 'ContactUsController@data')->name('contact-us.data');
     Route::post('contact-us/bulkDelete', 'ContactUsController@bulkDelete')->name('contact-us.bulkDelete');
     Route::resource('contact-us', 'ContactUsController');
-    // end packages routes
-
     //end contact us
+
+    Route::get('subscriptions/data', 'SubscriptionController@data')->name('subscriptions.data');
+    Route::post('subscriptions/bulkDelete', 'SubscriptionController@bulkDelete')->name('subscriptions.bulkDelete');
+    Route::resource('subscriptions', 'SubscriptionController');
 
 });
