@@ -37,7 +37,7 @@
                     $('form').trigger('reset');
                 }
                 $('#ModalCenter').modal('hide');
-                $('.table.datatable').DataTable().ajax.reload();
+                $('.table.datatable').DataTable().draw();
 
                 $.Notify({
                     caption: 'تهانينا',
@@ -144,7 +144,7 @@
                             type: 'success',
                             timeout: 3500,
                         });
-                        $('.table.datatable').DataTable().ajax.reload();
+                        $('.table.datatable').DataTable().draw();
                     }
                 })
 
@@ -211,7 +211,7 @@
                             type: 'success',
                             timeout: 3500,
                         });
-                        $('.table.datatable').DataTable().ajax.reload();
+                        $('.table.datatable').DataTable().draw();
                         $('#check_all').prop('checked', false);
                         $('#delete_all').addClass('d-none');
                     }
@@ -281,7 +281,7 @@
                     timeout: 3500,
                 });
 
-                $('.table.datatable').DataTable().ajax.reload();
+                $('.table.datatable').DataTable().draw();
             }
         })
 

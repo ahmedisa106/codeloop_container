@@ -36,8 +36,6 @@ class SubscriptionController extends Controller
     public function data(Request $request)
     {
         $subscriptions = CompanyPackage::latest()->get()->unique('company_id');
-
-
         $model = 'subscriptions';
         return DataTables::of($subscriptions)
             ->filter(function ($instance) use ($request) {
