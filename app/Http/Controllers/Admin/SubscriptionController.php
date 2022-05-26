@@ -39,7 +39,7 @@ class SubscriptionController extends Controller
                 return view('admin.includes.actions', compact('raw', 'model'));
             })
             ->addColumn('company_id', function ($raw) {
-                return $raw->company->name;
+                return '<a  class="show_modal" href="' . route('companies.history', $raw->company_id) . '">' . $raw->company->name . '</a>';
             })
             ->addColumn('package_id', function ($raw) {
                 return $raw->package->title;
@@ -59,6 +59,7 @@ class SubscriptionController extends Controller
 
                 return $status;
             })
+            ->rawColumns(['company_id' => 'company_id'])
             ->make(true);
 
     }//end of data function
@@ -82,13 +83,23 @@ class SubscriptionController extends Controller
     {
         $data = $request->validated();
         // check if company has already subscribed
-        $company = CompanyPackage::where('company_id', $data['company_id'])->latest('id')->first();
+        $subscription = CompanyPackage::where('company_id', $data['company_id'])->latest('id')->first();
+        $company = Company::find($data['company_id']);
 
-        if (!empty($company) && $company->status == 'subscribed') {
+
+        if (!empty($subscription) && $subscription->status == 'subscribed') {
             return response()->json(['error' => 'المؤسسه بالفعل مشتركه في باقه'], 401);
-        } elseif (!empty($company) && $company->status == 'pending') {
+        } elseif (!empty($subscription) && $subscription->status == 'pending') {
             return response()->json(['error' => 'المؤسسه بالفعل مشتركه في باقه ومنتظره التفعيل'], 401);
         }
+
+        $company->history()->create([
+            'package_id' => $data['package_id'],
+            'status' => $data['status'],
+            'note' => 'تم الإشتراك في باقه جديده',
+            'at' => now()->toDateString(),
+        ]);
+
         CompanyPackage::create($data);
 
         return $this->setAddedSuccess();
@@ -97,8 +108,11 @@ class SubscriptionController extends Controller
 
     public function changePending(Request $request)
     {
+
         $package = Package::find($request->package_id)->period;
         $subscription = CompanyPackage::find($request->id);
+        $company = Company::find($subscription->company_id);
+
         $new_data = now()->addMonths($package)->toDateString();
 
         $subscription->update(
@@ -108,6 +122,13 @@ class SubscriptionController extends Controller
             ]
         );
 
+        $company->history()->create([
+            'package_id' => $subscription->package_id,
+            'status' => 'subscribed',
+            'note' => 'تم تفعيل الباقه',
+            'at' => now()->toDateString(),
+        ]);
+
         return $this->setUpdatedSuccess();
 
     }//end of changePending function
@@ -116,7 +137,6 @@ class SubscriptionController extends Controller
     {
         $subscription = CompanyPackage::find($id);
         $packages = Package::get(['id', 'title']);
-
         $this->data['create'] = 'تجديد الإشتراك';
         return view('admin.pages.subscriptions.resubscription', ['data' => $this->data], compact('packages', 'subscription'));
     }//end of companyResubscribed function
@@ -147,6 +167,15 @@ class SubscriptionController extends Controller
         $data = $validator->validated();
 
         $data['status'] = 'subscribed';
+        $company = Company::find($data['company_id']);
+
+        $company->history()->create([
+            'package_id' => $data['package_id'],
+            'status' => 'resubscribed',
+            'note' => 'تم تجديد الإشتراك في الباقه',
+            'at' => now()->toDateString(),
+        ]);
+
         CompanyPackage::create($data);
 
         return $this->setAddedSuccess('تم  تجديد الإشتراك بنجاح');

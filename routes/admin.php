@@ -15,6 +15,7 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
     // companies routes
     Route::get('companies/data', 'CompanyController@data')->name('companies.data');
     Route::post('companies/bulkDelete', 'CompanyController@bulkDelete')->name('companies.bulkDelete');
+    Route::get('companies/history/{id}', 'CompanyController@history')->name('companies.history');
     Route::resource('companies', 'CompanyController');
     // end companies routes
 
