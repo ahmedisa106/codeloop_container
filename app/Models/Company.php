@@ -38,4 +38,11 @@ class Company extends Model
         return $this->hasOne(CompanyPackage::class)->latest('id');
 
     }//end of package function
+
+    public function history()
+    {
+
+        return $this->hasMany(CompanyHistory::class);
+
+    }//end of histories function
 }

@@ -128,12 +128,14 @@ class CompanyController extends Controller
         return $this->setUpdatedSuccess();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
+
+    public function history($id)
+    {
+        $company = Company::with('history')->find($id);
+        return view('admin.pages.companies.history', compact('company'));
+
+    }//end of  function
+
     public function destroy($id)
     {
         $company = Company::findOrFail($id);
