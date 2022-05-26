@@ -19,20 +19,20 @@
                 </div>
                 <div class="col-md-6 form-group">
                     <label class="form-label">رقم البطاقه الضريبيه</label>
-                    <input name="tax_card_number" value="{{$company->commercial_number}}" class="form-control" type="number" placeholder="">
+                    <input name="tax_card_number" value="{{$company->tax_card_number}}" class="form-control" type="number" placeholder="">
                 </div>
 
                 <div class="col-md-6 form-group">
                     <label class="form-label">اسم المستخدم</label>
-                    <input name="username" value="{{$company->commercial_number}}" class="form-control" type="text" placeholder="">
+                    <input name="username" value="{{$company->username}}" class="form-control" type="text" placeholder="">
                 </div>
                 <div class="col-md-6 form-group">
                     <label class="form-label">رقم الجوال</label>
-                    <input name="phone" value="{{$company->commercial_number}}" class="form-control" type="text" placeholder="">
+                    <input name="phone" value="{{$company->phone}}" class="form-control" type="text" placeholder="">
                 </div>
                 <div class="col-md-6 form-group">
                     <label class="form-label">البريد الإلكتروني</label>
-                    <input name="email" value="{{$company->commercial_number}}" class="form-control" type="text" placeholder="">
+                    <input name="email" value="{{$company->email}}" class="form-control" type="text" placeholder="">
                 </div>
                 <div class="col-md-6 form-group">
                     <label class="form-label">كلمه المرور</label>

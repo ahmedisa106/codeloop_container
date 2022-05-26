@@ -6,7 +6,7 @@ use App\Helper\ResponseTrait;
 use App\Helper\Upload;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SliderRequest;
-use App\Models\slider;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
