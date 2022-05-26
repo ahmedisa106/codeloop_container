@@ -18,8 +18,8 @@ class HomeController extends Controller
     {
         $sliders = Slider::get(['title', 'photo']);
         $about = About::first(['title', 'photo', 'description']);
-        $services = Service::get(['title', 'photo']);
-        $blogs = Blog::get(['title', 'photo', 'created_at']);
+        $services = Service::get(['title', 'photo','id']);
+        $blogs = Blog::get(['title', 'photo', 'created_at','id']);
 
 
         return view('website.index', compact('sliders', 'about', 'services', 'blogs'));

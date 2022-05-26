@@ -44,7 +44,7 @@
                     @foreach($services as $service)
 
                         <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="100ms">
-                            <a href="" class="project-one__single">
+                            <a href="{{route('website.services.show',$service->id)}}" class="project-one__single">
                                 <div class="project-one__img">
                                     <img src="{{asset($service->image)}}" alt="">
                                 </div>
@@ -56,8 +56,6 @@
                             </a>
                         </div>
                     @endforeach
-
-
                 </div>
             </div>
         </div>
@@ -133,7 +131,7 @@
                                         <div class="news-one__date">
                                             <p>{{\Carbon\Carbon::create($blog->created_at)->format('d M')}}</p>
                                         </div>
-                                        <a href="blog-details.html">
+                                        <a href="{{route('website.blogs.show',$blog->id)}}">
                                             <span class="news-one__plus"></span>
                                         </a>
                                     </div>

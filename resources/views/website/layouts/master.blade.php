@@ -8,6 +8,7 @@
     <meta name="keywords" content="{{isset($setting)?$setting->meta_keywords:''}}">
     <meta name="description" content="{{isset($setting)?$setting->meta_description:''}}">
     @stack('seo')
+
     <title>{{isset($setting)?$setting->name:''}} | @stack('title')</title>
     @include('website.includes.css')
 </head>

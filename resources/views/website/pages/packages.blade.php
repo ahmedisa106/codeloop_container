@@ -18,7 +18,7 @@
                                     <h3 class="pricing__tab-content-title">{{$package->title}}
                                     </h3>
                                     <ul class="list-unstyled pricing__tab-content-list">
-                                        <li>المدة : <span>{{$package->period}}</span></li>
+                                        <li>المدة : <span>{{$package->period}} شهر </span></li>
                                     </ul>
                                 </div>
                             </div>
