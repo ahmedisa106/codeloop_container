@@ -30,7 +30,7 @@
 
                                     @elseif($history->status == 'subscribed' || $history->status == 'resubscribed')
                                         مشترك
-                                        <img style="width: 50px" height="50px" class="verify" src="{{asset('assets/dashboard')}}/images/verify.png" alt="">
+                                        <img class="verifed" src="{{asset('assets/dashboard')}}/images/verify.png" alt="">
                                     @else
 
                                         منتهيه
@@ -47,7 +47,7 @@
             </div>
             <div class="col-md-4">
                 <div class="company-box">
-                    <img src="{{$company->image}}" alt="">
+                    <img class="logo-com" src="{{$company->image}}" alt="">
                     <h4>{{$company->name}}</h4>
                     <ul>
                         <li>
@@ -63,7 +63,7 @@
 
                                 @elseif($history->company->package->status == 'subscribed'  )
                                     مشترك
-                                    <img style="width: 50px" height="50px" class="verify" src="{{asset('assets/dashboard')}}/images/verify.png" alt="">
+                                    <img class="verifed" src="{{asset('assets/dashboard')}}/images/verify.png" alt="">
                                 @else
 
                                     منتهيه

@@ -49782,7 +49782,7 @@ table thead th {
     box-shadow: #10539c 0px 0px 0px 2px, rgb(255 255 255) 0px 0px 0px 4px, #10539c 0px 0px 0px 6px;
 }
 
-.company-box img {
+.company-box .logo-com {
     width: 120px;
     height: 120px;
     border-radius: 50%;
@@ -49844,6 +49844,13 @@ table .verify {
     height: 32px;
     width: 32px;
 }
+
+.verifed {
+    height: 16px;
+    width: 16px;
+    margin-right: 5px;
+}
+
 
 
 /* abdo respnsive*/
