@@ -15,18 +15,14 @@
         <form class="row" method="" action="">
             <div class="col-md-6 form-group">
                 <label class="form-label">الحالة</label>
-                <select class="select2-custom">
-                    <option value="">مفعل</option>
-                    <option value="">منتظر التفعيل</option>
-                    <option value="">منتهي</option>
+                <select  class="select2-custom status">
+                    <option value="">الكل</option>
+                    <option value="subscribed">مفعل</option>
+                    <option value="pending">منتظر التفعيل</option>
+                    <option value="finished">منتهي</option>
                 </select>
             </div>
-            <div class="card-footer">
-                <button class="btn btn-primary btn-air-primary btn-icon" type="submit">
-                    <i class="fa fa-search"></i>
-                    بحث
-                </button>
-            </div>
+
         </form>
     </div>
 </div>
@@ -40,7 +36,7 @@
                         <th>المؤسسه</th>
                         <th>الباقه</th>
                         <th>الحاله</th>
-                        <th>التحكم</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -62,7 +58,10 @@
         serverSide: true,
         buttons: ['excel', 'pdf', 'print'],
         ajax: {
-            url: '{{route('subscriptions.data')}}'
+            url: '{{route('subscriptions.data')}}',
+            data:function (d){
+                d.status =$('.status').val()
+            }
         },
         columns: [
 
@@ -74,10 +73,7 @@
                 name: 'package_id',
                 data: 'package_id'
             },
-            {
-                name: 'status',
-                data: 'status'
-            },
+
             {
                 name: 'actions',
                 data: 'actions'
@@ -90,6 +86,10 @@
 
     table.buttons().container()
         .appendTo('#DataTables_Table_0_wrapper .col-md-6:eq(0)');
+
+    $('.status').on('change',function (){
+        table.draw()
+    })
 
 </script>
 @endpush

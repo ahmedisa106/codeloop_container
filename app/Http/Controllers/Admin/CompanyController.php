@@ -120,8 +120,7 @@ class CompanyController extends Controller
 
 
         DB::beginTransaction();
-        $company = $company->update($data);
-
+        $company->update($data);
         DB::commit();
 
 

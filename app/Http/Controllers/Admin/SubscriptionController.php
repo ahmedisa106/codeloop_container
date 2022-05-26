@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use Yajra\DataTables\Facades\DataTables;
 
 class SubscriptionController extends Controller
@@ -29,34 +30,24 @@ class SubscriptionController extends Controller
 
     public function index()
     {
-      
-
-//        $companies = Company::get();
-//        foreach ($companies as $company) {
-//            if ($company->packageSubscribed) {
-//                $beforeFiveDays = Carbon::make($company->package->package_finish_at)->subDays(5);
-//                $finishDay = Carbon::now();
-//
-//                if($beforeFiveDays->diffInDays($finishDay) <= 5 ){
-//
-//
-//                    dd(' عميلنا العزيز نود إخطاركم بأن موعد تجديد الباقه هو '  .$company->package->package_finish_at);
-//                }else{
-//                    dd('asd');
-//                }
-//
-//            }
-//        }
         return view('admin.pages.subscriptions.index', ['data' => $this->data]);
     }
 
-    public function data()
+    public function data(Request $request)
     {
-
         $subscriptions = CompanyPackage::latest()->get()->unique('company_id');
+
 
         $model = 'subscriptions';
         return DataTables::of($subscriptions)
+            ->filter(function ($instance) use ($request) {
+
+                if ($request->has('status') && $request->status != '') {
+                    $instance->collection = $instance->collection->filter(function ($row) use ($request) {
+                        return Str::contains($row['status'], $request->get('status'));
+                    });
+                }
+            })
             ->addColumn('actions', function ($raw) use ($model) {
                 return view('admin.includes.actions', compact('raw', 'model'));
             })
@@ -70,13 +61,13 @@ class SubscriptionController extends Controller
 
                 switch ($raw->status) {
                     case 'pending':
-                        $status = 'منتظر التفعيل';
+                        $status = 'pending';
                         break;
                     case 'subscribed':
-                        $status = 'مفعل';
+                        $status = 'subscribed';
                         break;
                     default:
-                        $status = 'الإشتراك منتهي';
+                        $status = 'finished';
                 }
 
                 return $status;
