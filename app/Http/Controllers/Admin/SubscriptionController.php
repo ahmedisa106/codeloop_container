@@ -52,7 +52,7 @@ class SubscriptionController extends Controller
                 return view('admin.includes.actions', compact('raw', 'model'));
             })
             ->addColumn('company_id', function ($raw) {
-                return '<a  class="show_modal" href="' . route('companies.history', $raw->company_id) . '">' . $raw->company->name . '</a>';
+                return '<a  class="show_modal text-color" href="' . route('companies.history', $raw->company_id) . '">' . $raw->company->name . '</a>';
             })
             ->addColumn('package_id', function ($raw) {
                 return $raw->package->title;

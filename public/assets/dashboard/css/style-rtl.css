@@ -49823,13 +49823,12 @@ table thead th {
     font-size: 17px;
 }
 
-td a.show_modal {
+.text-color {
     color: #f44336;
     font-size: 18px;
 }
 
-td a.btn-icon.show_modal {
-    color: #fff;
+td a.btn-icon {
     width: max-content;
     margin: 0 auto;
     font-size: 16px;
