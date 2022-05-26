@@ -39,6 +39,12 @@ class Company extends Model
 
     }//end of package function
 
+    public function packageSubscribed()
+    {
+        return $this->hasOne(CompanyPackage::class)->where('status', 'subscribed')->latest('id');
+
+    }//end of package function
+
     public function history()
     {
 

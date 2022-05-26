@@ -5,10 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Helper\ResponseTrait;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SubscriptionRequest;
+use App\Mail\SendEmailToCompany;
 use App\Models\Company;
 use App\Models\CompanyPackage;
 use App\Models\Package;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -25,6 +29,24 @@ class SubscriptionController extends Controller
 
     public function index()
     {
+      
+
+//        $companies = Company::get();
+//        foreach ($companies as $company) {
+//            if ($company->packageSubscribed) {
+//                $beforeFiveDays = Carbon::make($company->package->package_finish_at)->subDays(5);
+//                $finishDay = Carbon::now();
+//
+//                if($beforeFiveDays->diffInDays($finishDay) <= 5 ){
+//
+//
+//                    dd(' عميلنا العزيز نود إخطاركم بأن موعد تجديد الباقه هو '  .$company->package->package_finish_at);
+//                }else{
+//                    dd('asd');
+//                }
+//
+//            }
+//        }
         return view('admin.pages.subscriptions.index', ['data' => $this->data]);
     }
 
