@@ -48,7 +48,7 @@ class Company extends Model
     public function history()
     {
 
-        return $this->hasMany(CompanyHistory::class);
+        return $this->hasMany(CompanyHistory::class)->latest();
 
     }//end of histories function
 }

@@ -49,12 +49,12 @@ class PackageFinished extends Command
 
             if ($company->packageSubscribed) {
 
-                $beforeFiveDays = Carbon::make($company->package->package_finish_at)->subDays(5);
-                $finishDay = Carbon::now();
+                $finishDay = Carbon::make($company->package->package_finish_at);
+                $now= Carbon::now();
 
-                if($beforeFiveDays->diffInDays($finishDay) <= 5 && $company->package->package_finish_at !== Carbon::now()->toDateString() ){
-                    Mail::to($company->email)->send(new SendEmailToCompany($company,'عميلنا العزيز نود إخطاركم بأن موعد تجديد  الباقه هو '.$company->package->package_finish_at));
-                }elseif ($company->package->package_finish_at === Carbon::now()->toDateString() ){
+                if($now->diffInDays($finishDay) == 5 && $finishDay->toDateString() > $now->toDateString() ){
+                    Mail::to($company->email)->send(new SendEmailToCompany($company,'عميلنا العزيز نود إخطاركم بأن موعد تجديد  الباقه هو '.$finishDay));
+                }elseif ($now->toDateString() == $finishDay->toDateString() ){
                     Mail::to($company->email)->send(new SendEmailToCompany($company,'عميلنا العزيز نود إخطاركم بأن إشتراككم في الباقه قد إنتهي . الرجاء التوجه للإداره لتجديد تفعيل الباقه '));
                     $company->package->update([
                         'status'=>'finished',

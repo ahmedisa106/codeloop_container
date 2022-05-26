@@ -8,48 +8,67 @@
                 <div class="table-responsive">
                     <table class="table table-bordered datatable text-center">
                         <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>الباقة</th>
-                                <th>الحالة</th>
-                                <th>في</th>
-                            </tr>
+                        <tr>
+                            <th>#</th>
+                            <th>الباقة</th>
+                            <th>الحالة</th>
+                            <th>---</th>
+                            <th>في</th>
+                        </tr>
                         </thead>
                         <tbody>
+
+                        @foreach($company->history as $index=> $history)
                             <tr>
-                                <td>1</td>
-                                <td>package 1</td>
-                                <td>مفعل</td>
-                                <td>20-3-2022</td>
+                                <td>{{++$index}}</td>
+                                <td>{{$history->package->title}}</td>
+                                <td>{{$history->note}}</td>
+                                <td>
+                                    @if($history->status == 'pending')
+                                        منتظره التفعيل
+
+
+                                    @elseif($history->status == 'subscribed' || $history->status == 'resubscribed')
+                                        مشترك
+                                        <img style="width: 50px" height="50px" class="verify" src="{{asset('assets/dashboard')}}/images/verify.png" alt="">
+                                    @else
+
+                                        منتهيه
+                                    @endif
+                                </td>
+                                <td>{{$history->at}}</td>
                             </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>package 2</td>
-                                <td>منتهي</td>
-                                <td>20-3-2022</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>package 3</td>
-                                <td>منتهي</td>
-                                <td>20-3-2022</td>
-                            </tr>
+                        @endforeach
+
+
                         </tbody>
                     </table>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="company-box">
-                    <img src="https://cdn.worldvectorlogo.com/logos/sa-logo-1.svg" alt="">
-                    <h4>Company 1</h4>
+                    <img src="{{$company->image}}" alt="">
+                    <h4>{{$company->name}}</h4>
                     <ul>
                         <li>
                             <p>الباقة الحالية</p>
-                            <span>package 1</span>
+                            <span>{{$company->package->package->title}}</span>
                         </li>
                         <li>
                             <p>حالة الباقة</p>
-                            <span>مفعل</span>
+                            <span>
+                                 @if($history->company->package->status == 'pending')
+                                    منتظره التفعيل
+
+
+                                @elseif($history->company->package->status == 'subscribed'  )
+                                    مشترك
+                                    <img style="width: 50px" height="50px" class="verify" src="{{asset('assets/dashboard')}}/images/verify.png" alt="">
+                                @else
+
+                                    منتهيه
+                                @endif
+                            </span>
                         </li>
                     </ul>
                 </div>
