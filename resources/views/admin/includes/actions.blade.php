@@ -13,9 +13,12 @@
             </div>
         </div>
     @elseif($raw->status === 'finished')
-        <a href="{{route('subscriptions.resubscribed',$raw->id)}}" class="btn btn-primary show_modal">تجديد</a>
+        <a href="{{route('subscriptions.resubscribed',$raw->id)}}" class="btn btn-primary btn-icon show_modal">
+            <i class="fa fa-repeat"></i>
+            تجديد
+        </a>
     @else
-        <a href="" class="btn btn-success">مشترك</a>
+        <img class="verify" src="{{asset('assets/dashboard')}}/images/verify.png" alt="">
     @endif
 
 

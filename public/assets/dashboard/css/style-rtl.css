@@ -10518,8 +10518,9 @@ table.dataTable.display tbody tr.odd>.sorting_1 {
 
 .daterangepicker.ltr {
     color: #898989;
-    z-index: 8
-;box-shadow: 0px 5px 6px 5px rgb(0 0 0 / 10%);}
+    z-index: 8;
+    box-shadow: 0px 5px 6px 5px rgb(0 0 0 / 10%);
+}
 
 .daterangepicker.ltr tr {
     font-size: 13px
@@ -49387,7 +49388,7 @@ ul {
 
 .balance {
     margin: 0;
-    
+
     font-weight: normal;
 }
 
@@ -49397,7 +49398,8 @@ ul {
     margin: 0 5px;
     font-size: 25px;
     letter-spacing: 2.5px;
-color: #f44336;}
+    color: #f44336;
+}
 
 .out-img {
     width: 100px;
@@ -49707,13 +49709,13 @@ table thead th {
     margin-top: 20px;
 }
 
-.seo-div h4{
+.seo-div h4 {
     margin-bottom: 15px;
     color: #f44336;
 }
 
- .loader-div {
-        width: 58px;
+.loader-div {
+    width: 58px;
     height: 70px;
     border-radius: 50%;
     display: flex;
@@ -49724,47 +49726,124 @@ table thead th {
     animation: rotation 1s linear infinite;
     margin: 0 auto;
 }
+
 .loader-div::after,
 .loader-div::before {
-  content: '';  
-  box-sizing: border-box;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  border: 3px solid;
-  border-color: transparent transparent #FF3D00 #FF3D00;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  box-sizing: border-box;
-  animation: rotationBack 0.5s linear infinite;
-  transform-origin: center center;
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: 3px solid;
+    border-color: transparent transparent #FF3D00 #FF3D00;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    animation: rotationBack 0.5s linear infinite;
+    transform-origin: center center;
 }
+
 .loader-div::before {
     width: 32px;
     height: 32px;
     border-color: #10539c #10539c transparent transparent;
     animation: rotation 1.5s linear infinite;
 }
-    
+
 @keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-} 
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 @keyframes rotationBack {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(-360deg);
-  }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+.company-box {
+    text-align: center;
+    background: #fafbfe;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: #10539c 0px 0px 0px 2px, rgb(255 255 255) 0px 0px 0px 4px, #10539c 0px 0px 0px 6px;
+}
+
+.company-box img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid rgb(232 243 255);
+    margin-bottom: 15px;
+    object-fit: contain;
+    padding: 3px;
+    background: #fff;
+}
+
+.company-box h4 {
+    font-weight: bold;
+    font-size: 19px;
+}
+
+.company-box ul {
+    border-top: 1px solid #ecf3fa;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.company-box ul li:not(:last-child) {
+    border-left: 1px solid #ecf3fa;
+    padding-left: 15px;
+    margin-left: 15px;
+}
+
+.company-box ul li p {
+    font-size: 16px;
+    margin-bottom: 7px;
+    color: #10539c;
+    font-weight: bold;
+    padding-top: 15px;
+}
+
+.company-box ul li span {
+    font-size: 17px;
+}
+
+td a.show_modal {
+    color: #f44336;
+    font-size: 18px;
+}
+
+td a.btn-icon.show_modal {
+    color: #fff;
+    width: max-content;
+    margin: 0 auto;
+    font-size: 16px;
+    padding: 3px 15px;
+}
+
+.card-body .card-footer {
+    margin: 10px 0 -20px 0;
+    padding: 15px 13px;
+}
+
+table .verify {
+    height: 32px;
+    width: 32px;
 }
 
 
@@ -51723,7 +51802,10 @@ table thead th {
     .page-wrapper .card .card-header,
     .page-wrapper .card .card-body,
     .page-wrapper .card .card-footer {
-        padding: 12px 15px;flex-wrap: wrap;gap: 10px;}
+        padding: 12px 15px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
 
     .page-wrapper .card .card-header .tab-content .m-t-30,
     .page-wrapper .card .card-body .tab-content .m-t-30,
@@ -52862,7 +52944,8 @@ table thead th {
     }
 
     div.dataTables_wrapper div.dataTables_info {
-        padding-top: 9px;}
+        padding-top: 9px;
+    }
 
     div.dataTables_wrapper div.dataTables_length label,
     div.dataTables_wrapper div.dataTables_filter label {
@@ -52872,7 +52955,8 @@ table thead th {
     div.dataTables_wrapper div.dataTables_paginate {
         /* float: none; */
         /* margin-top: 20px !important; */
-        /* margin-right: 0 !important; */}
+        /* margin-right: 0 !important; */
+    }
 
     .calendar-wrap .fc-basic-view .fc-day-number {
         padding: 0 0px !important
@@ -52949,7 +53033,8 @@ table thead th {
 
     .btn-group .btn {
         font-size: 14px;
-        /* padding: 0.375rem 1.3rem; */}
+        /* padding: 0.375rem 1.3rem; */
+    }
 
     .animate-widget .text-center {
         display: none
@@ -54265,7 +54350,8 @@ table thead th {
     }
 
     .dataTables_wrapper table.dataTable {
-        margin-bottom: 10px !important;}
+        margin-bottom: 10px !important;
+    }
 
     ul.pagination li:before {
         line-height: 3
@@ -54293,7 +54379,8 @@ table thead th {
     }
 
     div.dataTables_wrapper div.dataTables_paginate {
-        margin-top: 0 !important;}
+        margin-top: 0 !important;
+    }
 
     div.dataTables_wrapper div.dataTables_paginate .paginate_button {
         padding: 1px 7px
@@ -54305,8 +54392,9 @@ table thead th {
     }
 
     div.dataTables_wrapper div.dataTables_paginate .paginate_button.previous a {
-        border: none !important
-    ;display: none;}
+        border: none !important;
+        display: none;
+    }
 
     div.dataTables_wrapper div.dataTables_paginate .paginate_button.previous:before {
         content: "\e649";
@@ -54321,8 +54409,9 @@ table thead th {
     }
 
     div.dataTables_wrapper div.dataTables_paginate .paginate_button.next a {
-        border: none !important
-    ;display: none;}
+        border: none !important;
+        display: none;
+    }
 
     div.dataTables_wrapper div.dataTables_paginate .paginate_button.next:before {
         content: "\e64a";
@@ -55998,19 +56087,33 @@ table thead th {
         font-size: 11px;
     }
 
-    table.dataTable thead .sorting:before, table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:before, table.dataTable thead .sorting_desc_disabled:after {
+    table.dataTable thead .sorting:before,
+    table.dataTable thead .sorting:after,
+    table.dataTable thead .sorting_asc:before,
+    table.dataTable thead .sorting_asc:after,
+    table.dataTable thead .sorting_desc:before,
+    table.dataTable thead .sorting_desc:after,
+    table.dataTable thead .sorting_asc_disabled:before,
+    table.dataTable thead .sorting_asc_disabled:after,
+    table.dataTable thead .sorting_desc_disabled:before,
+    table.dataTable thead .sorting_desc_disabled:after {
         bottom: 6px !important;
         left: 13px;
     }
 
-    table.dataTable.table thead th.sorting:after, table.dataTable.table thead th.sorting_asc:after, table.dataTable.table thead th.sorting_desc:after, table.dataTable.table thead td.sorting:after, table.dataTable.table thead td.sorting_asc:after, table.dataTable.table thead td.sorting_desc:after {
+    table.dataTable.table thead th.sorting:after,
+    table.dataTable.table thead th.sorting_asc:after,
+    table.dataTable.table thead th.sorting_desc:after,
+    table.dataTable.table thead td.sorting:after,
+    table.dataTable.table thead td.sorting_asc:after,
+    table.dataTable.table thead td.sorting_desc:after {
         top: 5px;
         left: 4px;
     }
 
     .modal-dialog {
         margin: 15px;
-        max-width: 100% !important; 
+        max-width: 100% !important;
     }
 
     .modal-body {
@@ -56032,6 +56135,3 @@ table thead th {
     }
 
 }
-
-
-
