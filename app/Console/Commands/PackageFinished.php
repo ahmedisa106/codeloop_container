@@ -42,7 +42,6 @@ class PackageFinished extends Command
     public function handle()
     {
 
-
         $companies = Company::get();
 
         foreach ($companies as $company) {
@@ -58,6 +57,10 @@ class PackageFinished extends Command
                     Mail::to($company->email)->send(new SendEmailToCompany($company,'عميلنا العزيز نود إخطاركم بأن إشتراككم في الباقه قد إنتهي . الرجاء التوجه للإداره لتجديد تفعيل الباقه '));
                     $company->package->update([
                         'status'=>'finished',
+                    ]);
+
+                    $company->update([
+                        'status'=>'inactive'
                     ]);
 
                     $company->history()->create([

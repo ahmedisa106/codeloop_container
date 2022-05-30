@@ -21,6 +21,7 @@ Route::get('/about', 'HomeController@about')->name('website.about');
 Route::get('/services', 'HomeController@services')->name('website.services');
 Route::get('/services/{id}', 'HomeController@showService')->name('website.services.show');
 Route::get('packages', 'HomeController@packages')->name('website.packages');
+Route::post('packages', 'HomeController@packageRequest')->name('website.packageRequest');
 Route::get('/blogs', 'HomeController@blogs')->name('website.blogs');
 Route::get('/blogs/{id}', 'HomeController@showBlog')->name('website.blogs.show');
 Route::get('/terms', 'HomeController@terms')->name('website.terms');

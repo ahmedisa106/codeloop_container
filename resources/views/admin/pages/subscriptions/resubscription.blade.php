@@ -85,7 +85,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="" class="form-label">تاريخ إنتهاء الباقه</label>
-                        <input type="text" value="{{$subscription->package_finish_at}}" name="package_finish_at" readonly class="package_finish_at form-control" min="0">
+                        <input type="text" value="{{\Carbon\Carbon::create($subscription->package_finish_at)->addMonths($subscription->package->period)->toDateString()}}" name="package_finish_at" readonly class="package_finish_at form-control" min="0">
                     </div>
                 </div>
 

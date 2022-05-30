@@ -1,4 +1,9 @@
 @extends('website.layouts.master')
+@push('seo')
+    <meta name="title" content="{{isset($current_service)?$current_service->meta_title:''}}">
+    <meta name="keywords" content="{{isset($current_service)?$current_service->meta_keywords:''}}">
+    <meta name="description" content="{{isset($current_service)?$current_service->meta_description:''}}">
+@endpush
 @push('title',$page_title)
 @section('content')
 @include('website.includes.breadcramp')

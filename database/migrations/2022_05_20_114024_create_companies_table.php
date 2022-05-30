@@ -24,7 +24,6 @@ class CreateCompaniesTable extends Migration
             $table->bigInteger('tax_card_number');
             $table->string('logo')->nullable();
             $table->timestamps();
-
         });
     }
 

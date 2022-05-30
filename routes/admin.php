@@ -12,6 +12,10 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
     Route::get('/', 'HomeController@index')->name('admin.home');
     Route::post('/logout', 'auth\AuthController@logout')->name('admin.logout');
 
+    //  transactions
+    Route::get('transactions','TransactionController@index')->name('transactions.index');
+    //  end transactions
+
     // companies routes
     Route::get('companies/data', 'CompanyController@data')->name('companies.data');
     Route::post('companies/bulkDelete', 'CompanyController@bulkDelete')->name('companies.bulkDelete');

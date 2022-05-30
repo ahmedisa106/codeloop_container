@@ -71,6 +71,7 @@ class CompanyController extends Controller
             $data['logo'] = $this->upload($request->logo, 'companies');
         }
         $data['password'] = bcrypt($request->password);
+        $data['status'] = $request->status ? 'active':'inactive';
 
         DB::beginTransaction();
         Company::create($data);
@@ -117,6 +118,7 @@ class CompanyController extends Controller
             $data['logo'] = $this->upload($request->logo, 'companies', true, $company->logo);
         }
         $data['password'] = $request->password ? bcrypt($request->password) : $company->password;
+        $data['status'] = $request->status ? 'active':'inactive';
 
 
         DB::beginTransaction();

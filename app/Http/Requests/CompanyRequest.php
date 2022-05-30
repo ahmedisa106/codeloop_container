@@ -23,7 +23,7 @@ class CompanyRequest extends FormRequest
      */
     public function rules()
     {
-        return request()->isMethod('put') || request()->isMethod('put') ? $this->onUpdate() : $this->onStore();
+        return request()->isMethod('put') || request()->isMethod('patch') ? $this->onUpdate() : $this->onStore();
     }
 
     public function onStore()
@@ -37,6 +37,7 @@ class CompanyRequest extends FormRequest
             'password' => 'required',
             'logo' => 'sometimes|nullable|image',
             'phone' => 'required|unique:companies,phone',
+            'status'=>'sometimes|nullable|in:active,inactive'
 
 
         ];
@@ -56,6 +57,7 @@ class CompanyRequest extends FormRequest
             'password' => 'sometimes|nullable',
             'logo' => 'sometimes|nullable|image',
             'phone' => 'required|unique:companies,phone,' . request()->id,
+            'status'=>'sometimes|nullable|in:active,inactive'
         ];
 
     }//end of onUpdate function
@@ -72,6 +74,7 @@ class CompanyRequest extends FormRequest
             'commercial_number' => 'رقم السجل التجاري',
             'tax_card_number' => 'رقم البطاقه الضريبيه',
             'logo' => 'الشعار',
+            'status'=>'حاله المؤسسه'
 
         ];
 

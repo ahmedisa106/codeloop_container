@@ -23,6 +23,7 @@
 <script src="{{asset('assets/website')}}/js/script.js"></script>
 <script rel="stylesheet" src="{{asset('assets/website/plugins/toaster/js/toastr.min.js')}}"></script>
 
+
 <script>
         $(document).ready(function () {
         // preview image
