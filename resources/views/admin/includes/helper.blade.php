@@ -288,4 +288,34 @@
     });
     //end  change company subscription status
 
+
+    // change status
+
+    $(document).on('change', '.change_status', function () {
+        let status = $(this).val(),
+            url = $(this).data('link');
+        status = status === 'active' ? 'inactive' : 'active';
+
+        $.ajax({
+            type: 'post',
+            url: url,
+            data: {
+                '_token': '{{csrf_token()}}',
+                status: status,
+            },
+            success: function (response) {
+                $.Notify({
+                    caption: 'نجاح',
+                    content: response.data,
+                    type: 'success',
+                    timeout: 3500,
+                });
+                $('.table.datatable').DataTable().ajax.reload();
+            }
+        });
+
+
+    });
+    // end change status
+
 </script>
