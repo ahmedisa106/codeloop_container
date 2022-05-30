@@ -1,5 +1,5 @@
 <div class="sidebar-wrapper">
-    <div class="logo-wrapper"><a href="index.html"><img class="img-fluid for-light" src="{{asset('assets/dashboard')}}/images/logo.svg"
+    <div class="logo-wrapper"><a href="{{route('admin.home')}}"><img class="img-fluid for-light" src="{{asset('assets/dashboard')}}/images/logo.svg"
                                                         alt=""></a>
         <div class="back-btn"><i class="fa fa-angle-left"></i></div>
     </div>

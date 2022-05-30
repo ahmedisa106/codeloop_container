@@ -1,4 +1,9 @@
 @extends('website.layouts.master')
+@push('seo')
+    <meta name="title" content="{{isset($term)?$term->meta_title:''}}">
+    <meta name="keywords" content="{{isset($term)?$term->meta_keywords:''}}">
+    <meta name="description" content="{{isset($term)?$term->meta_description:''}}">
+@endpush
 @push('title',$page_title)
 @section('content')
     @include('website.includes.breadcramp')
