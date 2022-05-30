@@ -13,7 +13,6 @@
                     <div class="site-footer__social">
                         <a href="{{isset($setting)?$setting->facebook:''}}"><i class="fab fa-facebook"></i></a>
                         <a href="{{isset($setting)?$setting->instagram:''}}"><i class="fab fa-instagram"></i></a>
-
                     </div>
                 </div>
             </div>

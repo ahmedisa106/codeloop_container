@@ -70,6 +70,7 @@ class PackageController extends Controller
         if ($request->hasFile('photo')) {
             $data['photo'] = $this->upload($request->photo, 'packages');
         }
+        $data['status'] =$request->status  ??'inactive';
         Package::create($data);
         return $this->setAddedSuccess();
     }
@@ -93,6 +94,7 @@ class PackageController extends Controller
         if ($request->hasFile('photo')) {
             $data['photo'] = $this->upload($request->photo, 'packages', true, $package->photo);
         }
+        $data['status'] =$request->status  ??'inactive';
         $package->update($data);
         return $this->setUpdatedSuccess();
     }

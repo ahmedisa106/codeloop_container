@@ -26,7 +26,7 @@
                                     <ul class="list-unstyled pricing__tab-content-list">
 
                                         @php
-                                            if($package->period == 1){
+                                            if(!empty($package) ? $package->period == 1:''){
                       $period = 'شهر';
                   }elseif ($package->period ==2 ){
                       $period = 'شهران';
@@ -68,7 +68,10 @@
                 </div>
                 <form id="company_form" action="{{route('website.packageRequest')}}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="package_id" value="{{$package->id}}" class="package_id">
+                    @if(isset($package) ? $package->period == 1:'')
+                        <input type="hidden" name="package_id" value="{{$package->id}}" class="package_id">
+                        @endif
+
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12 form-group">

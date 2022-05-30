@@ -59,7 +59,7 @@ class HomeController extends Controller
     public function packages()
     {
         $page_title = 'الباقات';
-        $packages = Package::get();
+        $packages = Package::where('status','active')->get();
         return view('website.pages.packages', compact('page_title', 'packages'));
 
     }//end of packages function
