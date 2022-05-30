@@ -42,7 +42,6 @@
             <div class="services-one__bottom">
                 <div class="row">
                     @foreach($services as $service)
-
                         <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="100ms">
                             <a href="{{route('website.services.show',$service->id)}}" class="project-one__single">
                                 <div class="project-one__img">
@@ -136,10 +135,10 @@
                                         </a>
                                     </div>
                                     <div class="news-one__content">
-                                        <h3 class="news-one__title"><a href="#">
+                                        <h3 class="news-one__title"><a href="{{route('website.blogs.show',$blog->id)}}">
                                                 {{$blog->title}}</a></h3>
                                         <div class="news-one__read-more">
-                                            <a href=""><i class="fa fa-arrow-left"></i>قراءة المزيد</a>
+                                            <a href="{{route('website.blogs.show',$blog->id)}}"><i class="fa fa-arrow-left"></i>قراءة المزيد</a>
                                         </div>
                                     </div>
                                 </div>

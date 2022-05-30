@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+Route::get('/sitemap.xml', [\App\Http\Controllers\SitemapXmlController::class, 'index']);
+
 
 Route::get('/about', 'HomeController@about')->name('website.about');
 Route::get('/services', 'HomeController@services')->name('website.services');
