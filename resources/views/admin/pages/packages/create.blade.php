@@ -36,6 +36,20 @@
                 </div>
             </div>
 
+            <div class="switch-showcase">
+                <label class="form-label">حاله الباقه</label>
+                <div class="media">
+                    <label class="col-form-label">مفعل</label>
+                    <div class="icon-state">
+                        <label class="switch">
+                            <input name="status" value="active" class="" type="checkbox"><span class="switch-state"></span>
+                        </label>
+                    </div>
+                    <label class="col-form-label">غير مفعل</label>
+
+                </div>
+            </div>
+
             <div class="col-md-12">
                 <div class="seo-div">
                     <h4>بيانات السيو (SEO)</h4>

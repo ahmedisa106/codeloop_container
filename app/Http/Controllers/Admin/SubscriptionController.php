@@ -80,7 +80,7 @@ class SubscriptionController extends Controller
     public function create()
     {
         $companies = Company::with('package')->get();
-        $packages = Package::get(['id', 'title']);
+        $packages = Package::where('status','active')->get(['id', 'title']);
 
         return view('admin.pages.subscriptions.create', ['data' => $this->data], compact('companies', 'packages'));
     }
@@ -167,7 +167,7 @@ class SubscriptionController extends Controller
     public function companyResubscribed($id)
     {
         $subscription = CompanyPackage::find($id);
-        $packages = Package::get(['id', 'title']);
+        $packages = Package::where('status','active')->get(['id', 'title']);
         $this->data['create'] = 'تجديد الإشتراك';
         return view('admin.pages.subscriptions.resubscription', ['data' => $this->data], compact('packages', 'subscription'));
     }//end of companyResubscribed function

@@ -9,10 +9,9 @@ trait Upload
     public function upload($file, $directory, $delete = false, $deleted_file = '')
     {
         if ($delete && $deleted_file !== '') {
-
             File::delete(public_path('images/' . $directory . '/' . $deleted_file));
         }
-        $file_name = time() . '_' . $file->getClientOriginalName();
+        $file_name = time() . '_' . '.webp';
         $path = public_path('images/' . $directory);
         if (!file_exists(public_path('images/' . $directory))) {
             mkdir(public_path('images/' . $directory), 0777, true);
