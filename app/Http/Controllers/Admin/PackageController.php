@@ -40,6 +40,19 @@ class PackageController extends Controller
             ->addColumn('photo', function ($raw) {
                 return '<img src="' . $raw->image . '">';
             })
+            ->addColumn('period',function ($raw){
+                if($raw->period == 1){
+                    $period = 'شهر';
+                }elseif ($raw->period ==2 ){
+                    $period = 'شهران';
+                }
+                elseif ($raw->period >10 ){
+                    $period = $raw->period . ' شهراً ';
+                }else{
+                    $period =  $raw->period . ' أشهر ';
+                }
+                return $period;
+            })
             ->rawColumns(['photo' => 'photo'])
             ->make(true);
 

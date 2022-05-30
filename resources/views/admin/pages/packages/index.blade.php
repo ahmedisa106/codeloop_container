@@ -33,6 +33,7 @@
                             <th>اسم الباقه</th>
                             <th>سعر الباقه</th>
                             <th>الصوره</th>
+                            <th>مده الباقه</th>
                             <th>التحكم</th>
                         </tr>
                         </thead>
@@ -74,6 +75,9 @@
                 },
                 {
                     name: 'photo', data: 'photo'
+                },
+                {
+                    name: 'period', data: 'period'
                 },
                 {
                     name: 'actions', data: 'actions'

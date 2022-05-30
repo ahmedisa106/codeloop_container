@@ -1,4 +1,5 @@
 @extends('website.layouts.master')
+
 @push('title',$page_title)
 @section('content')
     @include('website.includes.breadcramp')
@@ -9,6 +10,11 @@
             <div class="pricing__tab-box tabs-box">
                 <div class="pricing__tab-content-box">
                     @foreach($packages as $package)
+                        @push('seo')
+                            <meta name="title" content="{{isset($package)?$package->meta_title:''}}">
+                            <meta name="keywords" content="{{isset($package)?$package->meta_keywords:''}}">
+                            <meta name="description" content="{{isset($package)?$package->meta_description:''}}">
+                        @endpush
                         <div class="pricing__tab-content-single">
                             <div class="pricing__tab-content-left">
                                 <div class="pricing__tab-content-img">
@@ -18,7 +24,21 @@
                                     <h3 class="pricing__tab-content-title">{{$package->title}}
                                     </h3>
                                     <ul class="list-unstyled pricing__tab-content-list">
-                                        <li>المدة : <span>{{$package->period}} شهر </span></li>
+
+                                        @php
+                                            if($package->period == 1){
+                      $period = 'شهر';
+                  }elseif ($package->period ==2 ){
+                      $period = 'شهران';
+                  }
+                  elseif ($package->period >10 ){
+                      $period = $package->period . ' شهراً ';
+                  }else{
+                      $period =  $package->period . ' أشهر ';
+                  }
+
+                                        @endphp
+                                        <li>المدة : <span>{{$period}}  </span></li>
                                     </ul>
                                 </div>
                             </div>
@@ -26,7 +46,7 @@
 
                                 <div class="pricing__tab-content-order">
                                     <p class="pricing__tab-content-rate">{{$package->price}}<span>ر.س</span></p>
-                                    <a href="{{url('contact-us')}}" data-package_id="{{$package->id}}" class="thm-btn pricing__order-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">اطلب الآن</a>
+                                    <a href="/" data-package_id="{{$package->id}}" class="thm-btn pricing__order-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">اطلب الآن</a>
                                 </div>
                             </div>
                         </div>
