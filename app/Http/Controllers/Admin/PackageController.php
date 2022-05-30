@@ -37,19 +37,21 @@ class PackageController extends Controller
             ->addColumn('check_item', function ($raw) {
                 return view('admin.includes.check_item', compact('raw'));
             })
+            ->addColumn('status', function ($raw) use ($model) {
+                return view('admin.includes.status_btn', compact('raw', 'model'));
+            })
             ->addColumn('photo', function ($raw) {
                 return '<img src="' . $raw->image . '">';
             })
-            ->addColumn('period',function ($raw){
-                if($raw->period == 1){
+            ->addColumn('period', function ($raw) {
+                if ($raw->period == 1) {
                     $period = 'شهر';
-                }elseif ($raw->period ==2 ){
+                } elseif ($raw->period == 2) {
                     $period = 'شهران';
-                }
-                elseif ($raw->period >10 ){
+                } elseif ($raw->period > 10) {
                     $period = $raw->period . ' شهراً ';
-                }else{
-                    $period =  $raw->period . ' أشهر ';
+                } else {
+                    $period = $raw->period . ' أشهر ';
                 }
                 return $period;
             })
@@ -70,7 +72,7 @@ class PackageController extends Controller
         if ($request->hasFile('photo')) {
             $data['photo'] = $this->upload($request->photo, 'packages');
         }
-        $data['status'] =$request->status  ??'inactive';
+        $data['status'] = $request->status ?? 'inactive';
         Package::create($data);
         return $this->setAddedSuccess();
     }
@@ -94,7 +96,7 @@ class PackageController extends Controller
         if ($request->hasFile('photo')) {
             $data['photo'] = $this->upload($request->photo, 'packages', true, $package->photo);
         }
-        $data['status'] =$request->status  ??'inactive';
+        $data['status'] = $request->status ?? 'inactive';
         $package->update($data);
         return $this->setUpdatedSuccess();
     }
@@ -121,4 +123,13 @@ class PackageController extends Controller
         $package = Package::findOrFail($request->package_id, ['id', 'period', 'price']);
         return response()->json(['data' => $package], 200);
     }//end of getPackage function
+
+    public function updateStatus(Request $request,$id)
+    {
+
+        Package::findOrFail($id)->update(['status'=>$request->status]);
+
+        return $this->setUpdatedSuccess();
+
+    }//end of updateStatus function
 }

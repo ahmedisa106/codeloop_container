@@ -34,6 +34,7 @@
                             <th>سعر الباقه ( ر.س )</th>
                             <th>الصوره</th>
                             <th>مده الباقه</th>
+                            <th>الحاله</th>
                             <th>التحكم</th>
                         </tr>
                         </thead>
@@ -78,6 +79,9 @@
                 },
                 {
                     name: 'period', data: 'period'
+                },
+                {
+                    name: 'status', data: 'status'
                 },
                 {
                     name: 'actions', data: 'actions'
