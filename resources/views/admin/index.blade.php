@@ -118,29 +118,30 @@
         <div class="col-sm-12 col-md-6">
             <div class="card">
                 <div class="card-header border-bottom-0">
-                    <h3>المنتجات</h3>
+                    <h3>الإشتراكات</h3>
                 </div>
                 <div class="card-body pt-0">
-                    <div id="charttwo" class="chart"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header border-bottom-0">
-            <h3>المستخدمين</h3>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-6">
-                    <div id="chart3" class="chart"></div>
-                </div>
-                <div class="col-md-6">
                     <div id="chart4" class="chart"></div>
                 </div>
             </div>
         </div>
     </div>
+{{--    <div class="card">--}}
+{{--        <div class="card-header border-bottom-0">--}}
+{{--            <h3>الإشتراكات</h3>--}}
+{{--        </div>--}}
+{{--        <div class="card-body">--}}
+{{--            <div class="row">--}}
+{{--                --}}{{--                <div class="col-md-6">--}}
+{{--                --}}{{--                    <div id="chart3" class="chart"></div>--}}
+{{--                --}}{{--                </div>--}}
+{{--                <div class="col-md-6">--}}
+
+
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 @endsection
 
 @push('js')
@@ -180,7 +181,7 @@
                 type: 'bar',
                 barWidth: '45%',
                 data: [
-                        @foreach($companies_list as $index=> $package)
+                        @foreach($companies_list as $index => $package)
                     {
                         value: {{$package['count']}},
                         itemStyle: {
@@ -196,138 +197,8 @@
         };
         myChart.setOption(option);
     </script>
-    <script>
-        var myChart = echarts.init(document.getElementById('charttwo'));
-        option = {
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow'
-                },
-                textStyle: {
-                    fontFamily: 'Bahij_Plain'
-                }
-            },
-            grid: {
-                top: "4%",
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis: {
-                type: 'value',
-            },
-            yAxis: {
-                data: ['Title', 'Title', 'Title', 'Title', 'Title'],
-                axisLabel: {
-                    textStyle: {
-                        fontSize: 14,
-                        fontFamily: 'Bahij_Plain'
-                    }
-                }
-            },
-            series: [{
-                name: 'المنتجات',
-                type: 'bar',
-                barWidth: '30%',
-                data: [{
-                    value: 35,
-                    itemStyle: {
-                        color: '#FFAB40',
-                        barBorderRadius: [0, 50, 50, 0]
-                    }
-                },
-                    {
-                        value: 65,
-                        itemStyle: {
-                            color: '#69F0AE',
-                            barBorderRadius: [0, 50, 50, 0]
-                        }
-                    },
-                    {
-                        value: 57,
-                        itemStyle: {
-                            color: '#41C4FF',
-                            barBorderRadius: [0, 50, 50, 0]
-                        }
-                    },
-                    {
-                        value: 50,
-                        itemStyle: {
-                            color: '#536DFE',
-                            barBorderRadius: [0, 50, 50, 0]
-                        }
-                    },
-                    {
-                        value: 45,
-                        itemStyle: {
-                            color: '#FF4081',
-                            barBorderRadius: [0, 50, 50, 0]
-                        }
-                    }
-                ]
-            }]
-        };
-        myChart.setOption(option);
-    </script>
-    <script>
-        var myChart = echarts.init(document.getElementById('chart3'));
-        option = {
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow'
-                },
-                textStyle: {
-                    fontFamily: 'Bahij_Plain'
-                }
-            },
-            legend: {
-                textStyle: {
-                    fontSize: 16,
-                    fontFamily: 'Bahij_Plain'
-                }
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis: [{
-                type: 'category',
-                data: ['Tilte', 'Tilte', 'Tilte', 'Tilte', 'Tilte'],
-                axisLabel: {
-                    textStyle: {
-                        fontSize: 15,
-                        fontFamily: 'Bahij_Plain'
-                    }
-                }
-            }],
-            yAxis: [{
-                type: 'value'
-            }],
-            series: [{
-                name: 'Tilte',
-                type: 'line',
-                barWidth: '45%',
-                smooth: true,
-                data: [20, 5, 10, 30, 5],
-                color: '#41C4FF'
-            },
-                {
-                    name: 'Tilte2',
-                    type: 'line',
-                    smooth: true,
-                    data: [5, 10, 7, 20, 15],
-                    color: '#FFAB40'
-                }
-            ]
-        };
 
-        myChart.setOption(option);
-    </script>
+
     <script>
         var myChart = echarts.init(document.getElementById('chart4'));
         var colorPalette = ['#FFAB40', '#41C4FF', '#FF4081'];
@@ -361,19 +232,7 @@
                 labelLine: {
                     show: true
                 },
-                data: [{
-                    value: 1048,
-                    name: 'Tilte'
-                },
-                    {
-                        value: 735,
-                        name: 'Tilte2'
-                    },
-                    {
-                        value: 580,
-                        name: 'Tilte3'
-                    }
-                ],
+                data: {!! $packages !!},
                 color: colorPalette
             }],
             graph: {

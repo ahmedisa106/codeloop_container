@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="pixelstrap">
     <link rel="shortcut icon" href="{{asset('assets/dashboard')}}/images/logo-icon.svg" type="image/x-icon">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>Containers | @stack('title')</title>
     @include('admin.includes.css')
 </head>

@@ -23,10 +23,10 @@
                                 </div>
                             </div>
                             <div class="pricing__tab-content-right">
+
                                 <div class="pricing__tab-content-order">
                                     <p class="pricing__tab-content-rate">{{$package->price}}<span>ر.س</span></p>
-                                    <a href="{{url('contact-us')}}" class="thm-btn pricing__order-btn" data-bs-toggle="modal"
-                                       data-bs-target="#exampleModal">اطلب الآن</a>
+                                    <a href="{{url('contact-us')}}" data-package_id="{{$package->id}}" class="thm-btn pricing__order-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">اطلب الآن</a>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,9 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">طلب انشاء مؤسسة</h5>
                 </div>
-                <form action="">
+                <form id="company_form" action="{{route('website.packageRequest')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="package_id" value="{{$package->id}}" class="package_id">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12 form-group">
@@ -89,7 +91,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="save-btn">
+                        <button type="submit" class="save-btn">
                             <i class="fa fa-save"></i>
                             حفظ
                         </button>
@@ -105,3 +107,58 @@
 
 
 @endsection
+
+@push('js')
+
+    <script>
+        $(function () {
+            $(document).on('click', '.pricing__order-btn', function () {
+                $('.package_id').val($(this).data('package_id'))
+            })
+        });
+
+
+        $('#company_form').on('submit', function (e) {
+            e.preventDefault();
+            let url = $(this).attr('action'),
+                data = new FormData($(this)[0]);
+
+            $.ajax({
+                type: 'post',
+                url: url,
+                contentType: false,
+                cache: false,
+                processData: false,
+                data: data,
+                success: function (response) {
+                    toastr.options = {
+                        "positionClass": "toast-bottom-left",
+                    }
+                    toastr.success(response.data);
+
+                    $('#exampleModal').modal('hide')
+                    $('#company_form').trigger('reset')
+                },
+                error: function (xhr) {
+                    toastr.options = {
+                        "positionClass": "toast-bottom-left",
+                    }
+
+                    xhr.responseJSON.error ?
+
+                        toastr.error(xhr.responseJSON.error)
+
+                        :
+                        $.each(xhr.responseJSON.errors, function (key, value) {
+
+                            toastr.error(value)
+
+                        });
+                },
+            })
+        })
+
+    </script>
+
+
+@endpush

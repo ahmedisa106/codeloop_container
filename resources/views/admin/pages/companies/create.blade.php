@@ -49,7 +49,19 @@
                         </div>
                     </div>
                 </div>
+                <div class="switch-showcase">
+                    <label class="form-label">حاله المؤسسه</label>
+                    <div class="media">
+                        <label class="col-form-label">مفعل</label>
+                        <div class="icon-state">
+                            <label class="switch">
+                                <input name="status" value="active" class="" type="checkbox"><span class="switch-state"></span>
+                            </label>
+                        </div>
+                        <label class="col-form-label">غير مفعل</label>
 
+                    </div>
+                </div>
 
                 <div class="modal-footer">
                     <button class="btn btn-primary btn-air-primary btn-icon" type="submit">

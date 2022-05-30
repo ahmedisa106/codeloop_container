@@ -9,9 +9,11 @@ use App\Mail\SendEmailToCompany;
 use App\Models\Company;
 use App\Models\CompanyPackage;
 use App\Models\Package;
+use App\Models\Transaction;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -97,7 +99,6 @@ class SubscriptionController extends Controller
         $subscription = CompanyPackage::where('company_id', $data['company_id'])->latest('id')->first();
         $company = Company::find($data['company_id']);
 
-
         if (!empty($subscription) && $subscription->status == 'subscribed') {
             return response()->json(['error' => 'المؤسسه بالفعل مشتركه في باقه'], 401);
         } elseif (!empty($subscription) && $subscription->status == 'pending') {
@@ -110,6 +111,17 @@ class SubscriptionController extends Controller
             'note' => 'تم الإشتراك في باقه جديده',
             'at' => now()->toDateString(),
         ]);
+
+        if($data['status'] !== 'pending'){
+            $company->update([
+                'status'=>'active'
+            ]);
+
+            Transaction::create([
+                'body'=>'إشتراك جديد',
+                'total'=>$data['price_after_discount'],
+            ]);
+        }
 
         CompanyPackage::create($data);
 
@@ -138,6 +150,14 @@ class SubscriptionController extends Controller
             'status' => 'subscribed',
             'note' => 'تم تفعيل الباقه',
             'at' => now()->toDateString(),
+        ]);
+
+        $company->update([
+            'status'=>'active'
+        ]);
+        Transaction::create([
+            'body'=>'إشتراك جديد',
+            'total'=>$subscription->price_after_discount,
         ]);
 
         return $this->setUpdatedSuccess();
@@ -180,6 +200,7 @@ class SubscriptionController extends Controller
         $data['status'] = 'subscribed';
         $company = Company::find($data['company_id']);
 
+        DB::beginTransaction();
         $company->history()->create([
             'package_id' => $data['package_id'],
             'status' => 'resubscribed',
@@ -187,7 +208,18 @@ class SubscriptionController extends Controller
             'at' => now()->toDateString(),
         ]);
 
+        $company->update([
+            'status'=>'active'
+        ]);
+
+        Transaction::create([
+            'body'=>'تجديد إشتراك',
+            'total'=>$data['price_after_discount'],
+        ]);
+
         CompanyPackage::create($data);
+
+        DB::commit();
 
         return $this->setAddedSuccess('تم  تجديد الإشتراك بنجاح');
 

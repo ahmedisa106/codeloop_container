@@ -48,6 +48,19 @@
                     <img id="pic-prev" src="{{$company->image}}" class="out-img pic-prev">
                 </div>
 
+                <div class="switch-showcase">
+                    <label class="form-label">حاله المؤسسه</label>
+                    <div class="media">
+                        <label class="col-form-label">مفعل</label>
+                        <div class="icon-state">
+                            <label class="switch">
+                                <input name="status" {{$company->status =='active'? 'checked':''}} value="active" class="" type="checkbox"><span class="switch-state"></span>
+                            </label>
+                        </div>
+                        <label class="col-form-label">غير مفعل</label>
+
+                    </div>
+                </div>
 
                 <div class="modal-footer">
                     <button class="btn btn-primary btn-air-primary btn-icon" type="submit">

@@ -20,3 +20,4 @@
 <link rel="stylesheet" href="{{asset('assets/website')}}/vendors/timepicker/timePicker.css"/>
 <link rel="stylesheet" href="{{asset('assets/website')}}/css/style.css"/>
 <link rel="stylesheet" href="{{asset('assets/website/plugins/toaster/css/toastr.min.css')}}">
+@stack('css')

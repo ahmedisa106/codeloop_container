@@ -11,16 +11,13 @@ class CompanyPackage extends Model
 
     public function company()
     {
-
         return $this->belongsTo(Company::class, 'company_id');
 
     }//end of companies function
 
     public function package()
     {
-
         return $this->belongsTo(Package::class, 'package_id');
-
     }//end of companies function
 
 }

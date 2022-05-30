@@ -14,6 +14,11 @@
                         <span>الرئيسية</span></a>
                 </li>
 
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('transactions.index')}}">
+                        <img src="{{asset('assets/dashboard')}}/images/icons/home.png" alt="">
+                        <span>التعاملات</span></a>
+                </li>
+
                 <li class="sidebar-list">
                     <a class="sidebar-link sidebar-title link-nav" href="{{route('packages.index')}}">
                         <img src="{{asset('assets/dashboard')}}/images/icons/gift.png" alt="">
