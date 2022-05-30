@@ -29,14 +29,18 @@
                             </tr>
                         @endforeach
 
-                        <tr>
-                            <td colspan="2" style="color: red; font-weight: bold">الإجمالي</td>
-                            <td style="color: red; font-weight: bold">{{$transactions->sum('total')}} ر . س  </td>
-                        </tr>
+
 
 
 
                         </tbody>
+
+                        <tfooter>
+                            <tr>
+                                <td colspan="1" style="color: red; font-weight: bold">الإجمالي</td>
+                                <td colspan="2" style="color: red; font-weight: bold">{{$transactions->sum('total')}} ر . س  </td>
+                            </tr>
+                        </tfooter>
 
                     </table>
 

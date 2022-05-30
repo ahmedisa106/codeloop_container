@@ -7,6 +7,7 @@
     <meta name="title" content="{{isset($setting)?$setting->meta_title:''}}">
     <meta name="keywords" content="{{isset($setting)?$setting->meta_keywords:''}}">
     <meta name="description" content="{{isset($setting)?$setting->meta_description:''}}">
+    @include('website.includes.sitemap')
     @stack('seo')
 
     <title>{{isset($setting)?$setting->name:''}} | @stack('title')</title>
