@@ -112,10 +112,11 @@
                                 <img id="pic-prev" src="{{asset('default/default.png')}}" class="pic-prev">
                             </div>
                         </div>
-                    </div>
-                    <div class="progress d-none">
+                        <div class="progress d-none">
                         <div class="progress-bar" role="progressbar" style="width: 0%;">0%</div>
                     </div>
+                    </div>
+
                     <div class="modal-footer">
                         <button type="submit" class="save-btn">
                             <i class="fa fa-save"></i>

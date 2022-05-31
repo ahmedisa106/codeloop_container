@@ -6,19 +6,31 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="row">
-                <div class="col-md-4 form-group">
+                    <div class="col-md-4 form-group">
                         <label class="form-label">الحالة</label>
-                        <input name="name" class="form-control" type="text" placeholder="">
+                        <select class="select2-custom status">
+                            <option value="">الكل</option>
+                            <option value="subscribed">مفعل</option>
+                            <option value="pending">منتظر التفعيل</option>
+                            <option value="finished">منتهي</option>
+                        </select>
                     </div>
                     <div class="col-md-4 form-group">
                         <label class="form-label">من تاريخ</label>
-                        <input name="name" class="form-control" type="text" placeholder="">
+                        <input name="" class="form-control datepicker-here" type="text">
                     </div>
                     <div class="col-md-4 form-group">
                         <label class="form-label">الى تاريخ</label>
-                        <input name="name" class="form-control" type="text" placeholder="">
+                        <input name="" class="form-control datepicker-here" type="text">
+                    </div>
+                    <div class="col-md-4 form-group">
+                    <button class="btn btn-primary btn-air-primary btn-icon" type="submit">
+                        <i class="fa fa-search"></i>
+                        بحث
+                    </button>
                     </div>
                 </div>
+                <hr>
                 <div class="table-responsive">
                     <table class="table table-bordered datatable text-center">
                         <thead>
