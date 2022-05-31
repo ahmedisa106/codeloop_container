@@ -19,7 +19,7 @@ class CompanyController extends Controller
 
     protected $data = [
         'page_title' => 'المؤسسات',
-        'create' => 'إضافه مؤسسه جديده',
+        'create' => 'إضافة مؤسسه جديده',
         'edit' => 'تعديل مؤسسه',
     ];
 

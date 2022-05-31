@@ -66,7 +66,7 @@ class CompanyRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => 'اسم المؤسسه',
+            'name' => 'اسم المؤسسة',
             'username' => 'إسم المستخدم',
             'email' => 'البريد الإلكتروني',
             'password' => 'كلمه المرور',
@@ -74,7 +74,7 @@ class CompanyRequest extends FormRequest
             'commercial_number' => 'رقم السجل التجاري',
             'tax_card_number' => 'رقم البطاقه الضريبيه',
             'logo' => 'الشعار',
-            'status'=>'حاله المؤسسه'
+            'status'=>'حالة المؤسسة'
 
         ];
 

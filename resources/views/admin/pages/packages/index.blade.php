@@ -30,11 +30,13 @@
                                 </div>
                             </th>
 
+
                             <th>اسم الباقه</th>
                             <th>سعر الباقه ( ر.س )</th>
                             <th>الصوره</th>
                             <th>مده الباقه</th>
                             <th>الحاله</th>
+
                             <th>التحكم</th>
                         </tr>
                         </thead>
@@ -61,6 +63,9 @@
             processing: true,
             serverSide: true,
             buttons: ['excel', 'pdf', 'print'],
+            language: {
+            "url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/ar.json"
+            },
             ajax: {
                 url: '{{route('packages.data')}}'
             },

@@ -16,7 +16,7 @@ class SliderController extends Controller
 
     protected $data = [
         'page_title' => 'الأسليدر',
-        'create' => 'إضافه سليدر جديد',
+        'create' => 'إضافة سليدر جديد',
         'edit' => 'تعديل سليدر',
     ];
 

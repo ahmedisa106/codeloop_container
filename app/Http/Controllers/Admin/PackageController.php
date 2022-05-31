@@ -16,8 +16,8 @@ class PackageController extends Controller
 
     protected $data = [
         'page_title' => 'الباقات',
-        'create' => 'إضافه باقه',
-        'edit' => 'تعديل باقه',
+        'create' => 'إضافة باقة',
+        'edit' => 'تعديل باقة',
     ];
 
     public function index()

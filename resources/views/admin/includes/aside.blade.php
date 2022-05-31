@@ -1,6 +1,6 @@
 <div class="sidebar-wrapper">
-    <div class="logo-wrapper"><a href="{{route('admin.home')}}"><img class="img-fluid for-light" src="{{asset('assets/dashboard')}}/images/logo.svg"
-                                                        alt=""></a>
+    <div class="logo-wrapper"><a href="{{route('admin.home')}}"><img class="img-fluid for-light"
+                src="{{asset('assets/dashboard')}}/images/logo.svg" alt=""></a>
         <div class="back-btn"><i class="fa fa-angle-left"></i></div>
     </div>
 
@@ -14,8 +14,9 @@
                         <span>الرئيسية</span></a>
                 </li>
 
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('transactions.index')}}">
-                        <img src="{{asset('assets/dashboard')}}/images/icons/home.png" alt="">
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav"
+                        href="{{route('transactions.index')}}">
+                        <img src="{{asset('assets/dashboard')}}/images/icons/money.png" alt="">
                         <span>التعاملات</span></a>
                 </li>
 

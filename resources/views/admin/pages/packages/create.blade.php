@@ -9,17 +9,17 @@
         <form class="row form" method="post" action="{{route('packages.store')}}" enctype="multipart/form-data">
             @csrf
             <div class="col-md-12 form-group">
-                <label class="form-label">إسم الباقه</label>
+                <label class="form-label">إسم الباقة</label>
                 <input value="{{isset($package) ? $package->title:''}}" name="title" class="form-control" type="text" placeholder="">
             </div>
             <div class="col-md-12 form-group">
-                <label class="form-label">مده الباقه <span class="text-danger"> ( بالشهور )  </span></label>
+                <label class="form-label">مده الباقة <span class="text-danger"> ( بالشهور )  </span></label>
                 <input type="number" min="1" name="period" class="form-control">
             </div>
 
 
             <div class="col-md-12 form-group">
-                <label class="form-label">سعر الباقه</label>
+                <label class="form-label">سعر الباقة</label>
                 <input type="number" min="0" name="price" class="form-control">
             </div>
 
@@ -27,17 +27,17 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-11 form-group">
-                        <label class="form-label">الصوره</label>
+                        <label class="form-label">الصورة <span>يفضل مقاس الصورة ( 220 طول * 220 عرض )</span></label>
                         <input name="photo" class="form-control photo" id="photo" type="file">
                     </div>
-                    <div class="col-md-1  form-group">
+                    <div class="col-md-1">
                         <img id="pic-prev" src="{{isset($package)? $package->image : asset('default/default.png')}}" class="out-img pic-prev"/>
                     </div>
                 </div>
             </div>
 
             <div class="switch-showcase">
-                <label class="form-label">حاله الباقه</label>
+                <h4>حالة الباقة</h4>
                 <div class="media">
                     <label class="col-form-label">مفعل</label>
                     <div class="icon-state">

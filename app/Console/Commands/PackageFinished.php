@@ -52,9 +52,9 @@ class PackageFinished extends Command
                 $now= Carbon::now();
 
                 if($now->diffInDays($finishDay) == 5 && $finishDay->toDateString() > $now->toDateString() ){
-                    Mail::to($company->email)->send(new SendEmailToCompany($company,'عميلنا العزيز نود إخطاركم بأن موعد تجديد  الباقه هو '.$finishDay));
+                    Mail::to($company->email)->send(new SendEmailToCompany($company,'عميلنا العزيز نود إخطاركم بأن موعد تجديد  الباقة هو '.$finishDay));
                 }elseif ($now->toDateString() == $finishDay->toDateString() ){
-                    Mail::to($company->email)->send(new SendEmailToCompany($company,'عميلنا العزيز نود إخطاركم بأن إشتراككم في الباقه قد إنتهي . الرجاء التوجه للإداره لتجديد تفعيل الباقه '));
+                    Mail::to($company->email)->send(new SendEmailToCompany($company,'عميلنا العزيز نود إخطاركم بأن إشتراككم في الباقة قد إنتهي . الرجاء التوجه للإداره لتجديد تفعيل الباقة '));
                     $company->package->update([
                         'status'=>'finished',
                     ]);
@@ -66,7 +66,7 @@ class PackageFinished extends Command
                     $company->history()->create([
                         'package_id' => $company->package->package_id,
                         'status' => 'finished',
-                        'note' => 'تم إنتهاء الباقه',
+                        'note' => 'تم إنتهاء الباقة',
                         'at' => now()->toDateString(),
                     ]);
                 }

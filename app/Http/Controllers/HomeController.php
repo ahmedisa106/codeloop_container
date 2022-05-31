@@ -80,7 +80,7 @@ class HomeController extends Controller
             'phone' => 'required|numeric|unique:companies,phone',
         ], [],
             [
-                'name' => 'اسم المؤسسه',
+                'name' => 'اسم المؤسسة',
                 'username' => 'إسم المستخدم',
                 'email' => 'البريد الإلكتروني',
                 'password' => 'كلمه المرور',
@@ -118,7 +118,7 @@ class HomeController extends Controller
         $company->history()->create([
             'package_id' => $request['package_id'],
             'status' => 'pending',
-            'note' => 'تم الإشتراك في باقه جديده',
+            'note' => 'تم الإشتراك في باقة جديده',
             'at' => now()->toDateString(),
         ]);
         DB::commit();
@@ -169,7 +169,7 @@ class HomeController extends Controller
             'phone' => 'required|numeric'
         ], [], [
             'name' => 'الإسم',
-            'body' => 'الرساله',
+            'body' => 'الرسالة',
             'email' => 'البريد الإلكتروتني',
             'phone' => 'الهاتف',
         ]);

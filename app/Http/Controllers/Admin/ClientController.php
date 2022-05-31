@@ -16,7 +16,7 @@ class ClientController extends Controller
 
     protected $data = [
         'page_title' => 'العملاء',
-        'create' => 'إضافه عميل',
+        'create' => 'إضافة عميل',
         'edit' => 'تعديل عميل',
     ];
 

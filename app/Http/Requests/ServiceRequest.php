@@ -48,7 +48,7 @@ class ServiceRequest extends FormRequest
         return [
             'title' => 'العنوان',
             'description' => 'التفاصيل',
-            'photo' => 'الصوره',
+            'photo' => 'الصورة',
         ];
     }
 }

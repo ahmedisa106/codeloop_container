@@ -58,7 +58,7 @@ class BlogRequest extends FormRequest
         return [
             'title' => 'العنوان',
             'description' => 'التفاصيل',
-            'photo' => 'الصوره',
+            'photo' => 'الصورة',
         ];
     }
 }

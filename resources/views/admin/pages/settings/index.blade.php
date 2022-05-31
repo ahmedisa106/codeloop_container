@@ -36,7 +36,7 @@
             <div class="col-md-6 form-group">
                 <div class="row">
                     <div class="col-md-10 form-group">
-                        <label class="form-label">الشعار</label>
+                    <label class="form-label">الشعار <span>يفضل مقاس الصورة ( 45 طول * 185 عرض )</span></label>
                         <input name="logo" class="form-control photo" id="photo" type="file">
                     </div>
                     <div class="col-md-2  form-group">
@@ -52,7 +52,7 @@
             <div class="col-md-6 form-group">
                 <div class="row">
                     <div class="col-md-10 form-group">
-                        <label class="form-label">شعار الفوتر</label>
+                    <label class="form-label">شعار الفوتر <span>يفضل مقاس الصورة ( 45 طول * 185 عرض )</span></label>
                         <input name="footer_logo" class="form-control photo" id="photo" type="file">
                     </div>
                     <div class="col-md-2  form-group">

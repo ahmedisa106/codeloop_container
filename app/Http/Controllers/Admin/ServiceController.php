@@ -16,8 +16,8 @@ class ServiceController extends Controller
 
     protected $data = [
         'page_title' => 'الخدمات',
-        'create' => 'إضافه خدمه جديد',
-        'edit' => 'تعديل خدمه',
+        'create' => 'إضافة خدمة جديد',
+        'edit' => 'تعديل خدمة',
     ];
 
     public function data()

@@ -36,7 +36,7 @@ class ClientRequest extends FormRequest
     public function attributes()
     {
         return [
-            'photo' => 'الصوره',
+            'photo' => 'الصورة',
         ];
     }
 }

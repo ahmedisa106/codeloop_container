@@ -16,7 +16,7 @@ trait ResponseTrait
 
     public function setAddedSuccess($message = null)
     {
-        $this->body['data'] = $message ?? "تم الإضافه بنجاح";
+        $this->body['data'] = $message ?? "تم الإضافة بنجاح";
         $this->code['code'] = 200;
         return $this->send();
 

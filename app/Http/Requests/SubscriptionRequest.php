@@ -58,13 +58,13 @@ class SubscriptionRequest extends FormRequest
     public function attributes()
     {
         return [
-            'company_id' => 'المؤسسه',
-            'package_id' => 'الباقه',
-            'package_price' => 'سعر الباقه',
+            'company_id' => 'المؤسسة',
+            'package_id' => 'الباقة',
+            'package_price' => 'سعر الباقة',
             'discount' => 'الخصم',
             'price_after_discount' => 'السعر بعد الخصم',
+            'status' => 'الحالة',
 
-            'status' => 'الحاله',
 
         ];
     }

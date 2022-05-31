@@ -17,15 +17,13 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-11 form-group">
-                        <label class="form-label">الصوره</label>
+                    <label class="form-label">الصورة <span>يفضل مقاس الصورة ( 900 طول * 1660 عرض )</span></label>
                         <input name="photo" class="form-control photo" id="photo" type="file">
                     </div>
-                    <div class="col-md-1  form-group">
+                    <div class="col-md-1 form-group">
                         <img id="pic-prev" src="{{isset($slider)? $slider->image : asset('default/default.png')}}" class="out-img pic-prev"/>
                     </div>
                 </div>
-
-
             </div>
 
             <div class="modal-footer">
