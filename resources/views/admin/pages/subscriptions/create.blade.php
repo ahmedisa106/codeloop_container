@@ -48,16 +48,11 @@
                                 min="0">
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="" class="form-label">تاريخ إنتهاء الباقة</label>
-                            <input type="text" name="package_finish_at" readonly class="package_finish_at form-control"
-                                min="0">
-                        </div>
-                    </div>
+                   
 
                     <div class="col-md-6">
                         <div class="form-group">
+
                             <label for="" class="form-label"> الخصم (ر.س)</label>
                             <input type="number" name="discount" value="0" class="discount form-control" min="0">
                         </div>

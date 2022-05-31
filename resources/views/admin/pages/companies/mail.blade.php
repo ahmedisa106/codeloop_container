@@ -3,7 +3,7 @@
 
 <span class="text-center">{{$data['message']}}</span>
 
-@component('mail::button', ['url' => config('app.url').'contact-us'])
+@component('mail::button', ['url' => config('app.url').'/contact-us'])
 Button Text
 @endcomponent
 

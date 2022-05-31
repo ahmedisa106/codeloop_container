@@ -34,7 +34,7 @@ class SubscriptionRequest extends FormRequest
             'package_price' => 'required|gte:discount',
             'discount' => 'required|lte:package_price',
             'price_after_discount' => 'required|gte:0',
-            'package_finish_at' => 'required|date',
+
             'status' => 'required|in:pending,finished,subscribed',
         ];
 
@@ -48,7 +48,7 @@ class SubscriptionRequest extends FormRequest
             'package_price' => 'required|gte:discount',
             'discount' => 'required|lte:package_price',
             'price_after_discount' => 'required|gte:0',
-            'package_finish_at' => 'required|date',
+
             'status' => 'required|in:pending,finished,subscribed',
         ];
 
@@ -63,8 +63,8 @@ class SubscriptionRequest extends FormRequest
             'package_price' => 'سعر الباقة',
             'discount' => 'الخصم',
             'price_after_discount' => 'السعر بعد الخصم',
-            'package_finish_at' => 'تاريخ إنتهاء الباقة',
             'status' => 'الحالة',
+
 
         ];
     }

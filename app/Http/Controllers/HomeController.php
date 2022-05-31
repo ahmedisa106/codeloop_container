@@ -68,6 +68,7 @@ class HomeController extends Controller
     public function packageRequest(Request $request)
     {
 
+
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:companies,name',
             'commercial_number' => 'required|unique:companies,commercial_number',
@@ -76,7 +77,7 @@ class HomeController extends Controller
             'email' => 'required|unique:companies,email|email',
             'password' => 'required',
             'logo' => 'sometimes|nullable|image',
-            'phone' => 'required|unique:companies,phone',
+            'phone' => 'required|numeric|unique:companies,phone',
         ], [],
             [
                 'name' => 'اسم المؤسسة',
@@ -102,6 +103,8 @@ class HomeController extends Controller
         DB::beginTransaction();
         $company = Company::create($data);
         $package = Package::find($request->package_id);
+
+
 
         CompanyPackage::create([
             'company_id' => $company->id,
@@ -163,7 +166,7 @@ class HomeController extends Controller
             'name' => 'required',
             'body' => 'required',
             'email' => 'required',
-            'phone' => 'required'
+            'phone' => 'required|numeric'
         ], [], [
             'name' => 'الإسم',
             'body' => 'الرسالة',

@@ -68,9 +68,9 @@
                 </div>
                 <form id="company_form" action="{{route('website.packageRequest')}}" method="post" enctype="multipart/form-data">
                     @csrf
-                    @if(isset($package) ? $package->period == 1:'')
-                        <input type="hidden" name="package_id" value="{{$package->id}}" class="package_id">
-                        @endif
+
+                        <input type="hidden" name="package_id" value="" class="package_id">
+
 
                     <div class="modal-body">
                         <div class="row">
@@ -109,9 +109,12 @@
                                 <input name="logo" class="form-control photo" id="photo" type="file">
                             </div>
                             <div class="col-md-6 form-group">
-                                <img id="pic-prev" src="http://127.0.0.1:8000/default/default.png" class="pic-prev">
+                                <img id="pic-prev" src="{{asset('default/default.png')}}" class="pic-prev">
                             </div>
                         </div>
+                    </div>
+                    <div class="progress d-none">
+                        <div class="progress-bar" role="progressbar" style="width: 0%;">0%</div>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="save-btn">
@@ -147,6 +150,20 @@
                 data = new FormData($(this)[0]);
 
             $.ajax({
+                xhr: function() {
+                    var xhr = new window.XMLHttpRequest();
+                    xhr.upload.addEventListener("progress", function(evt) {
+                        if (evt.lengthComputable) {
+                            var percentComplete = ((evt.loaded / evt.total) * 100);
+                            $(".progress-bar").width(percentComplete + '%');
+                            $(".progress-bar").html(percentComplete+'%');
+                        }
+                    }, false);
+                    return xhr;
+                },
+                beforeSend:function (){
+                    $('.progress').removeClass('d-none');
+                },
                 type: 'post',
                 url: url,
                 contentType: false,
@@ -161,8 +178,11 @@
 
                     $('#exampleModal').modal('hide')
                     $('#company_form').trigger('reset')
+                    $('.progress').addClass('d-none');
+                    $('.pic-prev').attr('src','{{asset('default/default.png')}}')
                 },
                 error: function (xhr) {
+
                     toastr.options = {
                         "positionClass": "toast-bottom-left",
                     }
@@ -177,6 +197,11 @@
                             toastr.error(value)
 
                         });
+
+
+                    $('.progress').addClass('d-none');
+                    $('.progress .progress-bar').css('width',0+'%').innerHTML('0%');
+
                 },
             })
         })

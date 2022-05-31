@@ -143,7 +143,7 @@
                         </svg>
                     </div>
                     <ul class="profile-dropdown onhover-show-div">
-                        <li><a href=""><i class="fa fa-user"></i><span>الملف الشخصي</span></a></li>
+                        <li><a href="{{route('admin.profile')}}" class="show_modal"><i class="fa fa-user"></i><span>الملف الشخصي</span></a></li>
                         <li><a href="javascript:void();" onclick="$('#logout_form').submit()"><i class="fa fa-sign-out"> </i><span>تسجيل خروج</span></a></li>
                         <form id="logout_form" action="{{route('admin.logout')}}" method="post">
                             @csrf

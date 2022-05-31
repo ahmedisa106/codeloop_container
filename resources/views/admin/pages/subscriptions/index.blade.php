@@ -33,9 +33,14 @@
             <table class="table table-bordered datatable text-center block-first">
                 <thead>
                     <tr>
-                        <th>المؤسسة</th>
-                        <th>الباقة</th>
-                        <th>الحالة</th>
+
+                        <th>المؤسسه</th>
+                        <th>الباقه</th>
+                        <th>مده الباقه</th>
+                        <th>سعر الباقه</th>
+                        <th>المتبقي من الباقه</th>
+                        <th>الحاله</th>
+
 
                     </tr>
                 </thead>
@@ -75,6 +80,19 @@
             {
                 name: 'package_id',
                 data: 'package_id'
+            },
+            {
+                name: 'period',
+                data: 'period'
+            },
+
+            {
+                name: 'price',
+                data: 'price'
+            },
+            {
+                name: 'diff',
+                data: 'diff'
             },
 
             {

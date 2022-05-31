@@ -37,4 +37,9 @@ class AuthController extends Controller
 
 
     }//end of logout function
+
+    public function profile(){
+        return view('admin.auth.profile');
+
+    }//end of profile function
 }

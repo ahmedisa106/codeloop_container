@@ -29,6 +29,7 @@
 
                             <th>إسم الراسل</th>
                             <th>البريد الإلكتروني</th>
+                            <th>رقم الهاتف</th>
                             <th>التحكم</th>
                         </tr>
                         </thead>
@@ -70,6 +71,9 @@
                 },
                 {
                     name: 'email', data: 'email'
+                },
+                {
+                    name: 'phone', data: 'phone'
                 },
                 {
                     name: 'actions', data: 'actions'

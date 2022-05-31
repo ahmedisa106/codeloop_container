@@ -30,10 +30,13 @@
                                 </div>
                             </th>
 
-                            <th>اسم الباقة</th>
-                            <th>سعر الباقة ( ر.س )</th>
-                            <th>الصورة</th>
-                            <th>مده الباقة</th>
+
+                            <th>اسم الباقه</th>
+                            <th>سعر الباقه ( ر.س )</th>
+                            <th>الصوره</th>
+                            <th>مده الباقه</th>
+                            <th>الحاله</th>
+
                             <th>التحكم</th>
                         </tr>
                         </thead>
@@ -81,6 +84,9 @@
                 },
                 {
                     name: 'period', data: 'period'
+                },
+                {
+                    name: 'status', data: 'status'
                 },
                 {
                     name: 'actions', data: 'actions'
