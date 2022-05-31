@@ -31,6 +31,9 @@
                             </th>
 
                             <th>إسم المؤسسه</th>
+                            <th>الرقم الضريبي</th>
+                            <th>السجل التجاري</th>
+                            <th>الهاتف</th>
                             <th>الشعار</th>
                             <th>التحكم</th>
                         </tr>
@@ -67,6 +70,15 @@
                 },
                 {
                     name: 'name', data: 'name'
+                },
+                {
+                    name: 'commercial_number', data: 'commercial_number'
+                },
+                {
+                    name: 'tax_card_number', data: 'tax_card_number'
+                },
+                {
+                    name: 'phone', data: 'phone'
                 },
                 {
                     name: 'logo', data: 'logo'

@@ -122,7 +122,7 @@
         e.preventDefault();
         let url = $(this).attr('href');
         Swal.fire({
-            title: 'هل تريد الاستمرار؟',
+            title: 'هل تريد الاستمرار؟  سوف يتم حذف جميع العناصر المتعلقه بهذا العنصر ',
             icon: 'question',
             iconHtml: '؟',
             confirmButtonText: 'نعم',
@@ -188,7 +188,7 @@
 
         console.log(form)
         Swal.fire({
-            title: 'هل تريد الاستمرار؟',
+            title: 'هل تريد الاستمرار؟  سوف يتم حذف جميع العناصر المتعلقه بهذا العنصر',
             icon: 'question',
             iconHtml: '؟',
             confirmButtonText: 'نعم',

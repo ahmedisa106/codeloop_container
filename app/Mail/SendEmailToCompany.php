@@ -30,6 +30,6 @@ class SendEmailToCompany extends Mailable
     {
         $data['company'] = $this->company;
         $data['message'] = $this->message;
-        return $this->markdown('admin\pages\companies\mail', compact('data'))->subject('send email to ' . $this->company->email);
+        return $this->markdown('admin\pages\companies\mail', compact('data'))->subject(config('app.name'));
     }
 }
