@@ -68,9 +68,9 @@
                 </div>
                 <form id="company_form" action="{{route('website.packageRequest')}}" method="post" enctype="multipart/form-data">
                     @csrf
-                    @if(isset($package) ? $package->period == 1:'')
-                        <input type="hidden" name="package_id" value="{{$package->id}}" class="package_id">
-                        @endif
+
+                        <input type="hidden" name="package_id" value="" class="package_id">
+
 
                     <div class="modal-body">
                         <div class="row">

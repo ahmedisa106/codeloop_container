@@ -36,7 +36,7 @@ class CompanyRequest extends FormRequest
             'email' => 'required|unique:companies,email|email',
             'password' => 'required',
             'logo' => 'sometimes|nullable|image',
-            'phone' => 'required|unique:companies,phone',
+            'phone' => 'required|unique:companies,phone|numeric',
             'status'=>'sometimes|nullable|in:active,inactive'
 
 

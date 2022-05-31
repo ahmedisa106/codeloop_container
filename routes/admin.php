@@ -11,6 +11,7 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
 
     Route::get('/', 'HomeController@index')->name('admin.home');
     Route::post('/logout', 'auth\AuthController@logout')->name('admin.logout');
+    Route::get('/profile', 'auth\AuthController@profile')->name('admin.profile');
 
     //  transactions
     Route::get('transactions','TransactionController@index')->name('transactions.index');

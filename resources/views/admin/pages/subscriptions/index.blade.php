@@ -35,6 +35,9 @@
                     <tr>
                         <th>المؤسسه</th>
                         <th>الباقه</th>
+                        <th>مده الباقه</th>
+                        <th>سعر الباقه</th>
+                        <th>المتبقي من الباقه</th>
                         <th>الحاله</th>
 
                     </tr>
@@ -72,6 +75,19 @@
             {
                 name: 'package_id',
                 data: 'package_id'
+            },
+            {
+                name: 'period',
+                data: 'period'
+            },
+
+            {
+                name: 'price',
+                data: 'price'
+            },
+            {
+                name: 'diff',
+                data: 'diff'
             },
 
             {

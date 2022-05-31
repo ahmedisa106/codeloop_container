@@ -48,6 +48,22 @@ class SubscriptionController extends Controller
                     });
                 }
             })
+            ->addColumn('period',function ($raw){
+                return $raw->package->period .' أشهر ';
+            })
+            ->addColumn('price',function ($raw){
+                return $raw->package->price .' ر.س';
+            })
+            ->addColumn('diff',function ($raw){
+                if($raw->status == 'subscribed'){
+                    return Carbon::create($raw->package_finish_at)->diffInDays(now()->toDateString()).' يوماً ';
+                }elseif ($raw->status == 'finished'){
+                    return  0 .' يوماً ';
+                }else{
+                    return  $raw->package->period * 30 .' يوماً ';
+                }
+
+            })
             ->addColumn('actions', function ($raw) use ($model) {
                 return view('admin.includes.actions', compact('raw', 'model'));
             })

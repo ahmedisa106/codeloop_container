@@ -17,6 +17,7 @@ class HomeController extends Controller
 {
     public function index()
     {
+
         $packages_count = Package::get()->count();
         $companies_count = Company::get()->count();
         $services_count = Service::get()->count();
