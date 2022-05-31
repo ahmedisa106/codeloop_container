@@ -13,7 +13,7 @@
     </div>
     <div class="card-body">
         <form class="row" method="" action="">
-            <div class="col-md-6 form-group">
+            <div class="col-md-4 form-group">
                 <label class="form-label">الحالة</label>
                 <select  class="select2-custom status">
                     <option value="">الكل</option>

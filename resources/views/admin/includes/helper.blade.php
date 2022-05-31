@@ -83,7 +83,9 @@
         });
         // end preview image
 
-
+        $(".select2-custom").select2({
+             dir: "rtl"
+            });
         $("textarea.editor").each(function () {
             var txt = $(this).attr('name');
             CKEDITOR.replace(txt, {

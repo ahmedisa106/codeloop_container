@@ -12247,6 +12247,10 @@ font-weight: bold;}
     font-size: 26px;
 }
 
+.progress-bar {
+    background-color: #8bc34a;
+}
+
 /* abdo  */
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .leading-waste__left {
