@@ -114,12 +114,15 @@ class SubscriptionController extends Controller
         // check if company has already subscribed
         $subscription = CompanyPackage::where('company_id', $data['company_id'])->latest('id')->first();
         $company = Company::find($data['company_id']);
+        $package = Package::find($data['package_id']);
 
         if (!empty($subscription) && $subscription->status == 'subscribed') {
             return response()->json(['error' => 'المؤسسه بالفعل مشتركه في باقه'], 401);
         } elseif (!empty($subscription) && $subscription->status == 'pending') {
             return response()->json(['error' => 'المؤسسه بالفعل مشتركه في باقه ومنتظره التفعيل'], 401);
         }
+
+        DB::beginTransaction();
 
         $company->history()->create([
             'package_id' => $data['package_id'],
@@ -139,7 +142,11 @@ class SubscriptionController extends Controller
             ]);
         }
 
+        //package_finish_at
+
+        $data['package_finish_at'] = (Carbon::create(now()->toDateString())->addMonths($package->period))->toDateString();
         CompanyPackage::create($data);
+        DB::commit();
 
         return $this->setAddedSuccess();
     }
