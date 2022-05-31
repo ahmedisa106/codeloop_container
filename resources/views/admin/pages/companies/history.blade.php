@@ -5,40 +5,54 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-8">
+                <div class="row">
+                <div class="col-md-4 form-group">
+                        <label class="form-label">الحالة</label>
+                        <input name="name" class="form-control" type="text" placeholder="">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label class="form-label">من تاريخ</label>
+                        <input name="name" class="form-control" type="text" placeholder="">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label class="form-label">الى تاريخ</label>
+                        <input name="name" class="form-control" type="text" placeholder="">
+                    </div>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-bordered datatable text-center">
                         <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>الباقة</th>
-                            <th>الحالة</th>
-                            <th>---</th>
-                            <th>في</th>
-                        </tr>
+                            <tr>
+                                <th>#</th>
+                                <th>الباقة</th>
+                                <th>الحالة</th>
+                                <th>---</th>
+                                <th>في</th>
+                            </tr>
                         </thead>
                         <tbody>
 
-                        @foreach($company->history as $index=> $history)
+                            @foreach($company->history as $index=> $history)
                             <tr>
                                 <td>{{++$index}}</td>
                                 <td>{{$history->package->title}}</td>
                                 <td>{{$history->note}}</td>
                                 <td>
                                     @if($history->status == 'pending')
-                                        منتظره التفعيل
+                                    منتظره التفعيل
 
 
                                     @elseif($history->status == 'subscribed' || $history->status == 'resubscribed')
-                                        مشترك
-                                        <img class="verifed" src="{{asset('assets/dashboard')}}/images/verify.png" alt="">
+                                    مشترك
+                                    <img class="verifed" src="{{asset('assets/dashboard')}}/images/verify.png" alt="">
                                     @else
 
-                                        منتهيه
+                                    منتهيه
                                     @endif
                                 </td>
                                 <td>{{$history->at}}</td>
                             </tr>
-                        @endforeach
+                            @endforeach
 
 
                         </tbody>
@@ -57,16 +71,16 @@
                         <li>
                             <p>حالة الباقة</p>
                             <span>
-                                 @if($history->company->package->status == 'pending')
-                                    منتظره التفعيل
+                                @if($history->company->package->status == 'pending')
+                                منتظره التفعيل
 
 
-                                @elseif($history->company->package->status == 'subscribed'  )
-                                    مشترك
-                                    <img class="verifed" src="{{asset('assets/dashboard')}}/images/verify.png" alt="">
+                                @elseif($history->company->package->status == 'subscribed' )
+                                مشترك
+                                <img class="verifed" src="{{asset('assets/dashboard')}}/images/verify.png" alt="">
                                 @else
 
-                                    منتهيه
+                                منتهيه
                                 @endif
                             </span>
                         </li>
