@@ -109,7 +109,7 @@
                                 <input name="logo" class="form-control photo" id="photo" type="file">
                             </div>
                             <div class="col-md-6 form-group">
-                                <img id="pic-prev" src="http://127.0.0.1:8000/default/default.png" class="pic-prev">
+                                <img id="pic-prev" src="{{asset('default/default.png')}}" class="pic-prev">
                             </div>
                         </div>
                     </div>
@@ -179,6 +179,7 @@
                     $('#exampleModal').modal('hide')
                     $('#company_form').trigger('reset')
                     $('.progress').addClass('d-none');
+                    $('.pic-prev').attr('src','{{asset('default/default.png')}}')
                 },
                 error: function (xhr) {
 
