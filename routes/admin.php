@@ -9,18 +9,10 @@ Route::prefix('admin')->middleware('guest:admin')->group(function () {
 });
 Route::prefix('admin')->middleware('auth:admin')->group(function () {
 
-    Route::get('404',function(){
-        return view('errors.404');
-    });
-    Route::get('500',function(){
-        return view('errors.500');
-    });
-    Route::get('403',function(){
-        return view('errors.403');
-    });
     Route::get('/', 'HomeController@index')->name('admin.home');
     Route::post('/logout', 'auth\AuthController@logout')->name('admin.logout');
     Route::get('/profile', 'auth\AuthController@profile')->name('admin.profile');
+    Route::post('/profile', 'auth\AuthController@saveProfile')->name('admin.saveProfile');
 
     //  transactions
     Route::get('transactions','TransactionController@index')->name('transactions.index');
@@ -30,6 +22,7 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
     Route::get('companies/data', 'CompanyController@data')->name('companies.data');
     Route::post('companies/bulkDelete', 'CompanyController@bulkDelete')->name('companies.bulkDelete');
     Route::get('companies/history/{id}', 'CompanyController@history')->name('companies.history');
+    Route::get('companies/historySearch', 'CompanyController@historySearch')->name('companies.historySearch');
     Route::resource('companies', 'CompanyController')->except('show');
     // end companies routes
 
