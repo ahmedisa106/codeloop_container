@@ -37,20 +37,20 @@ class HomeController extends Controller
         $packages = json_encode($packages, JSON_UNESCAPED_UNICODE);
 
 
-        $from = Carbon::now()->subMonths(3);
-        $to = Carbon::now();
+        $from = Carbon::now()->subMonths(6);
+        $to = Carbon::now()->addMonths(6);
         $months = $to->diffInMonths($from);
 
 
-        $colors = ['#69F0AE', '#FFAB40', '#41C4FF', '#41C4FF', '#41C4FF', '#41C4FF'];
+        $colors = ['#69F0AE', '#FFAB40', '#41C4FF', '#536DFE', '#FF4081', '#26A69A','#D4E157','#69F0AE','FFAB40','41C4FF','536DFE','FF4081','26A69A'];
         $companies_list = [];
         $month_list = [];
-
-        for ($i = 0; $i <= $months; $i++) {
-            array_unshift($month_list, $to->format('M'));
+        for ($i = 1; $i <= $months; $i++) {
             array_unshift($companies_list, ['count' => Company::whereMonth('created_at', $to->format('m'))->count(), 'color' => $colors[$i]]);
+            array_unshift($month_list, $to->format('M'));
             $to->subMonth();
         }
+
 
         $month_list = json_encode($month_list, JSON_UNESCAPED_UNICODE);
 
