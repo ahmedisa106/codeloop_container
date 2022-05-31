@@ -113,6 +113,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="progress d-none">
+                        <div class="progress-bar" role="progressbar" style="width: 0%;">0%</div>
+                    </div>
                     <div class="modal-footer">
                         <button type="submit" class="save-btn">
                             <i class="fa fa-save"></i>
@@ -147,6 +150,20 @@
                 data = new FormData($(this)[0]);
 
             $.ajax({
+                xhr: function() {
+                    var xhr = new window.XMLHttpRequest();
+                    xhr.upload.addEventListener("progress", function(evt) {
+                        if (evt.lengthComputable) {
+                            var percentComplete = ((evt.loaded / evt.total) * 100);
+                            $(".progress-bar").width(percentComplete + '%');
+                            $(".progress-bar").html(percentComplete+'%');
+                        }
+                    }, false);
+                    return xhr;
+                },
+                beforeSend:function (){
+                    $('.progress').removeClass('d-none');
+                },
                 type: 'post',
                 url: url,
                 contentType: false,
@@ -161,8 +178,10 @@
 
                     $('#exampleModal').modal('hide')
                     $('#company_form').trigger('reset')
+                    $('.progress').addClass('d-none');
                 },
                 error: function (xhr) {
+
                     toastr.options = {
                         "positionClass": "toast-bottom-left",
                     }
@@ -177,6 +196,11 @@
                             toastr.error(value)
 
                         });
+
+
+                    $('.progress').addClass('d-none');
+                    $('.progress .progress-bar').css('width',0+'%').innerHTML('0%');
+
                 },
             })
         })
