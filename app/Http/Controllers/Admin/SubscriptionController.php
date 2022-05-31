@@ -26,7 +26,7 @@ class SubscriptionController extends Controller
     protected $data = [
 
         'page_title' => 'الإشتراكات',
-        'create' => 'إضافه إشتراك',
+        'create' => 'إضافة إشتراك',
         'edit' => 'تعديل إشتراك',
     ];
 
@@ -100,15 +100,15 @@ class SubscriptionController extends Controller
         $company = Company::find($data['company_id']);
 
         if (!empty($subscription) && $subscription->status == 'subscribed') {
-            return response()->json(['error' => 'المؤسسه بالفعل مشتركه في باقه'], 401);
+            return response()->json(['error' => 'المؤسسة بالفعل مشتركه في باقة'], 401);
         } elseif (!empty($subscription) && $subscription->status == 'pending') {
-            return response()->json(['error' => 'المؤسسه بالفعل مشتركه في باقه ومنتظره التفعيل'], 401);
+            return response()->json(['error' => 'المؤسسة بالفعل مشتركه في باقة ومنتظره التفعيل'], 401);
         }
 
         $company->history()->create([
             'package_id' => $data['package_id'],
             'status' => $data['status'],
-            'note' => 'تم الإشتراك في باقه جديده',
+            'note' => 'تم الإشتراك في باقة جديده',
             'at' => now()->toDateString(),
         ]);
 
@@ -148,7 +148,7 @@ class SubscriptionController extends Controller
         $company->history()->create([
             'package_id' => $subscription->package_id,
             'status' => 'subscribed',
-            'note' => 'تم تفعيل الباقه',
+            'note' => 'تم تفعيل الباقة',
             'at' => now()->toDateString(),
         ]);
 
@@ -184,10 +184,10 @@ class SubscriptionController extends Controller
             'price_after_discount' => 'required|lte:package_price|min:0',
         ], [], [
 
-            'company_id' => 'المؤسسه',
-            'package_id' => 'الباقه',
-            'package_price' => 'سعر الباقه',
-            'package_finish_at' => 'تاريخ إنتهاء الباقه',
+            'company_id' => 'المؤسسة',
+            'package_id' => 'الباقة',
+            'package_price' => 'سعر الباقة',
+            'package_finish_at' => 'تاريخ إنتهاء الباقة',
             'discount' => 'الخصم',
             'price_after_discount' => 'سعر الباثه بعد الخصم',
         ]);
@@ -204,7 +204,7 @@ class SubscriptionController extends Controller
         $company->history()->create([
             'package_id' => $data['package_id'],
             'status' => 'resubscribed',
-            'note' => 'تم تجديد الإشتراك في الباقه',
+            'note' => 'تم تجديد الإشتراك في الباقة',
             'at' => now()->toDateString(),
         ]);
 

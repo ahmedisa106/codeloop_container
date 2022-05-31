@@ -58,9 +58,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label class="form-label">الباقه</label>
+                        <label class="form-label">الباقة</label>
                         <select name="package_id" class="form-control package_id" id="">
-                            <option value="" selected disabled>إختر باقه</option>
+                            <option value="" selected disabled>إختر باقة</option>
                             @foreach($packages as $package)
                                 <option {{$subscription->package_id == $package->id ?'selected':''}} value="{{$package->id}}">{{$package->title}}</option>
                             @endforeach
@@ -78,13 +78,13 @@
             <div class="row package_details ">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="" class="form-label">سعر الباقه (ر.س)</label>
+                        <label for="" class="form-label">سعر الباقة (ر.س)</label>
                         <input type="number" value="{{$subscription->package_price}}" name="package_price" readonly class="package_price form-control" min="0">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="" class="form-label">تاريخ إنتهاء الباقه</label>
+                        <label for="" class="form-label">تاريخ إنتهاء الباقة</label>
                         <input type="text" value="{{\Carbon\Carbon::create($subscription->package_finish_at)->addMonths($subscription->package->period)->toDateString()}}" name="package_finish_at" readonly class="package_finish_at form-control" min="0">
                     </div>
                 </div>

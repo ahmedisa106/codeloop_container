@@ -30,12 +30,12 @@
 <div class="card">
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered datatable text-center">
+            <table class="table table-bordered datatable text-center block-first">
                 <thead>
                     <tr>
-                        <th>المؤسسه</th>
-                        <th>الباقه</th>
-                        <th>الحاله</th>
+                        <th>المؤسسة</th>
+                        <th>الباقة</th>
+                        <th>الحالة</th>
 
                     </tr>
                 </thead>
@@ -57,6 +57,9 @@
         processing: true,
         serverSide: true,
         buttons: ['excel', 'pdf', 'print'],
+        language: {
+            "url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/ar.json"
+            },
         ajax: {
             url: '{{route('subscriptions.data')}}',
             data:function (d){

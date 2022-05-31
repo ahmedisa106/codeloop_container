@@ -39,7 +39,7 @@ class AboutRequest extends FormRequest
         return [
             'title' => 'العنوان',
             'description' => 'التفاصيل',
-            'photo' => 'الصوره',
+            'photo' => 'الصورة',
         ];
 
     }//end of attributes function

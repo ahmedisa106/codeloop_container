@@ -10,7 +10,7 @@
                 @method('put')
                 <input type="hidden" value="{{$company->id}}" name="id">
                 <div class="col-md-6 form-group">
-                    <label class="form-label">اسم المؤسسه</label>
+                    <label class="form-label">اسم المؤسسة</label>
                     <input name="name" value="{{$company->name}}" class="form-control" type="text" placeholder="">
                 </div>
                 <div class="col-md-6 form-group">
@@ -41,7 +41,7 @@
 
 
                 <div class="col-md-6 form-group">
-                    <label class="form-label">الشعار</label>
+                <label class="form-label">الشعار <span>يفضل مقاس الصورة ( 90 طول * 115 عرض )</span></label>
                     <input name="logo" class="form-control photo" id="photo" type="file">
                 </div>
                 <div class="col-md-6">
@@ -49,7 +49,7 @@
                 </div>
 
                 <div class="switch-showcase">
-                    <label class="form-label">حاله المؤسسه</label>
+                <h4>حالة المؤسسة</h4>
                     <div class="media">
                         <label class="col-form-label">مفعل</label>
                         <div class="icon-state">

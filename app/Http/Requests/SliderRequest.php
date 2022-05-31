@@ -40,7 +40,7 @@ class SliderRequest extends FormRequest
         return [
             'title' => 'العنوان',
 
-            'photo' => 'الصوره',
+            'photo' => 'الصورة',
         ];
     }
 }

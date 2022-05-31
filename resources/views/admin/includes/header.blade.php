@@ -29,7 +29,7 @@
         <div class="nav-right col-10 col-sm-6 pull-right right-header p-0">
             <ul class="nav-menus">
 
-                <li class="onhover-dropdown">
+                <!-- <li class="onhover-dropdown">
                     <div class="notification-box">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g>
@@ -102,7 +102,7 @@
                             <li class="p-0"><a class="view-all" href="#">عرض الكل</a></li>
                         </ul>
                     </div>
-                </li>
+                </li> -->
                 <li class="maximize"><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g>

@@ -16,7 +16,7 @@ class BlogController extends Controller
 
     protected $data = [
         'page_title' => 'المقالات',
-        'create' => 'إضافه مقال جديد',
+        'create' => 'إضافة مقال جديد',
         'edit' => 'تعديل مقال',
     ];
 

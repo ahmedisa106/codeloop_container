@@ -75,7 +75,7 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12 form-group">
-                                <label class="form-label">اسم المؤسسه</label>
+                                <label class="form-label">اسم المؤسسة</label>
                                 <input name="name" class="form-control" type="text" placeholder="">
                             </div>
                             <div class="col-md-6 form-group">

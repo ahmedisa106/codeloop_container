@@ -30,7 +30,7 @@
                                 </div>
                             </th>
 
-                            <th>إسم المؤسسه</th>
+                            <th>إسم المؤسسة</th>
                             <th>الشعار</th>
                             <th>التحكم</th>
                         </tr>
@@ -58,6 +58,9 @@
             processing: true,
             serverSide: true,
             buttons: ['excel', 'pdf', 'print'],
+            language: {
+            "url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/ar.json"
+            },
             ajax: {
                 url: '{{route('companies.data')}}'
             },

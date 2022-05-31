@@ -49,10 +49,10 @@ class PackageRequest extends FormRequest
     public function attributes()
     {
         return [
-            'title' => 'اسم الباقه',
-            'price' => 'سعر الباقه',
-            'period' => 'مده الباقه',
-            'photo' => 'الصوره',
+            'title' => 'اسم الباقة',
+            'price' => 'سعر الباقة',
+            'period' => 'مده الباقة',
+            'photo' => 'الصورة',
         ];
     }
 }
