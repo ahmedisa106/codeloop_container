@@ -8,14 +8,13 @@ Route::prefix('admin')->middleware('guest:admin')->group(function () {
     Route::post('/login', 'auth\AuthController@login')->name('admin.login');
 });
 Route::prefix('admin')->middleware('auth:admin')->group(function () {
-
     Route::get('/', 'HomeController@index')->name('admin.home');
     Route::post('/logout', 'auth\AuthController@logout')->name('admin.logout');
     Route::get('/profile', 'auth\AuthController@profile')->name('admin.profile');
     Route::post('/profile', 'auth\AuthController@saveProfile')->name('admin.saveProfile');
 
     //  transactions
-    Route::get('transactions','TransactionController@index')->name('transactions.index');
+    Route::get('transactions', 'TransactionController@index')->name('transactions.index');
     //  end transactions
 
     // companies routes
@@ -48,7 +47,7 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
     Route::get('packages/data', 'PackageController@data')->name('packages.data');
     Route::post('packages/bulkDelete', 'PackageController@bulkDelete')->name('packages.bulkDelete');
     Route::get('packages/getPackage', 'PackageController@getPackage')->name('packages.getPackage');
-    Route::post('packages/update-status/{id}','PackageController@updateStatus')->name('packages.updateStatus');
+    Route::post('packages/update-status/{id}', 'PackageController@updateStatus')->name('packages.updateStatus');
     Route::resource('packages', 'PackageController');
     // end packages routes
 

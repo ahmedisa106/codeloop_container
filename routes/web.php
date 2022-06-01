@@ -18,7 +18,13 @@ Auth::routes();
 
 Route::get('/sitemap.xml', [\App\Http\Controllers\SitemapXmlController::class, 'index']);
 
-
+Route::get('/clear-cache',function (){
+    \Illuminate\Support\Facades\Artisan::call('optimize:clear');
+    \Illuminate\Support\Facades\Artisan::call('config:cache');
+    \Illuminate\Support\Facades\Artisan::call('config:clear');
+    \Illuminate\Support\Facades\Artisan::call('cache:clear');
+    return 'cache cleared';
+});
 Route::get('/about', 'HomeController@about')->name('website.about');
 Route::get('/services', 'HomeController@services')->name('website.services');
 Route::get('/services/{id}', 'HomeController@showService')->name('website.services.show');
