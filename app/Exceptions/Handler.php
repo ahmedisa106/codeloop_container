@@ -58,9 +58,13 @@ class Handler extends ExceptionHandler
     public function unauthenticated($request, AuthenticationException $exception)
     {
         $guard = Arr::get($exception->guards(), 0);
+
         switch ($guard) {
             case "admin":
                 $route = 'admin.login_form';
+                break;
+            case "company":
+                $route = 'company.login_form';
                 break;
             default:
                 $route = '';

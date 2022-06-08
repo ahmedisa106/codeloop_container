@@ -1,3 +1,4 @@
+@auth('admin')
 <div class="sidebar-wrapper">
     <div class="logo-wrapper"><a href="{{route('admin.home')}}"><img class="img-fluid for-light"
                 src="{{asset('assets/dashboard')}}/images/logo.svg" alt=""></a>
@@ -109,3 +110,4 @@
         <div class="right-arrow" id="right-arrow"><i class="fa fa-arrow-left"></i></div>
     </nav>
 </div>
+@endauth
