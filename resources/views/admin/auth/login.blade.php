@@ -31,8 +31,12 @@
                         action="{{route('admin.login')}}" method="post" class="theme-form login-form">
                         @csrf
                         <h4>تسجيل الدخول</h4>
-                        <h6>
-                            مرحبًا بعودتك! تسجيل الدخول إلى حسابك.</h6>
+                        <a href="{{route('company.login_form')}}" class="text-center">
+                            <h5>
+                                تسجيل الدخول كمؤسسه .
+                            </h5>
+                        </a>
+
                         <div class="form-group">
                             <label>البريد الالكتروني</label>
                             <div class="input-group">

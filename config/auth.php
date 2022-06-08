@@ -44,6 +44,15 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+        'company' => [
+            'driver' => 'session',
+            'provider' => 'companies',
+        ],
+
+        'moderator' => [
+            'driver' => 'session',
+            'provider' => 'moderators',
+        ],
 
         'api' => [
             'driver' => 'token',
@@ -77,6 +86,14 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+        'companies' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\Company::class,
+        ],
+        'moderators' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\Moderator::class,
         ],
 
         // 'users' => [
@@ -113,6 +130,13 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+        'companies' => [
+            'provider' => 'companies',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
     ],
 
     /*
