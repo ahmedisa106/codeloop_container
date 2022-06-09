@@ -42,4 +42,9 @@ class Branch extends Model
     {
         return $this->hasMany(Truck::class);
     }//end of trucks function
+
+    public function containers()
+    {
+        return $this->hasMany(Container::class);
+    }//end of containers function
 }

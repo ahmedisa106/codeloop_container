@@ -24,6 +24,7 @@ return [
             'employees' => 'c,r,u,d,e',
             'trucks' => 'c,r,u,d,e',
             'moderators' => 'c,r,u,d,e',
+            'containers' => 'c,r,u,d,e',
         ],
         'driver' => [
 

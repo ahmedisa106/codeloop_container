@@ -80,5 +80,12 @@ class AppSeeder extends Seeder
             'status' => 'active',
             'company_id' => 1
         ]);
+
+        \App\Models\App::create([
+            'model' => 'containers',
+            'ar_model' => 'الحاويات',
+            'status' => 'active',
+            'company_id' => 1
+        ]);
     }
 }

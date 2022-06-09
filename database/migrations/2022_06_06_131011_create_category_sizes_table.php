@@ -16,7 +16,6 @@ class CreateCategorySizesTable extends Migration
         Schema::create('category_sizes', function (Blueprint $table) {
             $table->id();
             $table->integer('size');
-            $table->decimal('price',10,2);
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('company_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');

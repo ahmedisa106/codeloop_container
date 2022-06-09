@@ -118,9 +118,12 @@ class Company extends Authenticatable
     public function customers()
     {
         return $this->hasMany(Customer::class)->where('company_id', auth()->user()->company->id);
-
-
     }//end of customers function
+
+    public function containers()
+    {
+        return $this->hasMany(Container::class)->where('company_id', auth()->user()->company->id);
+    }//end of containers function
 
 
 }
