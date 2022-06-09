@@ -17,21 +17,21 @@ class CreateEmployeesTable extends Migration
             $table->id();
             $table->string('username');
             $table->string('name');
+            $table->string('code')->nullable();
             $table->string('email');
             $table->string('password');
             $table->string('phone');
             $table->string('photo')->nullable();
-            $table->string('code')->nullable();
             $table->string('nationality');
             $table->unsignedBigInteger('company_id');
             $table->unsignedBigInteger('branch_id');
-            $table->unsignedBigInteger('job_type');
+            $table->enum('job_type', ['messenger', 'driver']);
             $table->enum('messenger_type', ['trash', 'rubble'])->nullable();
             $table->enum('status', ['active', 'inactive']);
 
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
-            $table->foreign('job_type')->references('id')->on('job_types')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

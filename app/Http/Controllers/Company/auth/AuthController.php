@@ -30,6 +30,7 @@ class AuthController extends Controller
 
         $data = $validator->validated();
 
+
         if (auth()->guard($request->type)->attempt(['phone' => $data['phone'], 'password' => $data['password']])) {
             session()->flash('success', 'تم تسجيل الدخول  بنجاح');
             return redirect()->route('company.home');

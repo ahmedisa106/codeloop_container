@@ -3,13 +3,13 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::prefix('company')->middleware(['guest:company,moderator'])->group(function () {
+Route::prefix('company')->middleware(['guest:company,moderator,employee'])->group(function () {
     Route::get('/login', 'auth\AuthController@loginForm')->name('company.login_form');
     Route::post('/login', 'auth\AuthController@login')->name('company.login');
 });
 
 
-Route::prefix('company')->middleware(['auth:company,moderator', 'active'])->group(function () {
+Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active'])->group(function () {
     Route::post('/logout', 'auth\AuthController@logout')->name('company.logout');
     Route::get('/', 'HomeController@index')->name('company.home');
     // apps
@@ -20,7 +20,7 @@ Route::prefix('company')->middleware(['auth:company,moderator', 'active'])->grou
     // end job-types
 });
 
-Route::prefix('company')->middleware(['auth:company,moderator', 'active', 'active_app'])->group(function () {
+Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active', 'active_app'])->group(function () {
 
     // branches
     Route::post('branches/bulk-delete', 'BranchController@bulkDelete')->name('branches.bulkDelete');
@@ -77,5 +77,19 @@ Route::prefix('company')->middleware(['auth:company,moderator', 'active', 'activ
     Route::get('employees/download-pdf', 'EmployeeController@pdf')->name('employees.pdf');
     Route::resource('employees', 'EmployeeController');
     // end employees
+
+    // trucks
+    Route::post('trucks/bulk-delete', 'TruckController@bulkDelete')->name('trucks.bulkDelete');
+    Route::get('trucks/data', 'TruckController@data')->name('trucks.data');
+    Route::get('trucks/download-pdf', 'TruckController@pdf')->name('trucks.pdf');
+    Route::resource('trucks', 'TruckController');
+    // end trucks
+
+    // customers
+    Route::post('customers/bulk-delete', 'CustomerController@bulkDelete')->name('customers.bulkDelete');
+    Route::get('customers/data', 'CustomerController@data')->name('customers.data');
+    Route::get('customers/download-pdf', 'CustomerController@pdf')->name('customers.pdf');
+    Route::resource('customers', 'CustomerController');
+    // end customers
 
 });

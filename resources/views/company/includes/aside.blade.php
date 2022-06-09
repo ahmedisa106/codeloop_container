@@ -32,6 +32,24 @@
                 @endif
                 @endpermission
 
+                @permission('read_customers')
+                @if(active_apps('customers'))
+                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('customers.index')}}">
+                            <img src="{{asset('assets/dashboard')}}/images/icons/home.png" alt="">
+                            <span>العملاء</span></a>
+                    </li>
+                @endif
+                @endpermission
+
+                @permission('read_trucks')
+                @if(active_apps('trucks'))
+                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('trucks.index')}}">
+                            <img src="{{asset('assets/dashboard')}}/images/icons/home.png" alt="">
+                            <span>الشاحنات</span></a>
+                    </li>
+                @endif
+                @endpermission
+
 
                 @permission('read_roles')
                 @if(active_apps('roles'))
@@ -47,6 +65,7 @@
                 @endif
                 @endpermission
 
+                @permission(['read_apps','read_branches' ,'read_categories' ,'read_category-sizes','read_rent-types','read_job-types'])
                 <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:;">
                         <img src="{{asset('assets/dashboard')}}/images/icons/setting.png" alt="">
                         <span>الاعدادات</span></a>
@@ -87,7 +106,7 @@
                         @endif
                     </ul>
                 </li>
-
+                @endpermission
 
             </ul>
             <div class="road">

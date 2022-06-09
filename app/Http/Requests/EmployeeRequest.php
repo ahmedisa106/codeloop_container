@@ -38,9 +38,9 @@ class EmployeeRequest extends FormRequest
             'photo' => 'sometimes|nullable|image',
             'nationality' => 'required',
             'branch_id' => 'required|exists:branches,id',
-            'job_type' => 'required|exists:job_types,id',
-            'messenger_type' => 'required_if:job_type,1',
-            'status' => 'required|in:active,inactive',
+            'job_type' => 'required',
+            'messenger_type' => 'required_if:job_type,messenger',
+            'status' => 'sometimes|nullable',
 
         ];
 
@@ -54,13 +54,13 @@ class EmployeeRequest extends FormRequest
             'email' => 'required|unique:employees,email,' . request()->id,
             'phone' => 'required|unique:employees,phone,' . request()->id,
             'code' => 'required|unique:employees,code,' . request()->id,
-            'password' => 'required',
+            'password' => 'sometimes:nullable',
             'photo' => 'sometimes|nullable|image',
             'nationality' => 'required',
             'branch_id' => 'required|exists:branches,id',
-            'job_type' => 'required|exists:job_types,id',
-            'messenger_type' => 'required_if:job_type,1',
-            'status' => 'required|in:active,inactive',
+            'job_type' => 'required',
+            'messenger_type' => 'required_if:job_type,messenger',
+            'status' => 'sometimes|nullable',
         ];
 
     }//end of onStore function

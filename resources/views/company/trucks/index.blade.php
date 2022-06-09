@@ -10,13 +10,13 @@
                 <h3>{{$data['page_title']}}</h3>
                 <div class="btns-header">
 
-                    @permission('delete_employees')
+                    @permission('delete_trucks')
                     <a href="javascript:void(0);" id="delete_all" class="btn btn-danger btn-air-danger btn-icon d-none delete_all">
                         <i class="fa fa-trash"></i>
                         حذف المحدد
                     </a>
                     @endpermission
-                    @permission('export_employees')
+                    @permission('export_trucks')
                     <div class="dropdown-basic">
                         <div class="dropdown">
                             <button class="dropbtn btn-info btn-air-info btn-icon" type="button">
@@ -43,8 +43,8 @@
                         </div>
                     </div>
                     @endpermission
-                    @permission('create_employees')
-                    <a href="{{route('employees.create')}}" data-model_title="الفروع" class="btn btn-primary show_modal btn-air-primary btn-icon ">
+                    @permission('create_trucks')
+                    <a href="{{route('trucks.create')}}" data-model_title="الفروع" class="btn btn-primary show_modal btn-air-primary btn-icon ">
                         <i class="fa fa-plus"></i>
                         {{$data['create']}}
                     </a>
@@ -54,12 +54,12 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <form action="{{route('employees.bulkDelete')}}" id="delete_all_form" method="post">
+                    <form action="{{route('trucks.bulkDelete')}}" id="delete_all_form" method="post">
                         @csrf
                         <table class="table table-bordered datatable text-center">
                             <thead>
                             <tr>
-                                @permission('delete_employees')
+                                @permission('delete_trucks')
                                 <th>
                                     <div class="checkbox checkbox-primary">
                                         <input id="check_all" type="checkbox">
@@ -68,12 +68,11 @@
                                 </th>
                                 @endpermission
 
-                                <th>الإسم</th>
-                                <th>البريد الإلكتروني</th>
-                                <th>الوظيفه</th>
-                                <th>الهاتف</th>
-                                <th>الصوره</th>
-                                @permission(['delete_employees', 'update_employees'])
+                                <th>رقم الشاحنه</th>
+                                <th>السائق</th>
+                                <th>الفرع</th>
+
+                                @permission(['delete_trucks', 'update_trucks'])
                                 <th>العمليات</th>
                                 @endpermission
                             </tr>
@@ -103,19 +102,18 @@
                 "url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/ar.json"
             },
             ajax: {
-                url: "{{route('employees.data')}}"
+                url: "{{route('trucks.data')}}"
             },
             columns: [
 
-            @permission('delete_employees')
+            @permission('delete_trucks')
                 {data: 'check_item', name: 'check_item', orderable: false, searchable: false},
             @endpermission
-                {data: 'name', name: 'name'},
-                {data: 'email', name: 'email'},
-                {data: 'job_type', name: 'job_type'},
-                {data: 'phone', name: 'phone'},
-                {data: 'photo', name: 'photo'},
-            @permission(['delete_employees', 'update_employees'])
+                {data: 'number', name: 'number'},
+                {data: 'driver', name: 'driver'},
+                {data: 'branch', name: 'branch'},
+
+            @permission(['delete_trucks', 'update_trucks'])
                 {data: 'actions', name: 'actions'},
             @endpermission
 
