@@ -50,6 +50,15 @@
                 @endif
                 @endpermission
 
+                @permission('read_containers')
+                @if(active_apps('containers'))
+                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('containers.index')}}">
+                            <img src="{{asset('assets/dashboard')}}/images/icons/home.png" alt="">
+                            <span>الحاويات</span></a>
+                    </li>
+                @endif
+                @endpermission
+
 
                 @permission('read_roles')
                 @if(active_apps('roles'))

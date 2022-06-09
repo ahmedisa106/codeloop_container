@@ -12,9 +12,20 @@ class Category extends Model
 
     public function company()
     {
-        return $this->belongsTo(Company::class,'company_id');
-
+        return $this->belongsTo(Company::class, 'company_id');
     }//end of company function
+
+    public function containers()
+    {
+        return $this->hasMany(Container::class);
+    }//end of containers function
+
+    public function sizes()
+    {
+
+        return $this->hasMany(CategorySize::class);
+
+    }//end of sizes function
 
 
 }

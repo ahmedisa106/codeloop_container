@@ -56,7 +56,7 @@
                                 </th>
                                 <th>إسم التصنيف</th>
                                 <th>الحجم</th>
-                                <th>السعر</th>
+
 
                                 <th>العمليات</th>
                             </tr>
@@ -91,7 +91,7 @@
                 {data: 'check_item', name: 'check_item', orderable: false, searchable: false},
                 {data: 'category_id', name: 'category_id'},
                 {data: 'size', name: 'size'},
-                {data: 'price', name: 'price'},
+
                 {data: 'actions', name: 'actions'},
             ]
         });

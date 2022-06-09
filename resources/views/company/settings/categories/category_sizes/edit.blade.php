@@ -20,10 +20,7 @@
                     <label class="form-label">الحجم</label>
                     <input value="{{$categorySize->size}}" name="size" min="0" class="form-control" type="number" placeholder="">
                 </div>
-                <div class="col-md-6 form-group">
-                    <label class="form-label">السعر</label>
-                    <input value="{{$categorySize->price}}" name="price" min="0" class="form-control" type="number" placeholder="">
-                </div>
+
                 <div class="modal-footer">
                     <button class="btn btn-primary btn-air-primary btn-icon" type="submit">
                         <i class="fa fa-save"></i>

@@ -92,4 +92,12 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     Route::resource('customers', 'CustomerController');
     // end customers
 
+    // containers
+    Route::post('containers/bulk-delete', 'ContainerController@bulkDelete')->name('containers.bulkDelete');
+    Route::get('containers/data', 'ContainerController@data')->name('containers.data');
+    Route::get('containers/download-pdf', 'ContainerController@pdf')->name('containers.pdf');
+    Route::get('containers/get-category-sizes', 'ContainerController@getCategorySizes')->name('containers.getCategorySizes');
+    Route::resource('containers', 'ContainerController');
+    // end containers
+
 });
