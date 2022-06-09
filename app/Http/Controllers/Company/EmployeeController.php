@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers\Company;
 
+use App\Helper\ResponseTrait;
+use App\Helper\Upload;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EmployeeRequest;
 use App\Models\Employee;
+use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
 class EmployeeController extends Controller
 {
+    use ResponseTrait, Upload;
+
     protected $data = [
         'page_title' => 'الموظفين',
         'create' => 'إضافه موظف',
@@ -34,9 +39,14 @@ class EmployeeController extends Controller
             ->addColumn('check_item', function ($raw) {
                 return view('company.includes.check_item', compact('raw'));
             })
+            ->addColumn('job_type', function ($raw) {
+                return $raw->job_type == 'messenger' ? 'مندوب' : 'سائق';
+            })
+            ->addColumn('photo', function ($raw) {
+                return '<img src="' . $raw->image . '">';
+            })
+            ->rawColumns(['photo' => 'photo'])
             ->make(true);
-
-
     }//end of data function
 
     public function index()
@@ -51,7 +61,8 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('company.employees.create', ['data' => $this->data]);
+        $branches = auth()->user()->company->branches;
+        return view('company.employees.create', ['data' => $this->data], compact('branches'));
     }
 
     /**
@@ -62,7 +73,19 @@ class EmployeeController extends Controller
      */
     public function store(EmployeeRequest $request)
     {
-        //
+        $data = $request->validated();
+        $data['company_id'] = auth()->user()->company->id;
+        $data['status'] = $request->status ? 'active' : 'inactive';
+        $data['password'] = bcrypt($request->password);
+        $role = $data['job_type'] == 'messenger' ? 'messenger' : "driver";
+        if ($request->has('photo')) {
+            $photo = $this->upload($request->photo, 'employees');
+            $data['photo'] = $photo;
+        }
+        $employee = Employee::create($data);
+        $employee->attachRole($role);
+
+        return $this->setAddedSuccess();
     }
 
     /**
@@ -84,7 +107,8 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        return view('company.employees.edit', ['data' => $this->data]);
+        $branches = auth()->user()->company->branches;
+        return view('company.employees.edit', ['data' => $this->data], compact('employee', 'branches'));
     }
 
     /**
@@ -96,7 +120,18 @@ class EmployeeController extends Controller
      */
     public function update(EmployeeRequest $request, Employee $employee)
     {
-        //
+        $data = $request->validated();
+        $data['status'] = $request->status ? 'active' : 'inactive';
+        $data['password'] = $request->password ? bcrypt($request->password) : $employee->password;
+        $role[] = $data['job_type'] == 'messenger' ? 'messenger' : "driver";
+        if ($request->has('photo')) {
+            $photo = $this->upload($request->photo, 'employees', true, $employee->photo);
+            $data['photo'] = $photo;
+        }
+        $employee->update($data);
+        $employee->syncRoles($role);
+
+        return $this->setUpdatedSuccess();
     }
 
     /**
@@ -107,6 +142,17 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+        return $this->setDeletedSuccess();
     }
+
+    public function bulkDelete(Request $request)
+    {
+        parse_str($request->ids, $ids);
+
+        Employee::destroy($ids['items']);
+
+        return $this->setDeletedSuccess();
+
+    }//end of bulkDelete function
 }

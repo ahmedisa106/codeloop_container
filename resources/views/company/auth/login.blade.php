@@ -39,6 +39,7 @@
                                     <option value="">إختر نوع</option>
                                     <option value="company">مؤسسه</option>
                                     <option value="moderator">مشرف في مؤسسه</option>
+                                    <option value="employee">موظف في مؤسسه</option>
 
                                 </select>
                             </div>

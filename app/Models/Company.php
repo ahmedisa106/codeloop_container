@@ -96,6 +96,31 @@ class Company extends Authenticatable
     public function employees()
     {
         return $this->hasMany(Employee::class)->where('company_id', auth()->user()->company->id);
-
     }//end of employees function
+
+    public function drivers()
+    {
+        return $this->hasMany(Employee::class)->where('company_id', auth()->user()->company->id)->where('job_type', 'driver');
+
+    }//end of drivers function
+
+    public function messengers()
+    {
+        return $this->hasMany(Employee::class)->where('company_id', auth()->user()->company->id)->where('job_type', 'messengers');
+
+    }//end of drivers function
+
+    public function trucks()
+    {
+        return $this->hasMany(Truck::class)->where('company_id', auth()->user()->company->id);
+    }//end of trucks function
+
+    public function customers()
+    {
+        return $this->hasMany(Customer::class)->where('company_id', auth()->user()->company->id);
+
+
+    }//end of customers function
+
+
 }

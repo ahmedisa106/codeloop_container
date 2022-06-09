@@ -20,8 +20,8 @@ class CompanySeeder extends Seeder
             'phone' => 456789,
             'commercial_number' => 456789,
             'tax_card_number' => 456789,
-
         ]);
+
         $company->attachRole('admin');
 
 

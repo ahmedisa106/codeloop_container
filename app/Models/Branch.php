@@ -37,4 +37,9 @@ class Branch extends Model
             \Illuminate\Support\Facades\File::delete(public_path('images/branches/' . $raw->photo));
         });
     }
+
+    public function trucks()
+    {
+        return $this->hasMany(Truck::class);
+    }//end of trucks function
 }

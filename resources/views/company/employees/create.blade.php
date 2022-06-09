@@ -41,25 +41,30 @@
                     <label class="form-label">الفرع</label>
                     <select name="branch_id" class="form-control select2-custom" id="">
                         <option value="" disabled selected>إختر فرع</option>
+                        @foreach($branches as $branch)
+                            <option value="{{$branch->id}}">{{$branch->name}}</option>
+                        @endforeach
 
                     </select>
                 </div>
-
 
                 <div class="col-md-6 form-group">
                     <label class="form-label">نوع الوظيفه</label>
                     <select name="job_type" class="form-control select2-custom" id="">
                         <option value="" disabled selected>إختر الوظيفه</option>
 
+                        <option value="driver">سائق</option>
+                        <option value="messenger">مندوب</option>
+
                     </select>
                 </div>
 
-                <div class="col-md-6 form-group">
+                <div class="col-md-6 form-group messenger_job d-none ">
                     <label class="form-label">نوع وظيقه المندوب</label>
-                    <select name="job_type" class="form-control select2-custom" id="">
+                    <select name="messenger_type" class="form-control select2-custom" id="">
                         <option value="" disabled selected>نوع وظيقه المندوب</option>
-                        <option value="1">نفايات</option>
-                        <option value="2">أنقاض</option>
+                        <option value="trash">نفايات</option>
+                        <option value="rubble">أنقاض</option>
 
                     </select>
                 </div>
@@ -76,7 +81,7 @@
                         <label class="col-form-label">نشط</label>
                         <div class="icon-state">
                             <label class="switch">
-                                <input class="" name="status" type="checkbox">
+                                <input class="" name="status" value="active" type="checkbox">
                                 <span class="switch-state"></span>
                             </label>
                         </div>
@@ -102,4 +107,13 @@
 </div>
 
 
+<script>
+    $('select[name="job_type"]').on('change', function () {
+        if ($(this).val() == 'messenger') {
+            $('.messenger_job').removeClass('d-none');
+        } else {
+            $('.messenger_job').addClass('d-none');
+        }
 
+    })
+</script>

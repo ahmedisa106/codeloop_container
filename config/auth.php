@@ -53,6 +53,10 @@ return [
             'driver' => 'session',
             'provider' => 'moderators',
         ],
+        'employee' => [
+            'driver' => 'session',
+            'provider' => 'employees',
+        ],
 
         'api' => [
             'driver' => 'token',
@@ -95,6 +99,10 @@ return [
             'driver' => 'eloquent',
             'model' => \App\Models\Moderator::class,
         ],
+        'employees' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\Employee::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -132,6 +140,12 @@ return [
         ],
         'companies' => [
             'provider' => 'companies',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'employees' => [
+            'provider' => 'employees',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

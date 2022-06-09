@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laratrust\Traits\LaratrustUserTrait;
 
-class Employee extends Model
+class Employee extends Authenticatable
 {
+    use LaratrustUserTrait;
+
     protected $table = 'employees';
     protected $guarded = [];
 
@@ -28,5 +31,14 @@ class Employee extends Model
         }
         return asset('images/employees/' . $this->photo);
     }//end of getImageAttribute function
+
+    protected static function boot()
+    {
+        parent::boot();
+        self::deleting(function ($raw) {
+            \Illuminate\Support\Facades\File::delete(public_path('images/employees/' . $raw->photo));
+        });
+
+    }
 
 }
