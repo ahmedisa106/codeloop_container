@@ -3,6 +3,7 @@
 namespace App\Models;
 
 
+use App\Contract;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\File;
 use Laratrust\Traits\LaratrustUserTrait;
@@ -125,5 +126,9 @@ class Company extends Authenticatable
         return $this->hasMany(Container::class)->where('company_id', auth()->user()->company->id);
     }//end of containers function
 
+    public function contracts()
+    {
+        return $this->hasMany(Contract::class)->where('company_id', auth()->user()->company->id);
+    }//end of contracts function
 
 }

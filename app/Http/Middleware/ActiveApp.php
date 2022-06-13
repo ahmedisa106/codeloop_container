@@ -17,7 +17,6 @@ class ActiveApp
     {
         $app = explode('.', \request()->route()->getName())[0];
         if (active_apps($app)) {
-
             return $next($request);
         }
         abort(404);

@@ -71,6 +71,8 @@
             language: {
                 "url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/ar.json"
             },
+            order: [[1, 'asc']],
+
             ajax: {
                 url: "{{route('apps.data')}}"
             },

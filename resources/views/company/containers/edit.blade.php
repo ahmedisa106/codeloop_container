@@ -45,17 +45,17 @@
                     <label class="form-label">سعر التفريغ</label>
                     <input class="form-control" value="{{$container->price}}" name="price" min="0" type="number">
                 </div>
-                <div class="switch-showcase">
-                    <div class="media">
-                        <label class="col-form-label">نشط</label>
-                        <div class="icon-state">
-                            <label class="switch">
-                                <input {{$container->status =='active'?'checked':''}} class="" name="status" value="active" type="checkbox">
-                                <span class="switch-state"></span>
-                            </label>
-                        </div>
-                        <label class="col-form-label">غير نشط</label>
-                    </div>
+                <div class="col-md-6 form-group">
+                    <label class="form-label">الحاله</label>
+                    <select name="status" class="form-control select2-custom" id="">
+                        <option value="" disabled selected>إختر فرع</option>
+                        <option {{$container->status =='available' ?'selected':''}} value="available">في المستودع</option>
+                        <option {{$container->status =='notAvailable' ?'selected':''}} value="notAvailable">داخل فتره الإيجار</option>
+                        <option {{$container->status =='pending' ?'selected':''}} value="pending">مده الإيجار منتهيه ولم تأتي المستودع</option>
+                        <option {{$container->status =='wasted' ?'selected':''}} value="wasted">تالفه</option>
+
+
+                    </select>
                 </div>
 
                 <div class="modal-footer">
