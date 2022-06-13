@@ -33,14 +33,14 @@
                 @endpermission
 
 
-                @permission(['read_customers','read_customer-addresses'])
+                @permission(['read_customers'])
                 @if(active_apps('customers') && active_apps('customer-addresses'))
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0);">
                             <img src="{{asset('assets/dashboard')}}/images/icons/home.png" alt="">
                             <span>بيانات العملاء</span></a>
                         <ul class="sidebar-submenu">
                             <li><a href="{{route('customers.index')}}">العملاء</a></li>
-                            <li><a href="{{route('customer-addresses.index')}}">عناوين العملاء</a></li>
+
                         </ul>
                     </li>
                 @endif

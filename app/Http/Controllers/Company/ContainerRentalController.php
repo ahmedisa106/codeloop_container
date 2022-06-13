@@ -3,8 +3,13 @@
 namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ContainerRentalRequest;
+use App\Models\Category;
+use App\Models\Container;
 use App\Models\ContainerRental;
-use Illuminate\Http\Request;
+use App\Models\Contract;
+use App\Models\Customer;
+use Mpdf\Http\Request;
 use Yajra\DataTables\DataTables;
 
 class ContainerRentalController extends Controller
@@ -48,7 +53,14 @@ class ContainerRentalController extends Controller
 
     public function create()
     {
-        return view('company.container_rentals.create', ['data' => $this->data]);
+        $categories = auth()->user()->company->categories;
+        $customers = auth()->user()->company->customers;
+        $contracts = auth()->user()->company->contracts;
+        $containers = auth()->user()->company->availableContainers;
+        $messengers = auth()->user()->company->availableMessengers;
+
+
+        return view('company.container_rentals.create', ['data' => $this->data], compact('categories', 'containers', 'customers', 'contracts', 'messengers'));
     }
 
     /**
@@ -57,7 +69,7 @@ class ContainerRentalController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ContainerRentalRequest $request)
     {
         //
     }
@@ -79,9 +91,14 @@ class ContainerRentalController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ContainerRental $rental)
     {
-        //
+        $categories = Category::get(['id', 'name']);
+        $customers = Customer::get(['id', 'name']);
+        $contracts = Contract::get(['id', 'number']);
+        $containers = Container::where('status', 'available')->get(['id', 'number']);
+        return view('company.container_rentals.edit', ['data' => $this->data], compact('categories', 'containers', 'customers', 'contracts'));
+
     }
 
     /**
@@ -91,7 +108,7 @@ class ContainerRentalController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ContainerRentalRequest $request, ContainerRental $rental)
     {
         //
     }
@@ -106,4 +123,11 @@ class ContainerRentalController extends Controller
     {
         //
     }
+
+    public function bulkDelete(Request $request)
+    {
+
+        dd($request->all());
+
+    }//end of bulkDelete function
 }

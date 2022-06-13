@@ -3,7 +3,6 @@
 namespace App\Models;
 
 
-use App\Contract;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\File;
 use Laratrust\Traits\LaratrustUserTrait;
@@ -107,7 +106,13 @@ class Company extends Authenticatable
 
     public function messengers()
     {
-        return $this->hasMany(Employee::class)->where('company_id', auth()->user()->company->id)->where('job_type', 'messengers');
+        return $this->hasMany(Employee::class)->where('company_id', auth()->user()->company->id)->where('job_type', 'messenger');
+
+    }//end of drivers function
+
+    public function availableMessengers()
+    {
+        return $this->hasMany(Employee::class)->where('company_id', auth()->user()->company->id)->where('job_type', 'messenger')->where('status', 'active');
 
     }//end of drivers function
 
@@ -124,6 +129,11 @@ class Company extends Authenticatable
     public function containers()
     {
         return $this->hasMany(Container::class)->where('company_id', auth()->user()->company->id);
+    }//end of containers function
+
+    public function availableContainers()
+    {
+        return $this->hasMany(Container::class)->where('company_id', auth()->user()->company->id)->where('status', 'available');
     }//end of containers function
 
     public function contracts()

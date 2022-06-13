@@ -41,4 +41,9 @@ class Employee extends Authenticatable
 
     }
 
+    public function containerRentals()
+    {
+        return $this->hasMany(ContainerRental::class);
+    }//end of containerRentals function
+
 }

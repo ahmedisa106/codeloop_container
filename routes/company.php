@@ -38,6 +38,7 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     Route::post('categories/bulk-delete', 'CategoryController@bulkDelete')->name('categories.bulkDelete');
     Route::get('categories/data', 'CategoryController@data')->name('categories.data');
     Route::get('categories/download-pdf', 'CategoryController@pdf')->name('categories.pdf');
+    Route::get('categories/get-category-sizes', 'CategoryController@getCategorySizes')->name('categories.getCategorySizes');
     Route::resource('categories', 'CategoryController');
     // end categories
 
@@ -94,6 +95,7 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     Route::post('customers/bulk-delete', 'CustomerController@bulkDelete')->name('customers.bulkDelete');
     Route::get('customers/data', 'CustomerController@data')->name('customers.data');
     Route::get('customers/download-pdf', 'CustomerController@pdf')->name('customers.pdf');
+    Route::get('customers/get-customer-addresses', 'CustomerController@getCustomerAddresses')->name('customers.getCustomerAddresses');
     Route::resource('customers', 'CustomerController');
     // end customers
 
@@ -108,7 +110,7 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     Route::post('containers/bulk-delete', 'ContainerController@bulkDelete')->name('containers.bulkDelete');
     Route::get('containers/data', 'ContainerController@data')->name('containers.data');
     Route::get('containers/download-pdf', 'ContainerController@pdf')->name('containers.pdf');
-    Route::get('containers/get-category-sizes', 'ContainerController@getCategorySizes')->name('containers.getCategorySizes');
+    Route::get('containers/get-discharge-price', 'ContainerController@getDischargePrice')->name('containers.getDischargePrice');
     Route::resource('containers', 'ContainerController');
     // end containers
 

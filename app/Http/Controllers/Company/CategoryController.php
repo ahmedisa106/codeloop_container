@@ -132,4 +132,10 @@ class CategoryController extends Controller
 
         return $this->setDeletedSuccess();
     }//end of bulkDelete function
+
+    public function getCategorySizes(Request $request)
+    {
+        $categorySizes = Category::find($request->id)->sizes;
+        return $this->setData($categorySizes);
+    }//end of getCategorySizes function
 }
