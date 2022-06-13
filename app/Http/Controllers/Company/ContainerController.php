@@ -17,8 +17,8 @@ class ContainerController extends Controller
 
     protected $data = [
         'page_title' => 'الحاويات',
-        'create' => 'إضافه حاويه',
-        'edit' => 'تعديل حاويه',
+        'create' => 'إضافه حاوية',
+        'edit' => 'تعديل حاوية',
     ];
 
     public function __construct()
