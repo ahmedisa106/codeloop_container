@@ -44,12 +44,11 @@
                     </div>
                     @endpermission
                     @permission('create_containers')
-                    <a href="{{route('containers.create')}}" data-model_title="الفروع" class="btn btn-primary show_modal btn-air-primary btn-icon ">
+                    <a href="{{route('containers.create')}}" class="btn btn-primary show_modal btn-air-primary btn-icon ">
                         <i class="fa fa-plus"></i>
                         {{$data['create']}}
                     </a>
                     @endpermission
-
                 </div>
             </div>
             <div class="card-body">
