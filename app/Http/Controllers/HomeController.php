@@ -21,6 +21,7 @@ class HomeController extends Controller
 {
     use Upload, ResponseTrait;
 
+
     public function index()
     {
         $sliders = Slider::get(['title', 'photo']);
@@ -59,7 +60,7 @@ class HomeController extends Controller
     public function packages()
     {
         $page_title = 'الباقات';
-        $packages = Package::where('status','active')->get();
+        $packages = Package::where('status', 'active')->get();
         return view('website.pages.packages', compact('page_title', 'packages'));
 
     }//end of packages function
@@ -103,7 +104,6 @@ class HomeController extends Controller
         DB::beginTransaction();
         $company = Company::create($data);
         $package = Package::find($request->package_id);
-
 
 
         CompanyPackage::create([
