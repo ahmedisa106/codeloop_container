@@ -21,6 +21,7 @@ return [
             'roles' => 'c,r,u,d,e',
             'apps' => 'c,r,u,d,e',
             'customers' => 'c,r,u,d,e',
+            'customer-addresses' => 'c,r,u,d,e',
             'employees' => 'c,r,u,d,e',
             'trucks' => 'c,r,u,d,e',
             'moderators' => 'c,r,u,d,e',

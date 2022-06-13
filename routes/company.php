@@ -19,10 +19,10 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     Route::resource('apps', 'AppController');
     // end job-types
 
-    Route::view('test','company.test');
-    Route::view('test2','company.test2');
-    Route::view('test3','company.test3');
-    Route::view('test4','company.test4');
+    Route::view('test', 'company.test');
+    Route::view('test2', 'company.test2');
+    Route::view('test3', 'company.test3');
+    Route::view('test4', 'company.test4');
 });
 
 Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active', 'active_app'])->group(function () {
@@ -97,6 +97,13 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     Route::resource('customers', 'CustomerController');
     // end customers
 
+    // customer-addresses
+    Route::post('customer-addresses/bulk-delete', 'CustomerAddressController@bulkDelete')->name('customer-addresses.bulkDelete');
+    Route::get('customer-addresses/data', 'CustomerAddressController@data')->name('customer-addresses.data');
+    Route::get('customer-addresses/download-pdf', 'CustomerAddressController@pdf')->name('customer-addresses.pdf');
+    Route::resource('customer-addresses', 'CustomerAddressController');
+    // end customer-addresses
+
     // containers
     Route::post('containers/bulk-delete', 'ContainerController@bulkDelete')->name('containers.bulkDelete');
     Route::get('containers/data', 'ContainerController@data')->name('containers.data');
@@ -105,7 +112,19 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     Route::resource('containers', 'ContainerController');
     // end containers
 
-    
-   
+    // contracts
+    Route::post('contracts/bulk-delete', 'ContractController@bulkDelete')->name('contracts.bulkDelete');
+    Route::get('contracts/data', 'ContractController@data')->name('contracts.data');
+    Route::get('contracts/download-pdf', 'ContractController@pdf')->name('contracts.pdf');
+    Route::resource('contracts', 'ContractController');
+    // end contracts
+
+    // container-rentals
+    Route::post('container-rentals/bulk-delete', 'ContainerRentalController@bulkDelete')->name('container-rentals.bulkDelete');
+    Route::get('container-rentals/data', 'ContainerRentalController@data')->name('container-rentals.data');
+    Route::get('container-rentals/download-pdf', 'ContainerRentalController@pdf')->name('container-rentals.pdf');
+    Route::resource('container-rentals', 'ContainerRentalController');
+    // end container-rentals
+
 
 });

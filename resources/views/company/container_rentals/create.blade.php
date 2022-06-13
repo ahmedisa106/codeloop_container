@@ -1,7 +1,3 @@
-@extends('company.layouts.master')
-@section('content')
-
-
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
@@ -103,7 +99,7 @@
                         حفظ
                     </button>
                     <button class="btn btn-danger exsit_modal btn-air-danger btn-icon" type="button"
-                        data-bs-dismiss="modal">
+                            data-bs-dismiss="modal">
                         <i class="fa fa-times"></i>
                         خروج
                     </button>
@@ -113,7 +109,3 @@
 
     </div>
 </div>
-
-
-
-@endsection
