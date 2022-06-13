@@ -27,8 +27,8 @@
 <script src="{{asset('assets/dashboard/plugins/sweetalert/swal.js')}}"></script>
 
 <script src="{{asset('assets/dashboard/js/editor/ckeditor/ckeditor.js')}}"></script>
-@include('admin.includes.helper')
 
+@include('admin.includes.helper')
 @include('admin.includes.swal')
 @stack('js')
 

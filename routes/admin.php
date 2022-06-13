@@ -7,29 +7,22 @@ Route::prefix('admin')->middleware('guest:admin')->group(function () {
     Route::get('/login', 'auth\AuthController@loginForm')->name('admin.login_form');
     Route::post('/login', 'auth\AuthController@login')->name('admin.login');
 });
-Route::prefix('admin')->middleware('auth:admin')->group(function () {
 
-    Route::get('404',function(){
-        return view('errors.404');
-    });
-    Route::get('500',function(){
-        return view('errors.500');
-    });
-    Route::get('403',function(){
-        return view('errors.403');
-    });
+Route::prefix('admin')->middleware('auth:admin')->group(function () {
     Route::get('/', 'HomeController@index')->name('admin.home');
     Route::post('/logout', 'auth\AuthController@logout')->name('admin.logout');
     Route::get('/profile', 'auth\AuthController@profile')->name('admin.profile');
+    Route::post('/profile', 'auth\AuthController@saveProfile')->name('admin.saveProfile');
 
     //  transactions
-    Route::get('transactions','TransactionController@index')->name('transactions.index');
+    Route::get('transactions', 'TransactionController@index')->name('transactions.index');
     //  end transactions
 
     // companies routes
     Route::get('companies/data', 'CompanyController@data')->name('companies.data');
     Route::post('companies/bulkDelete', 'CompanyController@bulkDelete')->name('companies.bulkDelete');
     Route::get('companies/history/{id}', 'CompanyController@history')->name('companies.history');
+    Route::get('companies/historySearch', 'CompanyController@historySearch')->name('companies.historySearch');
     Route::resource('companies', 'CompanyController')->except('show');
     // end companies routes
 
@@ -55,7 +48,7 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
     Route::get('packages/data', 'PackageController@data')->name('packages.data');
     Route::post('packages/bulkDelete', 'PackageController@bulkDelete')->name('packages.bulkDelete');
     Route::get('packages/getPackage', 'PackageController@getPackage')->name('packages.getPackage');
-    Route::post('packages/update-status/{id}','PackageController@updateStatus')->name('packages.updateStatus');
+    Route::post('packages/update-status/{id}', 'PackageController@updateStatus')->name('packages.updateStatus');
     Route::resource('packages', 'PackageController');
     // end packages routes
 

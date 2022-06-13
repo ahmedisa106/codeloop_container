@@ -44,6 +44,19 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+        'company' => [
+            'driver' => 'session',
+            'provider' => 'companies',
+        ],
+
+        'moderator' => [
+            'driver' => 'session',
+            'provider' => 'moderators',
+        ],
+        'employee' => [
+            'driver' => 'session',
+            'provider' => 'employees',
+        ],
 
         'api' => [
             'driver' => 'token',
@@ -77,6 +90,18 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+        'companies' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\Company::class,
+        ],
+        'moderators' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\Moderator::class,
+        ],
+        'employees' => [
+            'driver' => 'eloquent',
+            'model' => \App\Models\Employee::class,
         ],
 
         // 'users' => [
@@ -113,6 +138,19 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+        'companies' => [
+            'provider' => 'companies',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'employees' => [
+            'provider' => 'employees',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
     ],
 
     /*

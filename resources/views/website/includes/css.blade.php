@@ -1,9 +1,9 @@
-<link rel="stylesheet" href="{{asset('assets/website')}}/vendors/bootstrap/css/bootstrap.min.css"/>
-<link rel="stylesheet" href="{{asset('assets/website')}}/vendors/animate/animate.min.css"/>
-<link rel="stylesheet" href="{{asset('assets/website')}}/vendors/animate/custom-animate.css"/>
-<link rel="stylesheet" href="{{asset('assets/website')}}/vendors/fontawesome/css/all.min.css"/>
-<link rel="stylesheet" href="{{asset('assets/website')}}/vendors/jarallax/jarallax.css"/>
-<link rel="stylesheet" href="{{asset('assets/website')}}/vendors/jquery-magnific-popup/jquery.magnific-popup.css"/>
+<link rel="stylesheet" href="{{asset('assets/website/vendors/bootstrap/css/bootstrap.min.css')}}"/>
+<link rel="stylesheet" href="{{asset('assets/website/vendors/animate/animate.min.css')}}"/>
+<link rel="stylesheet" href="{{asset('assets/website/vendors/animate/custom-animate.css')}}"/>
+<link rel="stylesheet" href="{{asset('assets/website/vendors/fontawesome/css/all.min.css')}}"/>
+<link rel="stylesheet" href="{{asset('assets/website/vendors/jarallax/jarallax.css')}}"/>
+<link rel="stylesheet" href="{{asset('assets/website/vendors/jquery-magnific-popup/jquery.magnific-popup.css')}}"/>
 <link rel="stylesheet" href="{{asset('assets/website')}}/vendors/nouislider/nouislider.min.css"/>
 <link rel="stylesheet" href="{{asset('assets/website')}}/vendors/nouislider/nouislider.pips.css"/>
 <link rel="stylesheet" href="{{asset('assets/website')}}/vendors/odometer/odometer.min.css"/>

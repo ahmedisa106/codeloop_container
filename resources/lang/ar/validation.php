@@ -135,5 +135,11 @@ return [
         ],
     ],
 
+    "values" => [
+        "job_type" => [
+            "messenger" => 'مندوب'
+        ]
+    ]
+
 
 ];
