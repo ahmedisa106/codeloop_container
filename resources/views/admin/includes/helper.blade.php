@@ -78,14 +78,15 @@
         $('.photo').on('change', function (e) {
             let file = e.target.files[0],
                 url = URL.createObjectURL(file),
-                preview = $(this).parent().parent().find(('.pic-prev'))
+                preview = $(this).parent().parent().find(('.pic-prev'));
+
             preview.attr('src', url);
         });
         // end preview image
 
         $(".select2-custom").select2({
-             dir: "rtl"
-            });
+            dir: "rtl"
+        });
         $("textarea.editor").each(function () {
             var txt = $(this).attr('name');
             CKEDITOR.replace(txt, {
@@ -313,7 +314,26 @@
                     timeout: 3500,
                 });
                 $('.table.datatable').DataTable().ajax.reload();
-            }
+            },
+            error: function (xhr) {
+
+                xhr.responseJSON.error ?
+                    $.Notify({
+                        caption: 'خطأ',
+                        content: xhr.responseJSON.error,
+                        type: 'alert',
+                        timeout: 3500,
+                    })
+                    :
+                    $.each(xhr.responseJSON.errors, function (key, value) {
+                        $.Notify({
+                            caption: 'خطأ',
+                            content: value,
+                            type: 'alert',
+                            timeout: 3500,
+                        })
+                    });
+            },
         });
 
 

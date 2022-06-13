@@ -23,6 +23,9 @@ class RedirectIfAuthenticated
                 case 'admin':
                     $route = RouteServiceProvider::Admin;
                     break;
+                case 'company':
+                    $route = RouteServiceProvider::Company;
+                    break;
                 default:
                     $route = RouteServiceProvider::HOME;
             }

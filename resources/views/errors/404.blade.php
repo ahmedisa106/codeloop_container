@@ -162,7 +162,8 @@
                 نأسف لك ، لم نتمكن من العثور على تلك الصفحة</h3>
             <p class="error-page__text">تستطيع الرجوع للصفحة السابقة عبر الضغط علي الزر التالي</p>
 
-            <a href="{{url()->previous()}}" class="thm-btn error-page__btn">عودة للصفحة السابقة</a>
+
+            <a href="{{request()->segment(1) == 'admin' ? url()->previous('/admin') :url()->previous()}}" class="thm-btn error-page__btn">عودة للصفحة السابقة</a>
         </div>
     </div>
 </section>

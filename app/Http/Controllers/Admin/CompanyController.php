@@ -10,6 +10,7 @@ use App\Models\Company;
 use App\Models\Package;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 use Yajra\DataTables\Facades\DataTables;
 
 class CompanyController extends Controller
@@ -71,7 +72,7 @@ class CompanyController extends Controller
             $data['logo'] = $this->upload($request->logo, 'companies');
         }
         $data['password'] = bcrypt($request->password);
-        $data['status'] = $request->status ? 'active':'inactive';
+        $data['status'] = $request->status ? 'active' : 'inactive';
 
         DB::beginTransaction();
         Company::create($data);
@@ -118,7 +119,7 @@ class CompanyController extends Controller
             $data['logo'] = $this->upload($request->logo, 'companies', true, $company->logo);
         }
         $data['password'] = $request->password ? bcrypt($request->password) : $company->password;
-        $data['status'] = $request->status ? 'active':'inactive';
+        $data['status'] = $request->status ? 'active' : 'inactive';
 
 
         DB::beginTransaction();
@@ -136,6 +137,32 @@ class CompanyController extends Controller
         return view('admin.pages.companies.history', compact('company'));
 
     }//end of  function
+
+    public function historySearch(Request $request)
+    {
+
+        $company = Company::with('history')->when($request, function ($q) use ($request) {
+
+            $q->with(['history' => function ($q) use ($request) {
+                if ($request->status && $request->status != '') {
+                    $q->where('status', $request['status']);
+                }
+                if ($request->date_from && $request->date_from != '' && $request->date_to && $request->date_to != '') {
+
+                    $q->whereBetween('at', [$request['date_from'], $request['date_to']]);
+
+                }
+            }]);
+
+
+        })->where('id', $request->company_id)->first();
+
+
+        $view = View::make('admin.pages.companies.table', compact('company'))->render();
+
+        return response()->json(['data' => $view], 200);
+
+    }//end of historySearch function
 
     public function destroy($id)
     {

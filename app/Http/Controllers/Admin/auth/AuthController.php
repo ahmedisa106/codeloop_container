@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Admin\auth;
 
+use App\Helper\ResponseTrait;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
+    use ResponseTrait;
     public function loginForm()
     {
 
@@ -38,8 +41,33 @@ class AuthController extends Controller
 
     }//end of logout function
 
-    public function profile(){
+    public function profile()
+    {
         return view('admin.auth.profile');
 
     }//end of profile function
+
+    public function saveProfile(Request $request)
+    {
+        $validator = Validator::make($request->all(),[
+            'name'=>'required',
+            'email'=>'required|unique:admins,email,'.\auth('admin')->user()->id,
+        ],[],[
+
+            'name'=>'الإسم',
+            'email'=>'البريد الإلكتروني'
+
+        ]);
+        if($validator->fails()){
+                    return $this->setError($validator->errors()->first());
+        }
+
+        $data = $validator->validated();
+        $data['password'] = $request->password ? bcrypt($request->password) : \auth('admin')->user()->password;
+
+        \auth('admin')->user()->update($data);
+
+        return  $this->setUpdatedSuccess();
+
+    }//end of saveProfile function
 }
