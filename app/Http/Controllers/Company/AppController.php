@@ -41,7 +41,6 @@ class AppController extends Controller
                 return view('company.includes.check_item', compact('raw'));
             })
             ->addColumn('status', function ($raw) use ($model) {
-
                 return view('company.includes.status_btn', compact('raw', 'model'));
             })
             ->make(true);
