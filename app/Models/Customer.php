@@ -19,7 +19,7 @@ class Customer extends Model
         return $this->hasMany(ContainerRental::class);
     }//end of  function
 
-    public function address()
+    public function addresses()
     {
         return $this->hasMany(CustomerAddress::class);
     }//end of address function

@@ -30,10 +30,24 @@
                 </div>
 
                 <div class="box-add">
-                    @foreach(json_decode($customer->address,true) as $address)
-                        <div class="box-div">
-                            <input value="{{$address}}" class="form-control" name="address[]" type="text" placeholder="اكتب عنوان ">
-                            <i class="fa fa-times delete-address-box {{$loop->first ? 'd-none':''}}"></i>
+                    @foreach($customer->addresses as $index => $address)
+                        <div class="box-all">
+                            <div class="box-div">
+                                <label class="form-label">العنوان</label>
+                                <input class="form-control" name="address[{{$index}}][address]" value="{{$address->address}}" type="text" placeholder="">
+                            </div>
+                            <div class="box-div">
+                                <label class="form-label">خطوط الطول</label>
+                                <input class="form-control" name="address[{{$index}}][latitude]" value="{{$address->latitude}}" type="text" placeholder="">
+                            </div>
+                            <div class="box-div">
+                                <label class="form-label">دوائر العرض</label>
+                                <input class="form-control" name="address[{{$index}}][longitude]" value="{{$address->longitude}}" type="text" placeholder="">
+                            </div>
+                            @if(!$loop->first)
+                                <i class="fa fa-times delete-address-box"></i>
+                            @endif
+
                         </div>
                     @endforeach
 
@@ -59,19 +73,34 @@
 
 
 <script>
-    $('.btn-add-add a').on('click', function () {
+    $(function () {
+        let index = {{$customer->addresses->count() -1}};
+        $('.btn-add-add a').on('click', function () {
 
-        let html = `
-             <div class="box-div">
-                        <input class="form-control" name="address[]" type="text" placeholder="اكتب عنوان ">
+            index++;
+            let html = `
+             <div class="box-all">
+                        <div class="box-div">
+                            <label class="form-label">العنوان</label>
+                            <input class="form-control" name="address[${index}][address]" type="text" placeholder="">
+                        </div>
+                        <div class="box-div">
+                            <label class="form-label">خطوط الطول</label>
+                            <input class="form-control" name="address[${index}][latitude]" type="text" placeholder="">
+                        </div>
+                        <div class="box-div">
+                            <label class="form-label">دوائر العرض</label>
+                            <input class="form-control" name="address[${index}][longitude]" type="text" placeholder="">
+                        </div>
                         <i class="fa fa-times delete-address-box"></i>
-              </div>
+                    </div>
         `;
 
-        $('.box-add').append(html);
+            $('.box-add').append(html);
+        })
+        $(document).on('click', '.delete-address-box', function () {
+            $(this).parents('.box-all').remove();
+        })
     })
 
-    $(document).on('click', '.delete-address-box', function () {
-        $(this).parents('.box-div').remove();
-    })
 </script>

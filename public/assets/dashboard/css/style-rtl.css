@@ -49886,26 +49886,33 @@ table .verify {
 }
 
 .btn-add-add {
-    padding-top: 24px;
+    padding-top: 15px;
 }
 
 .box-add {
     margin-top: 25px;
     padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.box-add .box-all {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
+    position: relative;
+    border: 1px solid #adaaaa;
+    padding: 14px;
+    border-radius: 10px;
+    background: #d8d8d8;
 }
 
 .box-add .box-div {
     position: relative;
 }
 
-.box-add .box-div input {
-
-}
-
-.box-add .box-div i {
+.box-add .box-all i {
     position: absolute;
     left: -10px;
     top: -10px;

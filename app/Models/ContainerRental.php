@@ -33,15 +33,17 @@ class ContainerRental extends Model
     public function contract()
     {
         return $this->belongsTo(Contract::class, 'contract_id');
-
-
     }//end of contract function
 
     public function container()
     {
         return $this->belongsTo(Container::class, 'container_id');
-
-
     }//end of container function
+
+    public function messenger()
+    {
+        return $this->belongsTo(Employee::class, 'messenger_id')->where('job_type', 'messenger');
+
+    }//end of messenger function
 
 }

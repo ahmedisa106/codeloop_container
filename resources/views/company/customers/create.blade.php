@@ -25,7 +25,15 @@
 
                 <div class="col-md-4 form-group">
                     <label class="form-label">العنوان</label>
-                    <input class="form-control" name="address[]" type="text" placeholder="">
+                    <input class="form-control" name="address[0][address]" type="text" placeholder="">
+                </div>
+                <div class="col-md-4 form-group">
+                    <label class="form-label">خطوط الطول</label>
+                    <input class="form-control" name="address[0][longitude]" type="text" placeholder="">
+                </div>
+                <div class="col-md-4 form-group">
+                    <label class="form-label">دوائر العرض</label>
+                    <input class="form-control" name="address[0][latitude]" type="text" placeholder="">
                 </div>
 
                 <div class="col-md-4 btn-add-add">
@@ -56,19 +64,31 @@
 
 
 <script>
+    let index = 0;
     $('.btn-add-add a').on('click', function () {
 
+        index++;
         let html = `
-             <div class="box-div">
-                        <input class="form-control" name="address[]" type="text" placeholder="اكتب عنوان ">
+             <div class="box-all">
+                        <div class="box-div">
+                            <label class="form-label">العنوان</label>
+                            <input class="form-control" name="address[${index}][address]" type="text" placeholder="">
+                        </div>
+                        <div class="box-div">
+                            <label class="form-label">خطوط الطول</label>
+                            <input class="form-control" name="address[${index}][latitude]" type="text" placeholder="">
+                        </div>
+                        <div class="box-div">
+                            <label class="form-label">دوائر العرض</label>
+                            <input class="form-control" name="address[${index}][longitude]" type="text" placeholder="">
+                        </div>
                         <i class="fa fa-times delete-address-box"></i>
-              </div>
+                    </div>
         `;
 
         $('.box-add').append(html);
     })
-
     $(document).on('click', '.delete-address-box', function () {
-        $(this).parents('.box-div').remove();
+        $(this).parents('.box-all').remove();
     })
 </script>
