@@ -21,7 +21,7 @@ class CreateContainersTable extends Migration
             $table->unsignedBigInteger('category_size_id');
             $table->unsignedBigInteger('branch_id');
             $table->decimal('price', 10, 2);
-            $table->enum('status', ['active', 'inactive']);
+            $table->enum('status', ['available', 'notAvailable', 'pending', 'wasted'])->default('available');
             $table->timestamps();
 
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');

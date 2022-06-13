@@ -78,7 +78,6 @@ class ContainerController extends Controller
     {
         $data = $request->validated();
         $data['company_id'] = auth()->user()->company->id;
-        $data['status'] = $request->status ?? 'inactive';
         Container::create($data);
 
         return $this->setAddedSuccess();
@@ -118,9 +117,6 @@ class ContainerController extends Controller
     public function update(ContainerRequest $request, Container $container)
     {
         $data = $request->validated();
-        $data['status'] = $request->status ?? 'inactive';
-
-
         $container->update($data);
 
         return $this->setUpdatedSuccess();

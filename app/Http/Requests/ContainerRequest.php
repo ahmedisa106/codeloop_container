@@ -34,7 +34,7 @@ class ContainerRequest extends FormRequest
             'category_id' => 'required|exists:categories,id',
             'category_size_id' => 'required|exists:category_sizes,id',
             'price' => 'required|numeric',
-
+            'status' => 'required|in:available,notAvailable,pending,wasted'
         ];
 
     }//end of onStore function
@@ -42,11 +42,12 @@ class ContainerRequest extends FormRequest
     public function onUpdate()
     {
         return [
-            'number' => 'required||unique:containers,number,' . request()->id,
-            'branch_id' => 'required|exists:branches,id',
-            'category_id' => 'required|exists:categories,id',
-            'category_size_id' => 'required|exists:category_sizes,id',
-            'price' => 'required|numeric',
+            'number' => 'required || unique:containers,number,' . request()->id,
+            'branch_id' => 'required | exists:branches,id',
+            'category_id' => 'required | exists:categories,id',
+            'category_size_id' => 'required | exists:category_sizes,id',
+            'price' => 'required | numeric',
+            'status' => 'required|in:available,notAvailable,pending,wasted',
         ];
 
 

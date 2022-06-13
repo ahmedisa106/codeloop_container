@@ -87,5 +87,18 @@ class AppSeeder extends Seeder
             'status' => 'active',
             'company_id' => 1
         ]);
+
+        \App\Models\App::create([
+            'model' => 'contracts',
+            'ar_model' => 'العقود',
+            'status' => 'active',
+            'company_id' => 1
+        ]);
+        \App\Models\App::create([
+            'model' => 'container-rentals',
+            'ar_model' => 'إيجار الحاويات',
+            'status' => 'active',
+            'company_id' => 1
+        ]);
     }
 }

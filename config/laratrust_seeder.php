@@ -25,6 +25,8 @@ return [
             'trucks' => 'c,r,u,d,e',
             'moderators' => 'c,r,u,d,e',
             'containers' => 'c,r,u,d,e',
+            'contracts' => 'c,r,u,d,e',
+            'container-rentals' => 'c,r,u,d,e',
         ],
         'driver' => [
 
