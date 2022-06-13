@@ -1,8 +1,7 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use App\Models\Company;
 use Illuminate\Database\Eloquent\Model;
 
 class Contract extends Model
@@ -14,4 +13,9 @@ class Contract extends Model
     {
         return $this->belongsTo(Company::class, 'company_id');
     }//end of company function
+
+    public function containerRentals()
+    {
+        return $this->hasMany(ContainerRental::class);
+    }//end of containerRentals function
 }

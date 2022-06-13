@@ -29,4 +29,11 @@ class Container extends Model
     {
         return $this->belongsTo(CategorySize::class, 'category_size_id');
     }//end of company function
+
+    public function containerRentals()
+    {
+        return $this->hasMany(ContainerRental::class);
+
+
+    }//end of containerRentals function
 }
