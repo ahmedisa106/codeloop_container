@@ -17,7 +17,7 @@
                 @permission('read_moderators')
                 @if(active_apps('moderators'))
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('moderators.index')}}">
-                            <img src="{{asset('assets/dashboard')}}/images/icons/home.png" alt="">
+                            <img src="{{asset('assets/dashboard')}}/images/icons/manager.png" alt="">
                             <span>المشرفين</span></a>
                     </li>
                 @endif
@@ -26,7 +26,7 @@
                 @permission('read_employees')
                 @if(active_apps('employees'))
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('employees.index')}}">
-                            <img src="{{asset('assets/dashboard')}}/images/icons/home.png" alt="">
+                            <img src="{{asset('assets/dashboard')}}/images/icons/boss.png" alt="">
                             <span>الموظفين</span></a>
                     </li>
                 @endif
@@ -36,12 +36,13 @@
                 @permission(['read_customers'])
                 @if(active_apps('customers') && active_apps('customer-addresses'))
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0);">
-                            <img src="{{asset('assets/dashboard')}}/images/icons/home.png" alt="">
+                          <img src="{{asset('assets/dashboard')}}/images/icons/rating.png" alt="">
                             <span>بيانات العملاء</span></a>
                         <ul class="sidebar-submenu">
                             <li><a href="{{route('customers.index')}}">العملاء</a></li>
 
                         </ul>
+
                     </li>
                 @endif
                 @endpermission
@@ -49,22 +50,24 @@
                 @permission('read_trucks')
                 @if(active_apps('trucks'))
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('trucks.index')}}">
-                            <img src="{{asset('assets/dashboard')}}/images/icons/home.png" alt="">
+                            <img src="{{asset('assets/dashboard')}}/images/icons/truck.png" alt="">
                             <span>الشاحنات</span></a>
                     </li>
                 @endif
                 @endpermission
 
 
+
                 @permission(['read_container','read_container-rentals'])
                 @if(active_apps('containers') && active_apps('container-rentals'))
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0);">
-                            <img src="{{asset('assets/dashboard')}}/images/icons/home.png" alt="">
+                             <img src="{{asset('assets/dashboard')}}/images/icons/container.png" alt="">
                             <span> بيانات الحاويات</span></a>
                         <ul class="sidebar-submenu">
                             <li><a href="{{route('containers.index')}}">الحاويات</a></li>
                             <li><a href="{{route('container-rentals.index')}}">إيجار الحاويات</a></li>
                         </ul>
+
                     </li>
                 @endif
                 @endpermission
@@ -73,7 +76,7 @@
                 @permission('read_roles')
                 @if(active_apps('roles'))
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0);">
-                            <img src="{{asset('assets/dashboard')}}/images/icons/setting.png" alt="">
+                            <img src="{{asset('assets/dashboard')}}/images/icons/lock.png" alt="">
                             <span>الصلاحيات والأدوار</span></a>
 
                         <ul class="sidebar-submenu">

@@ -19,10 +19,14 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     Route::resource('apps', 'AppController');
     // end job-types
 
-    Route::view('test', 'company.test');
-    Route::view('test2', 'company.test2');
-    Route::view('test3', 'company.test3');
-    Route::view('test4', 'company.test4');
+
+    Route::view('test','company.test');
+    Route::view('test2','company.test2');
+    Route::view('test3','company.test3');
+    Route::view('test4','company.test4');
+    Route::view('test5','company.test5');
+    Route::view('test6','company.test6');
+
 });
 
 Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active', 'active_app'])->group(function () {
