@@ -22,10 +22,19 @@ class Category extends Model
 
     public function sizes()
     {
-
         return $this->hasMany(CategorySize::class);
-
     }//end of sizes function
+
+    public function containerRentals()
+    {
+        return $this->hasMany(ContainerRental::class);
+
+    }//end of containerRentals function
+
+    public function employees()
+    {
+        return $this->hasMany(Employee::class);
+    }//end of employees function
 
 
 }

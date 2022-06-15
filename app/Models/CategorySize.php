@@ -24,4 +24,9 @@ class CategorySize extends Model
     {
         return $this->hasMany(Container::class);
     }//end of  function
+
+    public function containerRentals()
+    {
+        return $this->hasMany(ContainerRental::class);
+    }//end of containerRentals function
 }

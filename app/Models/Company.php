@@ -3,7 +3,6 @@
 namespace App\Models;
 
 
-use App\Contract;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\File;
 use Laratrust\Traits\LaratrustUserTrait;
@@ -61,7 +60,11 @@ class Company extends Authenticatable
 
     public function categories()
     {
-        return $this->hasMany(Category::class)->where('company_id', auth()->user()->company->id);
+        if (auth()->user()->hasRole('admin')) {
+            return $this->hasMany(Category::class)->where('company_id', auth()->user()->company->id);
+        } elseif (auth()->user()->hasRole('messenger')) {
+            return $this->hasMany(Category::class)->where('company_id', auth()->user()->company->id)->where('id', auth()->user()->category_id);
+        }
     }//end of categories function
 
     public function categorySizes()
@@ -107,7 +110,12 @@ class Company extends Authenticatable
 
     public function messengers()
     {
-        return $this->hasMany(Employee::class)->where('company_id', auth()->user()->company->id)->where('job_type', 'messengers');
+        return $this->hasMany(Employee::class)->where('company_id', auth()->user()->company->id)->where('job_type', 'messenger');
+    }//end of drivers function
+
+    public function availableMessengers()
+    {
+        return $this->hasMany(Employee::class)->where('company_id', auth()->user()->company->id)->where('job_type', 'messenger')->where('status', 'active');
 
     }//end of drivers function
 
@@ -126,9 +134,22 @@ class Company extends Authenticatable
         return $this->hasMany(Container::class)->where('company_id', auth()->user()->company->id);
     }//end of containers function
 
+    public function availableContainers()
+    {
+        return $this->hasMany(Container::class)->where('company_id', auth()->user()->company->id)->where('status', 'available');
+    }//end of containers function
+
     public function contracts()
     {
         return $this->hasMany(Contract::class)->where('company_id', auth()->user()->company->id);
     }//end of contracts function
+
+    public function containerRentals()
+    {
+
+        return $this->hasMany(ContainerRental::class)->where('company_id', auth()->user()->company->id);
+
+
+    }//end of containerRentals function
 
 }

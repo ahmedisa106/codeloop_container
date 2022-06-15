@@ -33,7 +33,10 @@ class CustomerRequest extends FormRequest
             'email' => 'required|unique:customers,email',
             'phone' => 'required|numeric',
             'address' => 'required|array|min:1',
-            'address.*' => 'required|string',
+            'address.*' => 'required|array|min:1',
+            'address.*.address' => 'required',
+            'address.*.latitude' => 'required',
+            'address.*.longitude' => 'required',
 
         ];
 
@@ -46,7 +49,10 @@ class CustomerRequest extends FormRequest
             'email' => 'required|unique:customers,email,' . request()->id,
             'phone' => 'required|numeric',
             'address' => 'required|array|min:1',
-            'address.*' => 'required|string',
+            'address.*' => 'required|array',
+            'address.*.address' => 'required',
+            'address.*.latitude' => 'required',
+            'address.*.longitude' => 'required',
         ];
 
 
@@ -59,7 +65,9 @@ class CustomerRequest extends FormRequest
             'name' => 'الإسم',
             'email' => 'البريد الإلكتروني',
             'phone' => 'الهاتف',
-            'address' => 'العنوان',
+            'address.*.address' => 'العنوان',
+            'address.*.latitude' => 'دوائر العرض',
+            'address.*.longitude' => 'خط الطول',
         ];
     }
 }

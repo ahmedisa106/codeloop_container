@@ -18,7 +18,6 @@ class CreateCustomersTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->longText('address');
             $table->unsignedBigInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->timestamps();

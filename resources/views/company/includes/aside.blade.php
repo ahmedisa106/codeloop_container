@@ -32,11 +32,17 @@
                 @endif
                 @endpermission
 
-                @permission('read_customers')
-                @if(active_apps('customers'))
-                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('customers.index')}}">
-                            <img src="{{asset('assets/dashboard')}}/images/icons/rating.png" alt="">
-                            <span>العملاء</span></a>
+
+                @permission(['read_customers'])
+                @if(active_apps('customers') && active_apps('customer-addresses'))
+                    <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0);">
+                          <img src="{{asset('assets/dashboard')}}/images/icons/rating.png" alt="">
+                            <span>بيانات العملاء</span></a>
+                        <ul class="sidebar-submenu">
+                            <li><a href="{{route('customers.index')}}">العملاء</a></li>
+
+                        </ul>
+
                     </li>
                 @endif
                 @endpermission
@@ -50,11 +56,18 @@
                 @endif
                 @endpermission
 
-                @permission('read_containers')
-                @if(active_apps('containers'))
-                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('containers.index')}}">
-                            <img src="{{asset('assets/dashboard')}}/images/icons/container.png" alt="">
-                            <span>الحاويات</span></a>
+
+
+                @permission(['read_container','read_container-rentals'])
+                @if(active_apps('containers') && active_apps('container-rentals'))
+                    <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0);">
+                             <img src="{{asset('assets/dashboard')}}/images/icons/container.png" alt="">
+                            <span> بيانات الحاويات</span></a>
+                        <ul class="sidebar-submenu">
+                            <li><a href="{{route('containers.index')}}">الحاويات</a></li>
+                            <li><a href="{{route('container-rentals.index')}}">إيجار الحاويات</a></li>
+                        </ul>
+
                     </li>
                 @endif
                 @endpermission

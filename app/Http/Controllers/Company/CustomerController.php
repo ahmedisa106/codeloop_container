@@ -68,10 +68,9 @@ class CustomerController extends Controller
     {
         $data = $request->validated();
         $data['company_id'] = auth()->user()->company->id;
-        $data['address'] = json_encode($request->address, JSON_UNESCAPED_UNICODE);
-
-        Customer::create($data);
-
+        unset($data['address']);
+        $customer = Customer::create($data);
+        $customer->addresses()->createMany($request->address);
         return $this->setAddedSuccess();
     }
 
@@ -107,9 +106,10 @@ class CustomerController extends Controller
     public function update(CustomerRequest $request, Customer $customer)
     {
         $data = $request->validated();
-        $data['address'] = json_encode($request->address, JSON_UNESCAPED_UNICODE);
-
+        unset($data['address']);
         $customer->update($data);
+        $customer->addresses()->delete();
+        $customer->addresses()->createMany($request->address);
         return $this->setUpdatedSuccess();
     }
 
@@ -132,4 +132,11 @@ class CustomerController extends Controller
         Customer::destroy($ids['items']);
         return $this->setDeletedSuccess();
     }//end of bulkDelete function
+
+    public function getCustomerAddresses(Request $request)
+    {
+        $addresses = Customer::find($request->id)->addresses;
+        return $this->setData($addresses);
+
+    }//end of getCustomerAddresses function
 }

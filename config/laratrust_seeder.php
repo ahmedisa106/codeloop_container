@@ -21,6 +21,7 @@ return [
             'roles' => 'c,r,u,d,e',
             'apps' => 'c,r,u,d,e',
             'customers' => 'c,r,u,d,e',
+            'customer-addresses' => 'c,r,u,d,e',
             'employees' => 'c,r,u,d,e',
             'trucks' => 'c,r,u,d,e',
             'moderators' => 'c,r,u,d,e',
@@ -28,12 +29,15 @@ return [
             'contracts' => 'c,r,u,d,e',
             'container-rentals' => 'c,r,u,d,e',
         ],
+        'messenger' => [
+            'containers' => 'c,r,u,d,e',
+            'contracts' => 'c,r,u,d,e',
+            'container-rentals' => 'c,r,u,d,e',
+        ],
         'driver' => [
 
         ],
-        'messenger' => [
 
-        ],
 
     ],
 

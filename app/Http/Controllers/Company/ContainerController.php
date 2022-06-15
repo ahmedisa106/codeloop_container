@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Company;
 use App\Helper\ResponseTrait;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContainerRequest;
-use App\Models\Category;
 use App\Models\Container;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -139,13 +139,22 @@ class ContainerController extends Controller
         parse_str($request->ids, $ids);
         Container::destroy($ids['items']);
         return $this->setDeletedSuccess();
-
     }//end of bulkDelete function
 
-    public function getCategorySizes(Request $request)
+    public function getDischargePrice(Request $request)
     {
-        $categorySizes = Category::find($request->id)->sizes;
+        $price = Container::find($request->id)->price;
+        return $this->setData($price);
+    }//end of getDischargePrice function
 
-        return $this->setData($categorySizes);
-    }//end of getCategorySizes function
+    public function getMessengers(Request $request)
+    {
+
+        $messengers = Employee::where('category_id', $request->cat_id)->where('status', 'active')->where('job_type', 'messenger')->get();
+
+        return $this->setData($messengers);
+
+    }//end of getMessengers function
+
+
 }
