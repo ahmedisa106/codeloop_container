@@ -85,7 +85,7 @@ class ContainerRentalRequest extends FormRequest
             'category_size_id' => 'حجم التصنيف',
             'customer_id' => 'العميل',
             'customer_address_id' => 'عنوان العميل',
-            'container_id' => ' رقم الحاويه',
+            'container_id' => ' رقم الحاوية',
             'discharge_price' => 'سعر التفريغ',
             'discharge_number' => 'عدد التفريغات',
             'discount' => 'الخصم',

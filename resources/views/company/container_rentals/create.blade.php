@@ -15,6 +15,11 @@
                 </div>
 
                 <div class="col-md-4 form-group contracts d-none">
+                @permission('create_contracts')
+                    <a href="{{route('contracts.create')}}" class="show_sub_modal">
+                        <span aria-label="اضافة عقد" data-microtip-position="top" role="tooltip"><i class="fa fa-plus"></i></span>
+                    </a>
+                    @endpermission
                     <label class="form-label">رقم العقد</label>
                     <select name="contract_id" class="form-control select2-custom" id="">
                         <option value="" disabled selected>إختر رقم العقد</option>
@@ -24,8 +29,10 @@
                     </select>
                 </div>
                 <div class="col-md-4 form-group">
+
                     @permission('create_categories')
                     <a href="{{route('categories.create')}}" data-bs-toggle="tooltip" data-bs-placement="top" title="اضافة تصنيف" class="show_sub_modal"><i class="fa fa-plus"></i></a>
+
                     @endpermission
                     <label class="form-label">التصنيفات</label>
                     <select name="category_id" class="form-control select2-custom category_id" id="">
@@ -36,6 +43,11 @@
                 </div>
                 <span class="loader-div d-none"></span>
                 <div class="col-md-4 form-group">
+                @permission('create_category-sizes')
+                    <a href="{{route('category-sizes.create')}}" class="show_sub_modal">
+                        <span aria-label="اضافة حجم" data-microtip-position="top" role="tooltip"><i class="fa fa-plus"></i></span>
+                    </a>
+                    @endpermission
                     <label class="form-label">حجم التصنيف</label>
                     <select name="category_size_id" class="form-control select2-custom category_size_id" id="">
                         <option value="">----</option>
@@ -43,7 +55,9 @@
                 </div>
                 <div class="col-md-4 form-group">
                     @permission('create_customers')
-                    <a href="{{route('customers.create')}}" data-bs-toggle="tooltip" data-bs-placement="top" title="اضافة عميل" class="show_sub_modal"><i class="fa fa-plus"></i></a>
+                    <a href="{{route('customers.create')}}" class="show_sub_modal">
+                        <span aria-label="اضافة عميل" data-microtip-position="top" role="tooltip"><i class="fa fa-plus"></i></span>
+                    </a>
                     @endpermission
                     <label class="form-label">العميل</label>
                     <select name="customer_id" class="form-control select2-custom customer_id" id="">
@@ -60,9 +74,14 @@
 
 
                 <div class="col-md-4 form-group">
+                @permission('create_containers')
+                    <a href="{{route('containers.create')}}" class="show_sub_modal">
+                        <span aria-label="اضافة حاوية" data-microtip-position="top" role="tooltip"><i class="fa fa-plus"></i></span>
+                    </a>
+                    @endpermission
                     <label class="form-label">رقم الحاوية</label>
                     <select name="container_id" class="form-control select2-custom container_id" id="">
-                        <option value="" disabled selected>إختر رقم الحاويه</option>
+                        <option value="" disabled selected>إختر رقم الحاوية</option>
 
                     </select>
                 </div>
@@ -83,18 +102,6 @@
                     <input class="form-control total" name="total" type="number" placeholder="" readonly>
                 </div>
 
-                <h3 class="title-h3">مدة الايجار</h3>
-                <div class="col-md-4 form-group">
-                    <label class="form-label">من تاريخ</label>
-                    <input name="start_at" class="datepicker-here form-control" type="text">
-                </div>
-                <div class="col-md-4 form-group">
-                    <label class="form-label">الى تاريخ</label>
-                    <input name="end_at" class="datepicker-here form-control" type="text">
-                </div>
-                <div class="line"></div>
-
-
                 @role('admin')
                 <div class="col-md-4 form-group">
                     <label class="form-label">المندوب</label>
@@ -104,6 +111,17 @@
                     </select>
                 </div>
                 @endrole
+
+                <h3 class="title-h3">مدة الايجار</h3>
+                <div class="col-md-4 form-group">
+                    <label class="form-label">من تاريخ</label>
+                    <input name="start_at" class="datepicker-here form-control" type="text">
+                </div>
+                <div class="col-md-4 form-group">
+                    <label class="form-label">الى تاريخ</label>
+                    <input name="end_at" class="datepicker-here form-control" type="text">
+                </div>
+
                 <div class="modal-footer">
                     <button class="btn btn-primary btn-air-primary btn-icon" type="submit">
                         <i class="fa fa-save"></i>
@@ -250,7 +268,7 @@
             },
 
             success: function (res) {
-                let html = `<option selected disabled>إختر رقم حاويه</option>`;
+                let html = `<option selected disabled>إختر رقم حاوية</option>`;
                 $.each(res.data, function (key, value) {
                     html += `<option value="${value.id}">${value.number}</option>`
                     $('.container_id').html(html);

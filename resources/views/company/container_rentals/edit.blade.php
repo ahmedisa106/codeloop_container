@@ -61,7 +61,7 @@
                 <div class="col-md-4 form-group">
                     <label class="form-label">رقم الحاوية</label>
                     <select name="container_id" class="form-control select2-custom container_id" id="">
-                        <option value="" disabled selected>إختر رقم الحاويه</option>
+                        <option value="" disabled selected>إختر رقم الحاوية</option>
 
                     </select>
                 </div>
@@ -265,7 +265,7 @@
             },
 
             success: function (res) {
-                let html = `<option selected disabled>إختر رقم حاويه</option>`;
+                let html = `<option selected disabled>إختر رقم حاوية</option>`;
                 $.each(res.data, function (key, value) {
                     let selected = value.id == '{{$containerRental->container_id}}' ? 'selected' : '';
                     html += `<option ${selected} value="${value.id}">${value.number}</option>`
