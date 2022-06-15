@@ -57,10 +57,10 @@ class ContainerRequest extends FormRequest
     public function attributes()
     {
         return [
-            'number' => 'رقم الحاويه',
+            'number' => 'رقم الحاوية',
             'branch_id' => 'الفرع',
             'category_id' => 'التصنيف',
-            'category_size_id' => 'حجم الحاويه',
+            'category_size_id' => 'حجم الحاوية',
             'price' => 'السعر',
         ];
     }
