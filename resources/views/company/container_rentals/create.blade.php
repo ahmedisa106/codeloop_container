@@ -24,12 +24,13 @@
                     </select>
                 </div>
                 <div class="col-md-4 form-group">
+                    @permission('create_categories')
+                    <a href="{{route('categories.create')}}" data-bs-toggle="tooltip" data-bs-placement="top" title="اضافة تصنيف" class="show_sub_modal"><i class="fa fa-plus"></i></a>
+                    @endpermission
                     <label class="form-label">التصنيفات</label>
                     <select name="category_id" class="form-control select2-custom category_id" id="">
                         <option value="" disabled selected>إختر تصنيف</option>
-                        @foreach($categories as $cat)
-                            <option value="{{$cat->id}}">{{$cat->name}}</option>
-                        @endforeach
+
 
                     </select>
                 </div>
@@ -45,11 +46,9 @@
                     <a href="{{route('customers.create')}}" data-bs-toggle="tooltip" data-bs-placement="top" title="اضافة عميل" class="show_sub_modal"><i class="fa fa-plus"></i></a>
                     @endpermission
                     <label class="form-label">العميل</label>
-                    <select name="customer_id" class="form-control select2-custom" id="">
+                    <select name="customer_id" class="form-control select2-custom customer_id" id="">
                         <option value="" disabled selected>إختر عميل</option>
-                        @foreach($customers as $customer)
-                            <option value="{{$customer->id}}">{{$customer->name}}</option>
-                        @endforeach
+
                     </select>
                 </div>
                 <div class="col-md-4 form-group">
@@ -67,8 +66,6 @@
 
                     </select>
                 </div>
-
-
                 <div class="col-md-4 form-group">
                     <label class="form-label"> سعر التفريغة ( ر.س )</label>
                     <input class="form-control discharge_price" readonly value="0" name="discharge_price" type="text" placeholder="">
@@ -124,6 +121,7 @@
     </div>
 </div>
 <script>
+
 
     $('select[name="contract_type"]').on('change', function () {
         if ($(this).val() == 'contract') {
@@ -261,5 +259,46 @@
         })
     }
 
+    $(document).ready(function () {
+        getCustomers();
+        getCategories();
+    });
 
+    function getCustomers() {
+        let response = [];
+        $.ajax({
+            type: 'get',
+            url: '{{route('customers.getCustomers')}}',
+            success: function (res) {
+                let html = `<option selected disabled>إختر عميل</option>`;
+                $.each(res.data, function (key, value) {
+                    html += `<option  value="${value.id}">${value.name}</option>`
+                    $('select[name="customer_id"]').html(html);
+                })
+                response.push(res.data)
+            }
+
+        })
+        return response
+
+    }
+
+    function getCategories() {
+        let response = [];
+        $.ajax({
+            type: 'get',
+            url: '{{route('categories.getCategories')}}',
+            success: function (res) {
+                let html = `<option selected disabled>إختر تصنيف</option>`;
+                $.each(res.data, function (key, value) {
+                    html += `<option  value="${value.id}">${value.name}</option>`
+                    $('select[name="category_id"]').html(html);
+                })
+                response.push(res.data)
+            }
+
+        })
+        return response
+
+    }
 </script>

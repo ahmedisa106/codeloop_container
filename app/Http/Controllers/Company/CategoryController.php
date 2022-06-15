@@ -29,7 +29,7 @@ class CategoryController extends Controller
 
     public function data()
     {
-        $categories = Category::where('company_id', auth()->user()->company->id)->get();
+        $categories = auth()->user()->company->categories;
         $model = 'categories';
         return DataTables::of($categories)
             ->addColumn('actions', function ($raw) use ($model) {
@@ -138,4 +138,10 @@ class CategoryController extends Controller
         $categorySizes = Category::find($request->id)->sizes;
         return $this->setData($categorySizes);
     }//end of getCategorySizes function
+
+    public function getCategories()
+    {
+        $categories = auth()->user()->company->categories;
+        return $this->setData($categories);
+    }//end of getCategories function
 }
