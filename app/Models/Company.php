@@ -61,9 +61,9 @@ class Company extends Authenticatable
     public function categories()
     {
         if (auth()->user()->hasRole('admin')) {
-            return $this->hasMany(Category::class)->where('company_id', auth()->user()->company->id);
+            return $this->hasMany(Category::class)->where('company_id', auth()->user()->company->id)->latest();
         } elseif (auth()->user()->hasRole('messenger')) {
-            return $this->hasMany(Category::class)->where('company_id', auth()->user()->company->id)->where('id', auth()->user()->category_id);
+            return $this->hasMany(Category::class)->where('company_id', auth()->user()->company->id)->where('id', auth()->user()->category_id)->latest();
         }
     }//end of categories function
 
@@ -126,7 +126,7 @@ class Company extends Authenticatable
 
     public function customers()
     {
-        return $this->hasMany(Customer::class)->where('company_id', auth()->user()->company->id);
+        return $this->hasMany(Customer::class)->where('company_id', auth()->user()->company->id)->latest();
     }//end of customers function
 
     public function containers()

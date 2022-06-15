@@ -139,4 +139,12 @@ class CustomerController extends Controller
         return $this->setData($addresses);
 
     }//end of getCustomerAddresses function
+
+    public function getCustomers()
+    {
+        $customers = auth()->user()->company->customers;
+
+        return $this->setData($customers);
+
+    }//end of getCustomers function
 }
