@@ -6,6 +6,7 @@ use App\Helper\ResponseTrait;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContainerRequest;
 use App\Models\Container;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -143,10 +144,17 @@ class ContainerController extends Controller
     public function getDischargePrice(Request $request)
     {
         $price = Container::find($request->id)->price;
-
         return $this->setData($price);
-
     }//end of getDischargePrice function
+
+    public function getMessengers(Request $request)
+    {
+
+        $messengers = Employee::where('category_id', $request->cat_id)->where('status', 'active')->where('job_type', 'messenger')->get();
+
+        return $this->setData($messengers);
+
+    }//end of getMessengers function
 
 
 }

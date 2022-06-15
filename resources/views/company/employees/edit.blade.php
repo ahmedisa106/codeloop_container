@@ -62,11 +62,12 @@
                 </div>
 
                 <div class="col-md-6 form-group messenger_job {{$employee->job_type=='messenger' ? '':'d-none'}} ">
-                    <label class="form-label">نوع وظيقه المندوب</label>
-                    <select name="messenger_type" class="form-control select2-custom" id="">
+                    <label class="form-label">التصنيف</label>
+                    <select name="category_id" class="form-control select2-custom" id="">
                         <option value="" disabled selected>نوع وظيقه المندوب</option>
-                        <option {{$employee->messenger_type == 'trash' ? 'selected':''}} value="trash">نفايات</option>
-                        <option {{$employee->messenger_type == 'rubble' ? 'selected':''}} value="rubble">أنقاض</option>
+                        @foreach($categories as $cat)
+                            <option {{$employee->category_id == $cat->id ? 'selected':''}} value="{{$cat->id}}">{{$cat->name}}</option>
+                        @endforeach
 
                     </select>
                 </div>

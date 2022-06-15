@@ -78,7 +78,7 @@
 
     $(document).ready(function () {
         let id = $('select[name="category_id"]').val(),
-            url = "{{route('containers.getCategorySizes')}}";
+            url = "{{route('categories.getCategorySizes')}}";
 
         $.ajax({
             type: 'get',

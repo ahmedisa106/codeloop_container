@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-md-4 form-group">
                     <label class="form-label">التصنيفات</label>
-                    <select name="category_id" class="form-control select2-custom" id="">
+                    <select name="category_id" class="form-control select2-custom category_id" id="">
                         <option value="" disabled selected>إختر تصنيف</option>
                         @foreach($categories as $cat)
                             <option value="{{$cat->id}}">{{$cat->name}}</option>
@@ -36,7 +36,7 @@
                 <span class="loader-div d-none"></span>
                 <div class="col-md-4 form-group">
                     <label class="form-label">حجم التصنيف</label>
-                    <select name="category_size_id" class="form-control select2-custom" id="">
+                    <select name="category_size_id" class="form-control select2-custom category_size_id" id="">
                         <option value="">----</option>
                     </select>
                 </div>
@@ -59,11 +59,9 @@
 
                 <div class="col-md-4 form-group">
                     <label class="form-label">رقم الحاوية</label>
-                    <select name="container_id" class="form-control select2-custom" id="">
+                    <select name="container_id" class="form-control select2-custom container_id" id="">
                         <option value="" disabled selected>إختر رقم الحاويه</option>
-                        @foreach($containers as $container)
-                            <option value="{{$container->id}}">{{$container->number}}</option>
-                        @endforeach
+
                     </select>
                 </div>
 
@@ -82,7 +80,7 @@
                 </div>
                 <div class="col-md-4 form-group">
                     <label class="form-label">الاجمالي بعد الخصم</label>
-                    <input class="form-control total" name="total" type="number" placeholder="" disabled>
+                    <input class="form-control total" name="total" type="number" placeholder="" readonly>
                 </div>
 
                 <h3 class="title-h3">مدة الايجار</h3>
@@ -100,11 +98,9 @@
                 @role('admin')
                 <div class="col-md-4 form-group">
                     <label class="form-label">المندوب</label>
-                    <select name="messenger_id" class="form-control select2-custom" id="">
-                        <option value="" disabled selected>إختر مندوب</option>
-                        @foreach($messengers as $messenger)
-                            <option value="{{$messenger->id}}">{{$messenger->name}}</option>
-                        @endforeach
+                    <select name="messenger_id" class="form-control select2-custom messenger_id" id="">
+                        <option value="" disabled selected>-----</option>
+
                     </select>
                 </div>
                 @endrole
@@ -135,30 +131,27 @@
     })
 
     $('select[name="category_id"]').on('change', function () {
-        let id = $(this).val();
+        getCategorySizes($(this).val());
+        getMessengers($(this).val())
+    });
 
+    function getMessengers(cat_id) {
+        $('select[name="messenger_id"]').empty();
         $.ajax({
             type: 'get',
-            url: '{{route('categories.getCategorySizes')}}',
+            url: "{{route('containers.getMessengers')}}",
             data: {
-                id: id,
-            },
-            beforeSend: function () {
-                $('.loader-div').removeClass('d-none');
+                cat_id
             },
             success: function (res) {
-                let html = `<option selected disabled>إختر حجم التصنيف</option>`;
+                let html = `<option selected disabled>إختر مندوب</option>`;
                 $.each(res.data, function (key, value) {
-                    html += `<option value="${value.id}">${value.size}</option>`
-                    $('select[name="category_size_id"]').html(html);
+                    html += `<option value="${value.id}">${value.name}</option>`
+                    $('select[name="messenger_id"]').html(html);
                 })
-            },
-            complete: function () {
-                $('.loader-div').addClass('d-none');
             }
         })
-
-    })
+    }
 
 
     $('select[name="customer_id"]').on('change', function () {
@@ -172,7 +165,7 @@
             },
 
             success: function (res) {
-                let html = `<option selected disabled>إختر عميل</option>`;
+                let html = `<option selected disabled>إختر عنوان العميل</option>`;
                 $.each(res.data, function (key, value) {
                     html += `<option value="${value.id}">${value.address}</option>`
                     $('select[name="customer_address_id"]').html(html);
@@ -213,5 +206,57 @@
 
         let total = (dischargeNumber * dischargePrice) - discount;
         $('.total').val(total)
+    };
+
+    function getCategorySizes(id = null) {
+        $.ajax({
+            type: 'get',
+            url: '{{route('categories.getCategorySizes')}}',
+            data: {
+                id: id,
+            },
+            beforeSend: function () {
+                $('.loader-div').removeClass('d-none');
+            },
+            success: function (res) {
+                let html = `<option selected disabled>إختر حجم التصنيف</option>`;
+                $.each(res.data, function (key, value) {
+                    html += `<option value="${value.id}">${value.size}</option>`
+                    $('select[name="category_size_id"]').html(html);
+                })
+            },
+            complete: function () {
+                $('.loader-div').addClass('d-none');
+            }
+        })
+    };
+
+
+    $('.category_size_id').on('change', function () {
+        $('.container_id').empty();
+        let cat_id = $('.category_id').val();
+        let cat_size_id = $(this).val();
+        getContainers(cat_id, cat_size_id)
+    })
+
+    function getContainers(cat_id, cat_size_id) {
+        $.ajax({
+            type: 'get',
+            url: '{{route('container-rentals.getContainers')}}',
+            data: {
+                'cat_id': cat_id,
+                'cat_size_id': cat_size_id,
+            },
+
+            success: function (res) {
+                let html = `<option selected disabled>إختر رقم حاويه</option>`;
+                $.each(res.data, function (key, value) {
+                    html += `<option value="${value.id}">${value.number}</option>`
+                    $('.container_id').html(html);
+                })
+            }
+        })
     }
+
+
 </script>

@@ -138,6 +138,9 @@ return [
     "values" => [
         "job_type" => [
             "messenger" => 'مندوب'
+        ],
+        "contract_type" => [
+            'contract' => 'تعاقد'
         ]
     ]
 

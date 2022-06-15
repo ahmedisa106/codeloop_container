@@ -29,8 +29,12 @@ class Category extends Model
     {
         return $this->hasMany(ContainerRental::class);
 
-
     }//end of containerRentals function
+
+    public function employees()
+    {
+        return $this->hasMany(Employee::class);
+    }//end of employees function
 
 
 }

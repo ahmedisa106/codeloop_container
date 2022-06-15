@@ -111,8 +111,17 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     Route::get('containers/data', 'ContainerController@data')->name('containers.data');
     Route::get('containers/download-pdf', 'ContainerController@pdf')->name('containers.pdf');
     Route::get('containers/get-discharge-price', 'ContainerController@getDischargePrice')->name('containers.getDischargePrice');
+    Route::get('containers/get-messengers', 'ContainerController@getMessengers')->name('containers.getMessengers');
     Route::resource('containers', 'ContainerController');
     // end containers
+
+    // container-rentals
+    Route::post('container-rentals/bulk-delete', 'ContainerRentalController@bulkDelete')->name('container-rentals.bulkDelete');
+    Route::get('container-rentals/data', 'ContainerRentalController@data')->name('container-rentals.data');
+    Route::get('container-rentals/download-pdf', 'ContainerRentalController@pdf')->name('container-rentals.pdf');
+    Route::get('container-rentals/get-containers', 'ContainerRentalController@getContainers')->name('container-rentals.getContainers');
+    Route::resource('container-rentals', 'ContainerRentalController');
+    // end container-rentals
 
     // contracts
     Route::post('contracts/bulk-delete', 'ContractController@bulkDelete')->name('contracts.bulkDelete');
@@ -120,13 +129,6 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     Route::get('contracts/download-pdf', 'ContractController@pdf')->name('contracts.pdf');
     Route::resource('contracts', 'ContractController');
     // end contracts
-
-    // container-rentals
-    Route::post('container-rentals/bulk-delete', 'ContainerRentalController@bulkDelete')->name('container-rentals.bulkDelete');
-    Route::get('container-rentals/data', 'ContainerRentalController@data')->name('container-rentals.data');
-    Route::get('container-rentals/download-pdf', 'ContainerRentalController@pdf')->name('container-rentals.pdf');
-    Route::resource('container-rentals', 'ContainerRentalController');
-    // end container-rentals
 
 
 });
