@@ -34,9 +34,9 @@
                                         <span class="input-group-text">
                                             <i class="icon-list"></i>
                                         </span>
-                                        <select data-validate-func="required" data-validatehint="النوع مطلوب"
+                                        <select data-validate-func="required" required="" data-validatehint="النوع مطلوب"
                                             name="type" class="form-control" id="">
-                                            <option value="" selected disabled>إختر نوع</option>
+                                           
                                             <option value="company">مؤسسة</option>
                                             <option value="moderator">مشرف في مؤسسة</option>
                                             <option value="employee">موظف في مؤسسة</option>
