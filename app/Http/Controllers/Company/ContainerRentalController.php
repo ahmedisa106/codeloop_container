@@ -31,6 +31,7 @@ class ContainerRentalController extends Controller
 
     public function index()
     {
+
         return view('company.container_rentals.index', ['data' => $this->data]);
     }
 
