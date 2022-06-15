@@ -69,7 +69,7 @@ class CategoryController extends Controller
         $data['company_id'] = auth()->user()->company->id;
 
         Category::create($data);
-        return $this->setAddedSuccess();
+        return $this->setAddedSuccess()->setData(['model' => 'categories']);
 
     }
 
