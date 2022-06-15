@@ -65,12 +65,12 @@
 
 <script>
 
-    $(function(){
-let index = 0;
+    $(function () {
+        let index = 0;
         $('.btn-add-add a').on('click', function () {
 
-index++;
-let html = `
+            index++;
+            let html = `
      <div class="box-all">
                 <div class="box-div">
                     <label class="form-label">العنوان</label>
@@ -88,12 +88,12 @@ let html = `
             </div>
 `;
 
-$('.box-add').append(html);
-})
-$(document).on('click', '.delete-address-box', function () {
-$(this).parents('.box-all').remove();
-})
+            $('.box-add').append(html);
+        })
+        $(document).on('click', '.delete-address-box', function () {
+            $(this).parents('.box-all').remove();
+        })
     })
-    
-  
+
+
 </script>

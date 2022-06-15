@@ -19,16 +19,16 @@
     // open the model
     $(document).on('click', '.show_sub_modal', function (e) {
         e.preventDefault();
-       
         $('#subModal .modal-body').html('')
         let url = $(this).attr('href');
         $.ajax({
             type: 'get',
             url: url,
+
             success: function (res) {
-               
                 $('#subModal').modal('show');
                 $('#subModal .modal-body').html(res);
+
             }
         })
     });
@@ -52,10 +52,12 @@
                 $('.fa-save').removeClass('fa-save').addClass('fa-spinner fa-spin')
             },
             success: function (response) {
+
                 if (!response.self) {
                     $('form').trigger('reset');
                 }
-                $('#ModalCenter').modal('hide');
+                $('#subModal').is(':visible') ? $('#subModal').modal('hide') : $('#ModalCenter').modal('hide');
+
                 $('.table.datatable').DataTable().draw();
 
                 $.Notify({
@@ -63,7 +65,10 @@
                     content: response.data,
                     type: 'success',
                     timeout: 3500,
-                })
+                });
+                getCustomers();
+                getCategories();
+
             },
             error: function (xhr) {
 
@@ -135,6 +140,7 @@
         $('.datepicker-here').on('apply.daterangepicker', function (ev, picker) {
             $(this).val(picker.startDate.format('YYYY-MM-DD'));
         });
+
 
     });
     //end  when ajax complete
@@ -208,7 +214,7 @@
         let url = $('#delete_all_form').attr('action');
         let data = form.serialize();
 
-        console.log(form)
+
         Swal.fire({
             title: 'هل تريد الاستمرار؟  سوف يتم حذف جميع العناصر المتعلقه بهذا العنصر',
             icon: 'question',
@@ -357,6 +363,8 @@
 
 
     });
+
     // end change status
+
 
 </script>

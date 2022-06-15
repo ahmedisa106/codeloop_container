@@ -20,12 +20,12 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     // end job-types
 
 
-    Route::view('test','company.test');
-    Route::view('test2','company.test2');
-    Route::view('test3','company.test3');
-    Route::view('test4','company.test4');
-    Route::view('test5','company.test5');
-    Route::view('test6','company.test6');
+    Route::view('test', 'company.test');
+    Route::view('test2', 'company.test2');
+    Route::view('test3', 'company.test3');
+    Route::view('test4', 'company.test4');
+    Route::view('test5', 'company.test5');
+    Route::view('test6', 'company.test6');
 
 });
 
@@ -43,6 +43,7 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     Route::get('categories/data', 'CategoryController@data')->name('categories.data');
     Route::get('categories/download-pdf', 'CategoryController@pdf')->name('categories.pdf');
     Route::get('categories/get-category-sizes', 'CategoryController@getCategorySizes')->name('categories.getCategorySizes');
+    Route::get('categories/get-categories', 'CategoryController@getCategories')->name('categories.getCategories');
     Route::resource('categories', 'CategoryController');
     // end categories
 
@@ -100,6 +101,7 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     Route::get('customers/data', 'CustomerController@data')->name('customers.data');
     Route::get('customers/download-pdf', 'CustomerController@pdf')->name('customers.pdf');
     Route::get('customers/get-customer-addresses', 'CustomerController@getCustomerAddresses')->name('customers.getCustomerAddresses');
+    Route::get('customers/get-customers', 'CustomerController@getCustomers')->name('customers.getCustomers');
     Route::resource('customers', 'CustomerController');
     // end customers
 
