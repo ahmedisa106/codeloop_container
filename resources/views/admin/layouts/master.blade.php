@@ -37,6 +37,19 @@
     </div>
 </div>
 @include('admin.includes.js')
+
+<div class="modal fade modal-custom" id="subModal" data-bs-backdrop="static">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <div class="modal fade modal-custom" id="ModalCenter" data-bs-backdrop="static">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
@@ -48,6 +61,7 @@
         </div>
     </div>
 </div>
+
 
 
 </body>

@@ -15,6 +15,25 @@
     });
     //end open the model
 
+
+    // open the model
+    $(document).on('click', '.show_sub_modal', function (e) {
+        e.preventDefault();
+       
+        $('#subModal .modal-body').html('')
+        let url = $(this).attr('href');
+        $.ajax({
+            type: 'get',
+            url: url,
+            success: function (res) {
+               
+                $('#subModal').modal('show');
+                $('#subModal .modal-body').html(res);
+            }
+        })
+    });
+    //end open the model
+
     // submit form
     $(document).on('submit', '.form', function (e) {
         e.preventDefault();

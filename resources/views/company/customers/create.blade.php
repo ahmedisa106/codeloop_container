@@ -64,31 +64,36 @@
 
 
 <script>
-    let index = 0;
-    $('.btn-add-add a').on('click', function () {
 
-        index++;
-        let html = `
-             <div class="box-all">
-                        <div class="box-div">
-                            <label class="form-label">العنوان</label>
-                            <input class="form-control" name="address[${index}][address]" type="text" placeholder="">
-                        </div>
-                        <div class="box-div">
-                            <label class="form-label">خطوط الطول</label>
-                            <input class="form-control" name="address[${index}][latitude]" type="text" placeholder="">
-                        </div>
-                        <div class="box-div">
-                            <label class="form-label">دوائر العرض</label>
-                            <input class="form-control" name="address[${index}][longitude]" type="text" placeholder="">
-                        </div>
-                        <i class="fa fa-times delete-address-box"></i>
-                    </div>
-        `;
+    $(function(){
+let index = 0;
+        $('.btn-add-add a').on('click', function () {
 
-        $('.box-add').append(html);
+index++;
+let html = `
+     <div class="box-all">
+                <div class="box-div">
+                    <label class="form-label">العنوان</label>
+                    <input class="form-control" name="address[${index}][address]" type="text" placeholder="">
+                </div>
+                <div class="box-div">
+                    <label class="form-label">خطوط الطول</label>
+                    <input class="form-control" name="address[${index}][latitude]" type="text" placeholder="">
+                </div>
+                <div class="box-div">
+                    <label class="form-label">دوائر العرض</label>
+                    <input class="form-control" name="address[${index}][longitude]" type="text" placeholder="">
+                </div>
+                <i class="fa fa-times delete-address-box"></i>
+            </div>
+`;
+
+$('.box-add').append(html);
+})
+$(document).on('click', '.delete-address-box', function () {
+$(this).parents('.box-all').remove();
+})
     })
-    $(document).on('click', '.delete-address-box', function () {
-        $(this).parents('.box-all').remove();
-    })
+    
+  
 </script>
