@@ -67,10 +67,12 @@
                                 </th>
                                 @endpermission
 
-                                <th>الإسم</th>
-                                <th>الفرع</th>
-                                <th>التصنيف</th>
-                                <th>السعر</th>
+                                <th>نوع التعاقد</th>
+                                <th>العميل</th>
+                                <th>عنوان العميل</th>
+                                <th>الإجمالي</th>
+                                <th>من</th>
+                                <th>إلي</th>
                                 @permission(['delete_container-rentals', 'update_container-rentals'])
                                 <th>العمليات</th>
                                 @endpermission
@@ -108,10 +110,12 @@
             @permission('delete_container-rentals')
                 {data: 'check_item', name: 'check_item', orderable: false, searchable: false},
             @endpermission
-                {data: 'number', name: 'number'},
-                {data: 'branch', name: 'branch'},
-                {data: 'category', name: 'category'},
-                {data: 'price', name: 'price'},
+                {data: 'contract', name: 'contract'},
+                {data: 'customer', name: 'customer'},
+                {data: 'customer_address', name: 'customer_address'},
+                {data: 'total', name: 'total'},
+                {data: 'start_at', name: 'start_at'},
+                {data: 'end_at', name: 'end_at'},
 
             @permission(['delete_container-rentals', 'update_container-rentals'])
                 {data: 'actions', name: 'actions'},

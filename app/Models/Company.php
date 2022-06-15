@@ -60,7 +60,11 @@ class Company extends Authenticatable
 
     public function categories()
     {
-        return $this->hasMany(Category::class)->where('company_id', auth()->user()->company->id);
+        if (auth()->user()->hasRole('admin')) {
+            return $this->hasMany(Category::class)->where('company_id', auth()->user()->company->id);
+        } elseif (auth()->user()->hasRole('messenger')) {
+            return $this->hasMany(Category::class)->where('company_id', auth()->user()->company->id)->where('id', auth()->user()->category_id);
+        }
     }//end of categories function
 
     public function categorySizes()
@@ -107,7 +111,6 @@ class Company extends Authenticatable
     public function messengers()
     {
         return $this->hasMany(Employee::class)->where('company_id', auth()->user()->company->id)->where('job_type', 'messenger');
-
     }//end of drivers function
 
     public function availableMessengers()

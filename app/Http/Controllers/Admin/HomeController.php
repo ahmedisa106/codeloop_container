@@ -3,15 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Mail\SendEmailToCompany;
 use App\Models\Blog;
 use App\Models\Company;
-use App\Models\CompanyPackage;
 use App\Models\Package;
 use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -23,7 +20,8 @@ class HomeController extends Controller
         $services_count = Service::get()->count();
         $blogs_count = Blog::get()->count();
 
-        $packages = DB::table('company_packages')->latest()->select('status as name', DB::raw('count(distinct company_id) as value'))->groupBy('status')->get();
+        $packages = DB::table('company_packages')->select('status as name', DB::raw('count(distinct company_id) as value'))->groupBy('status')->get();
+
         $packages->map(function ($model) {
             if ($model->name == 'pending') {
                 $model->name = 'منتظر التفعيل';
@@ -42,7 +40,7 @@ class HomeController extends Controller
         $months = $to->diffInMonths($from);
 
 
-        $colors = ['#69F0AE', '#FFAB40', '#41C4FF', '#536DFE', '#FF4081', '#26A69A','#D4E157','#69F0AE','FFAB40','41C4FF','536DFE','FF4081','26A69A'];
+        $colors = ['#69F0AE', '#FFAB40', '#41C4FF', '#536DFE', '#FF4081', '#26A69A', '#D4E157', '#69F0AE', 'FFAB40', '41C4FF', '536DFE', 'FF4081', '26A69A'];
         $companies_list = [];
         $month_list = [];
         for ($i = 1; $i <= $months; $i++) {

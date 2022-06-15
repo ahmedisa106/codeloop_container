@@ -59,13 +59,13 @@
                     </select>
                 </div>
 
-                <div class="col-md-6 form-group messenger_job d-none ">
-                    <label class="form-label">نوع وظيقه المندوب</label>
-                    <select name="messenger_type" class="form-control select2-custom" id="">
+                <div class="col-md-6 form-group messenger_job d-none">
+                    <label class="form-label">التصنيف</label>
+                    <select name="category_id" class="form-control select2-custom" id="">
                         <option value="" disabled selected>نوع وظيقه المندوب</option>
-                        <option value="trash">نفايات</option>
-                        <option value="rubble">أنقاض</option>
-
+                        @foreach($categories as $cat)
+                            <option value="{{$cat->id}}">{{$cat->name}}</option>
+                        @endforeach
                     </select>
                 </div>
 

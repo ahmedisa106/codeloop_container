@@ -26,11 +26,12 @@ class CreateEmployeesTable extends Migration
             $table->unsignedBigInteger('company_id');
             $table->unsignedBigInteger('branch_id');
             $table->enum('job_type', ['messenger', 'driver']);
-            $table->enum('messenger_type', ['trash', 'rubble'])->nullable();
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->enum('status', ['active', 'inactive']);
 
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
 
             $table->timestamps();
         });

@@ -62,7 +62,9 @@ class EmployeeController extends Controller
     public function create()
     {
         $branches = auth()->user()->company->branches;
-        return view('company.employees.create', ['data' => $this->data], compact('branches'));
+        $categories = auth()->user()->categories;
+
+        return view('company.employees.create', ['data' => $this->data], compact('branches', 'categories'));
     }
 
     /**
@@ -108,7 +110,8 @@ class EmployeeController extends Controller
     public function edit(Employee $employee)
     {
         $branches = auth()->user()->company->branches;
-        return view('company.employees.edit', ['data' => $this->data], compact('employee', 'branches'));
+        $categories = auth()->user()->categories;
+        return view('company.employees.edit', ['data' => $this->data], compact('employee', 'branches', 'categories'));
     }
 
     /**

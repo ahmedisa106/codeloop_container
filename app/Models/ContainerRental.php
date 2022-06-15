@@ -30,6 +30,13 @@ class ContainerRental extends Model
         return $this->belongsTo(Customer::class, 'customer_id');
     }//end of customer function
 
+    public function customerAddress()
+    {
+
+        return $this->belongsTo(CustomerAddress::class, 'customer_address_id');
+
+    }//end of customerAddress function
+
     public function contract()
     {
         return $this->belongsTo(Contract::class, 'contract_id');
@@ -43,7 +50,6 @@ class ContainerRental extends Model
     public function messenger()
     {
         return $this->belongsTo(Employee::class, 'messenger_id')->where('job_type', 'messenger');
-
     }//end of messenger function
 
 }

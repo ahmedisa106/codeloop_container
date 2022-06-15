@@ -16,6 +16,7 @@ class ActiveApp
     public function handle($request, Closure $next)
     {
         $app = explode('.', \request()->route()->getName())[0];
+
         if (active_apps($app)) {
             return $next($request);
         }

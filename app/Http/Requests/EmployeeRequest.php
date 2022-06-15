@@ -39,7 +39,7 @@ class EmployeeRequest extends FormRequest
             'nationality' => 'required',
             'branch_id' => 'required|exists:branches,id',
             'job_type' => 'required',
-            'messenger_type' => 'required_if:job_type,messenger',
+            'category_id' => 'required_if:job_type,messenger|exists:categories,id',
             'status' => 'sometimes|nullable',
 
         ];
@@ -59,7 +59,7 @@ class EmployeeRequest extends FormRequest
             'nationality' => 'required',
             'branch_id' => 'required|exists:branches,id',
             'job_type' => 'required',
-            'messenger_type' => 'required_if:job_type,messenger',
+            'category_id' => 'required_if:job_type,messenger|exists:categories,id',
             'status' => 'sometimes|nullable',
         ];
 

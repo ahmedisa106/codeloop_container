@@ -29,12 +29,15 @@ return [
             'contracts' => 'c,r,u,d,e',
             'container-rentals' => 'c,r,u,d,e',
         ],
+        'messenger' => [
+            'containers' => 'c,r,u,d,e',
+            'contracts' => 'c,r,u,d,e',
+            'container-rentals' => 'c,r,u,d,e',
+        ],
         'driver' => [
 
         ],
-        'messenger' => [
 
-        ],
 
     ],
 
