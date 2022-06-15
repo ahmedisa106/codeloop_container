@@ -58,14 +58,18 @@
 
 
 
-                @permission(['read_container','read_container-rentals'])
+                @permission(['read_containers','read_container-rentals'])
                 @if(active_apps('containers') && active_apps('container-rentals'))
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0);">
                              <img src="{{asset('assets/dashboard')}}/images/icons/container.png" alt="">
                             <span> بيانات الحاويات</span></a>
                         <ul class="sidebar-submenu">
+                        @permission(['read_containers'])
                             <li><a href="{{route('containers.index')}}">الحاويات</a></li>
+                            @endpermission
+                            @permission(['read_container-rentals'])
                             <li><a href="{{route('container-rentals.index')}}">إيجار الحاويات</a></li>
+                            @endpermission
                         </ul>
 
                     </li>
@@ -75,14 +79,9 @@
 
                 @permission('read_roles')
                 @if(active_apps('roles'))
-                    <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0);">
+                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('roles.index')}}">
                             <img src="{{asset('assets/dashboard')}}/images/icons/lock.png" alt="">
                             <span>الصلاحيات والأدوار</span></a>
-
-                        <ul class="sidebar-submenu">
-
-                            <li><a href="{{route('roles.index')}}">الأدوار</a></li>
-                        </ul>
                     </li>
                 @endif
                 @endpermission
