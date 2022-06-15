@@ -23,9 +23,9 @@
                 </div>
                 <span class="loader-div d-none"></span>
                 <div class="col-md-6 form-group">
-                    <label class="form-label">حجم الحاويه</label>
+                    <label class="form-label">حجم الحاوية</label>
                     <select name="category_size_id" class="form-control select2-custome" id="">
-                        <option value="">إختر حجم الحاويه</option>
+                        <option value="">إختر حجم الحاوية</option>
                     </select>
                 </div>
 
@@ -88,7 +88,7 @@
                 $('.loader-div').removeClass('d-none');
             },
             success: function (res) {
-                let html = `<option selected disabled>إختر حجم الحاويه</option>`;
+                let html = `<option selected disabled>إختر حجم الحاوية</option>`;
                 $.each(res.data, function (key, value) {
                     html += `<option value="${value.id}">${value.size}</option>`
                     $('select[name="category_size_id"]').html(html);

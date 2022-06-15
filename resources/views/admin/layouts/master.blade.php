@@ -38,7 +38,7 @@
 </div>
 @include('admin.includes.js')
 
-<div class="modal fade modal-custom" id="subModal" data-bs-backdrop="static">
+<div class="modal fade modal-custom modal-above" id="subModal" data-bs-backdrop="static">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
 
