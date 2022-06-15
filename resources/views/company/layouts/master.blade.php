@@ -51,6 +51,19 @@
 </div>
 
 
+<div class="modal fade modal-custom" id="subModal" data-bs-backdrop="static">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body">
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
 </body>
 
 </html>

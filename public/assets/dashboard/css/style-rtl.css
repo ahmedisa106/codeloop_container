@@ -50304,6 +50304,21 @@ font-size: 19px;
     background: #f44336;
 }
 
+.show_sub_modal {
+    position: absolute;
+    left: 35px;
+    top: 10px;
+    width: 26px;
+    height: 26px;
+    background: #f44336;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    z-index: 1;
+    color: #fff !important;
+}
+
 
 
 /* abdo respnsive*/

@@ -41,6 +41,9 @@
                     </select>
                 </div>
                 <div class="col-md-4 form-group">
+                    @permission('create_customers')
+                    <a href="{{route('customers.create')}}" data-bs-toggle="tooltip" data-bs-placement="top" title="اضافة عميل" class="show_sub_modal"><i class="fa fa-plus"></i></a>
+                    @endpermission
                     <label class="form-label">العميل</label>
                     <select name="customer_id" class="form-control select2-custom" id="">
                         <option value="" disabled selected>إختر عميل</option>
