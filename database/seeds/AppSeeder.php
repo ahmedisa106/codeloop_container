@@ -107,11 +107,6 @@ class AppSeeder extends Seeder
             'status' => 'active',
             'company_id' => 1
         ]);
-        \App\Models\App::create([
-            'model' => 'customer-addresses',
-            'ar_model' => 'عناوين العملاء',
-            'status' => 'active',
-            'company_id' => 1
-        ]);
+
     }
 }

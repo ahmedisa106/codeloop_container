@@ -66,8 +66,17 @@
                     type: 'success',
                     timeout: 3500,
                 });
-                getCustomers();
-                getCategories();
+
+                switch (response.model) {
+                    case "customers":
+                        getCustomers();
+                        break;
+                    case "categories":
+                        getCategories();
+                        break;
+                   
+                }
+
 
             },
             error: function (xhr) {
@@ -365,6 +374,43 @@
     });
 
     // end change status
+    function getCustomers() {
+        let response = [];
+        $.ajax({
+            type: 'get',
+            url: '{{route('customers.getCustomers')}}',
+            success: function (res) {
+                let html = `<option selected disabled>إختر عميل</option>`;
+                $.each(res.data, function (key, value) {
+                    html += `<option  value="${value.id}">${value.name}</option>`
+                    $('select[name="customer_id"]').html(html);
+                })
+                response.push(res.data)
+            }
+
+        })
+        return response
+
+    }
+
+    function getCategories() {
+        let response = [];
+        $.ajax({
+            type: 'get',
+            url: '{{route('categories.getCategories')}}',
+            success: function (res) {
+                let html = `<option selected disabled>إختر تصنيف</option>`;
+                $.each(res.data, function (key, value) {
+                    html += `<option  value="${value.id}">${value.name}</option>`
+                    $('select[name="category_id"]').html(html);
+                })
+                response.push(res.data)
+            }
+
+        })
+        return response
+
+    }
 
 
 </script>
