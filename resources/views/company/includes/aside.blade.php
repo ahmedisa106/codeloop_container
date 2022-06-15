@@ -17,7 +17,7 @@
                 @permission('read_moderators')
                 @if(active_apps('moderators'))
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('moderators.index')}}">
-                            <img src="{{asset('assets/dashboard')}}/images/icons/home.png" alt="">
+                            <img src="{{asset('assets/dashboard')}}/images/icons/manager.png" alt="">
                             <span>المشرفين</span></a>
                     </li>
                 @endif
@@ -26,7 +26,7 @@
                 @permission('read_employees')
                 @if(active_apps('employees'))
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('employees.index')}}">
-                            <img src="{{asset('assets/dashboard')}}/images/icons/home.png" alt="">
+                            <img src="{{asset('assets/dashboard')}}/images/icons/boss.png" alt="">
                             <span>الموظفين</span></a>
                     </li>
                 @endif
@@ -35,7 +35,7 @@
                 @permission('read_customers')
                 @if(active_apps('customers'))
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('customers.index')}}">
-                            <img src="{{asset('assets/dashboard')}}/images/icons/home.png" alt="">
+                            <img src="{{asset('assets/dashboard')}}/images/icons/rating.png" alt="">
                             <span>العملاء</span></a>
                     </li>
                 @endif
@@ -44,7 +44,7 @@
                 @permission('read_trucks')
                 @if(active_apps('trucks'))
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('trucks.index')}}">
-                            <img src="{{asset('assets/dashboard')}}/images/icons/home.png" alt="">
+                            <img src="{{asset('assets/dashboard')}}/images/icons/truck.png" alt="">
                             <span>الشاحنات</span></a>
                     </li>
                 @endif
@@ -53,7 +53,7 @@
                 @permission('read_containers')
                 @if(active_apps('containers'))
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('containers.index')}}">
-                            <img src="{{asset('assets/dashboard')}}/images/icons/home.png" alt="">
+                            <img src="{{asset('assets/dashboard')}}/images/icons/container.png" alt="">
                             <span>الحاويات</span></a>
                     </li>
                 @endif
@@ -63,7 +63,7 @@
                 @permission('read_roles')
                 @if(active_apps('roles'))
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0);">
-                            <img src="{{asset('assets/dashboard')}}/images/icons/setting.png" alt="">
+                            <img src="{{asset('assets/dashboard')}}/images/icons/lock.png" alt="">
                             <span>الصلاحيات والأدوار</span></a>
 
                         <ul class="sidebar-submenu">
