@@ -131,6 +131,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/santigarcor/laratrust" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/kkszymanowski/traitor" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/alkoumi/laravel-arabic-numbers" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/dirape/token" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

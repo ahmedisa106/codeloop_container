@@ -73,6 +73,8 @@
                         break;
                     case "categories":
                         getCategories();
+                        break;
+                   
                 }
 
 
@@ -409,5 +411,6 @@
         return response
 
     }
+
 
 </script>
