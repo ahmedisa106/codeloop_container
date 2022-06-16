@@ -54,7 +54,7 @@
             success: function (response) {
 
                 if (!response.self) {
-                    $('form').trigger('reset');
+                    $('.form').trigger('reset');
                 }
                 $('#subModal').is(':visible') ? $('#subModal').modal('hide') : $('#ModalCenter').modal('hide');
 
