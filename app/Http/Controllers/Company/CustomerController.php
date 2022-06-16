@@ -71,7 +71,7 @@ class CustomerController extends Controller
         unset($data['address']);
         $customer = Customer::create($data);
         $customer->addresses()->createMany($request->address);
-        return $this->setAddedSuccess()->setData(['model' => 'customers']);
+        return $this->setAddedSuccess()->setData(['model' => 'customers', 'self' => true]);
     }
 
     /**
