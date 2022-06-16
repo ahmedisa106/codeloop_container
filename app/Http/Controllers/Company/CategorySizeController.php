@@ -29,7 +29,7 @@ class CategorySizeController extends Controller
 
     public function data()
     {
-        $category_sizes = CategorySize::where('company_id', auth()->user()->company->id)->get();
+        $category_sizes = auth()->user()->company->categorySizes;
         $model = 'category-sizes';
         return DataTables::of($category_sizes)
             ->addColumn('actions', function ($raw) use ($model) {
@@ -73,7 +73,7 @@ class CategorySizeController extends Controller
         $data = $request->validated();
         $data['company_id'] = auth()->user()->company->id;
         CategorySize::create($data);
-        return $this->setAddedSuccess();
+        return $this->setAddedSuccess()->setData(['model' => 'category_size']);
 
     }
 
@@ -130,10 +130,15 @@ class CategorySizeController extends Controller
 
     public function bulkDelete(Request $request)
     {
-
         parse_str($request->ids, $ids);
         CategorySize::destroy($ids['items']);
         return $this->setDeletedSuccess();
 
     }//end of bulkDelete function
+
+    public function getCategorySizes()
+    {
+        $category_sizes = auth()->user()->company->categorySizes;
+        return $this->setData($category_sizes);
+    }//end of getCategorySizes function
 }

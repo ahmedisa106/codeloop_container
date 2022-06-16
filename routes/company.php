@@ -29,6 +29,7 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     Route::view('test7', 'company.test7');
     Route::view('test8', 'company.test8');
 
+
 });
 
 Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active', 'active_app'])->group(function () {
@@ -53,6 +54,7 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     Route::post('category-sizes/bulk-delete', 'CategorySizeController@bulkDelete')->name('category-sizes.bulkDelete');
     Route::get('category-sizes/data', 'CategorySizeController@data')->name('category-sizes.data');
     Route::get('category-sizes/download-pdf', 'CategorySizeController@pdf')->name('category-sizes.pdf');
+    Route::get('category-sizes/get-category-sizes', 'CategorySizeController@getCategorySizes')->name('category-sizes.getCategorySizes');
     Route::resource('category-sizes', 'CategorySizeController');
     // end category-sizes
 

@@ -69,7 +69,7 @@ class Company extends Authenticatable
 
     public function categorySizes()
     {
-        return $this->hasMany(CategorySize::class)->where('company_id', auth()->user()->company->id);
+        return $this->hasMany(CategorySize::class)->where('company_id', auth()->user()->company->id)->latest();
     }//end of categorySizes function
 
     public function rentTypes()

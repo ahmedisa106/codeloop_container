@@ -14,6 +14,7 @@
                     </select>
                 </div>
 
+
                 <div class="col-sm-12 contracts d-none">
                     <div class="contract-div">
                         <div class="row">
@@ -36,6 +37,7 @@
                         </div>
                         </div>
                     </div>
+
                 </div>
 
                 <div class="col-md-4 form-group">
@@ -54,11 +56,7 @@
                 </div>
                 <span class="loader-div d-none"></span>
                 <div class="col-md-4 form-group">
-                @permission('create_category-sizes')
-                    <a href="{{route('category-sizes.create')}}" class="show_sub_modal">
-                        <span aria-label="اضافة حجم" data-microtip-position="top" role="tooltip"><i class="fa fa-plus"></i></span>
-                    </a>
-                    @endpermission
+
                     <label class="form-label">حجم التصنيف</label>
                     <select name="category_size_id" class="form-control select2-custom category_size_id" id="">
                         <option value="">----</option>
@@ -85,11 +83,7 @@
 
 
                 <div class="col-md-4 form-group">
-                @permission('create_containers')
-                    <a href="{{route('containers.create')}}" class="show_sub_modal">
-                        <span aria-label="اضافة حاوية" data-microtip-position="top" role="tooltip"><i class="fa fa-plus"></i></span>
-                    </a>
-                    @endpermission
+
                     <label class="form-label">رقم الحاوية</label>
                     <select name="container_id" class="form-control select2-custom container_id" id="">
                         <option value="" disabled selected>إختر رقم الحاوية</option>
@@ -239,6 +233,7 @@
     };
 
     function getCategorySizes(id = null) {
+        $('select[name="category_size_id"]').empty()
         $.ajax({
             type: 'get',
             url: '{{route('categories.getCategorySizes')}}',
@@ -291,43 +286,8 @@
     $(document).ready(function () {
         getCustomers();
         getCategories();
+
     });
 
-    function getCustomers() {
-        let response = [];
-        $.ajax({
-            type: 'get',
-            url: '{{route('customers.getCustomers')}}',
-            success: function (res) {
-                let html = `<option selected disabled>إختر عميل</option>`;
-                $.each(res.data, function (key, value) {
-                    html += `<option  value="${value.id}">${value.name}</option>`
-                    $('select[name="customer_id"]').html(html);
-                })
-                response.push(res.data)
-            }
 
-        })
-        return response
-
-    }
-
-    function getCategories() {
-        let response = [];
-        $.ajax({
-            type: 'get',
-            url: '{{route('categories.getCategories')}}',
-            success: function (res) {
-                let html = `<option selected disabled>إختر تصنيف</option>`;
-                $.each(res.data, function (key, value) {
-                    html += `<option  value="${value.id}">${value.name}</option>`
-                    $('select[name="category_id"]').html(html);
-                })
-                response.push(res.data)
-            }
-
-        })
-        return response
-
-    }
 </script>

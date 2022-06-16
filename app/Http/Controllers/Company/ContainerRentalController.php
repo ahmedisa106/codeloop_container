@@ -91,8 +91,9 @@ class ContainerRentalController extends Controller
     {
         $data = $request->validated();
         $data['company_id'] = auth()->user()->company->id;
+        $data['remaining_discharges'] = $data['discharge_number'];
         $data['messenger_id'] = $data['messenger_id'] ?? auth()->user()->id;
-        $rental = ContainerRental::create($data);
+        ContainerRental::create($data);
         return $this->setAddedSuccess();
     }
 
@@ -138,7 +139,7 @@ class ContainerRentalController extends Controller
     {
         $data = $request->validated();
         $data['messenger_id'] = $data['messenger_id'] ?? auth()->user()->id;
-
+        $data['remaining_discharges'] = $data['discharge_number'];
         $containerRental->update($data);
         return $this->setUpdatedSuccess();
     }
