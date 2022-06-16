@@ -36,7 +36,7 @@
                 @permission(['read_customers'])
                 @if(active_apps('customers') && active_apps('customer-addresses'))
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0);">
-                          <img src="{{asset('assets/dashboard')}}/images/icons/rating.png" alt="">
+                            <img src="{{asset('assets/dashboard')}}/images/icons/rating.png" alt="">
                             <span>بيانات العملاء</span></a>
                         <ul class="sidebar-submenu">
                             <li><a href="{{route('customers.index')}}">العملاء</a></li>
@@ -57,18 +57,21 @@
                 @endpermission
 
 
-
-                @permission(['read_containers','read_container-rentals'])
-                @if(active_apps('containers') && active_apps('container-rentals'))
+                @permission(['read_containers','read_container-rentals','read_contracts'])
+                @if(active_apps('containers') || active_apps('container-rentals' || active_apps('contracts')))
                     <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0);">
-                             <img src="{{asset('assets/dashboard')}}/images/icons/container.png" alt="">
+                            <img src="{{asset('assets/dashboard')}}/images/icons/container.png" alt="">
                             <span> بيانات الحاويات</span></a>
                         <ul class="sidebar-submenu">
-                        @permission(['read_containers'])
+                            @permission(['read_containers'])
                             <li><a href="{{route('containers.index')}}">الحاويات</a></li>
                             @endpermission
                             @permission(['read_container-rentals'])
                             <li><a href="{{route('container-rentals.index')}}">إيجار الحاويات</a></li>
+                            @endpermission
+
+                            @permission(['read_contracts'])
+                            <li><a href="{{route('contracts.index')}}">العقود</a></li>
                             @endpermission
                         </ul>
 

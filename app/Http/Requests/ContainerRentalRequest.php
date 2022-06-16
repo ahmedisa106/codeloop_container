@@ -31,7 +31,11 @@ class ContainerRentalRequest extends FormRequest
 
         $roles = [
             'contract_type' => 'required|in:cash,contract',
-            'contract_id' => 'required_if:contract_type,contract',
+
+            'area_name' => 'required_if:contract_type,contract',
+            'area_number' => 'required_if:contract_type,contract',
+            'block_number' => 'required_if:contract_type,contract',
+            'plan_number' => 'required_if:contract_type,contract',
             'category_id' => 'required|exists:categories,id',
             'category_size_id' => 'required|exists:category_sizes,id',
             'customer_id' => 'required|exists:customers,id',
@@ -55,7 +59,11 @@ class ContainerRentalRequest extends FormRequest
     {
         $roles = [
             'contract_type' => 'required|in:cash,contract',
-            'contract_id' => 'required_if:contract_type,contract',
+
+            'area_name' => 'required_if:contract_type,contract',
+            'area_number' => 'required_if:contract_type,contract',
+            'block_number' => 'required_if:contract_type,contract',
+            'plan_number' => 'required_if:contract_type,contract',
             'category_id' => 'required|exists:categories,id',
             'category_size_id' => 'required|exists:category_sizes,id',
             'customer_id' => 'required|exists:customers,id',
@@ -93,6 +101,10 @@ class ContainerRentalRequest extends FormRequest
             'start_at' => 'التاريخ من',
             'end_at' => 'التاريخ الي',
             'messenger_id' => 'المندوب',
+            'area_name' => 'إسم الحي',
+            'area_number' => 'رقم القطعه',
+            'block_number' => 'رقم البلوك',
+            'plan_number' => 'رقم المخطط',
         ];
 
     }//end of attributes function

@@ -146,10 +146,13 @@ class Company extends Authenticatable
 
     public function containerRentals()
     {
-
         return $this->hasMany(ContainerRental::class)->where('company_id', auth()->user()->company->id);
-
-
     }//end of containerRentals function
+
+    public static function invoiceSerial($number)
+    {
+        return '#' . sprintf('%07d', $number);
+
+    }
 
 }

@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="card">
         <div class="card-header">
-            <h3>{{$data['create']}}</h3>
+            <h3>{{$data['edit']}}</h3>
 
         </div>
         <div class="card-body">
@@ -92,7 +92,7 @@
             success: function (res) {
                 let html = `<option selected disabled>إختر حجم الحاوية</option>`;
                 $.each(res.data, function (key, value) {
-                    let selected = value.size == '{{$container->categorySize->size}}' ? 'selected' : '';
+                    let selected = value.id == '{{$container->category_size_id}}' ? 'selected' : '';
                     html += `<option ${selected} value="${value.id}">${value.size}</option>`
                     $('select[name="category_size_id"]').html(html);
                 })

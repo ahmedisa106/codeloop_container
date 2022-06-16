@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ContainerRentalRequest;
 use App\Models\Container;
 use App\Models\ContainerRental;
+use App\Models\Contract;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 
 class ContainerRentalController extends Controller
@@ -31,7 +33,6 @@ class ContainerRentalController extends Controller
 
     public function index()
     {
-
         return view('company.container_rentals.index', ['data' => $this->data]);
     }
 
@@ -72,11 +73,12 @@ class ContainerRentalController extends Controller
 
     public function create()
     {
+
+
         $categories = auth()->user()->company->categories;
         $customers = auth()->user()->company->customers;
         $contracts = auth()->user()->company->contracts;
         $messengers = auth()->user()->company->availableMessengers;
-
 
         return view('company.container_rentals.create', ['data' => $this->data], compact('categories', 'customers', 'contracts', 'messengers'));
     }
@@ -93,7 +95,34 @@ class ContainerRentalController extends Controller
         $data['company_id'] = auth()->user()->company->id;
         $data['remaining_discharges'] = $data['discharge_number'];
         $data['messenger_id'] = $data['messenger_id'] ?? auth()->user()->id;
-        ContainerRental::create($data);
+        $contract_data = ['area_name' => $data['area_name'], 'area_number' => $data['area_number'], 'block_number' => $data['block_number'], 'plan_number' => $data['plan_number']];
+        unset($data['area_name'], $data['area_number'], $data['block_number'], $data['plan_number']);
+
+        DB::beginTransaction();
+
+        $rent = ContainerRental::create($data);
+
+        $rent->container->update(['status' => 'notAvailable']);
+
+        $number = $this->getLatestContractSerial();
+
+        if ($data['contract_type'] == 'contract') {
+
+            $rent->contract()->create([
+                'contract_serial' => $number,
+                'company_id' => $rent['company_id'],
+                'customer_id' => $rent['customer_id'],
+                'messenger_id' => $rent['messenger_id'],
+                'qr' => '',
+                'area_name' => $contract_data['area_name'],
+                'area_number' => $contract_data['area_number'],
+                'block_number' => $contract_data['block_number'],
+                'plan_number' => $contract_data['plan_number']
+            ]);
+        }
+
+        DB::commit();
+
         return $this->setAddedSuccess();
     }
 
@@ -172,9 +201,19 @@ class ContainerRentalController extends Controller
             ->where('status', 'available')
             ->get();
 
-
         return $this->setData($containers);
 
-
     }//end of getContainers function
+
+    public function getLatestContractSerial()
+    {
+        $serial = Contract::where('company_id', auth()->user()->company->id)->latest()->first();
+        if (!$serial) {
+            return 1;
+        } else {
+            return $serial->contract_serial + 1;
+        }
+
+
+    }//end of getLatestContractSerial function
 }
