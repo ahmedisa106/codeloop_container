@@ -3,13 +3,13 @@
 
 
 <div class="container-fluid">
-<div class="card">
+    <div class="card">
         <div class="card-header">
             <h3>العقود</h3>
         </div>
         <div class="card-body">
-        <form class="row form" method="post" action="" enctype="">
-        <div class="col-md-4 form-group">
+            <form class="row form" method="post" action="" enctype="">
+                <div class="col-md-4 form-group">
                     <label class="form-label">اسم العميل</label>
                     <select name="" class="form-control select2-custom" id="">
                         <option value="">الكل</option>
@@ -81,8 +81,9 @@
                             </td>
                             <td>
                                 <div class="btns-table">
-                                    <a href="https://www.w3docs.com/uploads/media/default/0001/01/540cb75550adf33f281f29132dddd14fded85bfc.pdf" target="_balnk" class="btn btn-primary">
-                                    <i class="fa fa-file-pdf-o"></i>
+                                    <a href="https://www.w3docs.com/uploads/media/default/0001/01/540cb75550adf33f281f29132dddd14fded85bfc.pdf"
+                                        target="_balnk" class="btn btn-primary">
+                                        <i class="fa fa-file-pdf-o"></i>
                                         معاينة العقد
                                     </a>
                                 </div>
@@ -99,8 +100,9 @@
                             </td>
                             <td>
                                 <div class="btns-table">
-                                    <a href="https://www.w3docs.com/uploads/media/default/0001/01/540cb75550adf33f281f29132dddd14fded85bfc.pdf" target="_balnk" class="btn btn-primary">
-                                    <i class="fa fa-file-pdf-o"></i>
+                                    <a href="https://www.w3docs.com/uploads/media/default/0001/01/540cb75550adf33f281f29132dddd14fded85bfc.pdf"
+                                        target="_balnk" class="btn btn-primary">
+                                        <i class="fa fa-file-pdf-o"></i>
                                         معاينة العقد
                                     </a>
                                 </div>
@@ -117,7 +119,8 @@
                             </td>
                             <td>
                                 <div class="btns-table">
-                                    <a href="https://www.w3docs.com/uploads/media/default/0001/01/540cb75550adf33f281f29132dddd14fded85bfc.pdf" target="_balnk" class="btn btn-primary">
+                                    <a href="https://www.w3docs.com/uploads/media/default/0001/01/540cb75550adf33f281f29132dddd14fded85bfc.pdf"
+                                        target="_balnk" class="btn btn-primary">
                                         <i class="fa fa-file-pdf-o"></i>
                                         معاينة العقد
                                     </a>

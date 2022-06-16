@@ -14,25 +14,36 @@
                     </select>
                 </div>
 
-                <div class="col-md-4 form-group contracts d-none">
-                @permission('create_contracts')
-                    <a href="{{route('contracts.create')}}" class="show_sub_modal">
-                        <span aria-label="اضافة عقد" data-microtip-position="top" role="tooltip"><i class="fa fa-plus"></i></span>
-                    </a>
-                    @endpermission
-                    <label class="form-label">رقم العقد</label>
-                    <select name="contract_id" class="form-control select2-custom" id="">
-                        <option value="" disabled selected>إختر رقم العقد</option>
-                        @foreach($contracts as $contract)
-                            <option value="{{$contract->id}}">{{$contract->number}}</option>
-                        @endforeach
-                    </select>
+                <div class="col-sm-12 contracts d-none">
+                    <div class="contract-div">
+                        <div class="row">
+                        <h3>بيانات العقد</h3>
+                        <div class="col-md-3 form-group">
+                            <label class="form-label">اسم الحي</label>
+                            <input class="form-control" value="" name="" type="text" placeholder="">
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label class="form-label">رقم القطعة</label>
+                            <input class="form-control" value="" name="" type="text" placeholder="">
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label class="form-label">رقم البلك</label>
+                            <input class="form-control" value="" name="" type="text" placeholder="">
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label class="form-label">رقم المخطط</label>
+                            <input class="form-control" value="" name="" type="text" placeholder="">
+                        </div>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="col-md-4 form-group">
 
                     @permission('create_categories')
-                    <a href="{{route('categories.create')}}" data-bs-toggle="tooltip" data-bs-placement="top" title="اضافة تصنيف" class="show_sub_modal"><i class="fa fa-plus"></i></a>
-
+                    <a href="{{route('categories.create')}}" class="show_sub_modal">
+                        <span aria-label="اضافة تصنيف" data-microtip-position="top" role="tooltip"><i class="fa fa-plus"></i></span>
+                    </a>
                     @endpermission
                     <label class="form-label">التصنيفات</label>
                     <select name="category_id" class="form-control select2-custom category_id" id="">
