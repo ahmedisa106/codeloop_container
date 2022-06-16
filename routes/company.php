@@ -28,7 +28,7 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     Route::view('test6', 'company.test6');
     Route::view('test7', 'company.test7');
     Route::view('test8', 'company.test8');
-
+    Route::view('test9', 'company.test9');
 
 });
 
