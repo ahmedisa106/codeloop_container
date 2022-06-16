@@ -74,7 +74,7 @@
                     case "categories":
                         getCategories();
                         break;
-                   
+
                 }
 
 

@@ -52,4 +52,9 @@ class ContainerRental extends Model
         return $this->belongsTo(Employee::class, 'messenger_id')->where('job_type', 'messenger');
     }//end of messenger function
 
+    public function driver()
+    {
+        return $this->belongsTo(Employee::class, 'driver_id')->where('job_type', 'driver');
+    }//end of driver function
+
 }

@@ -27,6 +27,7 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     Route::view('test5', 'company.test5');
     Route::view('test6', 'company.test6');
 
+
 });
 
 Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active', 'active_app'])->group(function () {
