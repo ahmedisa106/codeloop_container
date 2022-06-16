@@ -46,6 +46,12 @@ class Employee extends Authenticatable
         return $this->hasMany(ContainerRental::class, 'messenger_id');
     }//end of containerRentals function
 
+    public function driverRentals()
+    {
+        return $this->hasMany(ContainerRental::class, 'driver_id');
+    }//end of rentals function
+
+
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
