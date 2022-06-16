@@ -23,7 +23,6 @@ class CreateContainerRentalsTable extends Migration
             $table->unsignedBigInteger('category_size_id');
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('customer_address_id');
-            $table->unsignedBigInteger('contract_id')->nullable();
             $table->unsignedBigInteger('container_id');
             $table->decimal('discharge_price', 10, 2);
             $table->integer('discharge_number');
@@ -44,7 +43,6 @@ class CreateContainerRentalsTable extends Migration
             $table->foreign('category_size_id')->references('id')->on('category_sizes')->onDelete('cascade');
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->foreign('customer_address_id')->references('id')->on('customer_addresses')->onDelete('cascade');
-            $table->foreign('contract_id')->references('id')->on('contracts')->onDelete('cascade');
             $table->foreign('container_id')->references('id')->on('containers')->onDelete('cascade');
         });
     }

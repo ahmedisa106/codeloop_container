@@ -67,7 +67,7 @@
                                 </th>
                                 @endpermission
 
-                                <th>الإسم</th>
+                                <th>رقم الحاويه</th>
                                 <th>الفرع</th>
                                 <th>التصنيف</th>
                                 <th>السعر</th>

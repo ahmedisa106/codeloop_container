@@ -18,23 +18,23 @@
                 <div class="col-sm-12 contracts d-none">
                     <div class="contract-div">
                         <div class="row">
-                        <h3>بيانات العقد</h3>
-                        <div class="col-md-3 form-group">
-                            <label class="form-label">اسم الحي</label>
-                            <input class="form-control" value="" name="" type="text" placeholder="">
-                        </div>
-                        <div class="col-md-3 form-group">
-                            <label class="form-label">رقم القطعة</label>
-                            <input class="form-control" value="" name="" type="text" placeholder="">
-                        </div>
-                        <div class="col-md-3 form-group">
-                            <label class="form-label">رقم البلك</label>
-                            <input class="form-control" value="" name="" type="text" placeholder="">
-                        </div>
-                        <div class="col-md-3 form-group">
-                            <label class="form-label">رقم المخطط</label>
-                            <input class="form-control" value="" name="" type="text" placeholder="">
-                        </div>
+                            <h3>بيانات العقد</h3>
+                            <div class="col-md-3 form-group">
+                                <label class="form-label">اسم الحي</label>
+                                <input class="form-control" value="" name="area_name" type="text" placeholder="">
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label class="form-label">رقم القطعة</label>
+                                <input class="form-control" value="" name="area_number" type="text" placeholder="">
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label class="form-label">رقم البلك</label>
+                                <input class="form-control" value="" name="block_number" type="text" placeholder="">
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label class="form-label">رقم المخطط</label>
+                                <input class="form-control" value="" name="plan_number" type="text" placeholder="">
+                            </div>
                         </div>
                     </div>
 

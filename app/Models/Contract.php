@@ -16,6 +16,17 @@ class Contract extends Model
 
     public function containerRentals()
     {
-        return $this->hasMany(ContainerRental::class);
+        return $this->belongsTo(ContainerRental::class, 'container_rental_id');
     }//end of containerRentals function
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'customer_id');
+    }//end of customer function
+
+    public function messenger()
+    {
+        return $this->belongsTo(Employee::class, 'messenger_id')->where('company_id', auth()->user()->company->id);
+
+    }//end of  function
 }

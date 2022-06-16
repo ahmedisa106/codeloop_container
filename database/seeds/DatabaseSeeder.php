@@ -17,5 +17,9 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminSeeder::class);
         $this->call(PackageSeeder::class);
         $this->call(AppSeeder::class);
+        $this->call(BranchSeeder::class);
+        $this->call(CategorySeeder::class);
+        // $this->call(ContainerSeeder::class);
+        //$this->call(CategorySizeSeeder::class);
     }
 }

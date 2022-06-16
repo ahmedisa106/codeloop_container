@@ -32,14 +32,12 @@ class ContainerRental extends Model
 
     public function customerAddress()
     {
-
         return $this->belongsTo(CustomerAddress::class, 'customer_address_id');
-
     }//end of customerAddress function
 
     public function contract()
     {
-        return $this->belongsTo(Contract::class, 'contract_id');
+        return $this->hasOne(Contract::class)->where('company_id', auth()->user()->company->id);
     }//end of contract function
 
     public function container()
