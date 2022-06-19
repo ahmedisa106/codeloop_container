@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Company;
 use Alkoumi\LaravelArabicNumbers\Numbers;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
+use App\Models\Contract;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use PDF;
 use Yajra\DataTables\Facades\DataTables;
 
 class ContractController extends Controller
@@ -31,6 +33,15 @@ class ContractController extends Controller
             })
             ->addColumn('number', function ($raw) {
                 return Company::invoiceSerial($raw->contract_serial);
+            })
+            ->addColumn('contract', function ($raw) {
+                return '   <div class="btns-table">
+                                    <a href="' . route('contracts.pdf', $raw->id) . '"
+                                        target="_balnk" class="btn btn-primary">
+                                        <i class="fa fa-file-pdf-o"></i>
+                                        معاينة العقد
+                                    </a>
+                                </div>';
             })
             ->addColumn('start_at', function ($raw) {
                 return Numbers::ShowInArabicDigits(Carbon::create($raw->containerRentals->start_at)->format('d / m / Y'));
@@ -59,7 +70,7 @@ class ContractController extends Controller
                 }
                 return "<span class='cont-status " . $class . " '>" . $name . "</span>";
             })
-            ->rawColumns(['status' => 'status'])
+            ->rawColumns(['status' => 'status', 'contract' => 'contract'])
             ->make(true);
 
     }//end of data function
@@ -135,4 +146,11 @@ class ContractController extends Controller
     {
         //
     }
+
+    public function pdf($id)
+    {
+        $contract = Contract::find($id);
+        return response()->download(public_path('pdfs/' . $contract->pdf));
+
+    }//end of loadPdf function
 }

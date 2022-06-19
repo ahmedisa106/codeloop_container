@@ -9,6 +9,8 @@ class Contract extends Model
     protected $table = 'contracts';
     protected $guarded = [];
 
+    protected $with = ['company', 'containerRentals', 'customer', 'messenger'];
+
     public function company()
     {
         return $this->belongsTo(Company::class, 'company_id');
