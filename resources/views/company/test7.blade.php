@@ -1,277 +1,286 @@
-<link rel="stylesheet" type="text/css" href="{{asset('assets/dashboard')}}/css/vendors/font-awesome.css">
-<style>
-    @font-face {
-        font-family: 'Bahij_Plain';
-        src: url('{{asset('assets/dashboard/fonts/Bahij_Plain.ttf')}}');
-    }
 
-    * {
-        box-sizing: border-box;
-    }
+<!DOCTYPE html>
+<html lang="en">
 
-    body {
-        margin: 0;
-        direction: rtl;
-        font-size: 16px;
-        font-family: 'Bahij_Plain';
-        color: #111;
-    }
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/dashboard')}}/css/vendors/font-awesome.css">
+    <style>
+        @font-face {
+            font-family: 'Bahij_Plain';
+            src: url('{{asset('assets/dashboard/fonts/Bahij_Plain.ttf')}}');
+        }
 
-    .container {
-        max-width: 1200px;
-        margin: 20px auto;
-        border-radius: 10px;
-        background: #fff;
-        border: 1px solid #777;
-        padding: 4px;
-    }
+        * {
+            box-sizing: border-box;
+        }
 
-    .contract {
-        padding: 20px;
-        border: 1px solid #777;
-        border-radius: 8px;
-        position: relative;
-        overflow: hidden;
-    }
+        body {
+            margin: 0;
+            direction: rtl;
+            font-size: 16px;
+            font-family: 'Bahij_Plain';
+            color: #111;
+        }
 
-    ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            border-radius: 10px;
+            background: #fff;
+            border: 1px solid #777;
+            padding: 4px;
+        }
 
-    .header {
-        display: flex;
-        padding-bottom: 25px;
-        border-bottom: 1px solid #eaeaea;
-        justify-content: space-between;
-        align-items: end;
-    }
+        .contract {
+            padding: 20px;
+            border: 1px solid #777;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .header li {
-        width: 100%;
-    }
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
 
-    .header li:nth-child(2) {
-        text-align: center;
-    }
+        .header {
+            display: flex;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eaeaea;
+            justify-content: space-between;
+            align-items: end;
+        }
 
-    .header li:last-child {
-        text-align: left;
-    }
+        .header li {
+            width: 100%;
+        }
 
-    .header li:last-child p {
-        margin-bottom: 0
-    }
+        .header li:nth-child(2) {
+            text-align: center;
+        }
 
-    .header li h3 {
-        margin: 0;
-        margin-bottom: 5px;
-        font-size: 15px;
-    }
+        .header li:last-child {
+            text-align: left;
+        }
 
-    .header li p {
-        margin: 0;
-        margin-bottom: 5px;
-        font-size: 15px;
-    }
+        .header li:last-child p {
+            margin-bottom: 0
+        }
 
-    .header li p i {
-        border: 1px solid #000;
-        border-radius: 50%;
-        width: 22px;
-        height: 22px;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        margin-left: 4px;
-    }
+        .header li h3 {
+            margin: 0;
+            margin-bottom: 5px;
+            font-size: 15px;
+        }
 
-    .header li p:last-child {
-        margin-bottom: 0;
-    }
+        .header li p {
+            margin: 0;
+            margin-bottom: 5px;
+            font-size: 15px;
+        }
 
-    img {
-        max-width: 100%;
-    }
+        .header li p i {
+            border: 1px solid #000;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 4px;
+        }
 
-    .header li img.logo {
-        height: 90px;
-        margin-bottom: 13px;
-    }
+        .header li p:last-child {
+            margin-bottom: 0;
+        }
 
-    li img.qr {
-        height: 95px;
-    }
+        img {
+            max-width: 100%;
+        }
 
-    h4.title {
-        display: block;
-        margin: 0 auto;
-        margin-bottom: 0;
-        font-size: 17px;
-        text-align: center;
-        margin-top: -15px;
-        width: max-content;
-        padding: 0 15px;
-        background: #fff;
-    }
+        .header li img.logo {
+            height: 90px;
+            margin-bottom: 13px;
+        }
 
-    h4.title span {
-        font-weight: normal;
-    }
+        li img.qr {
+            height: 95px;
+        }
 
+        h4.title {
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 0;
+            font-size: 17px;
+            text-align: center;
+            margin-top: -15px;
+            width: max-content;
+            padding: 0 15px;
+            background: #fff;
+        }
 
-    .flex-middle {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-    }
-
-    .flex-middle li:first-child:before {
-        content: '';
-        width: 2px;
-        height: 73%;
-        position: absolute;
-        right: 4px;
-        top: 50%;
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%);
-        background-color: #eaeaea;
-    }
-
-    .flex-middle li {
-        position: relative;
-    }
-
-    .flex-middle li p:after {
-        content: '';
-        height: 10px;
-        width: 10px;
-        border-radius: 50%;
-        background-color: #eaeaea;
-        position: absolute;
-        right: 0;
-        top: 6px;
-    }
-
-    .flex-middle li p:not(:last-child) {
-        margin-bottom: 10px;
-    }
+        h4.title span {
+            font-weight: normal;
+        }
 
 
-    .flex-middle li p {
-        margin: 0;
-        padding-right: 25px;
-        position: relative;
-        font-weight: bold;
-        color: #111;
-    }
+        .flex-middle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
 
-    .flex-middle li p span {
-        font-weight: normal;
-        font-size: 16px;
-        margin-left: 5px;
-    }
+        }
 
-    table {
-        width: 100%;
-        text-align: center;
-        margin-top: 10px;
-    }
+        .flex-middle li:first-child:before {
+            content: '';
+            width: 2px;
+            height: 73%;
+            position: absolute;
+            right: 4px;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            background-color: #eaeaea;
+        }
 
-    table th {
-        padding: 8px;
-        border-radius: 4px;
-    }
+        .flex-middle li {
+            position: relative;
+        }
 
-    table thead {
-        background: #f4f4f4;
-    }
+        .flex-middle li p:after {
+            content: '';
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            background-color: #eaeaea;
+            position: absolute;
+            right: 0;
+            top: 6px;
+        }
 
-    .conditions {
-        margin-top: 20px;
-    }
+        .flex-middle li p:not(:last-child) {
+            margin-bottom: 10px;
+        }
 
-    .conditions h5 {
-        font-size: 16px;
-        margin-top: 0;
-        margin-bottom: 10px;
-    }
 
-    .conditions h5 span {
-        color: #f44336;
-    padding: 0 5px;
-    }
+        .flex-middle li p {
+            margin: 0;
+            padding-right: 25px;
+            position: relative;
+            font-weight: bold;
+            color: #111;
+        }
 
-    .conditions ul li {
-        margin-bottom: 8px;
-    }
+        .flex-middle li p span {
+            font-weight: normal;
+            font-size: 16px;
+            margin-left: 5px;
+        }
 
-    .conditions ul li span {
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        margin-left: 7px;
-        background: #ddd;
-        border-radius: 50%;
-    }
+        table {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
 
-    .conditions ul {
-        padding-right: 20px;
-    }
+        table th {
+            padding: 8px;
+            border-radius: 4px;
+        }
 
-    .signature {
-        display: flex;
-        margin-top: 25px;
-        padding-top: 25px;
-        border-top: 1px dashed #eaeaea;
-    }
+        table thead {
+            background: #f4f4f4;
+        }
 
-    .signature li {
-        width: 100%;
-        text-align: center;
-    }
+        .conditions {
+            margin-top: 20px;
+        }
 
-    .signature li p {
-        margin-top: 0;
-        margin-bottom: 6px;
-        font-weight: bold;
-    }
+        .conditions h5 {
+            font-size: 16px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
 
-    .signature li img {
-        height: 90px;
-    }
+        .conditions h5 span {
+            color: #f44336;
+            padding: 0 5px;
+        }
 
-    .watermark {
-        opacity: 0.1;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
-    }
+        .conditions ul li {
+            margin-bottom: 8px;
+        }
 
-    .red {
-        color: #f44336;
-    }
+        .conditions ul li span {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin-left: 7px;
+            background: #ddd;
+            border-radius: 50%;
+        }
 
-    .logo-div {
-        width: 180px;
-    text-align: center;
-    margin-left: 0;
-    margin-right: auto;
-    }
+        .conditions ul {
+            padding-right: 20px;
+        }
 
-</style>
-<div class="container">
+        .signature {
+            display: flex;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px dashed #eaeaea;
+        }
+
+        .signature li {
+            width: 100%;
+            text-align: center;
+        }
+
+        .signature li p {
+            margin-top: 0;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        .signature li img {
+            height: 90px;
+        }
+
+        .watermark {
+            opacity: 0.1;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+        }
+
+        .red {
+            color: #f44336;
+        }
+
+        .logo-div {
+            width: 180px;
+            text-align: center;
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container" id="download_section">
     <div class="contract">
-        <div class="watermark" style="background-image: url(https://ivonne.vercel.app/assets/img/logo.svg);"></div>
+        <div class="watermark" style="background-image: url('{{asset('default')}}/logo.svg')"></div>
         <ul class="header">
             <li>
                 <h3>مجموعة وهج الصالحية للخدمات</h3>
@@ -282,7 +291,7 @@
             </li>
             <li>
                 <div class="logo-div">
-                <img src="https://ivonne.vercel.app/assets/img/logo.svg" class="logo" alt="">
+                <img src="{{asset('default')}}/logo.svg" class="logo" alt="">
                 <p>التاريخ : <strong>22/03/2022</strong></p>
                 <p>رقم العقد : <strong class="red">1520</strong></p>
                 <p>رقم الحاوية : <strong>95411</strong></p>
@@ -298,7 +307,7 @@
                 <p><span>طرف اول :</span>مجموعة وهج الصالحية للخدمات </p>
                 <p><span>طرف ثاني :</span>فلاح جزير خلف الشمري </p>
             </li>
-            <li><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/QR_Code_Example.svg/1200px-QR_Code_Example.svg.png"
+            <li><img src="{{asset('default')}}/QR.png"
                     class="qr" alt=""></li>
         </ul>
         <table>
@@ -342,8 +351,64 @@
                 <p>طرف ثاني</p><span>فلاح جزير خلف الشمري</span>
             </li>
             <li>
-                <p>الختم</p><img src="https://khetm.com/wp-content/uploads/2019/05/Round-stamp.png" alt="">
+                <p>الختم</p><img src="{{asset('default')}}/Round.png" alt="">
             </li>
         </ul>
     </div>
-</div>
+    </div>
+
+    <button id="download_btn">generate PDF</button>
+
+
+    <script src="https://ivonne.vercel.app/assets/js/jquery.min.js"></script>
+    <script src="https://ivonne.vercel.app/assets/js/jspdf.min.js"></script>
+    <script src="https://ivonne.vercel.app/assets/js/html2canvas.min.js"></script>
+
+    <script>
+        $('#download_btn').on('click', function () {
+            var downloadSection = $('#download_section');
+            var cWidth = downloadSection.width();
+            var cHeight = downloadSection.height();
+            var topLeftMargin = 40;
+            var pdfWidth = cWidth + topLeftMargin * 2;
+            var pdfHeight = pdfWidth * 1.5 + topLeftMargin * 2;
+            var canvasImageWidth = cWidth;
+            var canvasImageHeight = cHeight;
+            var totalPDFPages = Math.ceil(cHeight / pdfHeight) - 1;
+
+            html2canvas(downloadSection[0], {
+                allowTaint: true
+            }).then(function (
+                canvas
+            ) {
+                canvas.getContext('2d');
+                var imgData = canvas.toDataURL('image/jpeg', 1.0);
+                var pdf = new jsPDF('p', 'pt', [pdfWidth, pdfHeight]);
+                pdf.addImage(
+                    imgData,
+                    'JPG',
+                    topLeftMargin,
+                    topLeftMargin,
+                    canvasImageWidth,
+                    canvasImageHeight
+                );
+                for (var i = 1; i <= totalPDFPages; i++) {
+                    pdf.addPage(pdfWidth, pdfHeight);
+                    pdf.addImage(
+                        imgData,
+                        'JPG',
+                        topLeftMargin,
+                        -(pdfHeight * i) + topLeftMargin * 0,
+                        canvasImageWidth,
+                        canvasImageHeight
+                    );
+                }
+                pdf.save('ivonne-invoice.pdf');
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>
