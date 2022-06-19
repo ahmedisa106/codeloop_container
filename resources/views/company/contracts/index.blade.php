@@ -126,6 +126,7 @@
                 {data: 'end_at', name: 'end_at'},
                 {data: 'messenger', name: 'messenger'},
                 {data: 'status', name: 'status'},
+                {data: 'contract', name: 'contract'},
 
 
             ]

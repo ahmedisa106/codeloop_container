@@ -29,6 +29,7 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     Route::view('test7', 'company.test7');
     Route::view('test8', 'company.test8');
     Route::view('test9', 'company.test9');
+    Route::view('test10', 'company.test10');
 
 });
 
@@ -136,7 +137,7 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     // contracts
     Route::post('contracts/bulk-delete', 'ContractController@bulkDelete')->name('contracts.bulkDelete');
     Route::get('contracts/data', 'ContractController@data')->name('contracts.data');
-    Route::get('contracts/download-pdf', 'ContractController@pdf')->name('contracts.pdf');
+    Route::get('contracts/download-pdf/{id}', 'ContractController@pdf')->name('contracts.pdf');
     Route::resource('contracts', 'ContractController');
     // end contracts
 

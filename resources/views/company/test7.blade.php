@@ -4,7 +4,7 @@
         font-family: 'Bahij_Plain';
         src: url('{{asset('assets/dashboard/fonts/Bahij_Plain.ttf')}}');
     }
-    
+
     * {
         box-sizing: border-box;
     }
@@ -319,7 +319,7 @@
                 </tr>
             </tbody>
         </table>
-        
+
         <div class="conditions">
             <h5>
                 العقد ساري من تاريخ كتابة العقد الي تاريخ <span>22/03/2022</span> علي ان يقوم الطرف الاول بتأجير حاوية للطرف الثاني حسب الشروط التالية :
