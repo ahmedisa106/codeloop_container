@@ -21,6 +21,7 @@ class CreateContractsTable extends Migration
             $table->unsignedBigInteger('messenger_id');
             $table->unsignedBigInteger('container_rental_id');
             $table->longText('qr')->nullable();
+            $table->longText('pdf')->nullable();
 
             $table->string('area_name')->nullable();
             $table->bigInteger('area_number')->nullable();

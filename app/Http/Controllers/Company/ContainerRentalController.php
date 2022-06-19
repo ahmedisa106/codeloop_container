@@ -10,6 +10,7 @@ use App\Models\ContainerRental;
 use App\Models\Contract;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PDF;
 use Yajra\DataTables\DataTables;
 
 class ContainerRentalController extends Controller
@@ -107,19 +108,31 @@ class ContainerRentalController extends Controller
         $number = $this->getLatestContractSerial();
 
         if ($data['contract_type'] == 'contract') {
-
+            $file_name = time() . '_' . $number . '.pdf';
             $rent->contract()->create([
                 'contract_serial' => $number,
                 'company_id' => $rent['company_id'],
                 'customer_id' => $rent['customer_id'],
                 'messenger_id' => $rent['messenger_id'],
                 'qr' => '',
+                'pdf' => $file_name,
                 'area_name' => $contract_data['area_name'],
                 'area_number' => $contract_data['area_number'],
                 'block_number' => $contract_data['block_number'],
                 'plan_number' => $contract_data['plan_number']
             ]);
         }
+
+
+        $contract = $rent->contract;
+        $path = public_path('pdfs/' . $file_name);
+        if (!file_exists(public_path('pdfs/'))) {
+            mkdir(public_path('pdfs'), 0777, true);
+            $pdf = PDF::loadView('company.contracts.pdfTheme.test10', compact('contract'))->save($path);
+        } else {
+            $pdf = PDF::loadView('company.contracts.pdfTheme.test10', compact('contract'))->save($path);
+        }
+
 
         DB::commit();
 
