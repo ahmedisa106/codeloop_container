@@ -279,6 +279,7 @@
 </head>
 
 <body>
+
 <div class="container" id="download_section">
     <div class="contract">
         <div class="watermark" style="background-image: url('{{$contract->company->image}}')"></div>
@@ -385,6 +386,7 @@
             window.close();
         }
     });
+
 
 
 </script>
