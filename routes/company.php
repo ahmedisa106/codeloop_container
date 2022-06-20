@@ -141,5 +141,17 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     Route::resource('contracts', 'ContractController');
     // end contracts
 
+    // company-clauses
+    Route::post('company-clauses/bulk-delete', 'CompanyClauseController@bulkDelete')->name('company-clauses.bulkDelete');
+    Route::get('company-clauses/data', 'CompanyClauseController@data')->name('company-clauses.data');
+    Route::resource('company-clauses', 'CompanyClauseController');
+    // end company-clauses
+
+    // company-settings
+    Route::post('company-settings/bulk-delete', 'CompanySettingController@bulkDelete')->name('company-settings.bulkDelete');
+    Route::get('company-settings/data', 'CompanySettingController@data')->name('company-settings.data');
+    Route::resource('company-settings', 'CompanySettingController');
+    // end company-settings
+
 
 });
