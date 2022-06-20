@@ -8,6 +8,7 @@ Route::prefix('company')->middleware(['guest:company,moderator,employee'])->grou
     Route::post('/login', 'auth\AuthController@login')->name('company.login');
 });
 
+Route::get('company/contracts/download-pdf/{id}', 'ContractController@pdf')->name('contracts.pdf');
 
 Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active'])->group(function () {
     Route::post('/logout', 'auth\AuthController@logout')->name('company.logout');
@@ -137,7 +138,6 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     // contracts
     Route::post('contracts/bulk-delete', 'ContractController@bulkDelete')->name('contracts.bulkDelete');
     Route::get('contracts/data', 'ContractController@data')->name('contracts.data');
-    Route::get('contracts/download-pdf/{id}', 'ContractController@pdf')->name('contracts.pdf');
     Route::resource('contracts', 'ContractController');
     // end contracts
 

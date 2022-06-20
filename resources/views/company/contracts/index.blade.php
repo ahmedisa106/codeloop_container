@@ -10,23 +10,27 @@
                 <h3>العقود</h3>
             </div>
             <div class="card-body">
-                <form class="row form" method="post" action="" enctype="">
+                <form class="row " method="post">
+                    @csrf
                     <div class="col-md-4 form-group">
                         <label class="form-label">اسم العميل</label>
-                        <select name="" class="form-control select2-custom" id="">
+                        <select name="customer" class="form-control select2-custom customer" id="">
                             <option value="">الكل</option>
-                            <option value="">محمد</option>
-                            <option value="">احمد</option>
-                            <option value="">سعيد</option>
+                            @foreach($customers as $customer)
+                                <option value="{{$customer->id}}">{{$customer->name}}</option>
+                                <option value="10">asd</option>
+                            @endforeach
+
+
                         </select>
                     </div>
                     <div class="col-md-4 form-group">
                         <label class="form-label">المندوب المسؤول</label>
-                        <select name="" class="form-control select2-custom" id="">
+                        <select name="messenger" class="form-control select2-custom messenger" id="">
                             <option value="">الكل</option>
-                            <option value="">مصطفي</option>
-                            <option value="">خليل</option>
-                            <option value="">سيد</option>
+                            @foreach($messengers as $messenger)
+                                <option value="{{$messenger->id}}">{{$messenger->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-md-4 form-group">
@@ -48,7 +52,7 @@
                         <input class="datepicker form-control" type="text">
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-primary btn-air-primary btn-icon" type="submit">
+                        <button class="btn btn-primary btn-air-primary btn-icon search-btn" type="submit">
                             <i class="fa fa-search"></i>
                             بحث
                         </button>
@@ -115,7 +119,11 @@
                 "url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/ar.json"
             },
             ajax: {
-                url: "{{route('contracts.data')}}"
+                url: "{{route('contracts.data')}}",
+                data: function (d) {
+                    d.customer = $('.customer').val();
+                    d.messenger = $('.messenger').val();
+                }
             },
             columns: [
 
@@ -134,6 +142,11 @@
 
         table.buttons().container().appendTo('#DataTables_Table_0_wrapper .col-md-6:eq(0)');
 
+
+        $('.search-btn').on('click', function (e) {
+            e.preventDefault();
+            table.draw();
+        })
     </script>
 
 
