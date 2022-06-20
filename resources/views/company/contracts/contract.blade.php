@@ -132,7 +132,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-
+            margin-top: 10px;
         }
 
         .flex-middle li:first-child:before {
@@ -184,7 +184,7 @@
         table {
             width: 100%;
             text-align: center;
-            margin-top: 10px;
+            margin-top: 18px;
         }
 
         table th {
@@ -233,6 +233,7 @@
             margin-top: 25px;
             padding-top: 25px;
             border-top: 1px dashed #eaeaea;
+            height: 155px;
         }
 
         .signature li {
@@ -273,6 +274,10 @@
             text-align: center;
             margin-left: 0;
             margin-right: auto;
+        }
+
+        #download_btn {
+            display: none
         }
 
     </style>
@@ -408,6 +413,14 @@
                 );
             }
             pdf.save('Contract.pdf');
+
+            setTimeout(closeWindow, 500);
+
+            function closeWindow() {
+                window.close();
+            }
+
+
         });
     });
 
