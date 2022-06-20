@@ -140,6 +140,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/bacon/bacon-qr-code" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/simplesoftwareio/simple-qrcode" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/dasprid/enum" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/anam/phantommagick" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/anam/phantomjs-linux-x86-binary" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
