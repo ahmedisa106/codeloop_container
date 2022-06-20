@@ -107,6 +107,18 @@ class AppSeeder extends Seeder
             'status' => 'active',
             'company_id' => 1
         ]);
+        \App\Models\App::create([
+            'model' => 'company-settings',
+            'ar_model' => 'إعدادت الشركه',
+            'status' => 'active',
+            'company_id' => 1
+        ]);
+        \App\Models\App::create([
+            'model' => 'company-clauses',
+            'ar_model' => 'بنود العقود',
+            'status' => 'active',
+            'company_id' => 1
+        ]);
 
     }
 }

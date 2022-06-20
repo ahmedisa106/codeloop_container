@@ -128,6 +128,18 @@
                             <li><a href="{{route('job-types.index')}}">أنواع الوظائف</a></li>
                             @endpermission
                         @endif
+
+
+                        @if(active_apps('job-types'))
+                            @permission('read_job-types')
+                            <li><a href="{{route('job-types.index')}}">بنود العقود</a></li>
+                            @endpermission
+                        @endif
+                        @if(active_apps('job-types'))
+                            @permission('read_job-types')
+                            <li><a href="{{route('job-types.index')}}">الإعددات العامه</a></li>
+                            @endpermission
+                        @endif
                     </ul>
                 </li>
                 @endpermission

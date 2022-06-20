@@ -164,7 +164,7 @@ class ContractController extends Controller
     public function pdf($id)
     {
         $contract = Contract::find($id);
-        return view('company.test7', compact('contract'));
+        return view('company.contracts.contract', compact('contract'));
 
     }//end of loadPdf function
 }
