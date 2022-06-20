@@ -23,10 +23,10 @@ class CreateContractsTable extends Migration
             $table->longText('qr')->nullable();
             $table->longText('pdf')->nullable();
 
-            $table->string('area_name')->nullable();
-            $table->bigInteger('area_number')->nullable();
-            $table->bigInteger('block_number')->nullable();
-            $table->bigInteger('plan_number')->nullable();
+            $table->longText('area_name')->nullable();
+            $table->longText('area_number')->nullable();
+            $table->longText('block_number')->nullable();
+            $table->longText('plan_number')->nullable();
 
             $table->enum('status', ['on', 'off', 'broken'])->default('on');
 
