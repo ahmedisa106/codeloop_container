@@ -151,7 +151,7 @@ class Company extends Authenticatable
 
     public static function invoiceSerial($number)
     {
-        return '#' . sprintf('%07d', $number);
+        return '#' . sprintf('%05d', $number);
 
     }
 

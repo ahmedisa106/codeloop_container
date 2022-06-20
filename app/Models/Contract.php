@@ -28,7 +28,7 @@ class Contract extends Model
 
     public function messenger()
     {
-        return $this->belongsTo(Employee::class, 'messenger_id')->where('company_id', auth()->user()->company->id);
+        return $this->belongsTo(Employee::class, 'messenger_id');
 
     }//end of  function
 }
