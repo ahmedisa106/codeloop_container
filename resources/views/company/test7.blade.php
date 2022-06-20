@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -279,82 +278,83 @@
 
 <body>
     <div class="container" id="download_section">
-    <div class="contract">
-        <div class="watermark" style="background-image: url('{{asset('default')}}/logo.svg')"></div>
-        <ul class="header">
-            <li>
-                <h3>مجموعة وهج الصالحية للخدمات</h3>
-                <p>تأجير المعدات والحاويات وتنظيف المدن</p>
-                <p>ترخيص 1433/1865 - س.ت 25111013125</p>
-                <p><i class="fa fa-map-marker"></i>حفر الباطن</p>
-                <p><i class="fa fa-phone"></i>0505992500</p>
-            </li>
-            <li>
-                <div class="logo-div">
-                <img src="{{asset('default')}}/logo.svg" class="logo" alt="">
-                <p>التاريخ : <strong>22/03/2022</strong></p>
-                <p>رقم العقد : <strong class="red">1520</strong></p>
-                <p>رقم الحاوية : <strong>95411</strong></p>
-                </div>
-            </li>
-        </ul>
-        <h4 class="title">
-            عقد تأجير حاوية
-            <span>( نفايات )</span>
-        </h4>
-        <ul class="flex-middle">
-            <li>
-                <p><span>طرف اول :</span>مجموعة وهج الصالحية للخدمات </p>
-                <p><span>طرف ثاني :</span>فلاح جزير خلف الشمري </p>
-            </li>
-            <li><img src="{{asset('default')}}/QR.png"
-                    class="qr" alt=""></li>
-        </ul>
-        <table>
-            <thead>
-                <tr>
-                    <th>اسم الحي</th>
-                    <th>رقم القطعة</th>
-                    <th>رقم البلك</th>
-                    <th>رقم المخطط</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>الصناعية</td>
-                    <td>177/ب</td>
-                    <td>-</td>
-                    <td>ح/41</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="contract">
+            <div class="watermark" style="background-image: url('{{asset('default')}}/logo.svg')"></div>
+            <ul class="header">
+                <li>
+                    <h3>مجموعة وهج الصالحية للخدمات</h3>
+                    <p>تأجير المعدات والحاويات وتنظيف المدن</p>
+                    <p>ترخيص 1433/1865 - س.ت 25111013125</p>
+                    <p><i class="fa fa-map-marker"></i>حفر الباطن</p>
+                    <p><i class="fa fa-phone"></i>0505992500</p>
+                </li>
+                <li>
+                    <div class="logo-div">
+                        <img src="{{asset('default')}}/logo.svg" class="logo" alt="">
+                        <p>التاريخ : <strong>22/03/2022</strong></p>
+                        <p>رقم العقد : <strong class="red">1520</strong></p>
+                        <p>رقم الحاوية : <strong>95411</strong></p>
+                    </div>
+                </li>
+            </ul>
+            <h4 class="title">
+                عقد تأجير حاوية
+                <span>( نفايات )</span>
+            </h4>
+            <ul class="flex-middle">
+                <li>
+                    <p><span>طرف اول :</span>مجموعة وهج الصالحية للخدمات </p>
+                    <p><span>طرف ثاني :</span>فلاح جزير خلف الشمري </p>
+                </li>
+                <li><img src="{{asset('default')}}/QR.png" class="qr" alt=""></li>
+            </ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th>اسم الحي</th>
+                        <th>رقم القطعة</th>
+                        <th>رقم البلك</th>
+                        <th>رقم المخطط</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>الصناعية</td>
+                        <td>177/ب</td>
+                        <td>-</td>
+                        <td>ح/41</td>
+                    </tr>
+                </tbody>
+            </table>
 
-        <div class="conditions">
-            <h5>
-                العقد ساري من تاريخ كتابة العقد الي تاريخ <span>22/03/2022</span> علي ان يقوم الطرف الاول بتأجير حاوية للطرف الثاني حسب الشروط التالية :
-            </h5>
-            <ul>
-                <li><span></span>لا يحق للطرف الثاني استخدام الحاوية في غير ما خصصت له . </li>
-                <li><span></span>يؤمن الطرف الثاني مكان للحاوية شرط الا يعيق حركة المرور . </li>
-                <li><span></span>يجب على الطرف الثاني إبلاغ الطرف الاول حال امتلاء الحاوية او النتهاء منها . </li>
-                <li><span></span>يتحمل الطرف الثاني اي اضرار تلحق بالحاوية من حيث الحريق او الصدم او السرقة . </li>
-                <li><span></span>للطرف الاول الحق في رفع الحاوية بعد انتهاء المدة دون الرجوع للطرف الثاني . </li>
-                <li><span></span>الطرف الاول لا يتحمل ما يسقط من الحاوية عند رفعها بسبب امتلائها عن الحد المسموح به .
+            <div class="conditions">
+                <h5>
+                    العقد ساري من تاريخ كتابة العقد الي تاريخ <span>22/03/2022</span> علي ان يقوم الطرف الاول بتأجير
+                    حاوية للطرف الثاني حسب الشروط التالية :
+                </h5>
+                <ul>
+                    <li><span></span>لا يحق للطرف الثاني استخدام الحاوية في غير ما خصصت له . </li>
+                    <li><span></span>يؤمن الطرف الثاني مكان للحاوية شرط الا يعيق حركة المرور . </li>
+                    <li><span></span>يجب على الطرف الثاني إبلاغ الطرف الاول حال امتلاء الحاوية او النتهاء منها . </li>
+                    <li><span></span>يتحمل الطرف الثاني اي اضرار تلحق بالحاوية من حيث الحريق او الصدم او السرقة . </li>
+                    <li><span></span>للطرف الاول الحق في رفع الحاوية بعد انتهاء المدة دون الرجوع للطرف الثاني . </li>
+                    <li><span></span>الطرف الاول لا يتحمل ما يسقط من الحاوية عند رفعها بسبب امتلائها عن الحد المسموح به
+                        .
+                    </li>
+                </ul>
+            </div>
+            <ul class="signature">
+                <li>
+                    <p>طرف أول</p><span>مجموعة وهج الصالحية</span>
+                </li>
+                <li>
+                    <p>طرف ثاني</p><span>فلاح جزير خلف الشمري</span>
+                </li>
+                <li>
+                    <p>الختم</p><img src="{{asset('default')}}/Round.png" alt="">
                 </li>
             </ul>
         </div>
-        <ul class="signature">
-            <li>
-                <p>طرف أول</p><span>مجموعة وهج الصالحية</span>
-            </li>
-            <li>
-                <p>طرف ثاني</p><span>فلاح جزير خلف الشمري</span>
-            </li>
-            <li>
-                <p>الختم</p><img src="{{asset('default')}}/Round.png" alt="">
-            </li>
-        </ul>
-    </div>
     </div>
 
     <button id="download_btn">generate PDF</button>
