@@ -11,6 +11,7 @@ use App\Models\Contract;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PDF;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Yajra\DataTables\DataTables;
 
 class ContainerRentalController extends Controller
@@ -107,6 +108,7 @@ class ContainerRentalController extends Controller
 
         $number = $this->getLatestContractSerial();
 
+
         if ($data['contract_type'] == 'contract') {
             $file_name = time() . '_' . $number . '.pdf';
             $rent->contract()->create([
@@ -121,6 +123,8 @@ class ContainerRentalController extends Controller
                 'block_number' => $contract_data['block_number'],
                 'plan_number' => $contract_data['plan_number']
             ]);
+            $rent->contract()->update([
+                'qr' => QrCode::size(100)->generate(route('contracts.pdf', $rent->contract->id))]);
         }
 
 

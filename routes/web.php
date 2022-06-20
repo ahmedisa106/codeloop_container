@@ -15,10 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes();
-
 Route::get('/sitemap.xml', [\App\Http\Controllers\SitemapXmlController::class, 'index']);
 
-Route::get('/clear-cache',function (){
+Route::get('/clear-cache', function () {
     \Illuminate\Support\Facades\Artisan::call('optimize:clear');
     \Illuminate\Support\Facades\Artisan::call('config:cache');
     \Illuminate\Support\Facades\Artisan::call('config:clear');

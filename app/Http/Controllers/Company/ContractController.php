@@ -24,8 +24,9 @@ class ContractController extends Controller
 
     }//end of __construct function
 
-    public function data()
+    public function data(Request $request)
     {
+
         $contracts = auth()->user()->company->contracts;
         return DataTables::of($contracts)
             ->addColumn('customer', function ($raw) {
@@ -70,6 +71,16 @@ class ContractController extends Controller
                 }
                 return "<span class='cont-status " . $class . " '>" . $name . "</span>";
             })
+            ->filter(function ($q) use ($request) {
+
+                if ($request->customer && $request->customer != '') {
+                    $q->collection = $q->collection->filter(function ($row) use ($request) {
+                        $row->where('customer_id', $request->customer);
+                    });
+
+
+                }
+            })
             ->rawColumns(['status' => 'status', 'contract' => 'contract'])
             ->make(true);
 
@@ -77,8 +88,11 @@ class ContractController extends Controller
 
     public function index()
     {
+        $customers = auth()->user()->company->customers;
+        $messengers = auth()->user()->company->messengers;
 
-        return view('company.contracts.index', ['data' => $this->data]);
+
+        return view('company.contracts.index', ['data' => $this->data], compact('messengers', 'customers'));
     }
 
     /**
@@ -150,7 +164,7 @@ class ContractController extends Controller
     public function pdf($id)
     {
         $contract = Contract::find($id);
-        return response()->download(public_path('pdfs/' . $contract->pdf));
+        return view('company.test7', compact('contract'));
 
     }//end of loadPdf function
 }
