@@ -10,6 +10,8 @@
     "require": {
         "php": "^7.2.5",
         "alkoumi/laravel-arabic-numbers": "^1.1",
+        "anam/phantomjs-linux-x86-binary": "^2.1",
+        "anam/phantommagick": "^2.0",
         "barryvdh/laravel-dompdf": "^1.0",
         "carlos-meneses/laravel-mpdf": "^2.1.8",
         "dirape/token": "^2.3",

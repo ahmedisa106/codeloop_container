@@ -31,11 +31,10 @@ class ContainerRentalRequest extends FormRequest
 
         $roles = [
             'contract_type' => 'required|in:cash,contract',
-
-            'area_name' => 'required_if:contract_type,contract',
-            'area_number' => 'required_if:contract_type,contract',
-            'block_number' => 'required_if:contract_type,contract',
-            'plan_number' => 'required_if:contract_type,contract',
+            'area_name' => 'required_if:contract_type,contract|string',
+            'area_number' => 'required_if:contract_type,contract|string',
+            'block_number' => 'required_if:contract_type,contract|string',
+            'plan_number' => 'required_if:contract_type,contract|string',
             'category_id' => 'required|exists:categories,id',
             'category_size_id' => 'required|exists:category_sizes,id',
             'customer_id' => 'required|exists:customers,id',
@@ -60,10 +59,10 @@ class ContainerRentalRequest extends FormRequest
         $roles = [
             'contract_type' => 'required|in:cash,contract',
 
-            'area_name' => 'required_if:contract_type,contract',
-            'area_number' => 'required_if:contract_type,contract',
-            'block_number' => 'required_if:contract_type,contract',
-            'plan_number' => 'required_if:contract_type,contract',
+            'area_name' => 'required_if:contract_type,contract|string',
+            'area_number' => 'required_if:contract_type,contract|string',
+            'block_number' => 'required_if:contract_type,contract|string',
+            'plan_number' => 'required_if:contract_type,contract|string',
             'category_id' => 'required|exists:categories,id',
             'category_size_id' => 'required|exists:category_sizes,id',
             'customer_id' => 'required|exists:customers,id',
