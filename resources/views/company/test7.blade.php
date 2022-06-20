@@ -2,10 +2,8 @@
 <html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="{{asset('assets/dashboard')}}/css/vendors/font-awesome.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
     <style>
         @font-face {
             font-family: 'Bahij_Plain';
@@ -132,7 +130,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-
+            margin-top: 10px;
         }
 
         .flex-middle li:first-child:before {
@@ -184,7 +182,7 @@
         table {
             width: 100%;
             text-align: center;
-            margin-top: 10px;
+            margin-top: 18px;
         }
 
         table th {
@@ -233,6 +231,7 @@
             margin-top: 25px;
             padding-top: 25px;
             border-top: 1px dashed #eaeaea;
+            height: 155px;
         }
 
         .signature li {
@@ -275,121 +274,148 @@
             margin-right: auto;
         }
 
+        #download_btn {
+            display:none
+        }
+
     </style>
 </head>
 
 <body>
+    <div class="container" id="download_section">
+        <div class="contract">
+            <div class="watermark" style="background-image: url('{{asset('default')}}/logo.svg')"></div>
+            <ul class="header">
+                <li>
+                    <h3>مجموعة وهج الصالحية للخدمات</h3>
+                    <p>تأجير المعدات والحاويات وتنظيف المدن</p>
+                    <p>ترخيص 1433/1865 - س.ت 25111013125</p>
+                    <p><i class="fa fa-map-marker"></i>حفر الباطن</p>
+                    <p><i class="fa fa-phone"></i>0505992500</p>
+                </li>
+                <li>
+                    <div class="logo-div">
+                        <img src="{{asset('default')}}/logo.svg" class="logo" alt="">
+                        <p>التاريخ : <strong>22/03/2022</strong></p>
+                        <p>رقم العقد : <strong class="red">1520</strong></p>
+                        <p>رقم الحاوية : <strong>95411</strong></p>
+                    </div>
+                </li>
+            </ul>
+            <h4 class="title">
+                عقد تأجير حاوية
+                <span>( نفايات )</span>
+            </h4>
+            <ul class="flex-middle">
+                <li>
+                    <p><span>طرف اول :</span>مجموعة وهج الصالحية للخدمات </p>
+                    <p><span>طرف ثاني :</span>فلاح جزير خلف الشمري </p>
+                </li>
+                <li><img src="{{asset('default')}}/QR.png" class="qr" alt=""></li>
+            </ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th>اسم الحي</th>
+                        <th>رقم القطعة</th>
+                        <th>رقم البلك</th>
+                        <th>رقم المخطط</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>الصناعية</td>
+                        <td>177/ب</td>
+                        <td>-</td>
+                        <td>ح/41</td>
+                    </tr>
+                </tbody>
+            </table>
 
-<div class="container" id="download_section">
-    <div class="contract">
-        <div class="watermark" style="background-image: url('{{$contract->company->image}}')"></div>
-        <ul class="header">
-            <li>
-                <h3>{{$contract->company->name}}</h3>
-                <p>تأجير المعدات والحاويات وتنظيف المدن</p>
-                <p><b>الرقم الضريبي : </b> {{\Alkoumi\LaravelArabicNumbers\Numbers::ShowInArabicDigits($contract->company->tax_card_number)}}</p>
-                <p><b>السجل التجاري : </b> {{\Alkoumi\LaravelArabicNumbers\Numbers::ShowInArabicDigits($contract->company->commercial_number)}}</p>
-                <p><i class="fa fa-map-marker"></i>حفر الباطن</p>
-                <p><i class="fa fa-phone"></i>{{\Alkoumi\LaravelArabicNumbers\Numbers::ShowInArabicDigits($contract->company->phone)}}</p>
-            </li>
-            <li>
-                <div class="logo-div">
-                    <img src="{{$contract->company->image}}" class="logo" alt="">
-                    <p>التاريخ : <strong>{{\Alkoumi\LaravelArabicNumbers\Numbers::ShowInArabicDigits(\Illuminate\Support\Carbon::create($contract->containerRentals->start_at)->format(' d - m - Y '))}}</strong></p>
-                    <p>رقم العقد : <strong class="red">{{\Alkoumi\LaravelArabicNumbers\Numbers::ShowInArabicDigits(\App\Models\Company::invoiceSerial($contract->contract_serial))}}</strong></p>
-                    <p>رقم الحاوية : <strong>{{\Alkoumi\LaravelArabicNumbers\Numbers::ShowInArabicDigits($contract->containerRentals->container->number)}}</strong></p>
-                </div>
-            </li>
-        </ul>
-        <h4 class="title">
-            عقد تأجير حاوية
-            <span>( {{$contract->containerRentals->category->name}} )</span>
-        </h4>
-        <ul class="flex-middle">
-            <li>
-                <p><span>طرف اول :</span>{{$contract->company->name}} </p>
-                <p><span>طرف ثاني :</span>{{$contract->customer->name}}</p>
-            </li>
-            <li>
-                {!! $contract->qr !!}
-            </li>
-        </ul>
-        <table>
-            <thead>
-            <tr>
-                <th>اسم الحي</th>
-                <th>رقم القطعة</th>
-                <th>رقم البلك</th>
-                <th>رقم المخطط</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>{{$contract->area_name}}</td>
-                <td>{{$contract->area_number}}</td>
-                <td>{{$contract->block_number}}</td>
-                <td>{{$contract->plan_number}}</td>
-            </tr>
-            </tbody>
-        </table>
-
-        <div class="conditions">
-            <h5>
-                العقد ساري من تاريخ كتابة العقد الي تاريخ <span>{{\Alkoumi\LaravelArabicNumbers\Numbers::ShowInArabicDigits(\Illuminate\Support\Carbon::create($contract->containerRentals->end_at)->format(' d - m - Y '))}}</span> علي ان يقوم الطرف الاول بتأجير حاوية للطرف الثاني حسب الشروط التالية :
-            </h5>
-            <ul>
-                <li><span></span>لا يحق للطرف الثاني استخدام الحاوية في غير ما خصصت له .</li>
-                <li><span></span>يؤمن الطرف الثاني مكان للحاوية شرط الا يعيق حركة المرور .</li>
-                <li><span></span>يجب على الطرف الثاني إبلاغ الطرف الاول حال امتلاء الحاوية او النتهاء منها .</li>
-                <li><span></span>يتحمل الطرف الثاني اي اضرار تلحق بالحاوية من حيث الحريق او الصدم او السرقة .</li>
-                <li><span></span>للطرف الاول الحق في رفع الحاوية بعد انتهاء المدة دون الرجوع للطرف الثاني .</li>
-                <li><span></span>الطرف الاول لا يتحمل ما يسقط من الحاوية عند رفعها بسبب امتلائها عن الحد المسموح به .
+            <div class="conditions">
+                <h5>
+                    العقد ساري من تاريخ كتابة العقد الي تاريخ <span>22/03/2022</span> علي ان يقوم الطرف الاول بتأجير
+                    حاوية للطرف الثاني حسب الشروط التالية :
+                </h5>
+                <ul>
+                    <li><span></span>لا يحق للطرف الثاني استخدام الحاوية في غير ما خصصت له . </li>
+                    <li><span></span>يؤمن الطرف الثاني مكان للحاوية شرط الا يعيق حركة المرور . </li>
+                    <li><span></span>يجب على الطرف الثاني إبلاغ الطرف الاول حال امتلاء الحاوية او النتهاء منها . </li>
+                    <li><span></span>يتحمل الطرف الثاني اي اضرار تلحق بالحاوية من حيث الحريق او الصدم او السرقة . </li>
+                    <li><span></span>للطرف الاول الحق في رفع الحاوية بعد انتهاء المدة دون الرجوع للطرف الثاني . </li>
+                    <li><span></span>الطرف الاول لا يتحمل ما يسقط من الحاوية عند رفعها بسبب امتلائها عن الحد المسموح به
+                        .
+                    </li>
+                </ul>
+            </div>
+            <ul class="signature">
+                <li>
+                    <p>طرف أول</p><span>مجموعة وهج الصالحية</span>
+                </li>
+                <li>
+                    <p>طرف ثاني</p><span>فلاح جزير خلف الشمري</span>
+                </li>
+                <li>
+                    <p>الختم</p><img src="{{asset('default')}}/Round.png" alt="">
                 </li>
             </ul>
         </div>
-        <ul class="signature">
-            <li>
-                <p>طرف أول</p><span>{{$contract->company->name}}</span>
-            </li>
-            <li>
-                <p>طرف ثاني</p><span>{{$contract->customer->name}}</span>
-            </li>
-            <li>
-                <p>الختم</p><img src="{{asset('default')}}/Round.png" alt="">
-            </li>
-        </ul>
     </div>
-</div>
+    
 
-<button id="download_btn"></button>
+    <button id="download_btn"></button>
+    <script src="{{asset('assets/dashboard')}}/js/jquery-3.5.1.min.js"></script>
+    <script src="{{asset('assets/dashboard')}}/js/html2canvas/jspdf.min.js"></script>
+    <script src="{{asset('assets/dashboard')}}/js/html2canvas/html2canvas.min.js"></script>
 
+    <script>
+        $(document).ready(function(){
+            $('#download_btn').click();    
+                });
+        $('#download_btn').on('click', function () {
+            var downloadSection = $('#download_section');
+            var cWidth = downloadSection.width();
+            var cHeight = downloadSection.height();
+            var topLeftMargin = 40;
+            var pdfWidth = cWidth + topLeftMargin * 2;
+            var pdfHeight = pdfWidth * 1.5 + topLeftMargin * 2;
+            var canvasImageWidth = cWidth;
+            var canvasImageHeight = cHeight;
+            var totalPDFPages = Math.ceil(cHeight / pdfHeight) - 1;
 
-<script src="https://ivonne.vercel.app/assets/js/jquery.min.js"></script>
+            html2canvas(downloadSection[0], {
+                allowTaint: true,
+                scale:2
+            }).then(function (
+                canvas
+            ) {
+                canvas.getContext('2d');
+                var imgData = canvas.toDataURL('image/jpeg', 1.0);
+                var pdf = new jsPDF('p', 'pt', [pdfWidth, pdfHeight]);
+                pdf.addImage(
+                    imgData,
+                    'JPG',
+                    topLeftMargin,
+                    topLeftMargin,
+                    canvasImageWidth,
+                    canvasImageHeight
+                );
+                for (var i = 1; i <= totalPDFPages; i++) {
+                    pdf.addPage(pdfWidth, pdfHeight);
+                    pdf.addImage(
+                        imgData,
+                        'JPG',
+                        topLeftMargin,
+                        -(pdfHeight * i) + topLeftMargin * 0,
+                        canvasImageWidth,
+                        canvasImageHeight
+                    );
+                }
+                pdf.save('Contract.pdf');
+            });
+        });
 
-
-<script>
-    $(document).ready(function () {
-        var element = document.getElementById('download_section');
-        var opt = {
-            margin: 0,
-            filename: 'myfile.pdf',
-            image: {type: 'jpeg', quality: 1},
-            html2canvas: {scale: 4},
-            jsPDF: {unit: 'in', format: 'letter', orientation: 'portrait'}
-        };
-        html2pdf(element, opt);
-
-        setTimeout(closeWindow, 500);
-
-        function closeWindow() {
-
-            window.close();
-        }
-    });
-
-
-
-</script>
+    </script>
 
 </body>
 
