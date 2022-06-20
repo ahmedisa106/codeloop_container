@@ -18,7 +18,7 @@
                             <option value="">الكل</option>
                             @foreach($customers as $customer)
                                 <option value="{{$customer->id}}">{{$customer->name}}</option>
-                                <option value="10">asd</option>
+
                             @endforeach
 
 
@@ -30,26 +30,27 @@
                             <option value="">الكل</option>
                             @foreach($messengers as $messenger)
                                 <option value="{{$messenger->id}}">{{$messenger->name}}</option>
+
                             @endforeach
                         </select>
                     </div>
                     <div class="col-md-4 form-group">
                         <label class="form-label">حالة العقد</label>
-                        <select name="" class="form-control select2-custom" id="">
+                        <select name="" class="form-control select2-custom status" id="">
                             <option value="">الكل</option>
-                            <option value="">ساري</option>
-                            <option value="">منتهي</option>
-                            <option value="">ملغي</option>
+                            <option value="on">ساري</option>
+                            <option value="off">منتهي</option>
+                            <option value="broken">ملغي</option>
                         </select>
                     </div>
                     <h3 class="title-h3">الفترة</h3>
                     <div class="col-md-4 form-group">
                         <label class="form-label">من تاريخ</label>
-                        <input class="datepicker form-control" type="text">
+                        <input class="datepicker form-control from" type="text">
                     </div>
                     <div class="col-md-4 form-group">
                         <label class="form-label">الى تاريخ</label>
-                        <input class="datepicker form-control" type="text">
+                        <input class="datepicker form-control to" type="text">
                     </div>
                     <div class="card-footer">
                         <button class="btn btn-primary btn-air-primary btn-icon search-btn" type="submit">
@@ -123,6 +124,9 @@
                 data: function (d) {
                     d.customer = $('.customer').val();
                     d.messenger = $('.messenger').val();
+                    d.status = $('.status').val();
+                    d.from = $('.from').val();
+                    d.to = $('.to').val();
                 }
             },
             columns: [

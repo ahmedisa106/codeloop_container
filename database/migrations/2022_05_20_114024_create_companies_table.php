@@ -23,6 +23,7 @@ class CreateCompaniesTable extends Migration
             $table->bigInteger('commercial_number');
             $table->bigInteger('tax_card_number');
             $table->string('logo')->nullable();
+            $table->string('seal')->nullable();
             $table->timestamps();
         });
     }

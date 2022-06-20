@@ -15,7 +15,11 @@ class CreateCompanyClausesTable extends Migration
     {
         Schema::create('company_clauses', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('company_id');
+            $table->longText('clause');
             $table->timestamps();
+
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
         });
     }
 

@@ -8,6 +8,7 @@ class ContainerRental extends Model
 {
     protected $table = 'container_rentals';
     protected $guarded = [];
+    protected $with = ['customer', 'container', 'messenger', 'driver', 'categorySize', 'category'];
 
     public function company()
     {
@@ -37,7 +38,7 @@ class ContainerRental extends Model
 
     public function contract()
     {
-        return $this->hasOne(Contract::class)->where('company_id', auth()->user()->company->id);
+        return $this->hasOne(Contract::class, 'id', 'container_rental_id');
     }//end of contract function
 
     public function container()

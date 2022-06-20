@@ -11,6 +11,7 @@ class Employee extends Authenticatable
 
     protected $table = 'employees';
     protected $guarded = [];
+    protected $with = ['branch', 'company'];
 
     protected $appends = ['image'];
 

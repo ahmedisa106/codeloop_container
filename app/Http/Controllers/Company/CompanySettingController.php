@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers\Company;
 
+use App\Helper\ResponseTrait;
+use App\Helper\Upload;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\CompanyRequest;
+use App\Models\Company;
 
 class CompanySettingController extends Controller
 {
+    use Upload, ResponseTrait;
+
     protected $data = [
         'page_title' => 'الإعدادت العامه'
     ];
@@ -16,69 +21,23 @@ class CompanySettingController extends Controller
         return view('company.settings.main_setting.index', ['data' => $this->data]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function update(CompanyRequest $request, $id)
     {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $company = Company::find($id);
+        $data = $request->validated();
+        if ($request->hasFile('logo')) {
+            $data['logo'] = $this->upload($request->logo, 'companies', true, $company->logo);
+        }
+        if ($request->hasFile('seal')) {
+            $data['seal'] = $this->upload($request->seal, 'companies', true, $company->seal);
+        }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        $data['password'] = $request->password ? bcrypt($request->password) : $company->password;
+        $company->update($data);
+        return $this->setUpdatedSuccess();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+    }//end of update function
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

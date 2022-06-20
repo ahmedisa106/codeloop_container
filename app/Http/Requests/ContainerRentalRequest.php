@@ -58,7 +58,6 @@ class ContainerRentalRequest extends FormRequest
     {
         $roles = [
             'contract_type' => 'required|in:cash,contract',
-
             'area_name' => 'required_if:contract_type,contract|string',
             'area_number' => 'required_if:contract_type,contract|string',
             'block_number' => 'required_if:contract_type,contract|string',

@@ -342,13 +342,13 @@
                 العقد ساري من تاريخ كتابة العقد الي تاريخ <span>{{\Alkoumi\LaravelArabicNumbers\Numbers::ShowInArabicDigits(\Illuminate\Support\Carbon::create($contract->containerRentals->end_at)->format(' d - m - Y '))}}</span> علي ان يقوم الطرف الاول بتأجير حاوية للطرف الثاني حسب الشروط التالية :
             </h5>
             <ul>
-                <li><span></span>لا يحق للطرف الثاني استخدام الحاوية في غير ما خصصت له .</li>
-                <li><span></span>يؤمن الطرف الثاني مكان للحاوية شرط الا يعيق حركة المرور .</li>
-                <li><span></span>يجب على الطرف الثاني إبلاغ الطرف الاول حال امتلاء الحاوية او النتهاء منها .</li>
-                <li><span></span>يتحمل الطرف الثاني اي اضرار تلحق بالحاوية من حيث الحريق او الصدم او السرقة .</li>
-                <li><span></span>للطرف الاول الحق في رفع الحاوية بعد انتهاء المدة دون الرجوع للطرف الثاني .</li>
-                <li><span></span>الطرف الاول لا يتحمل ما يسقط من الحاوية عند رفعها بسبب امتلائها عن الحد المسموح به .
-                </li>
+                @foreach($clauses as $clause)
+                    <li><span></span>{{$clause->clause}}</li>
+
+                    @endforeach
+
+
+                    </li>
             </ul>
         </div>
         <ul class="signature">
@@ -358,8 +358,13 @@
             <li>
                 <p>طرف ثاني</p><span>{{$contract->customer->name}}</span>
             </li>
+
             <li>
-                <p>الختم</p><img src="{{asset('default')}}/Round.png" alt="">
+                <p>الختم</p>
+                @if($contract->company->seal)
+
+                    <img src="{{$contract->company->sealImage}}" alt="">
+                @endif
             </li>
         </ul>
     </div>

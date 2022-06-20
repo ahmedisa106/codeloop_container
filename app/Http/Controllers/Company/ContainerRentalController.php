@@ -8,6 +8,7 @@ use App\Http\Requests\ContainerRentalRequest;
 use App\Models\Container;
 use App\Models\ContainerRental;
 use App\Models\Contract;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PDF;
@@ -67,6 +68,10 @@ class ContainerRentalController extends Controller
             ->addColumn('total', function ($raw) {
                 return $raw->total;
             })
+            ->addColumn('details', function ($raw) {
+                return '<a class="btn btn-warning btn-sm" href="' . route('container-rentals.show', $raw->id) . '">تفاصيل</a>';
+            })
+            ->rawColumns(['details' => 'details'])
             ->make(true);
 
 
@@ -150,9 +155,11 @@ class ContainerRentalController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(ContainerRental $containerRental)
     {
-        //
+        $drivers = Employee::where('company_id', auth()->user()->company->id)->where('job_type', 'driver')->where('status', 'active')->get();
+        return view('company.container_rentals.show', compact('containerRental', 'drivers'));
+
     }
 
     /**

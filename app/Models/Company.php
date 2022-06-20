@@ -13,7 +13,7 @@ class Company extends Authenticatable
 
     protected $table = 'companies';
     protected $guarded = [];
-    protected $appends = ['image'];
+    protected $appends = ['image', 'sealImage'];
 
 
     public function getImageAttribute()
@@ -23,6 +23,14 @@ class Company extends Authenticatable
         }
         return asset('images/companies/' . $this->logo);
     }//end of getLogo function
+
+    public function getSealImageAttribute()
+    {
+        if (!$this->seal) {
+            return asset('default/default.png');
+        }
+        return asset('images/companies/' . $this->seal);
+    }//end of getSealImageAttribute function
 
     protected static function boot()
     {
@@ -154,5 +162,10 @@ class Company extends Authenticatable
         return '#' . sprintf('%05d', $number);
 
     }
+
+    public function clauses()
+    {
+        return $this->hasMany(CompanyClauses::class)->where('company_id', auth()->user()->company->id);
+    }//end of clauses function
 
 }
