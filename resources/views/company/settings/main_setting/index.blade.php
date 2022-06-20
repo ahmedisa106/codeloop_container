@@ -6,90 +6,64 @@
         </div>
     </div>
     <div class="card-body">
-        <form class="row form" method="post" action="{{route('settings.store')}}" enctype="multipart/form-data">
+        <form class="row form" method="post" action="{{route('company-settings.update',auth()->user()->company->id)}}" enctype="multipart/form-data">
             @csrf
+            @method('put')
+            <input type="hidden" name="id" value="{{auth()->user()->company->id}}">
             <div class="col-md-6 form-group">
-                <label class="form-label">اسم الموقع</label>
-                <input value="{{isset($setting) ? $setting->name:''}}" name="name" class="form-control" type="text" placeholder="">
+                <label class="form-label">اسم المؤسسة</label>
+                <input name="name" value="{{auth()->user()->company->name}}" class="form-control" type="text" placeholder="">
+            </div>
+            <div class="col-md-6 form-group">
+                <label class="form-label">رقم السجل التجاري</label>
+                <input name="commercial_number" value="{{auth()->user()->company->commercial_number}}" class="form-control" type="number" placeholder="">
+            </div>
+            <div class="col-md-6 form-group">
+                <label class="form-label">رقم البطاقه الضريبيه</label>
+                <input name="tax_card_number" value="{{auth()->user()->company->tax_card_number}}" class="form-control" type="number" placeholder="">
+            </div>
+
+            <div class="col-md-6 form-group">
+                <label class="form-label">اسم المستخدم</label>
+                <input name="username" value="{{auth()->user()->company->username}}" class="form-control" type="text" placeholder="">
+            </div>
+            <div class="col-md-6 form-group">
+                <label class="form-label">رقم الجوال</label>
+                <input name="phone" value="{{auth()->user()->company->phone}}" class="form-control" type="text" placeholder="">
             </div>
             <div class="col-md-6 form-group">
                 <label class="form-label">البريد الإلكتروني</label>
-                <input value="{{isset($setting) ? $setting->email:''}}" name="email" class="form-control" type="email" placeholder="">
+                <input name="email" value="{{auth()->user()->company->email}}" class="form-control" type="text" placeholder="">
             </div>
             <div class="col-md-6 form-group">
-                <label class="form-label">العنوان</label>
-                <input value="{{isset($setting) ? $setting->address:''}}" class="form-control" name="address" type="text" placeholder="">
-            </div>
-            <div class="col-md-6 form-group">
-                <label class="form-label">الهاتف</label>
-                <input value="{{isset($setting) ? $setting->mobile:''}}" class="form-control" type="text" name="mobile" placeholder="">
-            </div>
-            <div class="col-md-6 form-group">
-                <label class="form-label">الفيس بوك</label>
-                <input value="{{isset($setting) ? $setting->facebook:''}}" class="form-control" type="url" name="facebook" placeholder="">
-            </div>
-            <div class="col-md-6 form-group">
-                <label class="form-label">انستجرام</label>
-                <input value="{{isset($setting) ? $setting->instagram:''}}" class="form-control" type="url" name="instagram" placeholder="">
+                <label class="form-label">كلمه المرور</label>
+                <input name="password" class="form-control" type="password" placeholder="">
             </div>
 
-            <div class="col-md-6 form-group">
+
+            <div class="col-md-6">
                 <div class="row">
-                    <div class="col-md-10 form-group">
-                        <label class="form-label">الشعار <span>يفضل مقاس الصورة ( 45 طول * 185 عرض )</span></label>
+                    <div class="col-md-10">
+                        <label class="form-label">الشعار <span>يفضل مقاس الصورة ( 90 طول * 115 عرض )</span></label>
                         <input name="logo" class="form-control photo" id="photo" type="file">
                     </div>
-                    <div class="col-md-2  form-group">
-
-                        <img id="pic-prev" src="{{isset($setting)? $setting->image : asset('default/default.png')}}" class="out-img pic-prev"/>
-
+                    <div class="col-md-2">
+                        <img id="pic-prev" src="{{auth()->user()->company->image}}" class="out-img pic-prev">
                     </div>
                 </div>
-
-
             </div>
 
-            <div class="col-md-6 form-group">
+            <div class="col-md-6">
                 <div class="row">
-                    <div class="col-md-10 form-group">
-                        <label class="form-label">شعار الفوتر <span>يفضل مقاس الصورة ( 45 طول * 185 عرض )</span></label>
-                        <input name="footer_logo" class="form-control photo" id="photo" type="file">
+                    <div class="col-md-10">
+                        <label class="form-label">الختم <span>يفضل مقاس الصورة ( 90 طول * 115 عرض )</span></label>
+                        <input name="seal" class="form-control photo" id="photo" type="file">
                     </div>
-                    <div class="col-md-2  form-group">
-                        <img id="pic-prev" src="{{isset($setting)? $setting->footer : asset('default/default.png')}}" class="out-img pic-prev"/>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 form-group">
-                <label class="form-label">الخريطه</label>
-                <input value="{{isset($setting) ? $setting->map:''}}" name="map" class="form-control" type="text" placeholder="">
-            </div>
-
-
-            <div class="col-md-12">
-                <div class="seo-div">
-                    <h4>بيانات السيو (SEO)</h4>
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            <label class="form-label">عنوان الميتا</label>
-                            <input value="{{isset($setting) ? $setting->meta_title:''}}" name="meta_title" class="form-control"
-                                   type="text" placeholder="">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label class="form-label">وصف الميتا</label>
-                            <input value="{{isset($setting) ? $setting->meta_description:''}}" name="meta_description" class="form-control"
-                                   type="text" placeholder="">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label class="form-label">الكلمات الدلالية</label>
-                            <input value="{{isset($setting) ? $setting->meta_keywords:''}}" name="meta_keywords" class="form-control"
-                                   type="text" placeholder="">
-                        </div>
+                    <div class="col-md-2">
+                        <img id="pic-prev" src="{{auth()->user()->company->sealImage}}" class="out-img pic-prev">
                     </div>
                 </div>
             </div>
-
             <div class="modal-footer">
                 <button class="btn btn-primary btn-air-primary btn-icon" type="submit">
                     <i class="fa fa-save"></i>

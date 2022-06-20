@@ -27,7 +27,17 @@ class ContractController extends Controller
     public function data(Request $request)
     {
 
-        $contracts = auth()->user()->company->contracts;
+        if ($request->from && $request->to) {
+            $contracts = Contract::when($request->from, function ($q) use ($request) {
+                $q->whereHas('containerRentals', function ($q) use ($request) {
+                    $q->whereBetween('start_at', [$request->from, $request->to]);
+                });
+            })->where('company_id', auth()->user()->company->id)->get();
+        } else {
+            $contracts = auth()->user()->company->contracts;
+        }
+
+
         return DataTables::of($contracts)
             ->addColumn('customer', function ($raw) {
                 return $raw->customer->name;
@@ -54,34 +64,51 @@ class ContractController extends Controller
                 return $raw->messenger->name;
             })
             ->addColumn('status', function ($raw) {
-                switch ($raw->status) {
-                    case 'on':
-                        $class = 'valid-con';
-                        $name = 'ساري';
-                        break;
-                    case 'off':
-                        $class = 'expired-con';
-                        $name = 'منتهي';
-                        break;
-                    case 'broken':
-                        $class = 'canceled-con';
-                        $name = 'ملغي';
-                        break;
-
-                }
-                return "<span class='cont-status " . $class . " '>" . $name . "</span>";
+                return $raw->status;
+//                switch ($raw->status) {
+//                    case 'on':
+//                        $class = 'valid-con';
+//                        $name = 'ساري';
+//                        break;
+//                    case 'off':
+//                        $class = 'expired-con';
+//                        $name = 'منتهي';
+//                        break;
+//                    case 'broken':
+//                        $class = 'canceled-con';
+//                        $name = 'ملغي';
+//                        break;
+//
+//                }
+//                return view('company.contracts.status', compact('raw'));
             })
             ->filter(function ($q) use ($request) {
 
                 if ($request->customer && $request->customer != '') {
                     $q->collection = $q->collection->filter(function ($row) use ($request) {
-                        $row->where('customer_id', $request->customer);
+
+                        return $row['customer_id'] == $request->customer;
                     });
 
 
                 }
+                if ($request->messenger && $request->messenger != '') {
+                    $q->collection = $q->collection->filter(function ($row) use ($request) {
+
+                        return $row['messenger_id'] == $request->messenger;
+                    });
+
+
+                }
+                if ($request->status && $request->status != '') {
+                    $q->collection = $q->collection->filter(function ($row) use ($request) {
+                        return $row['status'] == $request->status;
+                    });
+                }
+
+
             })
-            ->rawColumns(['status' => 'status', 'contract' => 'contract'])
+            ->rawColumns(['contract' => 'contract'])
             ->make(true);
 
     }//end of data function
@@ -163,9 +190,10 @@ class ContractController extends Controller
 
     public function pdf($id)
     {
-        
         $contract = Contract::find($id);
-        return view('company.contracts.contract', compact('contract'));
+        $clauses = auth()->user()->company->clauses;
+
+        return view('company.contracts.contract', compact('contract', 'clauses'));
 
     }//end of loadPdf function
 }
