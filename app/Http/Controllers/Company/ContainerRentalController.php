@@ -117,25 +117,26 @@ class ContainerRentalController extends Controller
                 'customer_id' => $rent['customer_id'],
                 'messenger_id' => $rent['messenger_id'],
                 'qr' => '',
-                'pdf' => $file_name,
+                //'pdf' => $file_name,
                 'area_name' => $contract_data['area_name'],
                 'area_number' => $contract_data['area_number'],
                 'block_number' => $contract_data['block_number'],
                 'plan_number' => $contract_data['plan_number']
             ]);
             $rent->contract()->update([
-                'qr' => QrCode::size(100)->generate(route('contracts.pdf', $rent->contract->id))]);
+                'qr' => QrCode::size(100)->generate(route('contracts.pdf', $rent->contract->id))
+            ]);
         }
 
 
-        $contract = $rent->contract;
-        $path = public_path('pdfs/' . $file_name);
-        if (!file_exists(public_path('pdfs/'))) {
-            mkdir(public_path('pdfs'), 0777, true);
-            $pdf = PDF::loadView('company.contracts.pdfTheme.test10', compact('contract'))->save($path);
-        } else {
-            $pdf = PDF::loadView('company.contracts.pdfTheme.test10', compact('contract'))->save($path);
-        }
+//        $contract = $rent->contract;
+//        $path = public_path('pdfs/' . $file_name);
+//        if (!file_exists(public_path('pdfs/'))) {
+//            mkdir(public_path('pdfs'), 0777, true);
+//            $pdf = PDF::loadView('company.contracts.pdfTheme.test10', compact('contract'))->save($path);
+//        } else {
+//            $pdf = PDF::loadView('company.contracts.pdfTheme.test10', compact('contract'))->save($path);
+//        }
 
 
         DB::commit();
