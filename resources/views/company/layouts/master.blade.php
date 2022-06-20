@@ -27,11 +27,7 @@
     @include('company.includes.aside')
     <!-- Page Sidebar Ends-->
         <div class="page-body">
-            <!-- Container-fluid starts-->
-            <div class="container-fluid">
                 @yield('content')
-            </div>
-            <!-- Container-fluid Ends-->
         </div>
         <!-- footer start-->
         @include('admin.includes.footer')

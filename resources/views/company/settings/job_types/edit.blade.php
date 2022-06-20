@@ -10,7 +10,7 @@
                 @method('put')
 
                 <input type="hidden" name="id" value="{{$jobType->id}}">
-                <div class="col-md-12 form-group">
+                <div class="col-md-6 form-group">
                     <label class="form-label">الإسم</label>
                     <input value="{{$jobType->name}}" required class="form-control" name="name" type="text" placeholder="">
                 </div>

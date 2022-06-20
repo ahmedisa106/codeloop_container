@@ -370,7 +370,7 @@
 
     <script>
         $(document).ready(function(){
-            $('#download_btn').click();    
+            $('#download_btn').click();
                 });
         $('#download_btn').on('click', function () {
             var downloadSection = $('#download_section');
