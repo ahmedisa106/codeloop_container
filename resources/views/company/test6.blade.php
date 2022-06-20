@@ -2,6 +2,7 @@
 @section('content')
 
 
+<div class="container-fluid">
 <div class="card">
     <div class="card-header">
         <h3>تفاصيل الطلب</h3>
@@ -359,6 +360,7 @@
             </div>
         </article>
     </div>
+</div>
 </div>
 
 

@@ -7,7 +7,7 @@
         <div class="card-body">
             <form class="row form" method="post" action="{{route('job-types.store')}}" enctype="multipart/form-data">
                 @csrf
-                <div class="col-md-12 form-group">
+                <div class="col-md-6 form-group">
                     <label class="form-label">الإسم</label>
                     <input class="form-control" name="name" type="text" placeholder="">
                 </div>
