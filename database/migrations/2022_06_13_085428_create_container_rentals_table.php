@@ -31,7 +31,7 @@ class CreateContainerRentalsTable extends Migration
             $table->decimal('total', 10, 2);
             $table->date('start_at');
             $table->date('end_at');
-            $table->enum('status', ['waiting_driver', 'in_progress', 'start_duration', 'end_duration']);
+            $table->enum('status', ['waiting_driver', 'in_progress', 'complete', 'delivered', 'broken']);
             $table->timestamps();
 
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');

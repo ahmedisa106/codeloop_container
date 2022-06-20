@@ -130,14 +130,14 @@
                         @endif
 
 
-                        @if(active_apps('job-types'))
-                            @permission('read_job-types')
-                            <li><a href="{{route('job-types.index')}}">بنود العقود</a></li>
+                        @if(active_apps('company-clauses'))
+                            @permission('read_company-clauses')
+                            <li><a href="{{route('company-clauses.index')}}">بنود العقود</a></li>
                             @endpermission
                         @endif
-                        @if(active_apps('job-types'))
-                            @permission('read_job-types')
-                            <li><a href="{{route('job-types.index')}}">الإعددات العامه</a></li>
+                        @if(active_apps('company-settings'))
+                            @permission('read_company-settings')
+                            <li><a class="show_modal" href="{{route('company-settings.index')}}">الإعددات العامه</a></li>
                             @endpermission
                         @endif
                     </ul>

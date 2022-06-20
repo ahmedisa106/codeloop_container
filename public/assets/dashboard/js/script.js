@@ -445,7 +445,11 @@ $(function () {
         showDropdowns: true,
         locale: {
             format: 'YYYY-MM-DD',
-        }
+        },
+        autoUpdateInput: false,
+    });
+    $('.datepicker').on('apply.daterangepicker', function (ev, picker) {
+        $(this).val(picker.startDate.format('YYYY-MM-DD'));
     });
 });
 

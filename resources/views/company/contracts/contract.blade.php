@@ -291,100 +291,91 @@
 </head>
 
 <body>
-    <div class="container" id="download_section">
-        <div class="contract">
-            <div class="watermark" style="background-image: url('{{$contract->company->image}}')"></div>
-            <ul class="header">
-                <li>
-                    <h3>{{$contract->company->name}}</h3>
-                    <p>تأجير المعدات والحاويات وتنظيف المدن</p>
-                    <p><b>الرقم الضريبي : </b>
-                        {{\Alkoumi\LaravelArabicNumbers\Numbers::ShowInArabicDigits($contract->company->tax_card_number)}}
-                    </p>
-                    <p><b>السجل التجاري : </b>
-                        {{\Alkoumi\LaravelArabicNumbers\Numbers::ShowInArabicDigits($contract->company->commercial_number)}}
-                    </p>
-                    <p><i class="fa fa-map-marker"></i>حفر الباطن</p>
-                    <p><i
-                            class="fa fa-phone"></i>{{\Alkoumi\LaravelArabicNumbers\Numbers::ShowInArabicDigits($contract->company->phone)}}
-                    </p>
-                </li>
-                <li>
-                    <div class="logo-div">
-                        <img src="{{$contract->company->image}}" class="logo" alt="">
-                        <p>التاريخ :
-                            <strong>{{\Alkoumi\LaravelArabicNumbers\Numbers::ShowInArabicDigits(\Illuminate\Support\Carbon::create($contract->containerRentals->start_at)->format(' d - m - Y '))}}</strong>
-                        </p>
-                        <p>رقم العقد :
-                            <strong>{{\Alkoumi\LaravelArabicNumbers\Numbers::ShowInArabicDigits(\App\Models\Company::invoiceSerial($contract->contract_serial))}}</strong>
-                        </p>
-                        <p>رقم الحاوية :
-                            <strong>{{\Alkoumi\LaravelArabicNumbers\Numbers::ShowInArabicDigits($contract->containerRentals->container->number)}}</strong>
-                        </p>
-                    </div>
-                </li>
-            </ul>
-            <h4 class="title">
-                عقد تأجير حاوية
-                <span>( {{$contract->containerRentals->category->name}} )</span>
-            </h4>
-            <ul class="flex-middle">
-                <li>
-                    <p><span>طرف اول :</span>{{$contract->company->name}} </p>
-                    <p><span>طرف ثاني :</span>{{$contract->customer->name}}</p>
-                </li>
-                <li>
-                    {!! $contract->qr !!}
-                </li>
-            </ul>
-            <table>
-                <thead>
-                    <tr>
-                        <th>اسم الحي</th>
-                        <th>رقم القطعة</th>
-                        <th>رقم البلك</th>
-                        <th>رقم المخطط</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{$contract->area_name}}</td>
-                        <td>{{$contract->area_number}}</td>
-                        <td>{{$contract->block_number}}</td>
-                        <td>{{$contract->plan_number}}</td>
-                    </tr>
-                </tbody>
-            </table>
 
-            <div class="conditions">
-                <h5>
-                    العقد ساري من تاريخ كتابة العقد الي تاريخ
-                    <span>{{\Alkoumi\LaravelArabicNumbers\Numbers::ShowInArabicDigits(\Illuminate\Support\Carbon::create($contract->containerRentals->end_at)->format(' d - m - Y '))}}</span>
-                    علي ان يقوم الطرف الاول بتأجير حاوية للطرف الثاني حسب الشروط التالية :
-                </h5>
-                <ul>
-                    <li><span></span>لا يحق للطرف الثاني استخدام الحاوية في غير ما خصصت له .</li>
-                    <li><span></span>يؤمن الطرف الثاني مكان للحاوية شرط الا يعيق حركة المرور .</li>
-                    <li><span></span>يجب على الطرف الثاني إبلاغ الطرف الاول حال امتلاء الحاوية او النتهاء منها .</li>
-                    <li><span></span>يتحمل الطرف الثاني اي اضرار تلحق بالحاوية من حيث الحريق او الصدم او السرقة .</li>
-                    <li><span></span>للطرف الاول الحق في رفع الحاوية بعد انتهاء المدة دون الرجوع للطرف الثاني .</li>
-                    <li><span></span>الطرف الاول لا يتحمل ما يسقط من الحاوية عند رفعها بسبب امتلائها عن الحد المسموح به
-                        .
+<div class="container" id="download_section">
+    <div class="contract">
+        <div class="watermark" style="background-image: url('{{$contract->company->image}}')"></div>
+        <ul class="header">
+            <li>
+                <h3>{{$contract->company->name}}</h3>
+                <p>تأجير المعدات والحاويات وتنظيف المدن</p>
+                <p><b>الرقم الضريبي : </b> {{\Alkoumi\LaravelArabicNumbers\Numbers::ShowInArabicDigits($contract->company->tax_card_number)}}</p>
+                <p><b>السجل التجاري : </b> {{\Alkoumi\LaravelArabicNumbers\Numbers::ShowInArabicDigits($contract->company->commercial_number)}}</p>
+                <p><i class="fa fa-map-marker"></i>حفر الباطن</p>
+                <p><i class="fa fa-phone"></i>{{\Alkoumi\LaravelArabicNumbers\Numbers::ShowInArabicDigits($contract->company->phone)}}</p>
+            </li>
+            <li>
+                <div class="logo-div">
+                    <img src="{{$contract->company->image}}" class="logo" alt="">
+                    <p>التاريخ : <strong>{{\Alkoumi\LaravelArabicNumbers\Numbers::ShowInArabicDigits(\Illuminate\Support\Carbon::create($contract->containerRentals->start_at)->format(' d - m - Y '))}}</strong></p>
+                    <p>رقم العقد : <strong class="red">{{\Alkoumi\LaravelArabicNumbers\Numbers::ShowInArabicDigits(\App\Models\Company::invoiceSerial($contract->contract_serial))}}</strong></p>
+                    <p>رقم الحاوية : <strong>{{\Alkoumi\LaravelArabicNumbers\Numbers::ShowInArabicDigits($contract->containerRentals->container->number)}}</strong></p>
+                </div>
+            </li>
+        </ul>
+        <h4 class="title">
+            عقد تأجير حاوية
+            <span>( {{$contract->containerRentals->category->name}} )</span>
+        </h4>
+        <ul class="flex-middle">
+            <li>
+                <p><span>طرف اول :</span>{{$contract->company->name}} </p>
+                <p><span>طرف ثاني :</span>{{$contract->customer->name}}</p>
+            </li>
+            <li>
+                {!! $contract->qr !!}
+            </li>
+        </ul>
+        <table>
+            <thead>
+            <tr>
+                <th>اسم الحي</th>
+                <th>رقم القطعة</th>
+                <th>رقم البلك</th>
+                <th>رقم المخطط</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{$contract->area_name}}</td>
+                <td>{{$contract->area_number}}</td>
+                <td>{{$contract->block_number}}</td>
+                <td>{{$contract->plan_number}}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="conditions">
+            <h5>
+                العقد ساري من تاريخ كتابة العقد الي تاريخ <span>{{\Alkoumi\LaravelArabicNumbers\Numbers::ShowInArabicDigits(\Illuminate\Support\Carbon::create($contract->containerRentals->end_at)->format(' d - m - Y '))}}</span> علي ان يقوم الطرف الاول بتأجير حاوية للطرف الثاني حسب الشروط التالية :
+            </h5>
+            <ul>
+                @foreach($clauses as $clause)
+                    <li><span></span>{{$clause->clause}}</li>
+
+                    @endforeach
+
+
                     </li>
-                </ul>
-            </div>
-            <ul class="signature">
-                <li>
-                    <p>طرف أول</p><span>{{$contract->company->name}}</span>
-                </li>
-                <li>
-                    <p>طرف ثاني</p><span>{{$contract->customer->name}}</span>
-                </li>
-                <li>
-                    <p>الختم</p><img src="{{asset('default')}}/Round.png" alt="">
-                </li>
             </ul>
         </div>
+        <ul class="signature">
+            <li>
+                <p>طرف أول</p><span>{{$contract->company->name}}</span>
+            </li>
+            <li>
+                <p>طرف ثاني</p><span>{{$contract->customer->name}}</span>
+            </li>
+
+            <li>
+                <p>الختم</p>
+                @if($contract->company->seal)
+
+                    <img src="{{$contract->company->sealImage}}" alt="">
+                @endif
+            </li>
+        </ul>
+
     </div>
     <button id="download_btn"></button>
     <script src="{{asset('assets/dashboard')}}/js/jquery-3.5.1.min.js"></script>

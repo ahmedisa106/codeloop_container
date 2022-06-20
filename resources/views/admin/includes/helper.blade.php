@@ -144,7 +144,7 @@
             locale: {
                 format: 'YYYY-MM-DD',
             },
-            autoUpdateInput: false,
+            autoUpdateInput: true,
         });
         $('.datepicker-here').on('apply.daterangepicker', function (ev, picker) {
             $(this).val(picker.startDate.format('YYYY-MM-DD'));

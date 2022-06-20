@@ -36,8 +36,9 @@ class CompanyRequest extends FormRequest
             'email' => 'required|unique:companies,email|email',
             'password' => 'required',
             'logo' => 'sometimes|nullable|image',
+            'seal' => 'sometimes|nullable|image',
             'phone' => 'required|unique:companies,phone|numeric',
-            'status'=>'sometimes|nullable|in:active,inactive'
+            'status' => 'sometimes|nullable|in:active,inactive'
 
 
         ];
@@ -56,8 +57,9 @@ class CompanyRequest extends FormRequest
             'email' => 'required||email|unique:companies,email,' . request()->id,
             'password' => 'sometimes|nullable',
             'logo' => 'sometimes|nullable|image',
+            'seal' => 'sometimes|nullable|image',
             'phone' => 'required|unique:companies,phone,' . request()->id,
-            'status'=>'sometimes|nullable|in:active,inactive'
+            'status' => 'sometimes|nullable|in:active,inactive'
         ];
 
     }//end of onUpdate function
@@ -74,7 +76,7 @@ class CompanyRequest extends FormRequest
             'commercial_number' => 'رقم السجل التجاري',
             'tax_card_number' => 'رقم البطاقه الضريبيه',
             'logo' => 'الشعار',
-            'status'=>'حالة المؤسسة'
+            'status' => 'حالة المؤسسة'
 
         ];
 
