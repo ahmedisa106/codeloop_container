@@ -132,7 +132,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-
+            margin-top: 10px;
         }
 
         .flex-middle li:first-child:before {
@@ -184,7 +184,7 @@
         table {
             width: 100%;
             text-align: center;
-            margin-top: 10px;
+            margin-top: 18px;
         }
 
         table th {
@@ -233,6 +233,7 @@
             margin-top: 25px;
             padding-top: 25px;
             border-top: 1px dashed #eaeaea;
+            height: 155px;
         }
 
         .signature li {
@@ -273,6 +274,10 @@
             text-align: center;
             margin-left: 0;
             margin-right: auto;
+        }
+
+        #download_btn {
+            display: none
         }
 
     </style>
@@ -359,33 +364,65 @@
         </ul>
     </div>
 </div>
-
 <button id="download_btn"></button>
-
-
-<script src="https://ivonne.vercel.app/assets/js/jquery.min.js"></script>
-
+<script src="{{asset('assets/dashboard')}}/js/jquery-3.5.1.min.js"></script>
+<script src="{{asset('assets/dashboard')}}/js/html2canvas/jspdf.min.js"></script>
+<script src="{{asset('assets/dashboard')}}/js/html2canvas/html2canvas.min.js"></script>
 
 <script>
     $(document).ready(function () {
-        var element = document.getElementById('download_section');
-        var opt = {
-            margin: 0,
-            filename: 'myfile.pdf',
-            image: {type: 'jpeg', quality: 1},
-            html2canvas: {scale: 4},
-            jsPDF: {unit: 'in', format: 'letter', orientation: 'portrait'}
-        };
-        html2pdf(element, opt);
-
-        setTimeout(closeWindow, 500);
-
-        function closeWindow() {
-
-            window.close();
-        }
+        $('#download_btn').click();
     });
+    $('#download_btn').on('click', function () {
+        var downloadSection = $('#download_section');
+        var cWidth = downloadSection.width();
+        var cHeight = downloadSection.height();
+        var topLeftMargin = 40;
+        var pdfWidth = cWidth + topLeftMargin * 2;
+        var pdfHeight = pdfWidth * 1.5 + topLeftMargin * 2;
+        var canvasImageWidth = cWidth;
+        var canvasImageHeight = cHeight;
+        var totalPDFPages = Math.ceil(cHeight / pdfHeight) - 1;
 
+        html2canvas(downloadSection[0], {
+            allowTaint: true,
+            scale: 2
+        }).then(function (
+            canvas
+        ) {
+            canvas.getContext('2d');
+            var imgData = canvas.toDataURL('image/jpeg', 1.0);
+            var pdf = new jsPDF('p', 'pt', [pdfWidth, pdfHeight]);
+            pdf.addImage(
+                imgData,
+                'JPG',
+                topLeftMargin,
+                topLeftMargin,
+                canvasImageWidth,
+                canvasImageHeight
+            );
+            for (var i = 1; i <= totalPDFPages; i++) {
+                pdf.addPage(pdfWidth, pdfHeight);
+                pdf.addImage(
+                    imgData,
+                    'JPG',
+                    topLeftMargin,
+                    -(pdfHeight * i) + topLeftMargin * 0,
+                    canvasImageWidth,
+                    canvasImageHeight
+                );
+            }
+            pdf.save('Contract.pdf');
+
+            setTimeout(closeWindow, 500);
+
+            function closeWindow() {
+                window.close();
+            }
+
+
+        });
+    });
 
 </script>
 
