@@ -44,20 +44,28 @@ class Employee extends Authenticatable
 
     public function containerRentals()
     {
-        return $this->hasMany(ContainerRental::class, 'messenger_id');
+        return $this->hasMany(ContainerRental::class, 'messenger_id')->where('messenger_id', auth()->user()->id);
     }//end of containerRentals function
 
     public function driverRentals()
     {
-        return $this->hasMany(ContainerRental::class, 'driver_id');
+        return $this->hasMany(ContainerRental::class, 'driver_id')->where('driver_id', auth()->user()->id);
     }//end of rentals function
 
 
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
-
-
     }//end of category function
+
+    public function discharges()
+    {
+        return $this->hasMany(Discharge::class);
+    }//end of discharges function
+
+    public function requests()
+    {
+        return $this->hasMany(DriverRequest::class, 'driver_id');
+    }//end of requests function
 
 }

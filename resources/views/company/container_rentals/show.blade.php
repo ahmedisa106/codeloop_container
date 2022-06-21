@@ -6,17 +6,20 @@
 
             <div class="btns-header">
                 @role(['admin','messenger'])
-                @if($containerRental->status == 'waiting_driver')
+                @if(!$containerRental->driver && $containerRental->status == 'waiting_driver')
+
                     <a href="#" class="btn btn-dark btn-air-dark btn-icon" data-bs-toggle="modal" data-bs-target="#example2">
                         <i class="fa fa-truck"></i>
                         توجيه سائق لتوصيل الحاوية
                     </a>
+
                 @endif
+
                 @endrole
 
                 @role(['admin','messenger'])
                 @if($containerRental->status == 'delivered')
-                    <a href="#" class="btn btn-info btn-air-info btn-icon" data-bs-toggle="modal" data-bs-target="#example2">
+                    <a href="#" class="btn btn-info btn-air-info btn-icon" data-bs-toggle="modal" data-bs-target="#example4">
                         <i class="fa fa-truck"></i>
                         توجيه سائق لتفريغ الحاوية
                     </a>
@@ -35,10 +38,26 @@
                         ابدأ التوصيل
                     </a>
                 @endif
+                @if($containerRental->status == 'in_progress')
+                    <form action="{{route('container-rentals.containerDelivered')}}" method="post">
+                        @csrf
+                        <input type="hidden" name="container_rental_id" value="{{$containerRental->id}}">
+                        <input type="hidden" name="driver_id" value="{{auth()->user()->id}}">
+
+
+                        <button type="submit" class="btn btn-success">
+                            <i class="fa fa-check"></i>
+                            تم التوصيل
+
+                        </button>
+                    </form>
+
+                @endif
                 @endrole
 
                 @role(['admin','messenger'])
                 @if($containerRental->status != 'broken'  && $containerRental->status != 'complete'  )
+
                     <a href="#" class="btn btn-danger btn-air-danger btn-icon">
                         <i class="fa fa-times"></i>
                         الغاء العقد
@@ -337,7 +356,7 @@
                                 <li>
                                     <img src="{{asset('assets/dashboard')}}/images/icons/flag.svg" alt="">
                                     <p>الجنسية:</p>
-                                    <span>{{$containerRental->driver->antionality}}</span>
+                                    <span>{{$containerRental->driver->nationality}}</span>
                                 </li>
                                 <li>
                                     <img src="{{asset('assets/dashboard')}}/images/icons/office-building.svg" alt="">
@@ -355,62 +374,48 @@
                 @endif
 
             </div>
-            <article class="icontext">
-                <div class="title-box">
-                    <div class="header-icon">
-                        <div class="icon-style">
-                            <i class="icon-trash"></i>
-                        </div>
-                        <h6>بيانات التفريغات</h6>
-                    </div>
-                </div>
-                <div class="all-box">
-                    <div class="box-trash">
-                        <h4>التفريغة رقم<span>1</span></h4>
-                        <div class="text">
-                            <ul>
-                                <li>
-                                    <img src="{{asset('assets/dashboard')}}/images/icons/timetable.svg" alt="">
-                                    <p>وقت التفريغة:</p>
-                                    <span> 6/15/2021 في الساعة 01:45 مساء</span>
-                                </li>
-                                <li>
-                                    <img src="{{asset('assets/dashboard')}}/images/icons/driver.svg" alt="">
-                                    <p>اسم السائق:</p>
-                                    <span>عبد الله خالد</span>
-                                </li>
-                                <li>
-                                    <img src="{{asset('assets/dashboard')}}/images/icons/receipt.svg" alt="">
-                                    <p>رقم الإيصال:</p>
-                                    <span>12561</span>
-                                </li>
-                            </ul>
+            @if($containerRental->discharges->count() >0)
+                <article class="icontext">
+                    <div class="title-box">
+                        <div class="header-icon">
+                            <div class="icon-style">
+                                <i class="icon-trash"></i>
+                            </div>
+                            <h6>بيانات التفريغات</h6>
                         </div>
                     </div>
-                    <div class="box-trash">
-                        <h4>التفريغة رقم<span>2</span></h4>
-                        <div class="text">
-                            <ul>
-                                <li>
-                                    <img src="{{asset('assets/dashboard')}}/images/icons/timetable.svg" alt="">
-                                    <p>وقت التفريغة:</p>
-                                    <span> 8/25/2021 في الساعة 03:55 مساء</span>
-                                </li>
-                                <li>
-                                    <img src="{{asset('assets/dashboard')}}/images/icons/driver.svg" alt="">
-                                    <p>اسم السائق:</p>
-                                    <span>أدهم محمود</span>
-                                </li>
-                                <li>
-                                    <img src="{{asset('assets/dashboard')}}/images/icons/receipt.svg" alt="">
-                                    <p>رقم الإيصال:</p>
-                                    <span>51001</span>
-                                </li>
-                            </ul>
-                        </div>
+
+                    <div class="all-box">
+                        @foreach($containerRental->discharges as $index=> $discharge)
+                            <div class="box-trash">
+                                <h4>التفريغة رقم<span>{{$index++}}</span></h4>
+                                <div class="text">
+                                    <ul>
+                                        <li>
+                                            <img src="{{asset('assets/dashboard')}}/images/icons/timetable.svg" alt="">
+                                            <p>وقت التفريغة:</p>
+                                            <span>{{\Alkoumi\LaravelArabicNumbers\Numbers::ShowInArabicDigits($discharge->created_at)}}</span>
+                                        </li>
+                                        <li>
+                                            <img src="{{asset('assets/dashboard')}}/images/icons/driver.svg" alt="">
+                                            <p>اسم السائق:</p>
+                                            <span>{{$discharge->driver->name}}</span>
+                                        </li>
+                                        <li>
+                                            <img src="{{asset('assets/dashboard')}}/images/icons/receipt.svg" alt="">
+                                            <p>رقم الإيصال:</p>
+                                            <span>{{$discharge->receipt_number}}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        @endforeach
+
                     </div>
-                </div>
-            </article>
+
+
+                </article>
+            @endif
         </div>
     </div>
 
@@ -420,13 +425,15 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">اختيار سائق</h5>
+                    <h5 class="modal-title"> اختيار سائق للتوصيل </h5>
                 </div>
                 <div class="modal-body">
-                    <form class="row form" method="" action="">
+                    <form class="row" id="driver_form" method="post" action="{{route('container-rentals.assignDriverToDrive')}}">
+                        @csrf
+                        <input type="hidden" name="container_rental_id" value="{{$containerRental->id}}">
                         <div class="col-md-12">
                             <label class="form-label">اختر سائق</label>
-                            <select class="form-control select2-custom">
+                            <select onchange="$('#driver_form').submit()" name="driver_id" class="form-control select2-custom">
                                 <option value="" disabled selected>إختر سائق</option>
                                 @foreach($drivers as $driver)
                                     <option value="{{$driver->id}}">{{$driver->name}}</option>
@@ -449,7 +456,6 @@
             </div>
         </div>
     </div>
-
     <!-- Modal -->
     <div class="modal fade modal-custom" data-bs-backdrop="static" id="example3" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
@@ -463,6 +469,43 @@
                         <div class="col-md-12">
                             <label class="form-label">رقم الايصال</label>
                             <input class="form-control" name="name" type="text" placeholder="">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary btn-air-primary btn-icon" type="button" data-bs-dismiss="modal">
+                        <i class="fa fa-save"></i>
+                        حفظ
+                    </button>
+                    <button class="btn btn-danger exsit_modal btn-air-danger btn-icon" type="button"
+                            data-bs-dismiss="modal">
+                        <i class="fa fa-times"></i>
+                        خروج
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade modal-custom" data-bs-backdrop="static" id="example4" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">اختيار سائق للتفريغ</h5>
+                </div>
+                <div class="modal-body">
+                    <form class="row" id="delivered_form" method="post" action="#">
+                        @csrf
+                        <input type="hidden" name="container_rental_id" value="{{$containerRental->id}}">
+                        <div class="col-md-12">
+                            <label class="form-label">اختر سائق</label>
+                            <select onchange="$('#delivered_form').submit()" name="driver_id" class="form-control select2-custom">
+                                <option value="" disabled selected>إختر سائق</option>
+                                @foreach($drivers as $driver)
+                                    <option value="{{$driver->id}}">{{$driver->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </form>
                 </div>

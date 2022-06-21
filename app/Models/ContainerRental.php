@@ -38,7 +38,7 @@ class ContainerRental extends Model
 
     public function contract()
     {
-        return $this->hasOne(Contract::class, 'id', 'container_rental_id');
+        return $this->hasOne(Contract::class, 'container_rental_id', 'id');
     }//end of contract function
 
     public function container()
@@ -55,5 +55,12 @@ class ContainerRental extends Model
     {
         return $this->belongsTo(Employee::class, 'driver_id')->where('job_type', 'driver');
     }//end of driver function
+
+    public function discharges()
+    {
+        return $this->hasMany(Discharge::class, 'container_rental_id', 'id');
+
+
+    }//end of discharges function
 
 }

@@ -56,6 +56,15 @@
                 @endif
                 @endpermission
 
+                @permission('read_driver-requests')
+                @if(active_apps('driver-requests'))
+                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('driver-requests.index')}}">
+                            <img src="{{asset('assets/dashboard')}}/images/icons/truck.png" alt="">
+                            <span>طلباتي </span></a>
+                    </li>
+                @endif
+                @endpermission
+
 
                 @permission(['read_containers','read_container-rentals','read_contracts'])
                 @if(active_apps('containers') || active_apps('container-rentals' || active_apps('contracts')))
