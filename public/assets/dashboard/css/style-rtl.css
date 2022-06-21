@@ -39990,6 +39990,7 @@ body .for-dark {
     position: relative;
     background-color: #fff;
     justify-content: space-between;
+    box-shadow: 3px 3px 15px #f4f6fd;
 }
 
 .page-wrapper .page-header .header-wrapper .nav-right {
@@ -50107,6 +50108,15 @@ table .verify {
     background: #6E6E6E;
 }
 
+.title-box .unloading {
+    background: #cddc39;
+    color: #1e2f65 !important;
+}
+
+.title-box .emptied {
+    background: #607d8b;
+}
+
 .all-box {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -50170,7 +50180,7 @@ table .verify {
 
 .track-order-pop ul {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(6 , 1fr);
     margin-bottom: 40px;
 }
 
@@ -50181,8 +50191,8 @@ table .verify {
 }
 
 .track-order-pop ul li svg {
-    height: 55px;
-    width: 70px;
+    height: 45px;
+    width: 60px;
     margin-bottom: 4px;
     background: #fff;
     position: relative;
@@ -50194,7 +50204,7 @@ table .verify {
 }
 
 .track-order-pop ul li p {
-    font-size: 18px;
+    font-size: 17px;
     margin-bottom: 0;
 }
 
@@ -50202,16 +50212,16 @@ table .verify {
     position: absolute;
     left: 0;
     top: 12px;
-    font-size: 28px;
-    width: 34px;
-    height: 34px;
+    font-size: 24px;
+    width: 28px;
+    height: 28px;
     margin: 0 auto;
     background: #fff;
     display: none;
     border-radius: 50%;
     z-index: 1;
     box-shadow: 0 0 0 3px #fff;
-    line-height: 34px;
+    line-height: 35px;
 }
 
 
@@ -50356,7 +50366,6 @@ table .verify {
     line-height: 5px;
     padding: 0 5px;
 }
-
 
 /* abdo respnsive*/
 
