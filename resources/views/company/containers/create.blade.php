@@ -8,8 +8,8 @@
             <form class="row form" method="post" action="{{route('containers.store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="col-md-6 form-group">
-                    <label class="form-label">رقم الحاوجيه</label>
-                    <input class="form-control" name="number" type="text" placeholder="">
+                    <label class="form-label">رقم الحاويه</label>
+                    <input class="form-control" name="number" type="number" placeholder="">
                 </div>
                 <div class="col-md-6 form-group">
                     <label class="form-label">التصنيف</label>
