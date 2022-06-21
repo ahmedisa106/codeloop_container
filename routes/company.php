@@ -94,6 +94,11 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     Route::resource('employees', 'EmployeeController');
     // end employees
 
+    // driver requests
+    Route::get('driver-requests/data', 'DriverRequestController@data')->name('driver-requests.data');
+    Route::resource('driver-requests', 'DriverRequestController');
+    // end driver requests
+
     // trucks
     Route::post('trucks/bulk-delete', 'TruckController@bulkDelete')->name('trucks.bulkDelete');
     Route::get('trucks/data', 'TruckController@data')->name('trucks.data');
@@ -131,6 +136,8 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     Route::get('container-rentals/data', 'ContainerRentalController@data')->name('container-rentals.data');
     Route::get('container-rentals/download-pdf', 'ContainerRentalController@pdf')->name('container-rentals.pdf');
     Route::get('container-rentals/get-containers', 'ContainerRentalController@getContainers')->name('container-rentals.getContainers');
+    Route::post('container-rentals/assign-drive-to-drive', 'ContainerRentalController@assignDriverToDrive')->name('container-rentals.assignDriverToDrive');
+    Route::post('container-rentals/container-delivered', 'ContainerRentalController@containerDelivered')->name('container-rentals.containerDelivered');
     Route::resource('container-rentals', 'ContainerRentalController');
     // end container-rentals
 

@@ -33,7 +33,12 @@ class Container extends Model
     public function containerRentals()
     {
         return $this->hasMany(ContainerRental::class);
-
-
     }//end of containerRentals function
+
+    public function discharges()
+    {
+        return $this->hasMany(Discharge::class);
+
+    }//end of  function
+
 }

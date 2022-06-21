@@ -45,6 +45,8 @@ class ContainerRentalController extends Controller
             $rentals = auth()->user()->company->containerRentals;
         } elseif (auth()->user()->hasRole('messenger')) {
             $rentals = auth()->user()->containerRentals;
+        } elseif (auth()->user()->hasRole('driver')) {
+            $rentals = auth()->user()->driverRentals;
         }
 
         $model = 'container-rentals';
@@ -238,7 +240,35 @@ class ContainerRentalController extends Controller
         } else {
             return $serial->contract_serial + 1;
         }
-
-
     }//end of getLatestContractSerial function
+
+    public function assignDriverToDrive(Request $request)
+    {
+        $rent = ContainerRental::find($request->container_rental_id);
+        $rent->update(['driver_id' => $request->driver_id]);
+        $driver = Employee::find($request->driver_id);
+        $driver->update(['status' => 'inactive']);
+        $driver->requests()->create([
+            'container_rental_id' => $rent->id,
+            'type' => 'delivery',
+            'status' => 'waiting_approval'
+        ]);
+
+        session()->flash('success', 'تم توجيه سائق للتوصيل');
+        return redirect()->back();
+
+    }//end of  function
+
+    public function containerDelivered(Request $request)
+    {
+        $rent = ContainerRental::find($request->container_rental_id);
+        $rent->update(['status' => 'delivered']);
+        $driver = Employee::find($request->driver_id);
+        $driver->update(['status' => 'active']);
+
+        session()->flash('success', 'تم التوصيل بنجاح');
+        return redirect()->back();
+
+
+    }//end of containerDelivered function
 }

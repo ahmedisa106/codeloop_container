@@ -37,7 +37,7 @@ return [
             'container-rentals' => 'c,r,u,d,e',
         ],
         'driver' => [
-
+            'driver-requests' => 'r'
         ],
 
 

@@ -119,6 +119,12 @@ class AppSeeder extends Seeder
             'status' => 'active',
             'company_id' => 1
         ]);
+        \App\Models\App::create([
+            'model' => 'driver-requests',
+            'ar_model' => 'طلبات التوصيل و التفريغ',
+            'status' => 'active',
+            'company_id' => 1
+        ]);
 
     }
 }
