@@ -112,7 +112,6 @@
                     <label class="form-label">المندوب</label>
                     <select name="messenger_id" class="form-control select2-custom messenger_id" id="">
                         <option value="" disabled selected>-----</option>
-
                     </select>
                 </div>
                 @endrole

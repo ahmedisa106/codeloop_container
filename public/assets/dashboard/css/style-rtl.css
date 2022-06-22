@@ -49661,21 +49661,20 @@ table .switch-showcase .media {
 }
 
 .title-h3 {
-    font-size: 17px;
+    font-size: 19px;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     color: #f44336;
+    font-weight: normal;
 }
 
 .body-div {
-
     margin-top: 10px;
     padding-top: 20px;
     border-top: 1px solid #eeeeee;
 }
 
 .body-div h4 {
-
     font-size: 21px;
     margin-bottom: 15px;
 }
