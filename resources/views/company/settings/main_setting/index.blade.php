@@ -56,7 +56,7 @@
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-10">
-                        <label class="form-label">الختم <span>يفضل مقاس الصورة ( 90 طول * 115 عرض )</span></label>
+                        <label class="form-label">الختم</label>
                         <input name="seal" class="form-control photo" id="photo" type="file">
                     </div>
                     <div class="col-md-2">
