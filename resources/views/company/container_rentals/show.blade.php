@@ -423,7 +423,7 @@
                                 <p>رقم الإيصال:</p>
                                 <span>{{$discharge->receipt_number}}</span>
                             </li>
-
+                                <li>
                                 <img src="{{asset('assets/dashboard')}}/images/icons/placeholder-map.svg" alt="">
                                 <p>العنوان:</p>
                                 <span>{{$containerRental->customerAddress->address}}</span>
