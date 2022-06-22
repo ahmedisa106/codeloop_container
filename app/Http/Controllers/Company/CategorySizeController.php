@@ -15,8 +15,8 @@ class CategorySizeController extends Controller
 
     protected $data = [
         'page_title' => 'أحجام التصنيفات',
-        'create' => 'إضافه حجم لتصنيف',
-        'edit' => 'تعديل حجم تصنيف',
+        'create' => 'إضافه حجم للتصنيف',
+        'edit' => 'تعديل حجم التصنيف',
     ];
 
     public function __construct()
