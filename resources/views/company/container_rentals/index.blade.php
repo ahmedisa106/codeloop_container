@@ -73,6 +73,7 @@
                                 <th>الإجمالي</th>
                                 <th>من</th>
                                 <th>إلي</th>
+                                <th>الحاله</th>
                                 <th>تفاصيل الطلب</th>
                                 @permission(['delete_container-rentals', 'update_container-rentals'])
                                 <th>العمليات</th>
@@ -117,6 +118,7 @@
                 {data: 'total', name: 'total'},
                 {data: 'start_at', name: 'start_at'},
                 {data: 'end_at', name: 'end_at'},
+                {data: 'status', name: 'status'},
                 {data: 'details', name: 'details'},
 
             @permission(['delete_container-rentals', 'update_container-rentals'])

@@ -57,16 +57,6 @@ class ContainerRentalRequest extends FormRequest
     public function onUpdate()
     {
         $roles = [
-            'contract_type' => 'required|in:cash,contract',
-            'area_name' => 'required_if:contract_type,contract|string',
-            'area_number' => 'required_if:contract_type,contract|string',
-            'block_number' => 'required_if:contract_type,contract|string',
-            'plan_number' => 'required_if:contract_type,contract|string',
-            'category_id' => 'required|exists:categories,id',
-            'category_size_id' => 'required|exists:category_sizes,id',
-            'customer_id' => 'required|exists:customers,id',
-            'customer_address_id' => 'required|exists:customer_addresses,id',
-            'container_id' => 'required|exists:containers,id',
             'discharge_price' => 'required|numeric',
             'discharge_number' => 'required|integer',
             'discount' => 'required|min:0',
@@ -74,9 +64,7 @@ class ContainerRentalRequest extends FormRequest
             'start_at' => 'required|date',
             'end_at' => 'required|date|after:start_at',
         ];
-        if (auth()->user()->hasRole('admin')) {
-            $roles['messenger_id'] = 'required|exists:employees,id';
-        }
+
         return $roles;
 
     }//end of onUpdate function
