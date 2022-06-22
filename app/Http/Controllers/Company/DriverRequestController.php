@@ -26,7 +26,7 @@ class DriverRequestController extends Controller
         $requests = auth()->user()->requests;
         return DataTables::of($requests)
             ->addColumn('details', function ($raw) {
-                return '<a href="' . route('driver-requests.show', $raw->id) . '" class="btn btn-warning btn-icon">التفاصيل</a>';
+                return '<a href="' . route('driver-requests.show', $raw->id) . '" class="btn btn-primary btn-icon">التفاصيل</a>';
             })
             ->addColumn('type', function ($raw) {
                 $type = $raw->type == "delivery" ? "طلب توصيل" : "طلب تفريغ";
@@ -36,24 +36,29 @@ class DriverRequestController extends Controller
                 switch ($raw->status) {
                     case 'waiting_approval':
                         $status = 'في إنتظار الموافقه';
+                        $class = 'waiting-approval';
                         break;
                     case 'in_delivery':
                         $status = 'في الطريق للتوصيل';
+                        $class = 'delivery-truck';
                         break;
                     case 'delivered':
                         $status = 'تم التوصيل';
+                        $class = 'delivered-truck';
                         break;
                     case 'in_discharge':
                         $status = 'في الطريق للتفريغ';
+                        $class = 'in-unload';
                         break;
                     case 'discharged':
                         $status = 'تم التفريغ';
+                        $class = 'emptied-cont';
                         break;
 
                 }
-                return $status;
+                return '<span class="'.$class.'">'.$status.'</span>';
             })
-            ->rawColumns(['details' => 'details', 'type' => 'type'])
+            ->rawColumns(['details' => 'details', 'type' => 'type','status'=>'status'])
             ->make(true);
 
     }//end of data function
@@ -99,7 +104,7 @@ class DriverRequestController extends Controller
         $request->validate([
             'delivered_photo' => 'required|image|mimes:png,jpg,jpeg,webp,svg'
         ], [], [
-            'delivered_photo' => 'صوره الحاويه'
+            'delivered_photo' => 'صوره الحاوية'
         ]);
 
         $delivered_photo = $request->hasFile('delivered_photo') ? $this->upload($request->delivered_photo, 'container_rentals', false, '') : '';

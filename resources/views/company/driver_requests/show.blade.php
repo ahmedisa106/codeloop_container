@@ -239,7 +239,7 @@
             <div class="modal-body">
                 <div class="card">
                     <div class="card-header">
-                        <h3>أدخل صورة الحاويه</h3>
+                        <h3>أدخل صورة الحاوية</h3>
                     </div>
                     <div class="card-body">
                         <form class="row" id="" method="post" action="{{route('driver-requests.delivered')}}"

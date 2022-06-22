@@ -290,7 +290,7 @@
                             @if($containerRental->status =='delivered' ||$containerRental->status =='in_discharge' ||
                             $containerRental->status =='discharged' || $containerRental->status =='complete' )
                                 <li class="my-gallery">
-                                    <p>صوره الحاويه</p>
+                                    <p>صوره الحاوية</p>
                                     <figure itemprop="associatedMedia" itemscope="">
                                         <a class="contianer-img" data-width="1200" data-height="900" href="{{asset('images/container_rentals/'.$containerRental->delivered_photo)}}" itemprop="contentUrl">
                                             <img src="{{asset('images/container_rentals/'.$containerRental->delivered_photo)}}" itemprop="thumbnail"
@@ -448,16 +448,17 @@
          aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title"> اختيار سائق للتوصيل </h5>
-                </div>
                 <div class="modal-body">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>اختيار سائق للتوصيل</h3>
+                    </div>
+                    <div class="card-body">
                     <form class="row" id="driver_form" method="post"
                           action="{{route('container-rentals.assignDriverToDrive')}}">
                         @csrf
                         <input type="hidden" name="container_rental_id" value="{{$containerRental->id}}">
                         <div class="col-md-12">
-                            <label class="form-label">اختر سائق</label>
                             <select name="driver_id"
                                     class="form-control select2-custom">
                                 <option value="" disabled selected>إختر سائق</option>
@@ -478,8 +479,9 @@
                             </button>
                         </div>
                     </form>
+                    </div>
                 </div>
-
+                </div>
             </div>
         </div>
     </div>
@@ -488,16 +490,17 @@
          aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">اختيار سائق للتفريغ</h5>
-                </div>
                 <div class="modal-body">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>اختيار سائق للتفريغ</h3>
+                    </div>
+                    <div class="card-body">
                     <form class="row" id="discharge_form" method="post"
                           action="{{route('container-rentals.assignDriverToDischarge')}}">
                         @csrf
                         <input type="hidden" name="container_rental_id" value="{{$containerRental->id}}">
                         <div class="col-md-12">
-                            <label class="form-label">اختر سائق</label>
                             <select name="driver_id"
                                     class="form-control select2-custom">
                                 <option value="" disabled selected>إختر سائق</option>
@@ -519,15 +522,12 @@
                             </button>
                         </div>
                     </form>
+                    </div>
+                </div> 
                 </div>
-
             </div>
         </div>
     </div>
-
-
-
-
 
 
     <!-- Root element of PhotoSwipe. Must have class pswp.-->
