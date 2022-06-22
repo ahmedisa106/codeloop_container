@@ -49836,7 +49836,7 @@ table thead th {
 td a.btn-icon {
     width: max-content;
     margin: 0 auto;
-    font-size: 16px;
+    font-size: 14px;
     padding: 3px 15px;
 }
 
@@ -50179,7 +50179,7 @@ table .verify {
 
 .track-order-pop ul {
     display: grid;
-    grid-template-columns: repeat(6 , 1fr);
+    grid-template-columns: repeat(4 , 1fr);
     margin-bottom: 40px;
 }
 
@@ -50190,9 +50190,8 @@ table .verify {
 }
 
 .track-order-pop ul li svg {
-    height: 45px;
-    width: 60px;
-    margin-bottom: 4px;
+    height: 55px;
+    width: 70px;
     background: #fff;
     position: relative;
     z-index: 1;
@@ -50203,7 +50202,7 @@ table .verify {
 }
 
 .track-order-pop ul li p {
-    font-size: 17px;
+    font-size: 18px;
     margin-bottom: 0;
 }
 
@@ -50364,6 +50363,28 @@ table .verify {
     font-size: 18px;
     line-height: 5px;
     padding: 0 5px;
+}
+
+.contianer-img {
+margin-right: 10px;
+}
+
+.contianer-img img{ 
+    width: 125px !important;
+    height: 80px !important;
+    border-radius: 7px;
+    background: #fff;
+    border: 1px solid #d4dced;
+    padding: 3px;
+    object-fit: cover;
+}
+
+.track-order-pop.grid-3 ul {
+    grid-template-columns: repeat(3 , 1fr);
+}
+
+.box-details.grid-2 {
+    grid-template-columns: repeat(2, 1fr);
 }
 
 /* abdo respnsive*/

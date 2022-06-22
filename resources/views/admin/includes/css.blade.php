@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="{{asset('assets/dashboard')}}/css/vendors/select2.css">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/dashboard')}}/css/vendors/date-picker.css">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/dashboard')}}/css/vendors/microtip.css">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/dashboard')}}/css/vendors/photoswipe.css">
 <link rel="stylesheet" type="text/css" href="{{asset('assets/dashboard')}}/css/style-rtl.css">
 
 <link rel="stylesheet" href="{{asset('assets/dashboard/plugins/metro/css/design-icons.css')}}">

@@ -71,7 +71,7 @@ class ContainerRentalController extends Controller
                 return $raw->total;
             })
             ->addColumn('details', function ($raw) {
-                return '<a class="btn btn-warning btn-sm" href="' . route('container-rentals.show', $raw->id) . '">تفاصيل</a>';
+                return '<a class="btn btn-warning btn-icon" href="' . route('container-rentals.show', $raw->id) . '">تفاصيل</a>';
             })
             ->addColumn('status', function ($raw) {
                 switch ($raw->status) {
