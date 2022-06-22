@@ -243,11 +243,11 @@
                                         $status ='تم التوصيل';
                                         break;
                                     case 'in_discharge':
-                                        $class = 'processing';
+                                        $class = 'unloading';
                                         $status = 'جاري التفريغ';
                                         break;
                                     case 'discharged':
-                                        $class = 'processing';
+                                        $class = 'emptied';
                                         $status = 'تم التفريغ';
                                         break;
                                         case 'complete':
@@ -261,12 +261,17 @@
 
 
                                 }
+
+
+
                         @endphp
                         <span class="{{$class}}">{{$status}}</span>
 
                     </div>
                     <div class="text">
                         <ul>
+
+
                             <li>
                                 <img src="{{asset('assets/dashboard')}}/images/icons/recycle.svg" alt="">
                                 <p>رقم الحاوية:</p>
@@ -333,14 +338,10 @@
                             </li>
                             <li>
                                 <img src="{{asset('assets/dashboard')}}/images/icons/placeholder-map.svg" alt="">
-                                <p>المدينة:</p>
+                                <p>العنوان:</p>
                                 <span>{{$containerRental->customerAddress->address}}</span>
                             </li>
-                            <li>
-                                <img src="{{asset('assets/dashboard')}}/images/icons/placeholder.svg" alt="">
-                                <p>العنوان علي الخريطة:</p>
-                                <span>{{$containerRental->customerAddress->latitude}}</span>
-                            </li>
+
                         </ul>
                     </div>
                 </article>

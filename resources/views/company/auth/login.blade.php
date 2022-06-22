@@ -13,61 +13,61 @@
 </head>
 
 <body>
-    <!-- Loader starts-->
-    <div class="loader-wrapper">
-        <div class="loader"></div>
-    </div>
-    <!-- page-wrapper Start-->
-    <section class="bg-login">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xl-6">
-                    <div class="login-card">
-                        <form data-role="validator" data-on-error-input="notifyOnErrorInput"
-                            data-show-error-hint="false" action="{{route('company.login')}}" method="post"
-                            class="theme-form login-form">
-                            @csrf
-                            <h4>تسجيل الدخول</h4>
-                            <div class="form-group">
-                                <label>تسجيل الدخول كـ</label>
-                                    <div class="input-group flex-select">
+<!-- Loader starts-->
+<div class="loader-wrapper">
+    <div class="loader"></div>
+</div>
+<!-- page-wrapper Start-->
+<section class="bg-login">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="login-card">
+                    <form data-role="validator" data-on-error-input="notifyOnErrorInput"
+                          data-show-error-hint="false" action="{{route('company.login')}}" method="post"
+                          class="theme-form login-form">
+                        @csrf
+                        <h4>تسجيل الدخول</h4>
+                        <div class="form-group">
+                            <label>تسجيل الدخول كـ</label>
+                            <div class="input-group flex-select">
                                         <span class="input-group-text">
                                             <i class="icon-list"></i>
                                         </span>
-                                        <select data-validate-func="required" required="" data-validatehint="النوع مطلوب"
-                                            name="type" class="form-control" id="">
-                                           
-                                            <option value="company">مؤسسة</option>
-                                            <option value="moderator">مشرف في مؤسسة</option>
-                                            <option value="employee">موظف في مؤسسة</option>
-                                        </select>
-                                    </div>
+                                <select data-validate-func="required" required="" data-validatehint="النوع مطلوب"
+                                        name="type" class="form-control" id="">
+                                    <option value="company">مؤسسة</option>
+                                    <option value="moderator">مشرف</option>
+                                    <option value="employee">مندوب</option>
+                                    <option value="employee">سائق</option>
+                                </select>
                             </div>
+                        </div>
 
-                    <div class="form-group">
-                        <label>رقم الهاتف</label>
-                        <div class="input-group">
+                        <div class="form-group">
+                            <label>رقم الهاتف</label>
+                            <div class="input-group">
                             <span class="input-group-text">
                                 <i class="icon-mobile"></i>
                             </span>
 
-                            <input data-validate-func="required" data-validatehint="رقم الهاتف مطلوب" name="phone"
-                                class="form-control" type="number" required="" placeholder="">
+                                <input data-validate-func="required" data-validatehint="رقم الهاتف مطلوب" name="phone"
+                                       class="form-control" type="number" required="" placeholder="">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label>كلمة المرور</label>
-                        <div class="input-group">
+                        <div class="form-group">
+                            <label>كلمة المرور</label>
+                            <div class="input-group">
                             <span class="input-group-text">
                                 <i class="icon-lock"></i>
                             </span>
-                            <input data-validate-func="required" data-validatehint="كلمه المرور مطلوبه"
-                                class="form-control" type="password" name="password" required="" placeholder="">
+                                <input data-validate-func="required" data-validatehint="كلمه المرور مطلوبه"
+                                       class="form-control" type="password" name="password" required="" placeholder="">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-primary btn-block" type="submit">تسجيل دخول</button>
-                    </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block" type="submit">تسجيل دخول</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -149,7 +149,7 @@
 
                 </style>
                 <svg class="animated svg-login" id="freepik_stories-computer-login" xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 500 500" version="1.1">
+                     viewBox="0 0 500 500" version="1.1">
                     <!-- <g id="freepik--Floor--inject-10" class="animable" style="transform-origin: 249.995px 349.719px;">
                         <path id="freepik--floor--inject-10"
                             d="M77.66,250.21c-95.18,55-95.17,144,0,199s249.49,55,344.67,0,95.17-144,0-199S172.84,195.26,77.66,250.21Z"
@@ -158,23 +158,23 @@
                     </g> -->
                     <g id="freepik--Shadows--inject-10" class="animable" style="transform-origin: 247.3px 359.035px;">
                         <path id="freepik--Shadow--inject-10"
-                            d="M45.51,385.36l154.15,89a14.55,14.55,0,0,0,13.17,0L445,340.32c3.64-2.1,3.64-5.51,0-7.61l-154.15-89a14.55,14.55,0,0,0-13.17,0l-232.17,134C41.87,379.85,41.87,383.26,45.51,385.36Z"
-                            style="fill: rgb(213 227 242); transform-origin: 245.255px 359.035px;" class="animable">
+                              d="M45.51,385.36l154.15,89a14.55,14.55,0,0,0,13.17,0L445,340.32c3.64-2.1,3.64-5.51,0-7.61l-154.15-89a14.55,14.55,0,0,0-13.17,0l-232.17,134C41.87,379.85,41.87,383.26,45.51,385.36Z"
+                              style="fill: rgb(213 227 242); transform-origin: 245.255px 359.035px;" class="animable">
                         </path>
                         <path id="freepik--shadow--inject-10"
-                            d="M115.58,473.9l-8.41-4.9.41-3.09-2.84-1.6-6.67-.61L93.44,461l-.25-5.94-2.47-1.44-7.2,1.6-9.35-5.44a49.93,49.93,0,0,1-10,1h0c-8,0-15.59-1.84-21.32-5.18-6.21-3.61-9.62-8.58-9.6-14s3.46-10.35,9.7-13.92c5.66-3.24,13.12-5,21-5s15.6,1.84,21.34,5.18c5.43,3.16,8.79,7.49,9.46,12.18a13,13,0,0,1-1.84,8.57l50.23,29.24L132.43,474ZM51.91,427.27a2.47,2.47,0,0,0,.77.62,9.33,9.33,0,0,0,8.14,0,2.23,2.23,0,0,0,.77-.62,2.26,2.26,0,0,0-.76-.62,9.35,9.35,0,0,0-8.15,0A2.47,2.47,0,0,0,51.91,427.27Z"
-                            style="fill: rgb(213 227 242); transform-origin: 88.195px 443.34px;" class="animable">
+                              d="M115.58,473.9l-8.41-4.9.41-3.09-2.84-1.6-6.67-.61L93.44,461l-.25-5.94-2.47-1.44-7.2,1.6-9.35-5.44a49.93,49.93,0,0,1-10,1h0c-8,0-15.59-1.84-21.32-5.18-6.21-3.61-9.62-8.58-9.6-14s3.46-10.35,9.7-13.92c5.66-3.24,13.12-5,21-5s15.6,1.84,21.34,5.18c5.43,3.16,8.79,7.49,9.46,12.18a13,13,0,0,1-1.84,8.57l50.23,29.24L132.43,474ZM51.91,427.27a2.47,2.47,0,0,0,.77.62,9.33,9.33,0,0,0,8.14,0,2.23,2.23,0,0,0,.77-.62,2.26,2.26,0,0,0-.76-.62,9.35,9.35,0,0,0-8.15,0A2.47,2.47,0,0,0,51.91,427.27Z"
+                              style="fill: rgb(213 227 242); transform-origin: 88.195px 443.34px;" class="animable">
                         </path>
                         <ellipse id="freepik--shadow--inject-10" cx="414.88" cy="297.47" rx="46.47" ry="26.83"
-                            style="fill: rgb(213 227 242); transform-origin: 414.88px 297.47px;" class="animable">
+                                 style="fill: rgb(213 227 242); transform-origin: 414.88px 297.47px;" class="animable">
                         </ellipse>
                     </g>
                     <g id="freepik--Character--inject-10" class="animable"
-                        style="transform-origin: 397.388px 187.793px;">
+                       style="transform-origin: 397.388px 187.793px;">
                         <g id="freepik--character--inject-10" class="animable"
-                            style="transform-origin: 397.388px 187.793px;">
+                           style="transform-origin: 397.388px 187.793px;">
                             <g id="freepik--Bottom--inject-10" class="animable"
-                                style="transform-origin: 409.966px 231.482px;">
+                               style="transform-origin: 409.966px 231.482px;">
                                 <path
                                     d="M443.72,286c-.73-9.82.4-17.35-.44-32.68h0c-.07-3.93-.22-8.14-.49-11.88-.92-12.58-2.92-16.88-3.11-19.31,0,0-.35-26.3-1.2-53.83-.4-12.95-4.28-16.88-7.38-23.75H394.28c-4.12,17-5.29,54-5.17,71.44.07,8.92,3.08,55.87,3.15,57,.26,3.89-.09,5.43-1.66,7.06-3.3,3.43-8.09,6.69-12.22,9.68.6,1.53,6.28,2.2,8.74,1A62.18,62.18,0,0,0,396.3,285c3.39-2.43,7.74-4.38,7.79-8.09a3,3,0,0,1,.12-.66c.06-2.16,5.27-34.06,5.7-41.46a169.53,169.53,0,0,0-.42-17.17l4.24-27s2.62,22.66,5.27,33.54c2.15,8.85,5.7,24,8.13,34.86h0c2.33,12.56,5.75,21.5,6.34,27.78.18,1.5,1.93,16.23,2.66,19.61s8.32,3.46,8.8-2.34C445.26,300.27,443.86,287.8,443.72,286Z"
                                     style="fill: rgb(255, 189, 167); transform-origin: 411.68px 226.643px;"
@@ -249,21 +249,21 @@
                                     id="elf1kk0uc6umo" class="animable"></path>
                             </g>
                             <g id="freepik--Top--inject-10" class="animable"
-                                style="transform-origin: 397.388px 117.506px;">
+                               style="transform-origin: 397.388px 117.506px;">
                                 <path id="freepik--Arm--inject-10"
-                                    d="M402.5,101.09c-5.83.91-9,2.83-11.63,10.41-1.81,5.18-7.48,20.65-7.48,20.65l-22.83,18.29,8.92,7.44s17.21-9.49,21.79-12.92c2.07-1.55,3.28-3.37,5.34-8.05s5.71-12.33,7.39-17.31Z"
-                                    style="fill: rgb(255, 189, 167); transform-origin: 382.28px 129.485px;"
-                                    class="animable"></path>
+                                      d="M402.5,101.09c-5.83.91-9,2.83-11.63,10.41-1.81,5.18-7.48,20.65-7.48,20.65l-22.83,18.29,8.92,7.44s17.21-9.49,21.79-12.92c2.07-1.55,3.28-3.37,5.34-8.05s5.71-12.33,7.39-17.31Z"
+                                      style="fill: rgb(255, 189, 167); transform-origin: 382.28px 129.485px;"
+                                      class="animable"></path>
                                 <path id="freepik--Chest--inject-10"
-                                    d="M438.58,155.7c-1.6-7.32-3.43-13.17-3.42-14.79.08-7,1.92-16.25,2.53-20.33,1.33-8.88-.74-16.07-2.81-17.82,0,0-2.91-.71-8.2-2.46-1.5-.49-.58-.21-2.93-.54a53.06,53.06,0,0,0-11.86-.33c-1,.1-5.52.89-5.52.89-1.38.32-3.87.77-3.87.77a28.85,28.85,0,0,0-6.14,7.86c-2.25,4-3.53,7.39-3.93,16-.51,11-2.37,24.19-2.37,31.85C399.15,162.4,426.85,162.54,438.58,155.7Z"
-                                    style="fill: rgb(69, 90, 100); transform-origin: 414.32px 130.082px;"
-                                    class="animable"></path>
+                                      d="M438.58,155.7c-1.6-7.32-3.43-13.17-3.42-14.79.08-7,1.92-16.25,2.53-20.33,1.33-8.88-.74-16.07-2.81-17.82,0,0-2.91-.71-8.2-2.46-1.5-.49-.58-.21-2.93-.54a53.06,53.06,0,0,0-11.86-.33c-1,.1-5.52.89-5.52.89-1.38.32-3.87.77-3.87.77a28.85,28.85,0,0,0-6.14,7.86c-2.25,4-3.53,7.39-3.93,16-.51,11-2.37,24.19-2.37,31.85C399.15,162.4,426.85,162.54,438.58,155.7Z"
+                                      style="fill: rgb(69, 90, 100); transform-origin: 414.32px 130.082px;"
+                                      class="animable"></path>
                                 <g id="freepik--Head--inject-10" class="animable"
-                                    style="transform-origin: 414.041px 81.1334px;">
+                                   style="transform-origin: 414.041px 81.1334px;">
                                     <path id="freepik--Hair--inject-10"
-                                        d="M426.41,65.91c.37-6.17-11.4-13.35-22.94-6.25s-7.72,14.48-7,16.71a23.18,23.18,0,0,1,1.21,5.76,8.22,8.22,0,0,1-1.24,5.11,3.58,3.58,0,0,1-4.34,1.26c.44,2.76,2.17,4.84,6.44,6.38a11.22,11.22,0,0,0,5.47.26c-.6.46-1.48,1.18-4.21,1.21,1.82,2.05,8.35,3.87,14-.17a1.55,1.55,0,0,1,.93-.18,3.39,3.39,0,0,1,1.1.36c2.74,1.18,6.17.73,9,0a12.54,12.54,0,0,0,4.4-1.91,6.66,6.66,0,0,0,2.64-3.91,6.17,6.17,0,0,1-.36,4.21,8,8,0,0,0,2.81-1.56,6.38,6.38,0,0,0,1.55-5.49,21.17,21.17,0,0,0-2-5.57,14.39,14.39,0,0,1-1.62-6.23,22.08,22.08,0,0,0-.24-4.45C431.44,68.45,429.66,66.1,426.41,65.91Z"
-                                        style="fill: rgb(38, 50, 56); transform-origin: 414.041px 77.6506px;"
-                                        class="animable"></path>
+                                          d="M426.41,65.91c.37-6.17-11.4-13.35-22.94-6.25s-7.72,14.48-7,16.71a23.18,23.18,0,0,1,1.21,5.76,8.22,8.22,0,0,1-1.24,5.11,3.58,3.58,0,0,1-4.34,1.26c.44,2.76,2.17,4.84,6.44,6.38a11.22,11.22,0,0,0,5.47.26c-.6.46-1.48,1.18-4.21,1.21,1.82,2.05,8.35,3.87,14-.17a1.55,1.55,0,0,1,.93-.18,3.39,3.39,0,0,1,1.1.36c2.74,1.18,6.17.73,9,0a12.54,12.54,0,0,0,4.4-1.91,6.66,6.66,0,0,0,2.64-3.91,6.17,6.17,0,0,1-.36,4.21,8,8,0,0,0,2.81-1.56,6.38,6.38,0,0,0,1.55-5.49,21.17,21.17,0,0,0-2-5.57,14.39,14.39,0,0,1-1.62-6.23,22.08,22.08,0,0,0-.24-4.45C431.44,68.45,429.66,66.1,426.41,65.91Z"
+                                          style="fill: rgb(38, 50, 56); transform-origin: 414.041px 77.6506px;"
+                                          class="animable"></path>
                                     <path
                                         d="M423.29,97.05c0-1.46.19-8.76.19-8.76.06.55,2.71,2,5.07-.79s2.52-5.8,1.09-7.7c-1.57-2.11-5.06-2-6.44,1.46-1,1.24-2.81-.19-2-3.55-.22-2.35-3.61-4.89-1.8-8.87-6.71-4.43-14.34-4.11-18.42-.59a39.63,39.63,0,0,0-1.59,12.88c.29,7.75,2.37,11.48,4.85,12.78,1.66.87,3.17,1.07,6.07.82l-.13,2.44h0c-.06,1.21.05,2.12-1.13,2.52-.79.26-2.68.63-2.68.63s-2.75,4.76,4.84,5.18c12.11.68,15.47-5.2,15.47-5.2l-1.36-.54C423.41,99,423.31,98.5,423.29,97.05Z"
                                         style="fill: rgb(255, 189, 167); transform-origin: 414.955px 85.5588px;"
@@ -273,8 +273,8 @@
                                         style="fill: rgb(240, 153, 122); transform-origin: 415.93px 93.34px;"
                                         id="el1k0r5wlq73i" class="animable"></path>
                                     <path d="M412.7,85.56,408.12,87a2.37,2.37,0,0,0,3,1.64A2.53,2.53,0,0,0,412.7,85.56Z"
-                                        style="fill: rgb(177, 102, 104); transform-origin: 410.459px 87.1548px;"
-                                        id="el0np2g3k6wrv" class="animable"></path>
+                                          style="fill: rgb(177, 102, 104); transform-origin: 410.459px 87.1548px;"
+                                          id="el0np2g3k6wrv" class="animable"></path>
                                     <path
                                         d="M412.41,86.62a2.64,2.64,0,0,0-2.64,2.07,2.32,2.32,0,0,0,1.33,0,2.46,2.46,0,0,0,1.66-2C412.64,86.65,412.53,86.62,412.41,86.62Z"
                                         style="fill: rgb(242, 143, 143); transform-origin: 411.265px 87.7033px;"
@@ -284,8 +284,8 @@
                                         style="fill: rgb(38, 50, 56); transform-origin: 403.351px 71.5417px;"
                                         id="el1g0pvs6bzzw" class="animable"></path>
                                     <path d="M415.73,73.1,412.6,72a1.59,1.59,0,0,1,2.07-1A1.74,1.74,0,0,1,415.73,73.1Z"
-                                        style="fill: rgb(38, 50, 56); transform-origin: 414.198px 71.9996px;"
-                                        id="elut9b7rt5tlp" class="animable"></path>
+                                          style="fill: rgb(38, 50, 56); transform-origin: 414.198px 71.9996px;"
+                                          id="elut9b7rt5tlp" class="animable"></path>
                                     <path
                                         d="M405,77.21a1.4,1.4,0,0,1-1.26,1.49,1.32,1.32,0,0,1-1.47-1.2,1.41,1.41,0,0,1,1.26-1.5A1.32,1.32,0,0,1,405,77.21Z"
                                         style="fill: rgb(38, 50, 56); transform-origin: 403.635px 77.35px;"
@@ -295,18 +295,18 @@
                                         style="fill: rgb(38, 50, 56); transform-origin: 413.515px 77.57px;"
                                         id="el98cf7ccynuv" class="animable"></path>
                                     <path d="M419.23,74l8.24,4.48a3.43,3.43,0,0,0-2.56.56L419,75.85Z"
-                                        style="fill: rgb(69, 90, 100); transform-origin: 423.235px 76.52px;"
-                                        id="elj2tc0azgqnk" class="animable"></path>
+                                          style="fill: rgb(69, 90, 100); transform-origin: 423.235px 76.52px;"
+                                          id="elj2tc0azgqnk" class="animable"></path>
                                     <path
                                         d="M397.69,76c.59,1,.51,2.8,1.08,3.92.65,2.28,4.79,3.53,6.93,1.23a4.7,4.7,0,0,0,.81-1.33c.53-1.21.38-2.92,1.26-3.12,2.44-.33.38,6.15,7,5.73,3.23-.16,3.83-3.25,4.13-5.72.13-.71.71-.85.77-1.74s-.68-1.15-1.38-1.16a21,21,0,0,0-6.55.06c-2,.58-2.7,1.23-3.83,1.22s-1.74-.68-3.66-1.28a18,18,0,0,0-6.55-.18C396.71,73.85,397.17,75.52,397.69,76Zm12.7-.14c1.38-1.62,6.15-1.73,7.16-.68.56.63.2,2.83-.07,3.87,0,.12-.08.25-.13.38a3.16,3.16,0,0,1-3.22,2.09,3.63,3.63,0,0,1-2.76-1.07,4,4,0,0,1-1-1.83A4.11,4.11,0,0,1,410.39,75.82Zm-8.8-1.5c3.69.35,5.14,1.2,4.08,4.91C405.31,81,402.79,82,401,81a4.14,4.14,0,0,1-1.92-2.94C398.39,75.12,398.55,74.34,401.59,74.32Z"
                                         style="fill: rgb(69, 90, 100); transform-origin: 408.395px 77.9311px;"
                                         id="elfkol3j3f71l" class="animable"></path>
                                     <path d="M404,82.34l4.33,2,.69-6.67a1.78,1.78,0,0,0-.51-.84Z"
-                                        style="fill: rgb(240, 153, 122); transform-origin: 406.51px 80.585px;"
-                                        id="elsk1xk8l05e" class="animable"></path>
+                                          style="fill: rgb(240, 153, 122); transform-origin: 406.51px 80.585px;"
+                                          id="elsk1xk8l05e" class="animable"></path>
                                 </g>
                                 <g id="freepik--Laptop--inject-10" class="animable"
-                                    style="transform-origin: 378.391px 150.87px;">
+                                   style="transform-origin: 378.391px 150.87px;">
                                     <path
                                         d="M414.57,162.68v.81a2.27,2.27,0,0,1-1.13,2L391.71,178a2.35,2.35,0,0,1-1.15.3,2.28,2.28,0,0,1-1.13-.3l-39.88-23a2.28,2.28,0,0,1-1.14-2v-.55l42.15,24.32Z"
                                         style="fill: rgb(38, 50, 56); transform-origin: 381.49px 165.375px;"
@@ -345,14 +345,14 @@
                                         id="elrxg9n1i1pp" class="animable"></path>
                                 </g>
                                 <g id="freepik--arm--inject-10" class="animable"
-                                    style="transform-origin: 420.987px 132.67px;">
+                                   style="transform-origin: 420.987px 132.67px;">
                                     <path
                                         d="M452.34,139.49a198.66,198.66,0,0,0-4.9-26.27c-1.53-6.59-3.68-8.08-12.56-10.46-2.34,3.73-1.88,18.88-.42,23.77l2.67,12.84a116,116,0,0,1-11.6,6.07c-5,2.18-8.06,3.2-13.23,2.67s-7.17-1.14-10.05-.58c-1.53.3-5,1-6.25,1.31s-3.59,1.85-5.69,2.77-.05,2.2,1.36,2.11a17.27,17.27,0,0,0,4.38-1.05,24.51,24.51,0,0,1,3.69-.54,20.4,20.4,0,0,0-1.6,3.8c-.17.73-.52,1.57,0,2.24a5.51,5.51,0,0,0,1.38,1,1.12,1.12,0,0,0,.14.77,1.88,1.88,0,0,0,1.22.62,5.93,5.93,0,0,0,.76,0,1.38,1.38,0,0,0,.58,1.23,6,6,0,0,0,3.07.79c.16,0,1.45-.39,1.82-.5a3,3,0,0,0,1.3-.46c.33-.32-.18-1.35-.75-1.57a6,6,0,0,0-2-.31,7.09,7.09,0,0,0,1-1.57c.72-.74,4.4,1,8,1.16,2.69.13,5.12-1.92,6.4-2.18,8.21-1.71,14.43-2.8,23-5.67C451.76,148.87,453.21,147,452.34,139.49Z"
                                         style="fill: rgb(255, 189, 167); transform-origin: 420.987px 132.67px;"
                                         id="el2h45j95zgkv" class="animable"></path>
                                     <path d="M399,152.21c.61-.89,1.48-1.92,2.29-2a8.85,8.85,0,0,0-1.57,1.94Z"
-                                        style="fill: rgb(242, 143, 143); transform-origin: 400.145px 151.21px;"
-                                        id="el77096cfavtj" class="animable"></path>
+                                          style="fill: rgb(242, 143, 143); transform-origin: 400.145px 151.21px;"
+                                          id="el77096cfavtj" class="animable"></path>
                                     <path
                                         d="M399.51,159.13a8.33,8.33,0,0,1,.4-2.15,20.9,20.9,0,0,1,.75-2,9.64,9.64,0,0,1,1-2,4,4,0,0,1,1.66-1.42,3,3,0,0,0-.78.73,6.48,6.48,0,0,0-.61.87,14.25,14.25,0,0,0-.92,1.93c-.29.66-.56,1.33-.83,2A18.22,18.22,0,0,0,399.51,159.13Z"
                                         style="fill: rgb(242, 143, 143); transform-origin: 401.415px 155.345px;"
@@ -370,11 +370,11 @@
                         </g>
                     </g>
                     <g id="freepik--speech-bubble--inject-10" class="animable"
-                        style="transform-origin: 363.055px 84.9498px;">
+                       style="transform-origin: 363.055px 84.9498px;">
                         <g id="freepik--speech-bubble--inject-10" class="animable"
-                            style="transform-origin: 363.055px 84.9498px;">
+                           style="transform-origin: 363.055px 84.9498px;">
                             <g id="freepik--speech-bubble--inject-10" class="animable"
-                                style="transform-origin: 363.055px 84.9498px;">
+                               style="transform-origin: 363.055px 84.9498px;">
                                 <path
                                     d="M347.09,58.09l27.34,15.82c.54.31,1,1.07,1,2.53v33.23c0,.46-.19.57-.52.76l-2.43,1.39a2.16,2.16,0,0,1-1.95,0L343.16,96a2.16,2.16,0,0,1-1-1.69V60.89a2.13,2.13,0,0,1,1-1.68l2-1.13A2.21,2.21,0,0,1,347.09,58.09Z"
                                     style="fill: rgb(16, 83, 156); transform-origin: 358.795px 84.9579px;"
@@ -411,7 +411,7 @@
                                     id="elpz1fe1gri8" class="animable"></path>
                             </g>
                             <g id="freepik--Check--inject-10" class="animable"
-                                style="transform-origin: 357.799px 86.7269px;">
+                               style="transform-origin: 357.799px 86.7269px;">
                                 <path
                                     d="M353.69,95.55l-.28,0a2.11,2.11,0,0,1-1.62-1.19l-3.37-7.1a2.1,2.1,0,0,1,3.8-1.78l2,4.17,9.63-11.22A2.1,2.1,0,0,1,367,81.15L355.28,94.82A2.11,2.11,0,0,1,353.69,95.55Z"
                                     style="fill: rgb(250, 250, 250); transform-origin: 357.799px 86.7269px;"
@@ -421,7 +421,7 @@
                     </g>
                     <g id="freepik--Plants--inject-10" class="animable" style="transform-origin: 455.798px 297.733px;">
                         <g id="freepik--plants--inject-10" class="animable"
-                            style="transform-origin: 455.798px 297.733px;">
+                           style="transform-origin: 455.798px 297.733px;">
                             <path
                                 d="M443.41,331.71l-8.61-5s-5.13-21.31-3.09-40.48c2.87-26.95,20.62-37.09,27.36-34.77s8.7,10.17-2.46,26.22C450,287.18,441.93,306.91,443.41,331.71Z"
                                 style="fill: rgb(16, 83, 156); transform-origin: 447.892px 291.425px;"
@@ -462,7 +462,7 @@
                     </g>
                     <g id="freepik--Device--inject-10" class="animable" style="transform-origin: 242.04px 253.378px;">
                         <g id="freepik--laptop--inject-10" class="animable"
-                            style="transform-origin: 242.04px 253.378px;">
+                           style="transform-origin: 242.04px 253.378px;">
                             <path
                                 d="M50.22,374c0,3.68,2.75,8.24,6.14,10.2l143.69,83a13.56,13.56,0,0,0,12.28,0L436.48,337.71c3.39-2,6.14-6.52,6.14-10.19s-2.75-8.24-6.14-10.2l-143.69-83a13.56,13.56,0,0,0-12.28,0L56.36,363.77C53,365.73,50.22,370.29,50.22,374Z"
                                 style="fill: rgb(55, 71, 79); transform-origin: 246.42px 350.76px;" id="elk9r46iji6ln"
@@ -512,13 +512,13 @@
                                 style="fill: rgb(38, 50, 56); transform-origin: 284.505px 370.23px;" id="elcfx6kmd1ca"
                                 class="animable"></polygon>
                             <polygon points="335.41 363.15 298.99 342.13 233.62 379.89 270.02 400.9 335.41 363.15"
-                                style="fill: rgb(55, 71, 79); transform-origin: 284.515px 371.515px;" id="eld3twa8wdi5k"
-                                class="animable"></polygon>
+                                     style="fill: rgb(55, 71, 79); transform-origin: 284.515px 371.515px;" id="eld3twa8wdi5k"
+                                     class="animable"></polygon>
                         </g>
                     </g>
                     <g id="freepik--Screen--inject-10" class="animable" style="transform-origin: 171.403px 208.987px;">
                         <g id="freepik--Window--inject-10" class="animable"
-                            style="transform-origin: 171.403px 208.987px;">
+                           style="transform-origin: 171.403px 208.987px;">
                             <path
                                 d="M67.21,355.84a4.15,4.15,0,0,1-1.85.56,4.66,4.66,0,0,1-2.71-.48,5,5,0,0,1-2.22-4V214.44L64.86,217V354.47c0,1.07.53,1.69,1.31,1.69A2.4,2.4,0,0,0,67.21,355.84Z"
                                 style="fill: rgb(230, 230, 230); transform-origin: 63.82px 285.438px;" id="elwtkfwyu1pa"
@@ -572,11 +572,11 @@
                                 style="fill: rgb(213 227 242); transform-origin: 173.625px 147.865px;"
                                 id="elv4neg4uu7i" class="animable"></path>
                             <polygon points="64.86 204.32 64.86 217 60.42 214.44 60.42 201.77 64.86 204.32"
-                                style="fill: rgb(213 227 242); transform-origin: 62.64px 209.385px;"
-                                id="el27pl8ka7jqe" class="animable"></polygon>
+                                     style="fill: rgb(213 227 242); transform-origin: 62.64px 209.385px;"
+                                     id="el27pl8ka7jqe" class="animable"></polygon>
                             <g id="eldfdkh5dyjxs">
                                 <polygon points="64.86 204.32 64.86 217 60.42 214.44 60.42 201.77 64.86 204.32"
-                                    style="opacity: 0.15; transform-origin: 62.64px 209.385px;" class="animable">
+                                         style="opacity: 0.15; transform-origin: 62.64px 209.385px;" class="animable">
                                 </polygon>
                             </g>
                             <g id="elt8j58n1txbg">
@@ -631,9 +631,9 @@
                     </g>
                     <g id="freepik--window--inject-10" class="animable" style="transform-origin: 240.03px 213.47px;">
                         <g id="freepik--window--inject-10" class="animable"
-                            style="transform-origin: 240.03px 213.47px;">
+                           style="transform-origin: 240.03px 213.47px;">
                             <g id="freepik--Box--inject-10" class="animable"
-                                style="transform-origin: 240.03px 213.47px;">
+                               style="transform-origin: 240.03px 213.47px;">
                                 <g id="el7a0o3dh6zpi">
                                     <g style="opacity: 0.2; transform-origin: 236.475px 211.47px;" class="animable">
                                         <path
@@ -682,7 +682,7 @@
                                     id="eljnnr9gshjqf" class="animable"></path>
                             </g>
                             <g id="freepik--Button--inject-10" class="animable"
-                                style="transform-origin: 245.54px 254.178px;">
+                               style="transform-origin: 245.54px 254.178px;">
                                 <g id="elg6q0kz469gw">
                                     <g style="opacity: 0.2; transform-origin: 244.21px 252.962px;" class="animable">
                                         <path
@@ -692,7 +692,7 @@
                                     </g>
                                 </g>
                                 <g id="freepik--speech-bubble--inject-10" class="animable"
-                                    style="transform-origin: 246.665px 256.009px;">
+                                   style="transform-origin: 246.665px 256.009px;">
                                     <path
                                         d="M300.27,215.34l-111,64a2.08,2.08,0,0,0-.94,1.63v13a2,2,0,0,0,.95,1.63l1.79,1a2.15,2.15,0,0,0,1.9,0l111-64.05a2.09,2.09,0,0,0,1-1.63V218a2.09,2.09,0,0,0-1-1.63l-1.8-1A2.13,2.13,0,0,0,300.27,215.34Z"
                                         style="fill: rgb(16, 83, 156); transform-origin: 246.65px 255.976px;"
@@ -894,7 +894,7 @@
                                 style="fill: rgb(213 227 242); transform-origin: 226.231px 222.069px;"
                                 id="el4jbkcof8pu" class="animable"></path>
                             <g id="freepik--Eye--inject-10" class="animable"
-                                style="transform-origin: 293.78px 183.748px;">
+                               style="transform-origin: 293.78px 183.748px;">
                                 <path
                                     d="M293.78,187.76a3.87,3.87,0,0,1-5.12-.91l-.06-.09.06-.17c0-.05,2-5.1,5.12-6.88a3.85,3.85,0,0,1,5.11,1l.07.1-.07.17C298.87,181,296.86,186,293.78,187.76Zm-4.84-1.2a3.69,3.69,0,0,0,4.84.78c2.63-1.51,4.45-5.49,4.83-6.37a3.66,3.66,0,0,0-4.83-.84C291.14,181.65,289.32,185.67,288.94,186.56Z"
                                     style="fill: rgb(213 227 242); transform-origin: 293.78px 183.748px;"
@@ -928,7 +928,7 @@
                     </g>
                     <g id="freepik--Padlock--inject-10" class="animable" style="transform-origin: 114.833px 260.183px;">
                         <g id="freepik--padlock--inject-10" class="animable"
-                            style="transform-origin: 114.833px 260.183px;">
+                           style="transform-origin: 114.833px 260.183px;">
                             <path
                                 d="M144.21,238.24a3.75,3.75,0,0,0-2.21-3.07l-4.34-2.5a11.76,11.76,0,0,0-10.65,0L87.69,255.36a3.74,3.74,0,0,0-2.2,3.08h0v51.93h0a3.71,3.71,0,0,0,2.2,3.08L92,316a11.76,11.76,0,0,0,10.65,0L142,293.26a3.75,3.75,0,0,0,2.21-3.08h0V238.24Z"
                                 style="fill: rgb(16, 83, 156); transform-origin: 114.85px 274.335px;" id="elbxql8z2x2vb"
@@ -956,8 +956,8 @@
                                 style="fill: rgb(69, 90, 100); transform-origin: 121.31px 280.69px;" id="el0grsyve96pmi"
                                 class="animable"></path>
                             <polygon points="125.97 290.98 117.47 286.07 116.58 296.4 125.97 290.98"
-                                style="fill: rgb(55, 71, 79); transform-origin: 121.275px 291.235px;" id="ela70u0jbpisi"
-                                class="animable"></polygon>
+                                     style="fill: rgb(55, 71, 79); transform-origin: 121.275px 291.235px;" id="ela70u0jbpisi"
+                                     class="animable"></polygon>
                             <path
                                 d="M121.28,265.57a11,11,0,0,0-4.33,5.74l7.57,4.37h0a12.79,12.79,0,0,0,1.84-6.27C126.36,265.67,124.08,264,121.28,265.57Z"
                                 style="fill: rgb(55, 71, 79); transform-origin: 121.655px 270.331px;" id="eljrjf8emblqp"
@@ -969,15 +969,15 @@
                         </g>
                     </g>
                     <g id="freepik--Asterisks--inject-10" class="animable"
-                        style="transform-origin: 110.925px 90.6455px;">
+                       style="transform-origin: 110.925px 90.6455px;">
                         <g id="freepik--Password--inject-10" class="animable"
-                            style="transform-origin: 110.925px 90.6455px;">
+                           style="transform-origin: 110.925px 90.6455px;">
                             <path id="freepik--shadow--inject-10"
-                                d="M45.47,108.88,169.1,37.5c2.2-1.27,4-.23,4,2.31V63.92a3.61,3.61,0,0,1-1.62,2.81l-126,72.75c-.9.52-1.63.1-1.63-.94V111.69A3.59,3.59,0,0,1,45.47,108.88Z"
-                                style="fill: rgb(213 227 242); transform-origin: 108.475px 88.3306px;"
-                                class="animable"></path>
+                                  d="M45.47,108.88,169.1,37.5c2.2-1.27,4-.23,4,2.31V63.92a3.61,3.61,0,0,1-1.62,2.81l-126,72.75c-.9.52-1.63.1-1.63-.94V111.69A3.59,3.59,0,0,1,45.47,108.88Z"
+                                  style="fill: rgb(213 227 242); transform-origin: 108.475px 88.3306px;"
+                                  class="animable"></path>
                             <g id="freepik--speech-bubble--inject-10" class="animable"
-                                style="transform-origin: 113.06px 93.0962px;">
+                               style="transform-origin: 113.06px 93.0962px;">
                                 <path
                                     d="M169.18,42.3,49.91,111.14a4,4,0,0,0-1.79,3.1V138.9a3.91,3.91,0,0,0,1.8,3.08l3.41,1.93a4,4,0,0,0,3.58,0L176.18,75.05A4,4,0,0,0,178,72V47.3a3.91,3.91,0,0,0-1.8-3.08l-3.41-1.94A4,4,0,0,0,169.18,42.3Z"
                                     style="fill: rgb(16, 83, 156); transform-origin: 113.06px 93.0962px;"
@@ -1083,28 +1083,28 @@
                                 class="animable"></path>
                             <g id="elo2vvbj5wblp">
                                 <path d="M54,443v3.54a47.16,47.16,0,0,0,20.68-.08v-3.54A47.16,47.16,0,0,1,54,443Z"
-                                    style="opacity: 0.1; transform-origin: 64.34px 445.284px;" class="animable">
+                                      style="opacity: 0.1; transform-origin: 64.34px 445.284px;" class="animable">
                                 </path>
                             </g>
                             <g id="elx5e96kj7oym">
                                 <polygon points="84.01 448.37 84 451.91 91.2 450.31 91.22 446.76 84.01 448.37"
-                                    style="opacity: 0.1; transform-origin: 87.61px 449.335px;" class="animable">
+                                         style="opacity: 0.1; transform-origin: 87.61px 449.335px;" class="animable">
                                 </polygon>
                             </g>
                             <g id="elpujfl86lpyc">
                                 <polygon points="96.12 449.62 96.11 453.16 96.35 459.1 96.37 455.56 96.12 449.62"
-                                    style="opacity: 0.1; transform-origin: 96.24px 454.36px;" class="animable">
+                                         style="opacity: 0.1; transform-origin: 96.24px 454.36px;" class="animable">
                                 </polygon>
                             </g>
                             <g id="eldmydw1z04zq">
                                 <polygon points="99.01 457.1 99 460.64 105.64 461.25 105.65 457.7 99.01 457.1"
-                                    style="opacity: 0.1; transform-origin: 102.325px 459.175px;" class="animable">
+                                         style="opacity: 0.1; transform-origin: 102.325px 459.175px;" class="animable">
                                 </polygon>
                             </g>
                             <g id="elj3ffhwdttsb">
                                 <rect x="122.24" y="461.39" width="3.54" height="15.25"
-                                    style="opacity: 0.1; transform-origin: 124.01px 469.015px; transform: rotate(-89.79deg);"
-                                    class="animable"></rect>
+                                      style="opacity: 0.1; transform-origin: 124.01px 469.015px; transform: rotate(-89.79deg);"
+                                      class="animable"></rect>
                             </g>
                             <g id="el84vg9xks07k">
                                 <polygon
@@ -1113,19 +1113,19 @@
                                 </polygon>
                             </g>
                             <polygon points="135.36 465.12 134.04 465.9 134.03 467.43 135.36 466.67 135.36 465.12"
-                                style="fill: rgb(16, 83, 156); transform-origin: 134.695px 466.275px;" id="elxp4zxyjo8j"
-                                class="animable"></polygon>
+                                     style="fill: rgb(16, 83, 156); transform-origin: 134.695px 466.275px;" id="elxp4zxyjo8j"
+                                     class="animable"></polygon>
                             <g id="eltgrjygf5ooe">
                                 <polygon points="135.36 465.12 134.04 465.9 134.03 467.43 135.36 466.67 135.36 465.12"
-                                    style="fill: rgb(255, 255, 255); opacity: 0.3; transform-origin: 134.695px 466.275px;"
-                                    class="animable"></polygon>
+                                         style="fill: rgb(255, 255, 255); opacity: 0.3; transform-origin: 134.695px 466.275px;"
+                                         class="animable"></polygon>
                             </g>
                             <polygon points="135.36 465.12 135.36 466.67 85.45 437.61 86.78 436.84 135.36 465.12"
-                                style="fill: rgb(16, 83, 156); transform-origin: 110.405px 451.755px;"
-                                id="elruy9u58qlpl" class="animable"></polygon>
+                                     style="fill: rgb(16, 83, 156); transform-origin: 110.405px 451.755px;"
+                                     id="elruy9u58qlpl" class="animable"></polygon>
                             <g id="elnahc3jyz3oc">
                                 <polygon points="86.78 436.84 86.78 438.38 85.45 437.61 86.78 436.84"
-                                    style="opacity: 0.15; transform-origin: 86.115px 437.61px;" class="animable">
+                                         style="opacity: 0.15; transform-origin: 86.115px 437.61px;" class="animable">
                                 </polygon>
                             </g>
                         </g>
@@ -1137,7 +1137,7 @@
                                 style="fill: rgb(213 227 242); transform-origin: 363.374px 427.479px;"
                                 id="el3rgio6lpvvg" class="animable"></path>
                             <g id="freepik--pen--inject-10" class="animable"
-                                style="transform-origin: 360.65px 415.212px;">
+                               style="transform-origin: 360.65px 415.212px;">
                                 <path
                                     d="M433.88,367.66a13.71,13.71,0,0,0,6.21,10.74,5,5,0,0,0,3.56.76,3,3,0,0,1-.67.52l1.49-.85a3.09,3.09,0,0,0,.92-.82,4.06,4.06,0,0,0,.51-.92c0-.1.07-.2.1-.3a.44.44,0,0,0,.05-.15,2.86,2.86,0,0,0,.07-.28,6.6,6.6,0,0,0,.17-1.54,13.73,13.73,0,0,0-6.2-10.74,5.6,5.6,0,0,0-2.78-.85h0a2.34,2.34,0,0,0-.38,0l-.36.06a1.41,1.41,0,0,0-.22.06l-.13,0-.25.1-.05,0-.24.12-1.3.74a2.62,2.62,0,0,1,.68-.24A4.91,4.91,0,0,0,433.88,367.66Z"
                                     style="fill: rgb(16, 83, 156); transform-origin: 440.078px 371.451px;"
@@ -1159,8 +1159,8 @@
                                     style="fill: rgb(69, 90, 100); transform-origin: 343.577px 426.18px;"
                                     id="elwau8cz3xfa" class="animable"></path>
                                 <path d="M300.76,455.3,292,460.35l-6.2-3.58,11.85-6.84A14.9,14.9,0,0,1,300.76,455.3Z"
-                                    style="fill: rgb(55, 71, 79); transform-origin: 293.28px 455.14px;"
-                                    id="el1in7m849en7" class="animable"></path>
+                                      style="fill: rgb(55, 71, 79); transform-origin: 293.28px 455.14px;"
+                                      id="el1in7m849en7" class="animable"></path>
                                 <path
                                     d="M278.67,461.17h0l7.18-7.9a1.9,1.9,0,0,1,.19-.21c.8-.8,2.08-.86,3.54,0a9.72,9.72,0,0,1,4.38,7.59c0,1.62-.65,2.68-1.67,3l-.07,0-.29.06L281.4,466h0a1.61,1.61,0,0,1-1.13-.24,4.43,4.43,0,0,1-2-3.46A1.54,1.54,0,0,1,278.67,461.17Z"
                                     style="fill: rgb(16, 83, 156); transform-origin: 286.114px 459.229px;"
@@ -1237,16 +1237,16 @@
                                 <feMergeNode in="SourceGraphic"></feMergeNode>
                             </feMerge>
                             <feColorMatrix type="matrix"
-                                values="0   0   0   0   0                0   1   0   0   0                0   0   0   0   0                0   0   0   1   0 ">
+                                           values="0   0   0   0   0                0   1   0   0   0                0   0   0   0   0                0   0   0   1   0 ">
                             </feColorMatrix>
                         </filter>
                     </defs>
                 </svg>
             </div>
         </div>
-        </div>
-    </section>
-    @include('admin.includes.js')
+    </div>
+</section>
+@include('admin.includes.js')
 </body>
 
 </html>

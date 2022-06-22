@@ -59,8 +59,17 @@ class ContainerRental extends Model
     public function discharges()
     {
         return $this->hasMany(Discharge::class, 'container_rental_id', 'id');
-
-
     }//end of discharges function
+
+    public function requests()
+    {
+        return $this->hasMany(DriverRequest::class, 'container_rental_id', 'id');
+    }//end of requests function
+
+    public function request()
+    {
+        return $this->hasOne(DriverRequest::class, 'container_rental_id', 'id')->latest();
+
+    }//end of request function
 
 }

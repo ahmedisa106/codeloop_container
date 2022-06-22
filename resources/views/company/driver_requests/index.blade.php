@@ -21,6 +21,7 @@
                         <thead>
                         <tr>
                             <th>نوع الطلب</th>
+                            <th>حاله الطلب</th>
 
                             <th>تفاصيل الطلب</th>
                         </tr>
@@ -55,6 +56,7 @@
 
 
                 {data: 'type', name: 'type'},
+                {data: 'status', name: 'status'},
                 {data: 'details', name: 'details'},
 
 
