@@ -20,6 +20,7 @@
                     <table class="table table-bordered datatable text-center">
                         <thead>
                         <tr>
+                            <th>#</th>
                             <th>نوع الطلب</th>
                             <th>حاله الطلب</th>
 
@@ -49,12 +50,14 @@
             language: {
                 "url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/ar.json"
             },
+            "order": [[0, 'desc']],
             ajax: {
                 url: "{{route('driver-requests.data')}}"
             },
             columns: [
 
 
+                {data: 'id', name: 'id'},
                 {data: 'type', name: 'type'},
                 {data: 'status', name: 'status'},
                 {data: 'details', name: 'details'},
