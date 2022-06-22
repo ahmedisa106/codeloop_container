@@ -35,6 +35,7 @@ return [
             'containers' => 'c,r,u,d,e',
             'contracts' => 'c,r,u,d,e',
             'container-rentals' => 'c,r,u,d,e',
+            'customers' => 'c,r,u,d,e',
         ],
         'driver' => [
             'driver-requests' => 'r'

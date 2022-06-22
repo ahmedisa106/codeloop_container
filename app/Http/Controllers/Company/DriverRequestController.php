@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Company;
 
+use App\Helper\Upload;
 use App\Http\Controllers\Controller;
 use App\Models\DriverRequest;
+use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
 class DriverRequestController extends Controller
 {
+    use Upload;
+
     protected $data = [
         'page_title' => 'طلباتي',
     ];
@@ -46,4 +50,81 @@ class DriverRequestController extends Controller
         $containerRental = $request->containerRental;
         return view('company.driver_requests.show', compact('request', 'containerRental'));
     }//end of show function
+
+    public function inDelivery(Request $request)
+    {
+        $driver_request = DriverRequest::find($request->request_id);
+        $driver_request->update(['status' => 'in_delivery']);
+        $driver_request->containerRental()->update(['status' => 'in_delivery']);
+
+        session()->flash('success', 'تم بدأ التوصيل');
+        return redirect()->back();
+
+    }//end of inDelivery function
+
+    public function inDischarge(Request $request)
+    {
+        $driver_request = DriverRequest::find($request->request_id);
+        $driver_request->update(['status' => 'in_discharge']);
+        $driver_request->containerRental()->update(['status' => 'in_discharge']);
+
+        session()->flash('success', 'تم بدأ التفريغ');
+        return redirect()->back();
+
+    }//end of inDelivery function
+
+    public function delivered(Request $request)
+    {
+        $request->validate([
+            'delivered_photo' => 'required|image|mimes:png,jpg,jpeg,webp,svg'
+        ], [], [
+            'delivered_photo' => 'صوره الحاويه'
+        ]);
+
+        $delivered_photo = $request->hasFile('delivered_photo') ? $this->upload($request->delivered_photo, 'container_rentals', false, '') : '';
+        $driver_request = DriverRequest::find($request->request_id);
+        $driver_request->update(['status' => 'delivered']);
+        $driver_request->containerRental()->update([
+            'status' => 'delivered',
+            'delivered_photo' => $delivered_photo,
+        ]);
+        $driver_request->driver()->update(['status' => 'active']);
+
+        session()->flash('success', 'تم التوصيل بنجاح');
+        return redirect()->back();
+
+
+    }//end of delivered function
+
+
+    public function discharged(Request $request)
+    {
+        $request->validate([
+            'receipt_number' => 'required|integer'
+        ], [], [
+            'receipt_number' => 'رقم الإيصال'
+        ]);
+
+
+        $driver_request = DriverRequest::find($request->request_id);
+        $driver_request->update(['status' => 'discharged']);
+        $driver_request->containerRental()->update([
+            'status' => 'discharged',
+        ]);
+        $driver_request->containerRental()->decrement('remaining_discharges', 1);
+        $container_rental = $driver_request->containerRental;
+
+        $container_rental->discharges()->create([
+            'container_id' => $container_rental->container_id,
+            'driver_id' => $driver_request->driver_id,
+            'receipt_number' => $request->receipt_number,
+        ]);
+
+        $driver_request->driver()->update(['status' => 'active']);
+
+        session()->flash('success', 'تم التفريغ بنجاح');
+        return redirect()->back();
+
+
+    }//end of delivered function
 }

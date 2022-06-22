@@ -96,6 +96,10 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
 
     // driver requests
     Route::get('driver-requests/data', 'DriverRequestController@data')->name('driver-requests.data');
+    Route::post('driver-requests/in-delivery', 'DriverRequestController@inDelivery')->name('driver-requests.inDelivery');
+    Route::post('driver-requests/in-discharge', 'DriverRequestController@inDischarge')->name('driver-requests.inDischarge');
+    Route::post('driver-requests/delivered', 'DriverRequestController@delivered')->name('driver-requests.delivered');
+    Route::post('driver-requests/discharged', 'DriverRequestController@discharged')->name('driver-requests.discharged');
     Route::resource('driver-requests', 'DriverRequestController');
     // end driver requests
 
@@ -137,7 +141,7 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     Route::get('container-rentals/download-pdf', 'ContainerRentalController@pdf')->name('container-rentals.pdf');
     Route::get('container-rentals/get-containers', 'ContainerRentalController@getContainers')->name('container-rentals.getContainers');
     Route::post('container-rentals/assign-drive-to-drive', 'ContainerRentalController@assignDriverToDrive')->name('container-rentals.assignDriverToDrive');
-    Route::post('container-rentals/container-delivered', 'ContainerRentalController@containerDelivered')->name('container-rentals.containerDelivered');
+    Route::post('container-rentals/assign-drive-to-discharge', 'ContainerRentalController@assignDriverToDischarge')->name('container-rentals.assignDriverToDischarge');
     Route::resource('container-rentals', 'ContainerRentalController');
     // end container-rentals
 

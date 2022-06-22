@@ -15,46 +15,50 @@
 
                 @if($request->type =='delivery')
                     @if($request->status == 'waiting_approval')
-                        <a href="#" class="btn btn-success btn-air-success btn-icon">
-                            <i class="fa fa-plus"></i>
-                            ابدأ التوصيل
-                        </a>
-                    @endif
-                    @if($request->status == 'in_delivered')
-                        <form action="" method="post">
+                        <form action="{{route('driver-requests.inDelivery')}}" method="post">
                             @csrf
-                            <input type="hidden" name="container_rental_id" value="{{$containerRental->id}}">
-                            <input type="hidden" name="driver_id" value="{{auth()->user()->id}}">
-
-
-                            <button type="submit" class="btn btn-success">
-                                <i class="fa fa-check"></i>
-                                تم التوصيل
-
+                            <input type="hidden" name="request_id" value="{{$request->id}}">
+                            <button type="submit" class="btn btn-success btn-sm">
+                                بدأ التوصيل
                             </button>
                         </form>
+
+                    @endif
+                    @if($request->status == 'in_delivery')
+
+                        <a href="#" class="btn  btn-success btn-icon" data-bs-toggle="modal" data-bs-target="#example2">
+                            <i class="fa fa-check"></i>
+                            تم التوصيل
+                        </a>
+                        {{--                        <form action="" method="post">--}}
+                        {{--                            @csrf--}}
+                        {{--                            <input type="hidden" name="container_rental_id" value="{{$containerRental->id}}">--}}
+                        {{--                            <input type="hidden" name="driver_id" value="{{auth()->user()->id}}">--}}
+
+
+                        {{--                            <button type="submit" class="btn btn-success">--}}
+                        {{--                                <i class="fa fa-check"></i>--}}
+                        {{--                                تم التوصيل--}}
+
+                        {{--                            </button>--}}
+                        {{--                        </form>--}}
                     @endif
                 @else
                     @if($request->status == 'waiting_approval')
-                        <a href="#" class="btn btn-success btn-air-success btn-icon">
-                            <i class="fa fa-plus"></i>
-                            ابدأ التفريغ
-                        </a>
+                        <form action="{{route('driver-requests.inDischarge')}}" method="post">
+                            @csrf
+                            <input type="hidden" name="request_id" value="{{$request->id}}">
+                            <button type="submit" class="btn btn-success btn-sm">
+                                بدأ التفريغ
+                            </button>
+                        </form>
                     @endif
 
                     @if($request->status == 'in_discharge')
-                        <form action="" method="post">
-                            @csrf
-                            <input type="hidden" name="container_rental_id" value="{{$containerRental->id}}">
-                            <input type="hidden" name="driver_id" value="{{auth()->user()->id}}">
-
-
-                            <button type="submit" class="btn btn-success">
-                                <i class="fa fa-check"></i>
-                                تم التفريغ
-
-                            </button>
-                        </form>
+                        <a href="#" class="btn  btn-success btn-icon" data-bs-toggle="modal" data-bs-target="#example3">
+                            <i class="fa fa-check"></i>
+                            تم التفريغ
+                        </a>
                     @endif
 
                 @endif
@@ -67,7 +71,7 @@
 
             <div class="track-order-pop">
                 <ul>
-                    <li class="{{$request->status =='waiting_approval' ? 'procces':''}} {{$request->status =='in_delivered' ? 'active':''}} {{$request->status =='in_discharge' ? 'active':''}}  ">
+                    <li class="{{$request->status =='waiting_approval' ? 'procces':''}} {{$request->status =='in_delivery' ? 'active':''}} {{$request->status =='in_discharge' ? 'active':''}} {{$request->status =='delivered' ? 'active':''}} {{$request->status =='discharged' ? 'active':''}}  ">
                         <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" enable-background="new 0 0 512 512"
                              height="512" viewBox="0 0 512 512" width="512">
                             <g fill="rgb(0,0,0)">
@@ -84,7 +88,7 @@
                         <p>انتظار بدأ {{$request->type =='delivery' ? 'التوصيل':'التفريغ'}}</p>
                         <i class="fa fa-check-circle"></i>
                     </li>
-                    <li class="{{$request->status =='in_delivered' ? 'procces':''}} {{$request->status =='delivered' ? 'active':''}} {{$containerRental->remaining_discharges ==0 ? 'active':''}}">
+                    <li class="{{$request->status =='in_delivery' ? 'procces':''}} {{$request->status =='in_discharge' ? 'procces':''}} {{$request->status =='delivered' ? 'active':''}} {{$request->status =='discharged' ? 'active':''}} ">
                         <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enable-background="new 0 0 512 512" height="512"
                              viewBox="0 0 512 512" width="512">
                             <g>
@@ -100,10 +104,10 @@
                                     d="m263.5 272.904c0-4.142-3.358-7.5-7.5-7.5s-7.5 3.358-7.5 7.5v11.491c0 4.142 3.358 7.5 7.5 7.5s7.5-3.358 7.5-7.5z"/>
                             </g>
                         </svg>
-                        <p> جاري {{$request->type =='delivery' ? 'التوصيل':'التفريغ'}} </p>
+                        <p> في الطريق ل {{$request->type =='delivery' ? 'التوصيل':'التفريغ'}} </p>
                         <i class="fa fa-check-circle"></i>
                     </li>
-                    <li class="{{$containerRental->status =='delivered' ? 'procces':''}} {{$containerRental->status =='complete' ? 'active':''}} {{$containerRental->remaining_discharges ==0 ? 'active':''}}">
+                    <li class="{{$request->status =='delivered' ? 'active':''}} {{$request->status =='discharged' ? 'active':''}} ">
                         <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                              id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
                              xml:space="preserve">
@@ -243,6 +247,68 @@
         </div>
     </div>
 
+    <div class="modal fade modal-custom" data-bs-backdrop="static" id="example2" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">أدخل صوره الحاويه</h5>
+                </div>
+                <div class="modal-body">
+                    <form class="row" id="" method="post" action="{{route('driver-requests.delivered')}}" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="request_id" value="{{$request->id}}">
+                        <div class="col-md-12">
+                            <input type="file" name="delivered_photo" class="form-control">
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary btn-air-primary btn-icon" type="submit">
+                                <i class="fa fa-save"></i>
+                                حفظ
+                            </button>
+                            <button class="btn btn-danger exsit_modal btn-air-danger btn-icon" type="button"
+                                    data-bs-dismiss="modal">
+                                <i class="fa fa-times"></i>
+                                خروج
+                            </button>
+                        </div>
+                    </form>
+                </div>
 
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade modal-custom" data-bs-backdrop="static" id="example3" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">أدخل رقم الإيصال</h5>
+                </div>
+                <div class="modal-body">
+                    <form class="row" id="" method="post" action="{{route('driver-requests.discharged')}}">
+                        @csrf
+                        <input type="hidden" name="request_id" value="{{$request->id}}">
+                        <div class="col-md-12">
+                            <input type="number" name="receipt_number" class="form-control">
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary btn-air-primary btn-icon" type="submit">
+                                <i class="fa fa-save"></i>
+                                حفظ
+                            </button>
+                            <button class="btn btn-danger exsit_modal btn-air-danger btn-icon" type="button"
+                                    data-bs-dismiss="modal">
+                                <i class="fa fa-times"></i>
+                                خروج
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 @endsection
