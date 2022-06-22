@@ -8,7 +8,7 @@
                 @role(['admin','messenger'])
                 @if(!$containerRental->driver && $containerRental->status == 'waiting_driver')
 
-                    <a href="#" class="btn btn-dark btn-air-dark btn-icon" data-bs-toggle="modal" data-bs-target="#example2">
+                    <a href="#" class="btn btn-dark btn-air-dark btn-icon" data-bs-toggle="modal" data-bs-target="#example1">
                         <i class="fa fa-truck"></i>
                         توجيه سائق لتوصيل الحاوية
                     </a>
@@ -18,8 +18,8 @@
                 @endrole
 
                 @role(['admin','messenger'])
-                @if($containerRental->status == 'delivered')
-                    <a href="#" class="btn btn-info btn-air-info btn-icon" data-bs-toggle="modal" data-bs-target="#example4">
+                @if($containerRental->status == 'delivered' || $containerRental->status == 'discharged' && $containerRental->remaining_discharges > 0 )
+                    <a href="#" class="btn btn-info btn-air-info btn-icon" data-bs-toggle="modal" data-bs-target="#example2">
                         <i class="fa fa-truck"></i>
                         توجيه سائق لتفريغ الحاوية
                     </a>
@@ -31,29 +31,7 @@
                 {{--                    <i class="fa fa-plus"></i>--}}
                 {{--                    اضافة تفريغة--}}
                 {{--                </a>--}}
-                @role('driver')
-                @if($containerRental->status == 'waiting_driver')
-                    <a href="#" class="btn btn-success btn-air-success btn-icon">
-                        <i class="fa fa-plus"></i>
-                        ابدأ التوصيل
-                    </a>
-                @endif
-                @if($containerRental->status == 'in_progress')
-                    <form action="{{route('container-rentals.containerDelivered')}}" method="post">
-                        @csrf
-                        <input type="hidden" name="container_rental_id" value="{{$containerRental->id}}">
-                        <input type="hidden" name="driver_id" value="{{auth()->user()->id}}">
 
-
-                        <button type="submit" class="btn btn-success">
-                            <i class="fa fa-check"></i>
-                            تم التوصيل
-
-                        </button>
-                    </form>
-
-                @endif
-                @endrole
 
                 @role(['admin','messenger'])
                 @if($containerRental->status != 'broken'  && $containerRental->status != 'complete'  )
@@ -71,7 +49,7 @@
             @if($containerRental->status!='broken')
                 <div class="track-order-pop">
                     <ul>
-                        <li class="{{$containerRental->status =='waiting_driver' ? 'procces':''}} {{$containerRental->status =='in_progress' ? 'active':''}} {{$containerRental->status =='delivered' ? 'active':''}} {{$containerRental->remaining_discharges ==0 ? 'active':''}} ">
+                        <li class="{{$containerRental->status =='waiting_driver' ? 'procces':''}} {{$containerRental->status =='in_delivery' ? 'active':''}} {{$containerRental->status =='delivered' ? 'active':''}} {{$containerRental->status =='in_discharge' ? 'active':''}} {{$containerRental->status =='discharged' ? 'active':''}} {{$containerRental->remaining_discharges ==0 ? 'active':''}} ">
                             <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" enable-background="new 0 0 512 512"
                                  height="512" viewBox="0 0 512 512" width="512">
                                 <g fill="rgb(0,0,0)">
@@ -88,7 +66,7 @@
                             <p>انتظار سائق متاح</p>
                             <i class="fa fa-check-circle"></i>
                         </li>
-                        <li class="{{$containerRental->status =='in_progress' ? 'procces':''}} {{$containerRental->status =='delivered' ? 'active':''}} {{$containerRental->remaining_discharges ==0 ? 'active':''}}">
+                        <li class="{{$containerRental->status =='in_delivery' ? 'procces':''}} {{$containerRental->status =='delivered' ? 'active':''}} {{$containerRental->status =='in_discharge' ? 'active':''}} {{$containerRental->status =='discharged' ? 'active':''}} {{$containerRental->remaining_discharges ==0 ? 'active':''}} ">
                             <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enable-background="new 0 0 512 512" height="512"
                                  viewBox="0 0 512 512" width="512">
                                 <g>
@@ -107,7 +85,8 @@
                             <p>جاري التوصيل</p>
                             <i class="fa fa-check-circle"></i>
                         </li>
-                        <li class="{{$containerRental->status =='delivered' ? 'procces':''}} {{$containerRental->status =='complete' ? 'active':''}} {{$containerRental->remaining_discharges ==0 ? 'active':''}}">
+
+                        <li class="{{$containerRental->status =='delivered' ? 'active':''}} {{$containerRental->status =='in_discharge' ? 'active':''}} {{$containerRental->status =='discharged' ? 'active':''}} {{$containerRental->remaining_discharges ==0 ? 'active':''}}">
                             <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                                  id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
                                  xml:space="preserve">
@@ -164,6 +143,29 @@
                             <i class="fa fa-check-circle"></i>
                         </li>
 
+                        {{--                        <li class="{{$containerRental->status =='in_discharge' ? 'procces':''}} {{$containerRental->status =='discharged' ? 'active':''}} {{$containerRental->remaining_discharges ==0 ? 'active':''}}">--}}
+                        {{--                            <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512">--}}
+                        {{--                                <g>--}}
+                        {{--                                    <path--}}
+                        {{--                                        d="m504.5 124.297h-8.03v-85.75c0-4.143-3.357-7.5-7.5-7.5h-31.07c-4.143 0-7.5 3.357-7.5 7.5v8.065h-62.65v-8.065c0-4.143-3.357-7.5-7.5-7.5h-31.06c-4.143 0-7.5 3.357-7.5 7.5v8.065h-62.66v-8.065c0-4.143-3.357-7.5-7.5-7.5h-31.06c-4.143 0-7.5 3.357-7.5 7.5v8.065h-62.66v-8.065c0-4.143-3.357-7.5-7.5-7.5h-31.06c-4.143 0-7.5 3.357-7.5 7.5v8.065h-62.65v-8.065c0-4.143-3.357-7.5-7.5-7.5h-31.07c-4.143 0-7.5 3.357-7.5 7.5v85.75h-8.03c-4.143 0-7.5 3.357-7.5 7.5v62.1c0 4.143 3.357 7.5 7.5 7.5h8.484l15.09 241.458c.247 3.953 3.524 7.032 7.485 7.032h23.567v23.565c0 4.143 3.357 7.5 7.5 7.5h59.874c4.143 0 7.5-3.357 7.5-7.5v-23.565h235.749v23.565c0 4.143 3.357 7.5 7.5 7.5h62.124c4.143 0 7.5-3.357 7.5-7.5v-23.565h23.567c3.96 0 7.238-3.079 7.485-7.032l8.27-132.271c.259-4.134-2.884-7.694-7.018-7.953-4.147-.263-7.695 2.884-7.953 7.018l-5.888 94.178h-136.266c-4.143 0-7.5 3.357-7.5 7.5s3.357 7.5 7.5 7.5h135.328l-1.004 16.061h-420.789l-1.004-16.061h254.789c4.143 0 7.5-3.357 7.5-7.5s-3.357-7.5-7.5-7.5h-255.726l-10.71-171.372h446.093l-2.782 44.564c-.258 4.135 2.884 7.695 7.018 7.953 4.138.241 7.695-2.884 7.953-7.018l4.781-76.558h8.484c4.143 0 7.5-3.357 7.5-7.5v-62.1c-.001-4.141-3.358-7.499-7.501-7.499zm-116.751 325.593h47.124v16.062h-47.124zm-310.622 0h44.873v16.062h-44.873zm310.623-388.277h62.65v31.564h-62.65zm-108.72 0h62.66v31.564h-62.66zm-108.72 0h62.66v31.564h-62.66zm-108.71 0h62.65v31.564h-62.65zm418.384 155.842h-447.967l-1.003-16.058h449.973zm17.016-31.058h-482v-47.1h178.06c4.143 0 7.5-3.357 7.5-7.5s-3.357-7.5-7.5-7.5h-162.53v-78.25h16.07v54.63c0 4.143 3.357 7.5 7.5 7.5h77.65c4.143 0 7.5-3.357 7.5-7.5v-54.63h16.06v54.63c0 4.143 3.357 7.5 7.5 7.5h77.66c4.143 0 7.5-3.357 7.5-7.5v-54.63h16.061v54.63c0 4.143 3.357 7.5 7.5 7.5h77.66c4.143 0 7.5-3.357 7.5-7.5v-54.63h16.06v54.63c0 4.143 3.357 7.5 7.5 7.5h77.65c4.143 0 7.5-3.357 7.5-7.5v-54.63h16.069v78.25h-255.72c-4.143 0-7.5 3.357-7.5 7.5s3.357 7.5 7.5 7.5h271.25z"/>--}}
+                        {{--                                    <path d="m190.562 363.952c2.839 4.762 7.844 7.604 13.388 7.604h35.281c4.143 0 7.5-3.357 7.5-7.5s-3.357-7.5-7.5-7.5h-35.281c-.116 0 13.749-27.265 13.749-27.265l1.242 3.434c2.58 4.294 5.782 5.795 9.604 4.501 3.895-1.409 5.91-5.709 4.501-9.604l-6.937-19.173c-1.286-3.537-5.242-5.658-8.913-4.714l-20.721 5.272c-4.015 1.021-6.441 5.104-5.42 9.118s5.103 6.44 9.118 5.419l4.151-1.057-14.088 26.071c-2.634 4.877-2.512 10.632.326 15.394z"/>--}}
+                        {{--                                    <path d="m308.49 370.826c13.51-1.142 19.51-11.142 13.059-23.374l-18.657-32.315c-2.07-3.588-6.659-4.815-10.245-2.745-3.587 2.071-4.816 6.658-2.745 10.245 0 0 18.824 32.604 18.661 32.895-.136.244-30.769.298-30.769.298l2.632-3.124c2.668-3.168 2.264-7.899-.904-10.568-3.169-2.668-7.9-2.264-10.568.904l-13.136 15.594c-2.498 2.933-2.291 7.396.412 10.114l14.888 15.271c3.517 2.974 7.052 3.019 10.605.135 2.966-2.892 3.026-7.64.135-10.605l-2.652-2.72h29.073c.07-.002.141-.003.211-.005z"/>--}}
+                        {{--                                    <path d="m253.932 263.085 16.238 25.833-3.596-.641c-4.072-.723-7.972 1.989-8.7 6.067-.727 4.078 1.989 7.973 6.067 8.7l20.072 3.579c3.757.675 7.501-1.648 8.536-5.351l5.798-20.593c1.123-3.987-1.199-8.13-5.186-9.252s-8.13 1.199-9.252 5.186l-1.162 4.124-15.533-25.237c-6.171-10.02-20.851-9.875-26.772.379l-17.903 31.01c-2.071 3.587-.842 8.174 2.745 10.245 3.588 2.07 8.175.842 10.245-2.745-.001-.001 18.07-31.3 18.403-31.304z"/>--}}
+                        {{--                                </g>--}}
+                        {{--                            </svg>--}}
+                        {{--                            <p>جاري التفريغ</p>--}}
+                        {{--                            <i class="fa fa-check-circle"></i>--}}
+                        {{--                        </li>--}}
+                        {{--                        <li class="{{$containerRental->status =='discharged' ? 'procces':''}} {{$containerRental->remaining_discharges ==0 ? 'active':''}}">--}}
+                        {{--                            <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512">--}}
+                        {{--                                <g>--}}
+                        {{--                                    <path--}}
+                        {{--                                        d="m497 76.29v-38.79c0-20.678-16.822-37.5-37.5-37.5h-407c-20.678 0-37.5 16.822-37.5 37.5v38.79c-8.729 3.096-15 11.433-15 21.21 0 12.406 10.093 22.5 22.5 22.5h7.882l13.142 251.457c.687 13.138 8.07 24.396 18.738 30.547-2.398 3.577-3.8 7.876-3.8 12.496 0 4.321 1.227 8.36 3.347 11.791-15.259 7.208-25.847 22.742-25.847 40.709 0 24.813 20.187 45 45 45s45-20.187 45-45c0-11.517-4.353-22.032-11.495-30h11.495c18.11 0 33.261-12.904 36.745-30h186.584c3.484 17.096 18.635 30 36.745 30h11.495c-7.141 7.968-11.495 18.483-11.495 30 0 24.813 20.187 45 45 45s45-20.187 45-45c0-17.967-10.587-33.501-25.847-40.709 2.12-3.431 3.347-7.47 3.347-11.791 0-4.621-1.402-8.919-3.8-12.496 10.668-6.15 18.052-17.409 18.738-30.547l13.144-251.457h7.882c12.407 0 22.5-10.094 22.5-22.5 0-9.777-6.271-18.114-15-21.21zm-301-31.29v30h-166v-30zm15 0h90v30h-90zm105 0h166v30h-166zm-263.5-30h407c9.777 0 18.114 6.271 21.21 15h-449.42c3.096-8.729 11.433-15 21.21-15zm58.462 452c0 16.542-13.458 30-30 30s-30-13.458-30-30 13.458-30 30-30 30 13.458 30 30zm15-45h-45c-4.136 0-7.5-3.364-7.5-7.5s3.364-7.5 7.5-7.5h66.21c-3.096 8.729-11.432 15-21.21 15zm335.076 45c0 16.542-13.458 30-30 30s-30-13.458-30-30 13.458-30 30-30 30 13.458 30 30zm-22.5-52.5c0 4.136-3.364 7.5-7.5 7.5h-45c-9.777 0-18.114-6.271-21.21-15h66.199c4.146 0 7.511 3.364 7.511 7.5zm50.962-309.5h-422c-4.142 0-7.5 3.357-7.5 7.5s3.358 7.5 7.5 7.5h399.098l-13.101 250.674c-.625 11.959-10.496 21.326-22.47 21.326h-350.054c-11.975 0-21.845-9.367-22.47-21.326l-13.513-258.566c-.208-3.984-3.5-7.108-7.49-7.108h-15c-4.136 0-7.5-3.364-7.5-7.5s3.364-7.5 7.5-7.5h467c4.136 0 7.5 3.364 7.5 7.5s-3.364 7.5-7.5 7.5z"/>--}}
+                        {{--                                </g>--}}
+                        {{--                            </svg>--}}
+                        {{--                            <p>تم التفريغ</p>--}}
+                        {{--                            <i class="fa fa-check-circle"></i>--}}
+                        {{--                        </li>--}}
 
                         <li class="{{$containerRental->remaining_discharges ==0 ? 'active':''}}">
                             <svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enable-background="new 0 0 512 512" height="512"
@@ -232,13 +234,21 @@
                                         $class = 'waiting';
                                         $status = 'انتظار سائق متاح';
                                         break;
-                                    case 'in_progress':
+                                    case 'in_delivery':
                                         $class = 'processing';
                                         $status = 'جاري التوصيل';
                                         break;
                                     case 'delivered':
                                         $class = 'delivered';
                                         $status ='تم التوصيل';
+                                        break;
+                                    case 'in_discharge':
+                                        $class = 'processing';
+                                        $status = 'جاري التفريغ';
+                                        break;
+                                    case 'discharged':
+                                        $class = 'processing';
+                                        $status = 'تم التفريغ';
                                         break;
                                         case 'complete':
                                         $class = 'complete';
@@ -284,6 +294,14 @@
                                 <p>اجمالي السعر:</p>
                                 <span>{{\Alkoumi\LaravelArabicNumbers\Numbers::ShowInArabicDigits($containerRental->total)}}   ريال </span>
                             </li>
+                            @if($containerRental->status =='delivered' ||$containerRental->status =='in_discharge' || $containerRental->status =='discharged' || $containerRental->status =='complete'  )
+                                <li>
+                                    <img src="{{asset('assets/dashboard')}}/images/icons/money.svg" alt="">
+                                    <p>صوره الحاويه:</p>
+                                    <img src="{{asset('images/container_rentals/'.$containerRental->delivered_photo)}}" alt="">
+                                </li>
+                            @endif
+
                         </ul>
                     </div>
                 </article>
@@ -386,9 +404,9 @@
                     </div>
 
                     <div class="all-box">
-                        @foreach($containerRental->discharges as $index=> $discharge)
+                        @foreach($containerRental->discharges as $index => $discharge)
                             <div class="box-trash">
-                                <h4>التفريغة رقم<span>{{$index++}}</span></h4>
+                                <h4>التفريغة رقم<span>{{$index+1}}</span></h4>
                                 <div class="text">
                                     <ul>
                                         <li>
@@ -419,8 +437,8 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade modal-custom" data-bs-backdrop="static" id="example2" aria-labelledby="exampleModalLabel"
+    {{--     chose driver to delivery--}}
+    <div class="modal fade modal-custom" data-bs-backdrop="static" id="example1" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -456,38 +474,8 @@
             </div>
         </div>
     </div>
-    <!-- Modal -->
-    <div class="modal fade modal-custom" data-bs-backdrop="static" id="example3" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">اضافة تفريغة</h5>
-                </div>
-                <div class="modal-body">
-                    <form class="row form" method="" action="">
-                        <div class="col-md-12">
-                            <label class="form-label">رقم الايصال</label>
-                            <input class="form-control" name="name" type="text" placeholder="">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary btn-air-primary btn-icon" type="button" data-bs-dismiss="modal">
-                        <i class="fa fa-save"></i>
-                        حفظ
-                    </button>
-                    <button class="btn btn-danger exsit_modal btn-air-danger btn-icon" type="button"
-                            data-bs-dismiss="modal">
-                        <i class="fa fa-times"></i>
-                        خروج
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade modal-custom" data-bs-backdrop="static" id="example4" aria-labelledby="exampleModalLabel"
+    {{--    chose driver to discharge--}}
+    <div class="modal fade modal-custom" data-bs-backdrop="static" id="example2" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -495,12 +483,12 @@
                     <h5 class="modal-title">اختيار سائق للتفريغ</h5>
                 </div>
                 <div class="modal-body">
-                    <form class="row" id="delivered_form" method="post" action="#">
+                    <form class="row" id="discharge_form" method="post" action="{{route('container-rentals.assignDriverToDischarge')}}">
                         @csrf
                         <input type="hidden" name="container_rental_id" value="{{$containerRental->id}}">
                         <div class="col-md-12">
                             <label class="form-label">اختر سائق</label>
-                            <select onchange="$('#delivered_form').submit()" name="driver_id" class="form-control select2-custom">
+                            <select onchange="$('#discharge_form').submit()" name="driver_id" class="form-control select2-custom">
                                 <option value="" disabled selected>إختر سائق</option>
                                 @foreach($drivers as $driver)
                                     <option value="{{$driver->id}}">{{$driver->name}}</option>

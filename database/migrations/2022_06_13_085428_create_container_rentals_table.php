@@ -31,12 +31,11 @@ class CreateContainerRentalsTable extends Migration
             $table->decimal('total', 10, 2);
             $table->date('start_at');
             $table->date('end_at');
-            $table->enum('status', ['waiting_driver', 'in_progress', 'complete', 'delivered', 'broken']);
+            $table->enum('status', ['waiting_driver', 'in_delivery', 'delivered', 'in_discharge', 'discharged', 'complete', 'broken']);
+            $table->string('delivered_photo')->nullable();
             $table->timestamps();
 
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
-
-
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('messenger_id')->references('id')->on('employees')->onDelete('cascade');
             $table->foreign('driver_id')->references('id')->on('employees')->onDelete('cascade');

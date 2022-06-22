@@ -18,8 +18,11 @@ class CreateDriverRequestsTable extends Migration
             $table->unsignedBigInteger('driver_id');
             $table->unsignedBigInteger('container_rental_id');
             $table->enum('type', ['delivery', 'discharge']);
-            $table->enum('status', ['waiting_approval', 'in_delivered', 'in_discharged']);
+            $table->enum('status', ['waiting_approval', 'in_delivery', 'delivered', 'in_discharge', 'discharged']);
             $table->timestamps();
+
+            $table->foreign('driver_id')->references('id')->on('employees');
+            $table->foreign('container_rental_id')->references('id')->on('container_rentals');
         });
     }
 

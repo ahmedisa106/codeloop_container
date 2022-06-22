@@ -259,16 +259,21 @@ class ContainerRentalController extends Controller
 
     }//end of  function
 
-    public function containerDelivered(Request $request)
+    public function assignDriverToDischarge(Request $request)
     {
         $rent = ContainerRental::find($request->container_rental_id);
-        $rent->update(['status' => 'delivered']);
+        $rent->update(['driver_id' => $request->driver_id]);
         $driver = Employee::find($request->driver_id);
-        $driver->update(['status' => 'active']);
+        $driver->update(['status' => 'inactive']);
+        $driver->requests()->create([
+            'container_rental_id' => $rent->id,
+            'type' => 'discharge',
+            'status' => 'waiting_approval'
+        ]);
 
-        session()->flash('success', 'تم التوصيل بنجاح');
+        session()->flash('success', 'تم توجيه سائق للتفريغ');
         return redirect()->back();
 
+    }//end of  function
 
-    }//end of containerDelivered function
 }
