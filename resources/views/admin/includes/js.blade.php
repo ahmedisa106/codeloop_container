@@ -22,6 +22,9 @@
 <script src="{{asset('assets/dashboard')}}/js/select2/select2.full.min.js"></script>
 <script src="{{asset('assets/dashboard/js/datepicker/moment.min.js')}}"></script>
 <script src="{{asset('assets/dashboard/js/datepicker/datepicker.js')}}"></script>
+<script src="{{asset('assets/dashboard/js/photoswipe/photoswipe.min.js')}}"></script>
+<script src="{{asset('assets/dashboard/js/photoswipe/photoswipe-ui-default.min.js')}}"></script>
+<script src="{{asset('assets/dashboard/js/photoswipe/photoswipe.js')}}"></script>
 <script src="{{asset('assets/dashboard')}}/js/script.js"></script>
 <script src="{{asset('assets/dashboard/plugins/metro/js/design.js')}}"></script>
 <script src="{{asset('assets/dashboard/plugins/sweetalert/swal.js')}}"></script>

@@ -26,11 +26,11 @@ class DriverRequestController extends Controller
         $requests = auth()->user()->requests;
         return DataTables::of($requests)
             ->addColumn('details', function ($raw) {
-                return '<a href="' . route('driver-requests.show', $raw->id) . '" class="btn btn-warning btn-sm">التفاصيل</a>';
+                return '<a href="' . route('driver-requests.show', $raw->id) . '" class="btn btn-warning btn-icon">التفاصيل</a>';
             })
             ->addColumn('type', function ($raw) {
                 $type = $raw->type == "delivery" ? "طلب توصيل" : "طلب تفريغ";
-                return "<span class='btn  btn-sm'>" . $type . "</span>";
+                return "<span>" . $type . "</span>";
             })
             ->rawColumns(['details' => 'details', 'type' => 'type'])
             ->make(true);
