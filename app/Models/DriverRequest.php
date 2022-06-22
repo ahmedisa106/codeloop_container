@@ -20,5 +20,12 @@ class DriverRequest extends Model
         return $this->belongsTo(Employee::class, 'driver_id')->where('job_type', 'driver');
     }//end of driver function
 
+    public function container()
+    {
+        return $this->belongsTo(Container::class, 'container_id', 'id');
+
+
+    }//end of container function
+
 
 }

@@ -32,6 +32,27 @@ class DriverRequestController extends Controller
                 $type = $raw->type == "delivery" ? "طلب توصيل" : "طلب تفريغ";
                 return "<span>" . $type . "</span>";
             })
+            ->addColumn('status', function ($raw) {
+                switch ($raw->status) {
+                    case 'waiting_approval':
+                        $status = 'في إنتظار الموافقه';
+                        break;
+                    case 'in_delivery':
+                        $status = 'في الطريق للتوصيل';
+                        break;
+                    case 'delivered':
+                        $status = 'تم التوصيل';
+                        break;
+                    case 'in_discharge':
+                        $status = 'في الطريق للتفريغ';
+                        break;
+                    case 'discharged':
+                        $status = 'تم التفريغ';
+                        break;
+
+                }
+                return $status;
+            })
             ->rawColumns(['details' => 'details', 'type' => 'type'])
             ->make(true);
 
@@ -108,10 +129,19 @@ class DriverRequestController extends Controller
 
         $driver_request = DriverRequest::find($request->request_id);
         $driver_request->update(['status' => 'discharged']);
-        $driver_request->containerRental()->update([
-            'status' => 'discharged',
-        ]);
-        $driver_request->containerRental()->decrement('remaining_discharges', 1);
+        $driver_request->containerRental()->decrement('remaining_discharges');
+
+        if ($driver_request->containerRental->remaining_discharges <= 1) {
+
+            $driver_request->containerRental()->update(['status' => 'complete']);
+            $driver_request->containerRental->container()->update(['status' => 'available']);
+        } else {
+            $driver_request->containerRental()->update([
+                'status' => 'discharged',
+            ]);
+        }
+
+
         $container_rental = $driver_request->containerRental;
 
         $container_rental->discharges()->create([

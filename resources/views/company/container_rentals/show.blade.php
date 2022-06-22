@@ -213,45 +213,50 @@
                         <h6>بيانات الطلب</h6>
                     </div>
 
-                    @php
+
+                        @php
 
 
-                    switch ($containerRental->status){
-                    case 'waiting_driver':
-                    $class = 'waiting';
-                    $status = 'انتظار سائق متاح';
-                    break;
-                    case 'in_delivery':
-                    $class = 'processing';
-                    $status = 'جاري التوصيل';
-                    break;
-                    case 'delivered':
-                    $class = 'delivered';
-                    $status ='تم التوصيل';
-                    break;
-                    case 'in_discharge':
-                    $class = 'processing';
-                    $status = 'جاري التفريغ';
-                    break;
-                    case 'discharged':
-                    $class = 'processing';
-                    $status = 'تم التفريغ';
-                    break;
-                    case 'complete':
-                    $class = 'complete';
-                    $status ='مكتمل';
-                    break;
-                    case 'broken':
-                    $class = 'canceled';
-                    $status ='ملغي';
-                    break;
+                            switch ($containerRental->status){
+                                    case 'waiting_driver':
+                                        $class = 'waiting';
+                                        $status = 'انتظار سائق متاح';
+                                        break;
+                                    case 'in_delivery':
+                                        $class = 'processing';
+                                        $status = 'جاري التوصيل';
+                                        break;
+                                    case 'delivered':
+                                        $class = 'delivered';
+                                        $status ='تم التوصيل';
+                                        break;
+                                    case 'in_discharge':
+                                        $class = 'unloading';
+                                        $status = 'جاري التفريغ';
+                                        break;
+                                    case 'discharged':
+                                        $class = 'emptied';
+                                        $status = 'تم التفريغ';
+                                        break;
+                                        case 'complete':
+                                        $class = 'complete';
+                                        $status ='مكتمل';
+                                        break;
+                                        case 'broken':
+                                        $class = 'canceled';
+                                        $status ='ملغي';
+                                        break;
 
 
-                    }
-                    @endphp
-                    <span class="{{$class}}">{{$status}}</span>
+                                }
 
-                </div>
+
+
+                        @endphp
+                        <span class="{{$class}}">{{$status}}</span>
+
+                    </div>
+                    
                 <div class="text">
                     <ul>
                         <li>
@@ -408,6 +413,7 @@
                                 <span>{{\Alkoumi\LaravelArabicNumbers\Numbers::ShowInArabicDigits($discharge->created_at)}}</span>
                             </li>
                             <li>
+
                                 <img src="{{asset('assets/dashboard')}}/images/icons/driver.svg" alt="">
                                 <p>اسم السائق:</p>
                                 <span>{{$discharge->driver->name}}</span>
@@ -417,6 +423,13 @@
                                 <p>رقم الإيصال:</p>
                                 <span>{{$discharge->receipt_number}}</span>
                             </li>
+
+                                <img src="{{asset('assets/dashboard')}}/images/icons/placeholder-map.svg" alt="">
+                                <p>العنوان:</p>
+                                <span>{{$containerRental->customerAddress->address}}</span>
+                            </li>
+
+
                         </ul>
                     </div>
                 </div>

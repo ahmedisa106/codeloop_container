@@ -73,6 +73,41 @@ class ContainerRentalController extends Controller
             ->addColumn('details', function ($raw) {
                 return '<a class="btn btn-warning btn-icon" href="' . route('container-rentals.show', $raw->id) . '">تفاصيل</a>';
             })
+            ->addColumn('status', function ($raw) {
+                switch ($raw->status) {
+                    case 'waiting_driver':
+
+                        $status = 'انتظار سائق متاح';
+                        break;
+                    case 'in_delivery':
+
+                        $status = 'جاري التوصيل';
+                        break;
+                    case 'delivered':
+
+                        $status = 'تم التوصيل';
+                        break;
+                    case 'in_discharge':
+
+                        $status = 'جاري التفريغ';
+                        break;
+                    case 'discharged':
+
+                        $status = 'تم التفريغ';
+                        break;
+                    case 'complete':
+
+                        $status = 'مكتمل';
+                        break;
+                    case 'broken':
+
+                        $status = 'ملغي';
+                        break;
+
+
+                }
+                return $status;
+            })
             ->rawColumns(['details' => 'details'])
             ->make(true);
 
@@ -172,16 +207,7 @@ class ContainerRentalController extends Controller
      */
     public function edit(ContainerRental $containerRental)
     {
-        $categories = auth()->user()->company->categories;
-        $customers = auth()->user()->company->customers;
-        $contracts = auth()->user()->company->contracts;
-        $containers = auth()->user()->company->availableContainers;
-        $messengers = auth()->user()->company->availableMessengers;
-
-
-        return view('company.container_rentals.edit', ['data' => $this->data], compact('categories', 'containers', 'customers', 'contracts', 'messengers', 'containerRental'));
-
-
+        return view('company.container_rentals.edit', ['data' => $this->data], compact('containerRental'));
     }
 
     /**
@@ -195,7 +221,15 @@ class ContainerRentalController extends Controller
     {
         $data = $request->validated();
         $data['messenger_id'] = $data['messenger_id'] ?? auth()->user()->id;
-        $data['remaining_discharges'] = $data['discharge_number'];
+
+        if ($containerRental->discharges->count() > 0) {
+
+            $data['remaining_discharges'] = $data['discharge_number'] - $containerRental->discharges->count();
+            $data['status'] = 'discharged';
+        } else {
+            $data['remaining_discharges'] = $data['discharge_number'];
+        }
+
         $containerRental->update($data);
         return $this->setUpdatedSuccess();
     }
