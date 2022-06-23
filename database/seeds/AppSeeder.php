@@ -37,25 +37,25 @@ class AppSeeder extends Seeder
             'company_id' => 1
 
         ]);
-        \App\Models\App::create([
-            'model' => 'job-types',
-            'ar_model' => 'أنواع الوظائف',
-            'status' => 'active',
-            'company_id' => 1
-
-        ]);
+//        \App\Models\App::create([
+//            'model' => 'job-types',
+//            'ar_model' => 'أنواع الوظائف',
+//            'status' => 'active',
+//            'company_id' => 1
+//
+//        ]);
         \App\Models\App::create([
             'model' => 'roles',
             'ar_model' => 'الأدوار',
             'status' => 'active',
             'company_id' => 1
         ]);
-        \App\Models\App::create([
-            'model' => 'apps',
-            'ar_model' => 'التحكم في التطبيقات',
-            'status' => 'active',
-            'company_id' => 1
-        ]);
+//        \App\Models\App::create([
+//            'model' => 'apps',
+//            'ar_model' => 'التحكم في التطبيقات',
+//            'status' => 'active',
+//            'company_id' => 1
+//        ]);
         \App\Models\App::create([
             'model' => 'customers',
             'ar_model' => 'العملاء',
@@ -63,12 +63,12 @@ class AppSeeder extends Seeder
             'company_id' => 1
         ]);
 
-        \App\Models\App::create([
-            'model' => 'customer-addresses',
-            'ar_model' => 'عناوين العملاء',
-            'status' => 'active',
-            'company_id' => 1
-        ]);
+//        \App\Models\App::create([
+//            'model' => 'customer-addresses',
+//            'ar_model' => 'عناوين العملاء',
+//            'status' => 'active',
+//            'company_id' => 1
+//        ]);
         \App\Models\App::create([
             'model' => 'moderators',
             'ar_model' => 'المشرفين',

@@ -47,7 +47,7 @@ if (!function_exists('getMaps')) {
             'create' => 'إضافه',
             'update' => 'تعديل',
             'delete' => 'حذف',
-            'export' => 'إستيراد وتصدير البيانات'
+            // 'export' => 'إستيراد وتصدير البيانات'
         ];
     }
 }

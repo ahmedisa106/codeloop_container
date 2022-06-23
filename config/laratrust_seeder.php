@@ -13,29 +13,31 @@ return [
 
     'roles_structure' => [
         'admin' => [
-            'branches' => 'c,r,u,d,e',
-            'categories' => 'c,r,u,d,e',
-            'category-sizes' => 'c,r,u,d,e',
-            'rent-types' => 'c,r,u,d,e',
-            'job-types' => 'c,r,u,d,e',
-            'roles' => 'c,r,u,d,e',
-            'apps' => 'c,r,u,d,e',
-            'customers' => 'c,r,u,d,e',
-            'customer-addresses' => 'c,r,u,d,e',
-            'employees' => 'c,r,u,d,e',
-            'trucks' => 'c,r,u,d,e',
-            'moderators' => 'c,r,u,d,e',
-            'containers' => 'c,r,u,d,e',
-            'contracts' => 'c,r,u,d,e',
-            'container-rentals' => 'c,r,u,d,e',
-            'company-settings' => 'c,r,u,d,e',
-            'company-clauses' => 'c,r,u,d,e',
+            'branches' => 'c,r,u,d',
+            'categories' => 'c,r,u,d',
+            'category-sizes' => 'c,r,u,d',
+            'rent-types' => 'c,r,u,d',
+            // 'job-types' => 'c,r,u,d',
+            'roles' => 'c,r,u,d',
+            //'apps' => 'c,r,u,d',
+            'customers' => 'c,r,u,d',
+            // 'customer-addresses' => 'c,r,u,d',
+            'employees' => 'c,r,u,d',
+            'trucks' => 'c,r,u,d',
+            'moderators' => 'c,r,u,d',
+            'containers' => 'c,r,u,d',
+            'contracts' => 'c,r,u,d',
+            'container-rentals' => 'c,r,u,d',
+            'company-settings' => 'c,r,u,d',
+            'company-clauses' => 'c,r,u,d',
+            'driver-requests' => 'c,r,u,d'
         ],
         'messenger' => [
-            'containers' => 'c,r,u,d,e',
-            'contracts' => 'c,r,u,d,e',
-            'container-rentals' => 'c,r,u,d,e',
-            'customers' => 'c,r,u,d,e',
+            'containers' => 'c,r,u,d',
+            'contracts' => 'c,r,u,d',
+            'container-rentals' => 'c,r,u,d',
+            'customers' => 'c,r,u,d',
+            'driver-requests' => ''
         ],
         'driver' => [
             'driver-requests' => 'r'
@@ -49,6 +51,6 @@ return [
         'r' => 'read',
         'u' => 'update',
         'd' => 'delete',
-        'e' => 'export',
+        //'e' => 'export',
     ]
 ];
