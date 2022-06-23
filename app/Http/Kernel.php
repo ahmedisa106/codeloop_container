@@ -4,6 +4,7 @@ namespace App\Http;
 
 use App\Http\Middleware\Active;
 use App\Http\Middleware\ActiveApp;
+use App\Http\Middleware\Login;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -66,5 +67,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'active' => Active::class,
         'active_app' => ActiveApp::class,
+        'login' => Login::class,
     ];
 }

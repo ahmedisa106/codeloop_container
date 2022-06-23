@@ -31,7 +31,12 @@ class ContainerController extends Controller
 
     public function data()
     {
-        $containers = auth()->user()->company->containers;
+        $containers = Container::query()->where('company_id', auth()->user()->company->id);
+        if (auth()->user()->branch) {
+            $containers = $containers->where('branch_id', auth()->user()->branch->id)->get();
+        } else {
+            $containers = $containers->get();
+        }
         $model = 'containers';
         return DataTables::of($containers)
             ->addColumn('actions', function ($raw) use ($model) {

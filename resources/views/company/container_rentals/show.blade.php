@@ -37,12 +37,27 @@
                 @role(['admin','messenger'])
                 @if($containerRental->status != 'broken' && $containerRental->status != 'complete' )
 
-                    <a href="#" class="btn btn-danger btn-air-danger btn-icon">
-                        <i class="fa fa-times"></i>
-                        الغاء العقد
-                    </a>
+                    <form action="{{route('container-rentals.contractBroken')}}" method="post">
+                        @csrf
+
+                        <input type="hidden" value="{{$containerRental->id}}" name="container_rental_id">
+                        <button type="submit" class="btn btn-danger btn-air-danger btn-icon">
+                            <i class="fa fa-times"></i>
+                            الغاء العقد
+                        </button>
+                    </form>
+
                 @endif
                 @endrole
+                @if($containerRental->status == 'broken')
+                    @role(['admin','messenger'])
+                    <button type="submit" class="btn disabled btn-danger btn-air-danger btn-icon">
+                       
+                        تم فسخ العقد
+                    </button>
+                    @endrole
+                @endif
+
             </div>
         </div>
 
@@ -85,7 +100,7 @@
                                         d="m263.5 272.904c0-4.142-3.358-7.5-7.5-7.5s-7.5 3.358-7.5 7.5v11.491c0 4.142 3.358 7.5 7.5 7.5s7.5-3.358 7.5-7.5z"/>
                                 </g>
                             </svg>
-                            <p>جاري التوصيل</p>
+                            <p>في الطريق للتوصيل</p>
                             <i class="fa fa-check-circle"></i>
                         </li>
 
@@ -449,38 +464,38 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>اختيار سائق للتوصيل</h3>
-                    </div>
-                    <div class="card-body">
-                    <form class="row" id="driver_form" method="post"
-                          action="{{route('container-rentals.assignDriverToDrive')}}">
-                        @csrf
-                        <input type="hidden" name="container_rental_id" value="{{$containerRental->id}}">
-                        <div class="col-md-12">
-                            <select name="driver_id"
-                                    class="form-control select2-custom">
-                                <option value="" disabled selected>إختر سائق</option>
-                                @foreach($drivers as $driver)
-                                    <option value="{{$driver->id}}">{{$driver->name}}</option>
-                                @endforeach
-                            </select>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>اختيار سائق للتوصيل</h3>
                         </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-primary btn-air-primary btn-icon" type="submit">
-                                <i class="fa fa-save"></i>
-                                حفظ
-                            </button>
-                            <button class="btn btn-danger exsit_modal btn-air-danger btn-icon" type="button"
-                                    data-bs-dismiss="modal">
-                                <i class="fa fa-times"></i>
-                                خروج
-                            </button>
+                        <div class="card-body">
+                            <form class="row" id="driver_form" method="post"
+                                  action="{{route('container-rentals.assignDriverToDrive')}}">
+                                @csrf
+                                <input type="hidden" name="container_rental_id" value="{{$containerRental->id}}">
+                                <div class="col-md-12">
+                                    <select name="driver_id"
+                                            class="form-control select2-custom">
+                                        <option value="" disabled selected>إختر سائق</option>
+                                        @foreach($drivers as $driver)
+                                            <option value="{{$driver->id}}">{{$driver->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary btn-air-primary btn-icon" type="submit">
+                                        <i class="fa fa-save"></i>
+                                        حفظ
+                                    </button>
+                                    <button class="btn btn-danger exsit_modal btn-air-danger btn-icon" type="button"
+                                            data-bs-dismiss="modal">
+                                        <i class="fa fa-times"></i>
+                                        خروج
+                                    </button>
+                                </div>
+                            </form>
                         </div>
-                    </form>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
@@ -491,39 +506,39 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>اختيار سائق للتفريغ</h3>
-                    </div>
-                    <div class="card-body">
-                    <form class="row" id="discharge_form" method="post"
-                          action="{{route('container-rentals.assignDriverToDischarge')}}">
-                        @csrf
-                        <input type="hidden" name="container_rental_id" value="{{$containerRental->id}}">
-                        <div class="col-md-12">
-                            <select name="driver_id"
-                                    class="form-control select2-custom">
-                                <option value="" disabled selected>إختر سائق</option>
-                                @foreach($drivers as $driver)
-                                    <option value="{{$driver->id}}">{{$driver->name}}</option>
-                                @endforeach
-                            </select>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>اختيار سائق للتفريغ</h3>
                         </div>
+                        <div class="card-body">
+                            <form class="row" id="discharge_form" method="post"
+                                  action="{{route('container-rentals.assignDriverToDischarge')}}">
+                                @csrf
+                                <input type="hidden" name="container_rental_id" value="{{$containerRental->id}}">
+                                <div class="col-md-12">
+                                    <select name="driver_id"
+                                            class="form-control select2-custom">
+                                        <option value="" disabled selected>إختر سائق</option>
+                                        @foreach($drivers as $driver)
+                                            <option value="{{$driver->id}}">{{$driver->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
 
-                        <div class="modal-footer">
-                            <button class="btn btn-primary btn-air-primary btn-icon" type="submit">
-                                <i class="fa fa-save"></i>
-                                حفظ
-                            </button>
-                            <button class="btn btn-danger exsit_modal btn-air-danger btn-icon" type="button"
-                                    data-bs-dismiss="modal">
-                                <i class="fa fa-times"></i>
-                                خروج
-                            </button>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary btn-air-primary btn-icon" type="submit">
+                                        <i class="fa fa-save"></i>
+                                        حفظ
+                                    </button>
+                                    <button class="btn btn-danger exsit_modal btn-air-danger btn-icon" type="button"
+                                            data-bs-dismiss="modal">
+                                        <i class="fa fa-times"></i>
+                                        خروج
+                                    </button>
+                                </div>
+                            </form>
                         </div>
-                    </form>
                     </div>
-                </div> 
                 </div>
             </div>
         </div>
