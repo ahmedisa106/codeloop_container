@@ -58,6 +58,7 @@ class ContainerController extends Controller
 
     public function index()
     {
+
         return view('company.containers.index', ['data' => $this->data]);
     }
 
