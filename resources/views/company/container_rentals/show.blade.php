@@ -52,7 +52,7 @@
                 @if($containerRental->status == 'broken')
                     @role(['admin','messenger'])
                     <button type="submit" class="btn disabled btn-danger btn-air-danger btn-icon">
-                       
+
                         تم فسخ العقد
                     </button>
                     @endrole

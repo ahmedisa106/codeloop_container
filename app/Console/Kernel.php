@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\FinishContract;
 use App\Console\Commands\PackageFinished;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -14,7 +15,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-         PackageFinished::class,
+        PackageFinished::class,
+        FinishContract::class,
     ];
 
     /**
@@ -28,6 +30,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
 
         $schedule->command('package-finished')->daily();
+        $schedule->command('contract-finished')->daily();
     }
 
     /**
