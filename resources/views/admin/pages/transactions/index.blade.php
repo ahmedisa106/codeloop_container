@@ -8,35 +8,35 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                    <table class="table table-bordered datatable text-center block-first block-last">
-                        <thead>
+                <table class="table table-bordered datatable text-center block-first block-last">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>التعامل</th>
+                        <th>المبلغ</th>
+                    </tr>
+
+                    </thead>
+
+
+                    <tbody>
+                    @foreach($transactions as $index=> $transaction)
                         <tr>
-                            <th>#</th>
-                            <th>التعامل</th>
-                            <th>المبلغ</th>
+                            <td>{{++$index}}</td>
+                            <td>{{$transaction->body}}</td>
+                            <td>{{$transaction->total}}</td>
                         </tr>
+                    @endforeach
+                    </tbody>
 
-                        </thead>
+                    <tfoot>
+                    <tr>
+                        <td colspan="2" class="bold-font">الإجمالي</td>
+                        <td class="bold-font">{{$transactions->sum('total')}} ر . س</td>
+                    </tr>
+                    </tfoot>
 
-
-                        <tbody>
-                        @foreach($transactions as $index=> $transaction)
-                            <tr>
-                                <td>{{++$index}}</td>
-                                <td>{{$transaction->body}}</td>
-                                <td>{{$transaction->total}}</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-
-                        <tfoot>
-                            <tr>
-                                <td colspan="2" class="bold-font">الإجمالي</td>
-                                <td class="bold-font">{{$transactions->sum('total')}} ر . س  </td>
-                            </tr>
-                        </tfoot>
-
-                    </table>
+                </table>
 
             </div>
         </div>
@@ -52,7 +52,7 @@
             processing: true,
             buttons: ['excel', 'pdf', 'print'],
             language: {
-            "url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/ar.json"
+                "url": "{{asset('datatableLang.json')}}"
             }
         });
         table.buttons().container()

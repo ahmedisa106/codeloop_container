@@ -194,7 +194,16 @@ class ContainerRentalController extends Controller
      */
     public function show(ContainerRental $containerRental)
     {
-        $drivers = Employee::where('company_id', auth()->user()->company->id)->where('job_type', 'driver')->where('status', 'active')->get();
+
+        $drivers = Employee::query()->where('company_id', auth()->user()->company->id)->where('job_type', 'driver')->where('status', 'active');
+        if (auth()->user()->branch) {
+            $drivers = $drivers->where('branch_id', auth()->user()->branch->id)->get();
+
+        } else {
+
+            $drivers = $drivers->get();
+        }
+
         return view('company.container_rentals.show', compact('containerRental', 'drivers'));
 
     }
@@ -309,5 +318,16 @@ class ContainerRentalController extends Controller
         return redirect()->back();
 
     }//end of  function
+
+    public function contractBroken(Request $request)
+    {
+        $containerRental = ContainerRental::find($request->container_rental_id);
+
+        $containerRental->update(['status' => 'broken', 'remaining_discharges' => 0]);
+        $containerRental->contract()->update(['status' => 'broken']);
+
+        return redirect()->back()->with('success', 'تم فسخ العقد');
+
+    }//end of contractBroken function
 
 }

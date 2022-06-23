@@ -58,8 +58,8 @@
             processing: true,
             serverSide: true,
             buttons: ['excel', 'pdf', 'print'],
-            language:{
-                "url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/ar.json"
+            language: {
+                "url": "{{asset('datatableLang.json')}}"
             },
             ajax: {
                 url: '{{route('blogs.data')}}'

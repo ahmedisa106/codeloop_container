@@ -142,6 +142,7 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     Route::get('container-rentals/get-containers', 'ContainerRentalController@getContainers')->name('container-rentals.getContainers');
     Route::post('container-rentals/assign-drive-to-drive', 'ContainerRentalController@assignDriverToDrive')->name('container-rentals.assignDriverToDrive');
     Route::post('container-rentals/assign-drive-to-discharge', 'ContainerRentalController@assignDriverToDischarge')->name('container-rentals.assignDriverToDischarge');
+    Route::post('container-rentals/contract-broken', 'ContainerRentalController@contractBroken')->name('container-rentals.contractBroken');
     Route::resource('container-rentals', 'ContainerRentalController');
     // end container-rentals
 
