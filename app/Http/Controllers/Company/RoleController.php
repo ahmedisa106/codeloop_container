@@ -6,6 +6,7 @@ use App\Helper\ResponseTrait;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RoleRequest;
 use App\Models\Role;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
 class RoleController extends Controller
@@ -69,8 +70,11 @@ class RoleController extends Controller
 
         $data['display_name'] = ucwords($data['name']);
         $data['description'] = ucwords($data['name']);
+        DB::beginTransaction();
         $role = Role::create($data);
+
         $role->attachPermissions($request->permissions);
+        DB::commit();
         return $this->setAddedSuccess();
     }
 

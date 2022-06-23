@@ -12,7 +12,7 @@
                 <input type="hidden" name="id" value="{{$role->id}}">
                 <div class="col-md-12 form-group">
                     <label class="form-label">الإسم</label>
-                    <input value="{{$role->name}}" required class="form-control" name="name" type="text" placeholder="">
+                    <input value="{{$role->name}}" {{$role->name =='driver' || $role->name =='messenger' || $role->name=='admin' ? 'readonly':''}} required class="form-control" name="name" type="text" placeholder="">
                 </div>
 
                 <div class="body-div">

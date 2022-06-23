@@ -9,6 +9,7 @@ class CategorySize extends Model
     protected $table = 'category_sizes';
 
     protected $guarded = [];
+    protected $with = ['category'];
 
     public function category()
     {

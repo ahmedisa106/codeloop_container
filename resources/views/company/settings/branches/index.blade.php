@@ -17,7 +17,7 @@
                     </a>
                     @endpermission
                     @permission('export_branches')
-                    <div class="dropdown-basic">
+                <!--   <div class="dropdown-basic">
                         <div class="dropdown">
                             <button class="dropbtn btn-info btn-air-info btn-icon" type="button">
                                 <span><i class="fa fa-chevron-down"></i></span>
@@ -35,13 +35,13 @@
                                     </label>
                                     <form id="import_form" action="" type="post">
                                         @csrf
-                                        <input data-url="" name="import_file" type="file" id="upload-file">
-                                    </form>
+                    <input data-url="" name="import_file" type="file" id="upload-file">
+                </form>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+        </div>
+    </div>
+</div> -->
                     @endpermission
                     @permission('create_branches')
                     <a href="{{route('branches.create')}}" data-model_title="الفروع" class="btn btn-primary show_modal btn-air-primary btn-icon ">

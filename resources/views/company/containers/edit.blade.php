@@ -25,10 +25,19 @@
                 </div>
                 <span class="loader-div d-none"></span>
                 <div class="col-md-6 form-group">
-                    <label class="form-label">حجم الحاوية</label>
-                    <select name="category_size_id" class="form-control select2-custome" id="">
-                        <option value="">إختر حجم الحاوية</option>
-                    </select>
+
+                    <div class="row">
+                        <div class="col-md-10">
+                            <label class="form-label">حجم الحاوية</label>
+                            <select name="category_size_id" class="form-control select2-custome" id="">
+                                <option value="">إختر حجم الحاوية</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="text-danger unit"></label>
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="col-md-6 form-group">
@@ -95,6 +104,7 @@
                     let selected = value.id == '{{$container->category_size_id}}' ? 'selected' : '';
                     html += `<option ${selected} value="${value.id}">${value.size}</option>`
                     $('select[name="category_size_id"]').html(html);
+                    $('.unit').html(value.category.unit);
                 })
             },
             complete: function () {
@@ -120,6 +130,7 @@
                 $.each(res.data, function (key, value) {
                     html += `<option value="${value.id}">${value.size}</option>`
                     $('select[name="category_size_id"]').html(html);
+                    $('.unit').html(value.category.unit);
                 })
             },
             complete: function () {
