@@ -19,18 +19,22 @@ class HomeController extends Controller
         $data['employees_count'] = auth()->user()->company->employees->count();
         $data['containers_count'] = auth()->user()->company->containers->count();
         $data['rent_count'] = auth()->user()->company->containerRentals->count();
-        $rents = json_encode($this->rents(), JSON_UNESCAPED_UNICODE);
+
 
         if (auth()->user()->hasRole('driver')) {
-            $data['requests_count'] = auth()->user()->requests;
+            $data['requests_count'] = auth()->user()->requests->count();
+
+            $data['requests'] = json_encode($this->driverRequests(), JSON_UNESCAPED_UNICODE);
         } elseif (auth()->user()->hasRole('messenger')) {
             $data['containers_count'] = Employee::containers()->count();
             $data['rent_count'] = auth()->user()->containerRentals->count();
-
+            $data['rents'] = json_encode($this->rents(), JSON_UNESCAPED_UNICODE);
+        } elseif (auth()->user()->hasRole('admin')) {
+            $data['rents'] = json_encode($this->rents(), JSON_UNESCAPED_UNICODE);
         }
 
 
-        return view('company.index', compact('data', 'rents'));
+        return view('company.index', compact('data'));
     }//end of index function
 
 
@@ -69,6 +73,21 @@ class HomeController extends Controller
         return $rents;
 
     }//end of rents function
+
+    public function driverRequests()
+    {
+        $requests = DB::table('driver_requests')->select('type as name', DB::raw('count(id) as value'))->where('driver_id', auth()->user()->id)->groupBy('name')->get();
+        $requests->map(function ($request) {
+            if ($request->name == 'delivery') {
+                $request->name = 'طلب توصيل';
+            } else {
+                $request->name = 'طلب تفريغ';
+
+            }
+        });
+        return $requests;
+
+    }//end of driverRequests function
 
 
 }

@@ -93,7 +93,7 @@
                     <div class="card-body">
                         <div class="media static-widget">
                             <div class="media-body">
-                                <h6 class="font-roboto">الحاويات</h6>
+                                <h6 class="font-roboto">الطلبات</h6>
                                 <h4 class="mb-0 counter">{{$data['requests_count']}}</h4>
                             </div>
                             <svg class="fill-primary" width="44" height="46" viewBox="0 0 44 46"
@@ -110,6 +110,7 @@
                 </div>
             </div>
             @endrole
+            @role(['admin','messenger'])
             <div class="col-sm-6 col-xl-3 col-lg-6">
                 <div class="card bg-4">
                     <div class="card-body">
@@ -134,6 +135,7 @@
                     </div>
                 </div>
             </div>
+            @endrole
         </div>
         <div class="row">
             @role('driver')
@@ -143,22 +145,14 @@
                         <h3>الطلبات</h3>
                     </div>
                     <div class="card-body pt-0">
-                        <div id="chartone" class="chart"></div>
+                        <div id="chart5" class="chart"></div>
                     </div>
                 </div>
             </div>
             @endrole
-            {{--            <div class="col-sm-12 col-md-6">--}}
-            {{--                <div class="card">--}}
-            {{--                    <div class="card-header border-bottom-0">--}}
-            {{--                        <h3>المنتجات</h3>--}}
-            {{--                    </div>--}}
-            {{--                    <div class="card-body pt-0">--}}
-            {{--                        <div id="charttwo" class="chart"></div>--}}
-            {{--                    </div>--}}
-            {{--                </div>--}}
-            {{--            </div>--}}
+
         </div>
+        @role(['admin','messenger'])
         <div class="card">
             <div class="card-header border-bottom-0">
                 <h3>حالات الإيجارات</h3>
@@ -172,6 +166,7 @@
                 </div>
             </div>
         </div>
+        @endrole
     </div>
 @endsection
 
@@ -260,140 +255,54 @@
         myChart.setOption(option);
     </script>
     @endrole
-    {{--    <script>--}}
-    {{--        var myChart = echarts.init(document.getElementById('charttwo'));--}}
-    {{--        option = {--}}
-    {{--            tooltip: {--}}
-    {{--                trigger: 'axis',--}}
-    {{--                axisPointer: {--}}
-    {{--                    type: 'shadow'--}}
-    {{--                },--}}
-    {{--                textStyle: {--}}
-    {{--                    fontFamily: 'Bahij_Plain'--}}
-    {{--                }--}}
-    {{--            },--}}
-    {{--            grid: {--}}
-    {{--                top: "4%",--}}
-    {{--                left: '3%',--}}
-    {{--                right: '4%',--}}
-    {{--                bottom: '3%',--}}
-    {{--                containLabel: true--}}
-    {{--            },--}}
-    {{--            xAxis: {--}}
-    {{--                type: 'value',--}}
-    {{--            },--}}
-    {{--            yAxis: {--}}
-    {{--                data: ['Title', 'Title', 'Title', 'Title', 'Title'],--}}
-    {{--                axisLabel: {--}}
-    {{--                    textStyle: {--}}
-    {{--                        fontSize: 14,--}}
-    {{--                        fontFamily: 'Bahij_Plain'--}}
-    {{--                    }--}}
-    {{--                }--}}
-    {{--            },--}}
-    {{--            series: [{--}}
-    {{--                name: 'المنتجات',--}}
-    {{--                type: 'bar',--}}
-    {{--                barWidth: '30%',--}}
-    {{--                data: [{--}}
-    {{--                    value: 35,--}}
-    {{--                    itemStyle: {--}}
-    {{--                        color: '#FFAB40',--}}
-    {{--                        barBorderRadius: [0, 50, 50, 0]--}}
-    {{--                    }--}}
-    {{--                },--}}
-    {{--                    {--}}
-    {{--                        value: 65,--}}
-    {{--                        itemStyle: {--}}
-    {{--                            color: '#69F0AE',--}}
-    {{--                            barBorderRadius: [0, 50, 50, 0]--}}
-    {{--                        }--}}
-    {{--                    },--}}
-    {{--                    {--}}
-    {{--                        value: 57,--}}
-    {{--                        itemStyle: {--}}
-    {{--                            color: '#41C4FF',--}}
-    {{--                            barBorderRadius: [0, 50, 50, 0]--}}
-    {{--                        }--}}
-    {{--                    },--}}
-    {{--                    {--}}
-    {{--                        value: 50,--}}
-    {{--                        itemStyle: {--}}
-    {{--                            color: '#536DFE',--}}
-    {{--                            barBorderRadius: [0, 50, 50, 0]--}}
-    {{--                        }--}}
-    {{--                    },--}}
-    {{--                    {--}}
-    {{--                        value: 45,--}}
-    {{--                        itemStyle: {--}}
-    {{--                            color: '#FF4081',--}}
-    {{--                            barBorderRadius: [0, 50, 50, 0]--}}
-    {{--                        }--}}
-    {{--                    }--}}
-    {{--                ]--}}
-    {{--            }]--}}
-    {{--        };--}}
-    {{--        myChart.setOption(option);--}}
-    {{--    </script>--}}
+
+    @role('driver')
     <script>
-        var myChart = echarts.init(document.getElementById('chart3'));
+        var myChart = echarts.init(document.getElementById('chart5'));
+        var colorPalette = ['#FFAB40', '#41C4FF', '#FF4081'];
         option = {
             tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow'
-                },
+                trigger: 'item',
                 textStyle: {
                     fontFamily: 'Bahij_Plain'
                 }
             },
-            legend: {
-                textStyle: {
-                    fontSize: 16,
-                    fontFamily: 'Bahij_Plain'
-                }
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis: [{
-                type: 'category',
-                data: ['Tilte', 'Tilte', 'Tilte', 'Tilte', 'Tilte'],
-                axisLabel: {
-                    textStyle: {
-                        fontSize: 15,
-                        fontFamily: 'Bahij_Plain'
-                    }
-                }
-            }],
-            yAxis: [{
-                type: 'value'
-            }],
             series: [{
-                name: 'Tilte',
-                type: 'line',
-                barWidth: '45%',
-                smooth: true,
-                data: [20, 5, 10, 30, 5],
-                color: '#41C4FF'
-            },
-                {
-                    name: 'Tilte2',
-                    type: 'line',
-                    smooth: true,
-                    data: [5, 10, 7, 20, 15],
-                    color: '#FFAB40'
-                }
-            ]
+                type: 'pie',
+                radius: ['40%', '70%'],
+                avoidLabelOverlap: false,
+                itemStyle: {
+                    borderRadius: 10,
+                    borderColor: '#fff',
+                    borderWidth: 2
+                },
+                label: {
+                    textStyle: {
+                        fontFamily: 'Bahij_Plain',
+                        fontSize: '20'
+                    }
+                },
+                emphasis: {
+                    label: {
+                        fontWeight: 'bold'
+                    }
+                },
+                labelLine: {
+                    show: true
+                },
+                data: {!! $data['requests'] !!},
+                color: colorPalette
+            }],
+            graph: {
+                color: colorPalette
+            }
         };
-
         myChart.setOption(option);
     </script>
+    @endrole
 
 
+    @role(['admin','messenger'])
     <script>
         var myChart = echarts.init(document.getElementById('chart4'));
         var colorPalette = ['#FFAB40', '#41C4FF', '#FF4081'];
@@ -427,7 +336,7 @@
                 labelLine: {
                     show: true
                 },
-                data: {!! $rents !!},
+                data: {!! $data['rents'] !!},
                 color: colorPalette
             }],
             graph: {
@@ -436,4 +345,5 @@
         };
         myChart.setOption(option);
     </script>
+    @endrole
 @endpush
