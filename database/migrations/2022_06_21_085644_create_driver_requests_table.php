@@ -21,8 +21,8 @@ class CreateDriverRequestsTable extends Migration
             $table->enum('status', ['waiting_approval', 'in_delivery', 'delivered', 'in_discharge', 'discharged']);
             $table->timestamps();
 
-            $table->foreign('driver_id')->references('id')->on('employees');
-            $table->foreign('container_rental_id')->references('id')->on('container_rentals');
+            $table->foreign('driver_id')->references('id')->on('employees')->onDelete('cascade');
+            $table->foreign('container_rental_id')->references('id')->on('container_rentals')->onDelete('cascade');
         });
     }
 
