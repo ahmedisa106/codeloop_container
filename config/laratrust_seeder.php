@@ -30,17 +30,16 @@ return [
             'container-rentals' => 'c,r,u,d',
             'company-settings' => 'c,r,u,d',
             'company-clauses' => 'c,r,u,d',
-            'driver-requests' => 'c,r,u,d'
+
         ],
         'messenger' => [
             'containers' => 'c,r,u,d',
-            'contracts' => 'c,r,u,d',
             'container-rentals' => 'c,r,u,d',
             'customers' => 'c,r,u,d',
-            'driver-requests' => ''
+
         ],
         'driver' => [
-            'driver-requests' => 'r'
+            'driver-requests' => 'c,r,u,d'
         ],
 
 

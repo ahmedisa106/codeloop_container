@@ -27,27 +27,34 @@
                     <div class="check-list">
 
                         @foreach(apps() as $model_index => $model)
+                            @if($role->name !='driver' && $model_index =='driver-requests')
+                            @else
+                                <div class="animate-chk">
+                                    <div class="row">
+                                        <label class="d-block header-check" for="{{$model}}">
+                                            <input class="checkbox_animated permissions_checkbox_all" id="{{$model}}" type="checkbox"> تحديد الكل <span>{{$model}}</span>
+                                        </label>
+                                        <div class="flex-perm">
+                                            <div class="col">
+                                                @foreach(getMaps() as $map_index => $map)
+                                                    @if($role->name =='driver' && $model_index=='driver-requests'&& $map_index !='read')
+                                                        @continue
+                                                    @else
+                                                        <label class="d-block" for="{{$map_index.'__'.$model_index}}">
+                                                            <input {{$role->hasPermission($map_index.'_'.$model_index) ?'checked':''}} name="permissions[]" value="{{$map_index.'_'.$model_index}}" id="{{$map_index.'__'.$model_index}}" class="checkbox_animated permissions_checkbox" type="checkbox"> {{$map}}
+                                                        </label>
+                                                    @endif
+                                                @endforeach
 
 
-                            <div class="animate-chk">
-                                <div class="row">
-                                    <label class="d-block header-check" for="{{$model}}">
-                                        <input class="checkbox_animated permissions_checkbox_all" id="{{$model}}" type="checkbox"> تحديد الكل <span>{{$model}}</span>
-                                    </label>
-                                    <div class="flex-perm">
-                                        <div class="col">
-                                            @foreach(getMaps() as $map_index => $map)
-                                                <label class="d-block" for="{{$map_index.'__'.$model_index}}">
-                                                    <input {{$role->hasPermission($map_index.'_'.$model_index) ?'checked':''}} name="permissions[]" value="{{$map_index.'_'.$model_index}}" id="{{$map_index.'__'.$model_index}}" class="checkbox_animated permissions_checkbox" type="checkbox"> {{$map}}
-                                                </label>
-                                            @endforeach
-
+                                            </div>
 
                                         </div>
-
                                     </div>
                                 </div>
-                            </div>
+                            @endif
+
+
                         @endforeach
 
 
