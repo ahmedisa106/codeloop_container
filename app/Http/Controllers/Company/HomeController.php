@@ -64,6 +64,10 @@ class HomeController extends Controller
                 $rent->name = 'تم التوصيل';
             } elseif ($rent->name == 'complete') {
                 $rent->name = 'منتهي';
+            } elseif ($rent->name == 'in_discharge') {
+                $rent->name = 'في الطريق للتفريغ';
+            } elseif ($rent->name == 'discharged') {
+                $rent->name = 'تم التفريغ';
             } elseif ($rent->name == 'broken') {
                 $rent->name = 'مفسوخ';
             }
