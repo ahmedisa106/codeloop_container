@@ -68,4 +68,10 @@ class Employee extends Authenticatable
         return $this->hasMany(DriverRequest::class, 'driver_id');
     }//end of requests function
 
+    public static function containers()
+    {
+        $containers = Container::where('branch_id', auth()->user()->branch->id)->get();
+        return $containers;
+    }//end of containers function
+
 }

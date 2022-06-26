@@ -77,7 +77,7 @@
                     <input class="form-control photo" name="photo" id="photo" type="file">
                 </div>
                 <div class="col-md-6 form-group">
-                    <img id="pic-prev" src="{{asset('assets/dashboard')}}/images/picture.svg" class="out-img pic-prev"/>
+                    <img id="pic-prev" src="{{$employee->image}}" class="out-img pic-prev"/>
                 </div>
                 <div class="switch-showcase">
                     <div class="media">

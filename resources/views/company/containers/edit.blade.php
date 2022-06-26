@@ -40,6 +40,7 @@
 
                 </div>
 
+                @role('admin')
                 <div class="col-md-6 form-group">
                     <label class="form-label">الفرع</label>
                     <select name="branch_id" class="form-control select2-custom" id="">
@@ -50,6 +51,8 @@
 
                     </select>
                 </div>
+                @endrole
+
                 <div class="col-md-6 form-group">
                     <label class="form-label">سعر التفريغ</label>
                     <input class="form-control" value="{{$container->price}}" name="price" min="0" type="number">

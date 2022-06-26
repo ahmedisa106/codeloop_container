@@ -25,6 +25,8 @@
 
                         @foreach(apps() as $model_index => $model)
 
+
+
                             <div class="animate-chk">
                                 <div class="row">
                                     <label class="d-block header-check" for="{{$model}}">
@@ -33,9 +35,13 @@
                                     <div class="flex-perm">
                                         <div class="col">
                                             @foreach(getMaps() as $map_index => $map)
+
+
                                                 <label class="d-block" for="{{$map_index.'__'.$model_index}}">
                                                     <input name="permissions[]" value="{{$map_index.'_'.$model_index}}" id="{{$map_index.'__'.$model_index}}" class="checkbox_animated permissions_checkbox" type="checkbox"> {{$map}}
                                                 </label>
+
+
                                             @endforeach
 
 
@@ -44,6 +50,7 @@
                                     </div>
                                 </div>
                             </div>
+
                         @endforeach
 
 

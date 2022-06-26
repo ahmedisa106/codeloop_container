@@ -37,6 +37,7 @@
 
                 </div>
 
+                @role('admin')
                 <div class="col-md-6 form-group">
                     <label class="form-label">الفرع</label>
                     <select name="branch_id" class="form-control select2-custom" id="">
@@ -47,6 +48,10 @@
 
                     </select>
                 </div>
+                @endrole
+                @role('messenger')
+                <input type="hidden" name="branch_id" value="{{auth()->user()->branch->id}}">
+                @endrole
                 <div class="col-md-6 form-group">
                     <label class="form-label">سعر التفريغ</label>
                     <input class="form-control" name="price" min="0" type="number">
@@ -55,7 +60,7 @@
                 <div class="col-md-6 form-group">
                     <label class="form-label">الحاله</label>
                     <select name="status" class="form-control select2-custom" id="">
-                        <option value="" disabled selected>إختر فرع</option>
+                        <option value="" disabled selected>إختر حاله</option>
                         <option value="available">في المستودع</option>
                         <option value="notAvailable">داخل فتره الإيجار</option>
                         <option value="pending">مده الإيجار منتهيه ولم تأتي المستودع</option>
