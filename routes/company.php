@@ -30,6 +30,8 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
     Route::view('test8', 'company.test8');
     Route::view('test9', 'company.test9');
     Route::view('test10', 'company.test10');
+//    Route::get('test11', 'HomeController@sendEmail');
+
 
 });
 

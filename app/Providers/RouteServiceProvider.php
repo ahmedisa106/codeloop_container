@@ -15,6 +15,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     protected $namespace = 'App\Http\Controllers';
+    protected $ApiNamespace = 'App\Http\Controllers\Api';
     protected $AdminNamespace = 'App\Http\Controllers\Admin';
     protected $CompanyNamespace = 'App\Http\Controllers\Company';
 
@@ -47,6 +48,8 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         $this->mapApiRoutes();
+        $this->mapMessengerApiRoutes();
+        $this->mapDriverApiRoutes();
         $this->mapWebRoutes();
 
         $this->mapAdminRoutes();
@@ -94,7 +97,23 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::prefix('api')
             ->middleware('api')
-            ->namespace($this->namespace)
+            ->namespace($this->ApiNamespace)
             ->group(base_path('routes/api.php'));
+    }
+
+    protected function mapMessengerApiRoutes()
+    {
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace($this->ApiNamespace)
+            ->group(base_path('routes/messenger_api.php'));
+    }
+
+    protected function mapDriverApiRoutes()
+    {
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace($this->ApiNamespace)
+            ->group(base_path('routes/driver_api.php'));
     }
 }

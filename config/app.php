@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         Meneses\LaravelMpdf\LaravelMpdfServiceProvider::class,
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 
 
         /*

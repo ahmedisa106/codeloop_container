@@ -12,6 +12,7 @@
         "alkoumi/laravel-arabic-numbers": "^1.1",
         "anam/phantomjs-linux-x86-binary": "^2.1",
         "anam/phantommagick": "^2.0",
+        "anhskohbo/no-captcha": "^3.4",
         "barryvdh/laravel-dompdf": "^1.0",
         "carlos-meneses/laravel-mpdf": "^2.1.8",
         "dirape/token": "^2.3",
@@ -23,10 +24,12 @@
         "laravel/ui": "2.4",
         "santigarcor/laratrust": "^7.1",
         "simplesoftwareio/simple-qrcode": "~4",
+        "tymon/jwt-auth": "^1.0",
         "yajra/laravel-datatables": "1.5",
         "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.6",
         "facade/ignition": "^2.0",
         "fzaninotto/faker": "^1.9.1",
         "mockery/mockery": "^1.3.1",

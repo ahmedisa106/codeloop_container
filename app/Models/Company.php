@@ -6,8 +6,9 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\File;
 use Laratrust\Traits\LaratrustUserTrait;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class Company extends Authenticatable
+class Company extends Authenticatable implements JWTSubject
 {
     use LaratrustUserTrait;
 
@@ -15,6 +16,21 @@ class Company extends Authenticatable
     protected $guarded = [];
     protected $appends = ['image', 'sealImage'];
 
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 
     public function getImageAttribute()
     {
@@ -167,5 +183,6 @@ class Company extends Authenticatable
     {
         return $this->hasMany(CompanyClauses::class)->where('company_id', auth()->user()->company->id);
     }//end of clauses function
+
 
 }

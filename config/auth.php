@@ -59,10 +59,15 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
-            'hash' => false,
+            'driver' => 'jwt',
+            'provider' => 'companies',
+
         ],
+        'employee_api' => [
+            'driver' => 'jwt',
+            'provider' => 'employees',
+        ],
+
     ],
 
     /*
