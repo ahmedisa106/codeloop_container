@@ -28,7 +28,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
         if (Schema::hasTable('settings')) {
             $setting = Setting::first();
             $clients = Company::whereHas('package', function ($model) {

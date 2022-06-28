@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laratrust\Traits\LaratrustUserTrait;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class Employee extends Authenticatable
+class Employee extends Authenticatable implements JWTSubject
 {
     use LaratrustUserTrait;
 
@@ -14,6 +15,21 @@ class Employee extends Authenticatable
     protected $with = ['branch', 'company'];
 
     protected $appends = ['image'];
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 
     public function company()
     {
