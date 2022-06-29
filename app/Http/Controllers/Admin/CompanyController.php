@@ -75,7 +75,8 @@ class CompanyController extends Controller
         $data['status'] = $request->status ? 'active' : 'inactive';
 
         DB::beginTransaction();
-        Company::create($data);
+        $company = Company::create($data);
+        $company->attachRole('admin');
         DB::commit();
 
         return $this->setAddedSuccess();

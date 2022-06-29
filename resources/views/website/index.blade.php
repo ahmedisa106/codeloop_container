@@ -19,14 +19,14 @@
                 <div class="col-xl-6">
                     <div class="welcome__right">
                         <div class="section-title text-left">
-                            <span class="section-title__tagline">شركة متخصصة في أنظمه مؤسسات الحاويات</span>
+                            <span class="section-title__tagline">شركة متخصصة في أنظمة مؤسسات الحاويات</span>
                             <h2 class="section-title__title">{{isset($about)?$about->title:''}}</h2>
                         </div>
                         <div class="desc">
                             {!! isset($about)?\Illuminate\Support\Str::limit($about->description,600):'' !!}
 
                         </div>
-                        <a href="{{url('/about')}}">قراءه المزيد</a>
+                        <a class="read-more-btn thm-btn" href="{{url('/about')}}">قراءه المزيد</a>
                     </div>
                 </div>
             </div>
@@ -71,9 +71,9 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="manage-waste__inner">
-                        <h3 class="manage-waste__title">إدارة النفايات بشكل فعال <br> وتقليل الأثر البيئي</h3>
+                        <h3 class="manage-waste__title">كن من أوائل المؤسسات واشترك معنا <br> في نظام الحاويات واستمتع بالتحول الرقمي</h3>
                         <div class="manage-waste__btn-box">
-                            <a href="{{url('contact-us')}}" class="thm-btn manage-waste__btn-2">تواصل معنا</a>
+                            <a href="{{route('website.packages')}}" class="thm-btn manage-waste__btn-2">اشترك معنا</a>
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                             <span class="section-title__tagline">ماذا يحدث</span>
                             <h2 class="section-title__title">آخر الاخبار والمقالات</h2>
                         </div>
-                        <p class="news-three__text">هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص</p>
+                        <p class="news-three__text">تعرف علي اخر الاخبار والمقالات المتعلقة بالحاويات ومتابعة كل جديد</p>
                     </div>
                 </div>
                 <div class="col-xl-8 col-lg-8">

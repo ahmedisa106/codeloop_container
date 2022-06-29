@@ -35,7 +35,7 @@ Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active
 
 });
 
-Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active', 'active_app'])->group(function () {
+Route::prefix('company')->middleware(['auth:company,moderator,employee', 'active'])->group(function () {
 
     // branches
     Route::post('branches/bulk-delete', 'BranchController@bulkDelete')->name('branches.bulkDelete');

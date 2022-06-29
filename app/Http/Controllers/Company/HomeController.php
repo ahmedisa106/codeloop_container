@@ -15,6 +15,8 @@ class HomeController extends Controller
 
     public function index()
     {
+       
+
         $data['admins_count'] = auth()->user()->company->moderators->count();
         $data['employees_count'] = auth()->user()->company->employees->count();
         $data['containers_count'] = auth()->user()->company->containers->count();

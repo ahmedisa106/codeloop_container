@@ -18,6 +18,6 @@
 <link rel="stylesheet" href="{{asset('assets/website')}}/vendors/vegas/vegas.min.css"/>
 <link rel="stylesheet" href="{{asset('assets/website')}}/vendors/jquery-ui/jquery-ui.css"/>
 <link rel="stylesheet" href="{{asset('assets/website')}}/vendors/timepicker/timePicker.css"/>
-<link rel="stylesheet" href="{{asset('assets/website')}}/css/style.css"/>
+<link rel="stylesheet" href="{{asset('assets/website')}}/css/style.css?v=1"/>
 <link rel="stylesheet" href="{{asset('assets/website/plugins/toaster/css/toastr.min.css')}}">
 @stack('css')
