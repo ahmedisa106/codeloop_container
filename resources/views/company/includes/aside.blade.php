@@ -15,88 +15,88 @@
                 </li>
 
                 @permission('read_moderators')
-                @if(active_apps('moderators'))
-                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('moderators.index')}}">
-                            <img src="{{asset('assets/dashboard')}}/images/icons/manager.png" alt="">
-                            <span>المشرفين</span></a>
-                    </li>
-                @endif
+
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('moderators.index')}}">
+                        <img src="{{asset('assets/dashboard')}}/images/icons/manager.png" alt="">
+                        <span>المشرفين</span></a>
+                </li>
+
                 @endpermission
 
                 @permission('read_employees')
-                @if(active_apps('employees'))
-                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('employees.index')}}">
-                            <img src="{{asset('assets/dashboard')}}/images/icons/boss.png" alt="">
-                            <span>الموظفين</span></a>
-                    </li>
-                @endif
+
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('employees.index')}}">
+                        <img src="{{asset('assets/dashboard')}}/images/icons/boss.png" alt="">
+                        <span>الموظفين</span></a>
+                </li>
+
                 @endpermission
 
 
                 @permission(['read_customers'])
-                @if(active_apps('customers') && active_apps('customer-addresses'))
-                    <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0);">
-                            <img src="{{asset('assets/dashboard')}}/images/icons/rating.png" alt="">
-                            <span>بيانات العملاء</span></a>
-                        <ul class="sidebar-submenu">
-                            <li><a href="{{route('customers.index')}}">العملاء</a></li>
 
-                        </ul>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0);">
+                        <img src="{{asset('assets/dashboard')}}/images/icons/rating.png" alt="">
+                        <span>بيانات العملاء</span></a>
+                    <ul class="sidebar-submenu">
+                        <li><a href="{{route('customers.index')}}">العملاء</a></li>
 
-                    </li>
-                @endif
+                    </ul>
+
+                </li>
+
                 @endpermission
 
                 @permission('read_trucks')
-                @if(active_apps('trucks'))
-                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('trucks.index')}}">
-                            <img src="{{asset('assets/dashboard')}}/images/icons/truck.png" alt="">
-                            <span>الشاحنات</span></a>
-                    </li>
-                @endif
+
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('trucks.index')}}">
+                        <img src="{{asset('assets/dashboard')}}/images/icons/truck.png" alt="">
+                        <span>الشاحنات</span></a>
+                </li>
+
                 @endpermission
 
                 @role('driver')
                 @permission('read_driver-requests')
-                @if(active_apps('driver-requests'))
-                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('driver-requests.index')}}">
-                            <img src="{{asset('assets/dashboard')}}/images/icons/truck.png" alt="">
-                            <span>طلباتي </span></a>
-                    </li>
-                @endif
+
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('driver-requests.index')}}">
+                        <img src="{{asset('assets/dashboard')}}/images/icons/truck.png" alt="">
+                        <span>طلباتي </span></a>
+                </li>
+
                 @endpermission
                 @endrole
 
                 @permission(['read_containers','read_container-rentals','read_contracts'])
-                @if(active_apps('containers') || active_apps('container-rentals' || active_apps('contracts')))
-                    <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0);">
-                            <img src="{{asset('assets/dashboard')}}/images/icons/container.png" alt="">
-                            <span> بيانات الحاويات</span></a>
-                        <ul class="sidebar-submenu">
-                            @permission(['read_containers'])
-                            <li><a href="{{route('containers.index')}}">الحاويات</a></li>
-                            @endpermission
-                            @permission(['read_container-rentals'])
-                            <li><a href="{{route('container-rentals.index')}}">إيجار الحاويات</a></li>
-                            @endpermission
 
-                            @permission(['read_contracts'])
-                            <li><a href="{{route('contracts.index')}}">العقود</a></li>
-                            @endpermission
-                        </ul>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="javascript:void(0);">
+                        <img src="{{asset('assets/dashboard')}}/images/icons/container.png" alt="">
+                        <span> بيانات الحاويات</span></a>
+                    <ul class="sidebar-submenu">
+                        @permission(['read_containers'])
+                        <li><a href="{{route('containers.index')}}">الحاويات</a></li>
+                        @endpermission
+                        @permission(['read_container-rentals'])
+                        <li><a href="{{route('container-rentals.index')}}">إيجار الحاويات</a></li>
+                        @endpermission
 
-                    </li>
-                @endif
+                        @permission(['read_contracts'])
+                        <li><a href="{{route('contracts.index')}}">العقود</a></li>
+                        @endpermission
+                    </ul>
+
+                </li>
+
                 @endpermission
 
 
                 @permission('read_roles')
-                @if(active_apps('roles'))
-                    <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('roles.index')}}">
-                            <img src="{{asset('assets/dashboard')}}/images/icons/lock.png" alt="">
-                            <span>الصلاحيات والأدوار</span></a>
-                    </li>
-                @endif
+
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('roles.index')}}">
+                        <img src="{{asset('assets/dashboard')}}/images/icons/lock.png" alt="">
+                        <span>الصلاحيات والأدوار</span></a>
+                </li>
+
                 @endpermission
 
                 @permission(['read_apps','read_branches' ,'read_categories' ,'read_category-sizes','read_rent-types','read_job-types'])
@@ -104,52 +104,39 @@
                         <img src="{{asset('assets/dashboard')}}/images/icons/setting.png" alt="">
                         <span>الاعدادات</span></a>
                     <ul class="sidebar-submenu">
-                        @if(active_apps('apps'))
-                            @permission('read_apps')
-                            <li><a href="{{route('apps.index')}}">التحكم في التطبيقات</a></li>
-                            @endpermission
-                        @endif
-                        @if(active_apps('branches'))
-                            @permission('read_branches')
-                            <li><a href="{{route('branches.index')}}">الفروع</a></li>
-                            @endpermission
-                        @endif
 
-                        @if(active_apps('categories'))
-                            @permission('read_categories')
-                            <li><a href="{{route('categories.index')}}">التصنيفات</a></li>
-                            @endpermission
-                        @endif
+                        @permission('read_apps')
+                        <li><a href="{{route('apps.index')}}">التحكم في التطبيقات</a></li>
+                        @endpermission
 
-                        @if(active_apps('category-sizes'))
-                            @permission('read_category-sizes')
-                            <li><a href="{{route('category-sizes.index')}}">أحجام التصنيفات</a></li>
-                            @endpermission
-                        @endif
+                        @permission('read_branches')
+                        <li><a href="{{route('branches.index')}}">الفروع</a></li>
+                        @endpermission
 
-                        @if(active_apps('rent-types'))
-                            @permission('read_rent-types')
-                            <li><a href="{{route('rent-types.index')}}">أنواع الإيجار</a></li>
-                            @endpermission
-                        @endif
+                        @permission('read_categories')
+                        <li><a href="{{route('categories.index')}}">التصنيفات</a></li>
+                        @endpermission
 
-                        @if(active_apps('job-types'))
-                            @permission('read_job-types')
-                            <li><a href="{{route('job-types.index')}}">أنواع الوظائف</a></li>
-                            @endpermission
-                        @endif
+                        @permission('read_category-sizes')
+                        <li><a href="{{route('category-sizes.index')}}">أحجام التصنيفات</a></li>
+                        @endpermission
 
+                        @permission('read_rent-types')
+                        <li><a href="{{route('rent-types.index')}}">أنواع الإيجار</a></li>
+                        @endpermission
 
-                        @if(active_apps('company-clauses'))
-                            @permission('read_company-clauses')
-                            <li><a href="{{route('company-clauses.index')}}">بنود العقود</a></li>
-                            @endpermission
-                        @endif
-                        @if(active_apps('company-settings'))
-                            @permission('read_company-settings')
-                            <li><a class="show_modal" href="{{route('company-settings.index')}}">الإعددات العامه</a></li>
-                            @endpermission
-                        @endif
+                        @permission('read_job-types')
+                        <li><a href="{{route('job-types.index')}}">أنواع الوظائف</a></li>
+                        @endpermission
+
+                        @permission('read_company-clauses')
+                        <li><a href="{{route('company-clauses.index')}}">بنود العقود</a></li>
+                        @endpermission
+
+                        @permission('read_company-settings')
+                        <li><a class="show_modal" href="{{route('company-settings.index')}}">الإعددات العامه</a></li>
+                        @endpermission
+
                     </ul>
                 </li>
                 @endpermission

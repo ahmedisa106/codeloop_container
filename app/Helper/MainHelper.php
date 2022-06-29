@@ -1,6 +1,8 @@
 <?php
 
 
+use App\Models\App;
+
 if (!function_exists('active')) {
     function active($url)
     {
@@ -29,13 +31,13 @@ if (!function_exists('active_apps')) {
 if (!function_exists('apps')) {
     function apps()
     {
-        return auth()->user()->company->apps->pluck('ar_model', 'model')->toArray();
+        return $apps = App::get()->pluck('ar_model', 'model')->toArray();
     }
 }
 if (!function_exists('ar_apps')) {
     function ar_apps()
     {
-        return auth()->user()->company->apps->pluck('ar_model')->toArray();
+        return $apps = App::get()->pluck('ar_model')->toArray();
     }
 }
 
