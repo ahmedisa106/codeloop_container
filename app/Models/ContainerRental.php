@@ -8,7 +8,9 @@ class ContainerRental extends Model
 {
     protected $table = 'container_rentals';
     protected $guarded = [];
-    protected $with = ['customer', 'container', 'messenger', 'driver', 'categorySize', 'category'];
+    protected $with = ['customer', 'container', 'messenger', 'driver', 'categorySize', 'category', 'discharges'];
+
+    protected $hidden = ['created_at', 'updated_at'];
 
     public function company()
     {

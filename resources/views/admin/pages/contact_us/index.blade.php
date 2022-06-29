@@ -20,6 +20,7 @@
                     <table class="table table-bordered datatable text-center">
                         <thead>
                         <tr>
+                            <th>#</th>
                             <th>
                                 <div class="checkbox checkbox-primary">
                                     <input id="check_all" type="checkbox">
@@ -56,6 +57,7 @@
             processing: true,
             serverSide: true,
             buttons: ['excel', 'pdf', 'print'],
+            order: [[0, 'desc']],
             language: {
                 "url": "{{asset('datatableLang.json')}}"
             },
@@ -63,6 +65,9 @@
                 url: '{{route('contact-us.data')}}'
             },
             columns: [
+                {
+                    name: 'id', data: 'id'
+                },
                 {
                     name: 'check_item', data: 'check_item', sortable: false, searchable: false
                 },

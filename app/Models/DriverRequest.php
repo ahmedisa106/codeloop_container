@@ -9,6 +9,7 @@ class DriverRequest extends Model
     protected $table = 'driver_requests';
     protected $guarded = [];
     protected $with = ['containerRental', 'driver'];
+    protected $hidden = ['created_at', 'updated_at'];
 
     public function containerRental()
     {

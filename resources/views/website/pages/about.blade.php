@@ -23,7 +23,7 @@
                 <div class="col-xl-6">
                     <div class="welcome__right">
                         <div class="section-title text-left">
-                            <span class="section-title__tagline">شركة متخصصة في خدمات النفايات</span>
+                            <span class="section-title__tagline">شركة متخصصة في أنظمه مؤسسات الحاويات</span>
                             <h2 class="section-title__title">{{$page_title}}</h2>
                         </div>
                         <div class="desc">

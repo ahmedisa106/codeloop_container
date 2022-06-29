@@ -8,6 +8,7 @@ class Discharge extends Model
 {
     protected $table = 'discharges';
     protected $guarded = [];
+    protected $hidden = ['created_at', 'updated_at'];
 
     public function containerRental()
     {

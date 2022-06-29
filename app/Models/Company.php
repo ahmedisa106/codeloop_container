@@ -16,6 +16,7 @@ class Company extends Authenticatable implements JWTSubject
     protected $guarded = [];
     protected $appends = ['image', 'sealImage'];
 
+    protected $hidden = ['created_at', 'updated_at'];
 
     public function getJWTIdentifier()
     {

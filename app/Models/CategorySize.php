@@ -10,6 +10,7 @@ class CategorySize extends Model
 
     protected $guarded = [];
     protected $with = ['category'];
+    protected $hidden = ['created_at', 'updated_at'];
 
     public function category()
     {
