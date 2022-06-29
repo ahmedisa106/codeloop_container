@@ -19,12 +19,14 @@
                 <div class="col-xl-6">
                     <div class="welcome__right">
                         <div class="section-title text-left">
-                            <span class="section-title__tagline">شركة متخصصة في خدمات النفايات</span>
+                            <span class="section-title__tagline">شركة متخصصة في أنظمه مؤسسات الحاويات</span>
                             <h2 class="section-title__title">{{isset($about)?$about->title:''}}</h2>
                         </div>
                         <div class="desc">
-                            {!! isset($about)?$about->description:'' !!}
+                            {!! isset($about)?\Illuminate\Support\Str::limit($about->description,600):'' !!}
+
                         </div>
+                        <a href="{{url('/about')}}">قراءه المزيد</a>
                     </div>
                 </div>
             </div>

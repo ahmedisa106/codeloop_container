@@ -8,7 +8,7 @@ class Contract extends Model
 {
     protected $table = 'contracts';
     protected $guarded = [];
-
+    protected $hidden = ['created_at', 'updated_at'];
     protected $with = ['company', 'containerRentals', 'customer', 'messenger'];
 
     public function company()

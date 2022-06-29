@@ -20,7 +20,7 @@
                                 </a>
                             </div>
                             <div class="news-one__content">
-                                <h3 class="news-one__title"><a href="blog-details.html">
+                                <h3 class="news-one__title"><a href="{{route('website.blogs.show',$blog->id)}}">
                                         {{$blog->title}}</a></h3>
                                 <div class="news-one__read-more">
                                     <a href="{{route('website.blogs.show',$blog->id)}}"><i class="fa fa-arrow-left"></i>قراءة المزيد</a>

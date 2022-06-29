@@ -14,14 +14,28 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::group([
+Route::group(['middleware' => 'api', 'namespace' => 'Company\Auth',], function () {
 
-    'middleware' => 'api',
-    'namespace' => 'Company\Auth',
-
-], function ($router) {
     Route::post('login', 'AuthController@login');
     Route::post('logout', 'AuthController@logout');
     Route::post('profile', 'AuthController@me');
 
+});
+
+Route::group(['middleware' => ['api'], 'namespace' => 'Company',], function () {
+
+
+    Route::get('index', 'HomeController@index');
+    // employees Api
+    Route::get('employees', 'EmployeeController@getAllEmployees');
+    Route::get('employees-type', 'EmployeeController@getEmployeesByType');
+    Route::get('employee/show', 'EmployeeController@show');
+    // end employees
+
+    // container rentals
+    Route::get('containerRentals', 'ContainerRentalController@getAllRentals');
+    Route::get('containerRentals/show', 'ContainerRentalController@show');
+    Route::get('containerRentals/status', 'ContainerRentalController@getStatus');
+
+    // end container rentals
 });

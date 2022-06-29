@@ -13,7 +13,7 @@ class Employee extends Authenticatable implements JWTSubject
     protected $table = 'employees';
     protected $guarded = [];
     protected $with = ['branch', 'company'];
-
+    protected $hidden = ['created_at', 'updated_at'];
     protected $appends = ['image'];
 
     public function getJWTIdentifier()
