@@ -33,6 +33,8 @@ class AppServiceProvider extends ServiceProvider
             $clients = Company::whereHas('package', function ($model) {
                 $model->where('status', 'subscribed');
             })->get(['id', 'logo']);
+
+
             View::composer('*', function ($view) use ($setting, $clients) {
                 $view->with(['setting' => $setting]);
                 $view->with(['clients' => $clients]);

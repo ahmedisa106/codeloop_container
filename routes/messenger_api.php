@@ -18,5 +18,18 @@ Route::group(['middleware' => 'api', 'prefix' => 'employee', 'namespace' => 'Emp
 // messenger routes
 Route::group(['middleware' => 'api', 'prefix' => 'employee', 'namespace' => 'Employee\Messenger'], function ($router) {
 
+    // customers
+    Route::get('customers', 'CustomerController@getCustomers');
+    Route::post('customers/create', 'CustomerController@create');
+    // end customers
+
+    // categories
+    Route::get('categories', 'CategoryController@getCategories');
+    // end categories
+
+    // container rentals
+    Route::get('get-container', 'ContainerRentalController@getContainer');
+    Route::post('container-rental/create', 'ContainerRentalController@create');
+    // end container rentals
 
 });
