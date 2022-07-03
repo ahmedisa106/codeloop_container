@@ -8,6 +8,7 @@ class Customer extends Model
 {
     protected $table = 'customers';
     protected $guarded = [];
+    protected $with = ['addresses', 'containerRentals'];
 
 
     public function company()
