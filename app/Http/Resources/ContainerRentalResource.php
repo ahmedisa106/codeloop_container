@@ -15,11 +15,12 @@ class ContainerRentalResource extends JsonResource
     public function toArray($request)
     {
         return [
-
             'contract_type' => $this->contract_type,
             'category' => $this->category,
+            'customer' => $this->customer,
             'customer_address' => $this->customerAddress,
             'container' => $this->container,
+            'discharges' => $this->discharges,
             'discharge_price' => $this->discharge_price,
             'discharge_number' => $this->discharge_number,
             'remaining_discharge' => $this->remaining_discharge,
