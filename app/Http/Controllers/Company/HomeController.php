@@ -8,20 +8,12 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-//    public function __construct()
-//    {
-//        $this->middleware(['permission:']);
-//    }//end of __construct function
-
     public function index()
     {
-       
-
         $data['admins_count'] = auth()->user()->company->moderators->count();
         $data['employees_count'] = auth()->user()->company->employees->count();
         $data['containers_count'] = auth()->user()->company->containers->count();
         $data['rent_count'] = auth()->user()->company->containerRentals->count();
-
 
         if (auth()->user()->hasRole('driver')) {
             $data['requests_count'] = auth()->user()->requests->count();
@@ -34,7 +26,6 @@ class HomeController extends Controller
         } elseif (auth()->user()->hasRole('admin')) {
             $data['rents'] = json_encode($this->rents(), JSON_UNESCAPED_UNICODE);
         }
-
 
         return view('company.index', compact('data'));
     }//end of index function
