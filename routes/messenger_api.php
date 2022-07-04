@@ -23,13 +23,20 @@ Route::group(['middleware' => 'api', 'prefix' => 'employee', 'namespace' => 'Emp
     Route::post('customers/create', 'CustomerController@create');
     // end customers
 
+    // drivers
+    Route::get('drivers', 'DriverController@getDriver');
+    // end drivers
+
     // categories
     Route::get('categories', 'CategoryController@getCategories');
     // end categories
 
     // container rentals
     Route::get('get-container', 'ContainerRentalController@getContainer');
+    Route::get('container-rentals', 'ContainerRentalController@getContainerRentals');
     Route::post('container-rental/create', 'ContainerRentalController@create');
+    Route::post('container-rental/assign-driver-to-drive', 'ContainerRentalController@assignDriverToDrive');
+    Route::post('container-rental/assign-driver-to-discharge', 'ContainerRentalController@assignDriverToDischarge');
     // end container rentals
 
 });

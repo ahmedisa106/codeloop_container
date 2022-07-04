@@ -26,13 +26,13 @@ class ContainerRentalController extends Controller
         'edit' => 'تعديل إيجار',
     ];
 
-    public function __construct()
-    {
-        $this->middleware(['permission:read_container-rentals'])->only(['index', 'data']);
-        $this->middleware(['permission:create_container-rentals'])->only(['create', 'store']);
-        $this->middleware(['permission:update_container-rentals'])->only(['edit', 'update']);
-        $this->middleware(['permission:delete_container-rentals'])->only(['destroy', 'bulkDelete']);
-    }
+//    public function __construct()
+//    {
+//        $this->middleware(['permission:read_container-rentals'])->only(['index', 'data']);
+//        $this->middleware(['permission:create_container-rentals'])->only(['create', 'store']);
+//        $this->middleware(['permission:update_container-rentals'])->only(['edit', 'update']);
+//        $this->middleware(['permission:delete_container-rentals'])->only(['destroy', 'bulkDelete']);
+//    }
 
     public function index()
     {
@@ -42,12 +42,14 @@ class ContainerRentalController extends Controller
     public function data()
     {
         if (auth()->user()->hasRole('admin')) {
-            $rentals = auth()->user()->company->containerRentals;
+            $rentals = auth()->user()->containerRentals;
+
         } elseif (auth()->user()->hasRole('messenger')) {
             $rentals = auth()->user()->containerRentals;
         } elseif (auth()->user()->hasRole('driver')) {
             $rentals = auth()->user()->driverRentals;
         }
+
 
         $model = 'container-rentals';
         return DataTables::of($rentals)
@@ -117,8 +119,6 @@ class ContainerRentalController extends Controller
 
     public function create()
     {
-
-
         $categories = auth()->user()->company->categories;
         $customers = auth()->user()->company->customers;
         $contracts = auth()->user()->company->contracts;
@@ -135,12 +135,14 @@ class ContainerRentalController extends Controller
      */
     public function store(ContainerRentalRequest $request)
     {
+
         $data = $request->validated();
         $data['company_id'] = auth()->user()->company->id;
         $data['remaining_discharges'] = $data['discharge_number'];
         $data['messenger_id'] = $data['messenger_id'] ?? auth()->user()->id;
         $contract_data = ['area_name' => $data['area_name'], 'area_number' => $data['area_number'], 'block_number' => $data['block_number'], 'plan_number' => $data['plan_number']];
         unset($data['area_name'], $data['area_number'], $data['block_number'], $data['plan_number']);
+
 
         DB::beginTransaction();
 
@@ -325,6 +327,7 @@ class ContainerRentalController extends Controller
 
         $containerRental->update(['status' => 'broken', 'remaining_discharges' => 0]);
         $containerRental->contract()->update(['status' => 'broken']);
+        $containerRental->container()->update(['status' => 'available']);
 
         return redirect()->back()->with('success', 'تم فسخ العقد');
 

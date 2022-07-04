@@ -9,6 +9,7 @@ use App\Http\Resources\ContainerResource;
 use App\Models\Container;
 use App\Models\ContainerRental;
 use App\Models\Contract;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -16,7 +17,10 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class ContainerRentalController extends Controller
 {
+
+
     use ApiResponse;
+
 
     public function __construct()
     {
@@ -43,6 +47,15 @@ class ContainerRentalController extends Controller
     public function getContainerRentals()
     {
 
+        $rentals = ContainerRental::query()->join('companies', 'container_rentals.company_id', '=', 'companies.id')
+            ->select('container_rentals.*')
+            ->where('container_rentals.messenger_id', auth('employee_api')->user()->id)
+            ->get();
+
+
+        $rentals = ContainerRentalResource::collection($rentals);
+
+        return $this->setStatus('success')->setCode(200)->setData($rentals)->send();
 
     }//end of getContainerRentals function
 
@@ -146,5 +159,35 @@ class ContainerRentalController extends Controller
             return $serial->contract_serial + 1;
         }
     }//end of getLatestContractSerial function
+
+    public function assignDriverToDrive(Request $request)
+    {
+        $rent = ContainerRental::find($request->container_rental_id);
+        $rent->update(['driver_id' => $request->driver_id]);
+        $driver = Employee::find($request->driver_id);
+        $driver->update(['status' => 'inactive']);
+        $driver->requests()->create([
+            'container_rental_id' => $rent->id,
+            'type' => 'delivery',
+            'status' => 'waiting_approval'
+        ]);
+
+        return $this->setStatus('success')->setCode(200)->setMessage('تم تعيين سائق بنجاح')->send();
+    }//end of assignDriverToDrive function
+
+    public function assignDriverToDischarge(Request $request)
+    {
+        $rent = ContainerRental::find($request->container_rental_id);
+        $rent->update(['driver_id' => $request->driver_id]);
+        $driver = Employee::find($request->driver_id);
+        $driver->update(['status' => 'inactive']);
+        $driver->requests()->create([
+            'container_rental_id' => $rent->id,
+            'type' => 'discharge',
+            'status' => 'waiting_approval'
+        ]);
+
+        return $this->setStatus('success')->setCode(200)->setMessage('تم تعيين سائق بنجاح')->send();
+    }//end of assignDriverToDischarge function
 
 }
