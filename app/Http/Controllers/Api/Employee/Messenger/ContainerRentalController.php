@@ -17,10 +17,7 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class ContainerRentalController extends Controller
 {
-
-
     use ApiResponse;
-
 
     public function __construct()
     {
