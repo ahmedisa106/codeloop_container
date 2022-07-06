@@ -36,6 +36,8 @@ class ContainerRentalController extends Controller
             return $this->setStatus('Error')->setCode(404)->setMessage('لا يوجد بيانات')->send();
         }
 
+        $containerRental = new ContainerRentalResource($containerRental);
+
         return $this->setStatus('success')->setCode(200)->setData($containerRental)->send();
 
     }//end of show function
@@ -47,7 +49,9 @@ class ContainerRentalController extends Controller
             ->where('container_rentals.status', $request->status)
             ->get();
 
-        return $this->setStatus('success')->setCode(200)->setData($rentals)->send();
+        $rents = ContainerRentalResource::collection($rentals);
+
+        return $this->setStatus('success')->setCode(200)->setData($rents)->send();
 
 
     }//end of  function

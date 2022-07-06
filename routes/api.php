@@ -19,6 +19,7 @@ Route::group(['middleware' => 'api', 'namespace' => 'Company\Auth',], function (
     Route::post('login', 'AuthController@login');
     Route::post('logout', 'AuthController@logout');
     Route::post('profile', 'AuthController@me');
+    Route::post('profile/update', 'AuthController@updateProfile');
 
 });
 
