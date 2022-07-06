@@ -15,6 +15,5 @@ class CustomerAddress extends Model
     {
         return $this->belongsTo(Customer::class, 'customer_id');
 
-
     }//end of customer function
 }

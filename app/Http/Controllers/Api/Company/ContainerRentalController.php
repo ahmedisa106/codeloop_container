@@ -26,7 +26,6 @@ class ContainerRentalController extends Controller
 
         $rents = ContainerRentalResource::collection(auth('api')->user()->containerRentals);
 
-
         return $this->setStatus('success')->setCode(200)->setData($rents)->send();
     }//end of getAllRental function
 

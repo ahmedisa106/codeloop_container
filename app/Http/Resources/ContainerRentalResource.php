@@ -15,6 +15,7 @@ class ContainerRentalResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'contract_type' => $this->contract_type,
             'category' => $this->category,
             'customer' => $this->customer,

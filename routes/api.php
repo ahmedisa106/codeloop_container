@@ -32,10 +32,34 @@ Route::group(['middleware' => ['api'], 'namespace' => 'Company',], function () {
     Route::get('employee/show', 'EmployeeController@show');
     // end employees
 
+    // customers
+    Route::get('customers', 'CustomerController@getCustomers');
+    Route::get('customers/show', 'CustomerController@show');
+    // end customers
+
+    // Contracts
+    Route::get('contracts', 'ContractController@getContracts');
+    Route::get('contracts/show', 'ContractController@show');
+    Route::get('contracts/search', 'ContractController@search');
+    // end Contracts
+
     // container rentals
     Route::get('containerRentals', 'ContainerRentalController@getAllRentals');
     Route::get('containerRentals/show', 'ContainerRentalController@show');
     Route::get('containerRentals/status', 'ContainerRentalController@getStatus');
 
     // end container rentals
+
+
+    //terms & conditions
+    Route::get('/terms', 'HomeController@getTerms');
+    // end terms & conditions
+
+    // about
+    Route::get('/about-us', 'HomeController@about');
+    // end about
+
+    // contact-us
+    Route::post('/contact-us', 'HomeController@contactUs');
+    // end contact-us
 });

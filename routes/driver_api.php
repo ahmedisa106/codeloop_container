@@ -8,7 +8,7 @@ Route::group(['middleware' => 'api', 'prefix' => 'driver', 'namespace' => 'Emplo
 
 
     // container rentals
-    Route::get('get-container-rentals', 'ContainerRentalController@getContainerRentals');
+    Route::get('get-container-rentals', 'ContainerRentalController@getContainerRentalsgetContainerRentals');
 //    Route::post('container-rental/show', 'ContainerRentalController@show');
     // end container rentals
 

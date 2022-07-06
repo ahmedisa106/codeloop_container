@@ -4,8 +4,14 @@ namespace App\Http\Controllers\Api\Company;
 
 use App\Helper\ApiResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\TermResource;
+use App\Models\About;
+use App\Models\ContactUs;
 use App\Models\Customer;
+use App\Models\Term;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -55,4 +61,41 @@ class HomeController extends Controller
         return $contracts;
 
     }//end of getContainerRentals function
+
+    public function getTerms()
+    {
+        $terms = collect(Term::get(['body']));
+        $terms = TermResource::collection($terms);
+        return $this->setStatus('success')->setCode(200)->setData($terms)->send();
+    }//end of getTerms function
+
+    public function about()
+    {
+        $about = About::first(['title', 'description', 'photo']);
+        return $this->setStatus('success')->setCode(200)->setData($about)->send();
+    }//end of getTerms function
+
+    public function contactUs(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'body' => 'required',
+        ], [], [
+            'name' => 'الإسم',
+            'email' => 'البريد  الإلكتروني',
+            'phone' => 'الهاتف',
+            'body' => 'الرساله',
+        ]);
+        if ($validator->fails()) {
+            return $this->setStatus('Error')->setCode(401)->setMessage($validator->errors()->first())->send();
+        }
+
+        ContactUs::create($validator->validated());
+
+
+        return $this->setStatus('success')->setCode(200)->setMessage('تم إرسال البيانات بنجاح')->send();
+
+    }//end of contactUs function
 }

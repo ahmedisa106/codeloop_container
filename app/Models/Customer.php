@@ -25,4 +25,11 @@ class Customer extends Model
     {
         return $this->hasMany(CustomerAddress::class);
     }//end of address function
+
+    public function contracts()
+    {
+        return $this->hasMany(Contract::class);
+
+
+    }//end of  function
 }
