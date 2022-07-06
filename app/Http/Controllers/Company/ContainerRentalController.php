@@ -135,7 +135,6 @@ class ContainerRentalController extends Controller
      */
     public function store(ContainerRentalRequest $request)
     {
-
         $data = $request->validated();
         $data['company_id'] = auth()->user()->company->id;
         $data['remaining_discharges'] = $data['discharge_number'];
@@ -143,9 +142,7 @@ class ContainerRentalController extends Controller
         $contract_data = ['area_name' => $data['area_name'], 'area_number' => $data['area_number'], 'block_number' => $data['block_number'], 'plan_number' => $data['plan_number']];
         unset($data['area_name'], $data['area_number'], $data['block_number'], $data['plan_number']);
 
-
         DB::beginTransaction();
-
         $rent = ContainerRental::create($data);
 
         $rent->container->update(['status' => 'notAvailable']);

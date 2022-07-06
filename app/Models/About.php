@@ -9,6 +9,7 @@ class About extends Model
     protected $table = 'abouts';
     protected $guarded = [];
     protected $appends = ['image'];
+    protected $hidden = ['image'];
 
 
     public function getImageAttribute()
