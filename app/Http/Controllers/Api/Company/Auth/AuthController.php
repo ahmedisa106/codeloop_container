@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Company\Auth;
 
 use App\Helper\ApiResponse;
+use App\Helper\Upload;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CompanyResource;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    use ApiResponse;
+    use ApiResponse, Upload;
 
     /**
      * Create a new AuthController instance.
@@ -101,4 +102,40 @@ class AuthController extends Controller
         $company = new CompanyResource(auth('api')->user());
         return $this->setStatus('success')->setMessage('تم تسجيل الدخول بنجاح')->setCode(200)->setData(['token' => $token, 'data' => $company])->send();
     }
+
+    public function updateProfile(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'commercial_number' => 'required',
+            'tax_card_number' => 'required',
+            'logo' => 'sometimes|nullable|image'
+        ], [], [
+            'name' => 'الاسم',
+            'email' => 'البريد الالكتروني',
+            'phone' => 'الهاتف',
+            'commercial_number' => 'رقم السجل التجاري',
+            'tax_card_number' => 'الرقم الضريبي',
+        ]);
+
+        if ($validator->fails()) {
+            return $this->setStatus('Error')->setCode(401)->setMessage($validator->errors()->first())->send();
+        }
+        $data = $validator->validated();
+
+
+        if ($request->hasFile('logo')) {
+            $photo = $this->upload($request->logo, 'companies', true, \auth('api')->user()->logo);
+            $data['logo'] = $photo;
+        }
+
+
+        \auth('api')->user()->update($data);
+
+        return $this->setStatus('success')->setCode(200)->setMessage('تم تحديث البيانات بنجاح')->send();
+
+    }//end of updateProfile function
 }
