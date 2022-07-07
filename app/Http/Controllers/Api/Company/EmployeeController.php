@@ -41,7 +41,7 @@ class EmployeeController extends Controller
         $employee = Employee::find($request->id);
 
         if (!$employee) {
-            return $this->setStatus('Error')->setCode(404)->setMessage('لا يوجد بيانات')->send();
+            return $this->setStatus('Error')->setCode(400)->setMessage('لا يوجد بيانات')->send();
         }
         return $this->setStatus('success')->setCode(200)->setData(new EmployeeResource($employee))->send();
 

@@ -38,4 +38,17 @@ class CustomerController extends Controller
 
     }//end of show function
 
+    public function filter(Request $request)
+    {
+        $customers = Customer::query()->join('companies', 'customers.company_id', '=', 'companies.id')
+            ->select('customers.*')
+            ->where('customers.name', 'like', '%' . $request->name . '%')
+            ->get();
+
+        $customers = CustomerResource::collection($customers);
+
+        return $this->setStatus('success')->setCode(200)->setData($customers)->send();
+
+    }//end of filter function
+
 }

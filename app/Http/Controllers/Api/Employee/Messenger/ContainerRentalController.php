@@ -41,17 +41,19 @@ class ContainerRentalController extends Controller
 
     }//end of getContainer function
 
-    public function getContainerRentals()
+    public function getContainerRentals(Request $request)
     {
-
         $rentals = ContainerRental::query()->join('companies', 'container_rentals.company_id', '=', 'companies.id')
             ->select('container_rentals.*')
-            ->where('container_rentals.messenger_id', auth('employee_api')->user()->id)
-            ->get();
+            ->where('container_rentals.messenger_id', auth('employee_api')->user()->id);
 
+        if (isset($request->status)) {
+            $rentals = clone $rentals->where('container_rentals.status', $request->status)->get();
+        } else {
+            $rentals = $rentals->get();
+        }
 
         $rentals = ContainerRentalResource::collection($rentals);
-
         return $this->setStatus('success')->setCode(200)->setData($rentals)->send();
 
     }//end of getContainerRentals function
@@ -98,7 +100,7 @@ class ContainerRentalController extends Controller
 
         if ($validator->fails()) {
 
-            return $this->setStatus('Error')->setCode(401)->setData($validator->errors()->first())->send();
+            return $this->setStatus('Error')->setCode(400)->setData($validator->errors()->first())->send();
         }
         $data = $validator->validated();
         $data['company_id'] = auth()->user()->company->id;
