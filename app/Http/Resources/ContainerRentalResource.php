@@ -17,10 +17,10 @@ class ContainerRentalResource extends JsonResource
         return [
             'id' => $this->id,
             'contract_type' => $this->contract_type,
-            'category' => new CategoryResource($this->category),
-            'customer' => new CustomerResource($this->customer),
+            'category' => $this->category,
+            'customer' => $this->customer,
             'customer_address' => $this->customerAddress,
-            'container' => new ContainerResource($this->container),
+            'container' => $this->container,
             'discharges' => $this->discharges,
             'discharge_price' => $this->discharge_price,
             'discharge_number' => $this->discharge_number,
