@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\Company;
+namespace App\Http\Controllers\Api\Employee\Messenger;
 
 use App\Helper\ApiResponse;
 use App\Http\Controllers\Controller;
@@ -14,12 +14,16 @@ class ContractController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api');
+        $this->middleware('auth:employee_api');
     }//end of __construct function
 
     public function getContracts()
     {
-        $contracts = auth('api')->user()->company->contracts;
+        $contracts = $contracts = Contract::query()->join('companies', 'contracts.company_id', '=', 'companies.id')
+            ->where('contracts.messenger_id', auth('employee_api')->user()->id)
+            ->select('contracts.*')
+            ->get();
+
         $contracts = ContractResource::collection($contracts);
         return $this->setStatus('success')->setCode(200)->setData($contracts)->send();
 
@@ -27,8 +31,8 @@ class ContractController extends Controller
 
     public function show(Request $request)
     {
-
         $contract = Contract::find($request->id);
+
         if (!$contract) {
             return $this->setStatus('Error')->setCode(401)->setMessage('للأسف لايوجد بيانات')->send();
         }

@@ -32,6 +32,10 @@ class CustomerController extends Controller
     {
         $customer = Customer::find($request->id);
 
+        if (!$customer) {
+            return $this->setStatus('Error')->setCode(401)->setMessage('للأسف لايوجد بيانات')->send();
+        }
+
         $customer = new CustomerResource($customer);
 
         return $this->setStatus('success')->setCode(200)->setData($customer)->send();

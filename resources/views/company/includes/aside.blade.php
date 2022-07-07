@@ -1,6 +1,6 @@
 <div class="sidebar-wrapper">
-    <div class="logo-wrapper"><a href="{{route('admin.home')}}"><img class="img-fluid for-light"
-                                                                     src="{{asset('assets/dashboard')}}/images/logo.svg" alt=""></a>
+    <div class="logo-wrapper"><a href="{{route('company.home')}}"><img class="img-fluid for-light"
+                                                                       src="{{asset('assets/dashboard')}}/images/logo.svg" alt=""></a>
         <div class="back-btn"><i class="fa fa-angle-left"></i></div>
     </div>
 
