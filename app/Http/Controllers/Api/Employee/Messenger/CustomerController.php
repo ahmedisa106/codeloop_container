@@ -47,7 +47,7 @@ class CustomerController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return $this->setStatus('Error')->setCode(401)->setData($validator->errors()->first())->send();
+            return $this->setStatus('Error')->setCode(400)->setMessage($validator->errors()->first())->send();
         }
         $data = $request->except(['address']);
         $data['company_id'] = auth('employee_api')->user()->company->id;

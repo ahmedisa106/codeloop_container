@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::get('/sitemap.xml', [\App\Http\Controllers\SitemapXmlController::class, 'index']);
 
+Route::get('sendNotification/{id}', [\App\Http\Controllers\NotificationController::class, 'sendNotification'])->name('send.notification');
+
+
 Route::get('/clear-cache', function () {
     \Illuminate\Support\Facades\Artisan::call('optimize:clear');
     \Illuminate\Support\Facades\Artisan::call('config:cache');

@@ -89,7 +89,7 @@ class HomeController extends Controller
             'body' => 'الرساله',
         ]);
         if ($validator->fails()) {
-            return $this->setStatus('Error')->setCode(401)->setMessage($validator->errors()->first())->send();
+            return $this->setStatus('Error')->setCode(400)->setMessage($validator->errors()->first())->send();
         }
 
         ContactUs::create($validator->validated());

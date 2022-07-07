@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link rel="stylesheet" type="text/css" href="{{asset('assets/dashboard')}}/css/vendors/font-awesome.css">
     <style>
         @font-face {
@@ -430,7 +430,7 @@
                 setTimeout(closeWindow, 500);
 
                 function closeWindow() {
-                    window.close();
+                    // window.close();
                 }
 
 
@@ -443,7 +443,7 @@
         $(document).keydown(function (event) {
             if (event.keyCode == 123) { // Prevent F12
                 return false;
-            } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) { // Prevent Ctrl+Shift+I        
+            } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) { // Prevent Ctrl+Shift+I
                 return false;
             }
         });

@@ -15,6 +15,7 @@ class ContractResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'pdf' => route('contracts.pdf', $this->id),
             'contract_serial' => $this->contract_serial,
             'area_name' => $this->area_name,
             'area_number' => $this->area_number,
@@ -24,8 +25,6 @@ class ContractResource extends JsonResource
             'customer' => $this->customer,
             'messenger' => $this->messenger,
             'container_rental' => $this->containerRentals,
-
-
         ];
     }
 }

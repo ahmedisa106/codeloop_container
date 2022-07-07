@@ -40,17 +40,17 @@ class AuthController extends Controller
             'password' => 'كلمه المرور',
         ]);
         if ($validator->fails()) {
-            return $this->setStatus('Error')->setMessage($validator->errors()->first())->setCode(401)->send();
+            return $this->setStatus('Error')->setMessage($validator->errors()->first())->setCode(400)->send();
         }
         $credentials = request(['phone', 'password']);
         if (!$token = auth('employee_api')->attempt($credentials)) {
-            return $this->setStatus('Error')->setMessage('البيانات غير مطابقه')->setCode(401)->send();
+            return $this->setStatus('Error')->setMessage('البيانات غير مطابقه')->setCode(400)->send();
 
         }
 
         if (auth('employee_api')->user()->company->status != 'active') {
             Auth::guard('employee_api')->logout();
-            return $this->setStatus('Error')->setMessage('برجاء التواصل مع الإداره لتفعيل الحساب ')->setCode(401)->send();
+            return $this->setStatus('Error')->setMessage('برجاء التواصل مع الإداره لتفعيل الحساب ')->setCode(400)->send();
         } else {
 
             return $this->respondWithToken($token);

@@ -20,13 +20,10 @@ class ContractController extends Controller
     public function __construct()
     {
         $this->middleware(['permission:read_contracts'])->only(['index', 'data']);
-
-
     }//end of __construct function
 
     public function data(Request $request)
     {
-
         if ($request->from && $request->to) {
             $contracts = Contract::when($request->from, function ($q) use ($request) {
                 $q->whereHas('containerRentals', function ($q) use ($request) {
@@ -36,7 +33,6 @@ class ContractController extends Controller
         } else {
             $contracts = auth()->user()->company->contracts;
         }
-
 
         return DataTables::of($contracts)
             ->addColumn('customer', function ($raw) {
@@ -52,7 +48,7 @@ class ContractController extends Controller
                                         <i class="fa fa-file-pdf-o"></i>
                                         معاينة العقد
                                     </a>
-                                </div>';
+                           </div>';
             })
             ->addColumn('start_at', function ($raw) {
                 return Numbers::ShowInArabicDigits(Carbon::create($raw->containerRentals->start_at)->format('d / m / Y'));
@@ -117,8 +113,6 @@ class ContractController extends Controller
     {
         $customers = auth()->user()->company->customers;
         $messengers = auth()->user()->company->messengers;
-
-
         return view('company.contracts.index', ['data' => $this->data], compact('messengers', 'customers'));
     }
 
@@ -192,7 +186,6 @@ class ContractController extends Controller
     {
         $contract = Contract::find($id);
         $clauses = auth()->user()->company->clauses;
-
         return view('company.contracts.contract', compact('contract', 'clauses'));
 
     }//end of loadPdf function

@@ -36,6 +36,7 @@ Route::group(['middleware' => ['api'], 'namespace' => 'Company',], function () {
     // customers
     Route::get('customers', 'CustomerController@getCustomers');
     Route::get('customers/show', 'CustomerController@show');
+    Route::get('customers/filter', 'CustomerController@filter');
     // end customers
 
     // Contracts
