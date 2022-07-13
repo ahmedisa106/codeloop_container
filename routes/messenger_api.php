@@ -23,6 +23,13 @@ Route::group(['middleware' => 'api', 'prefix' => 'employee', 'namespace' => 'Emp
     Route::post('customers/create', 'CustomerController@create');
     // end customers
 
+
+    // Contracts
+    Route::get('contracts', 'ContractController@getContracts');
+    Route::get('contracts/show', 'ContractController@show');
+    Route::get('contracts/search', 'ContractController@search');
+    // end Contracts
+
     // drivers
     Route::get('drivers', 'DriverController@getDriver');
     // end drivers

@@ -17,8 +17,10 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::get('/sitemap.xml', [\App\Http\Controllers\SitemapXmlController::class, 'index']);
 
-Route::get('sendNotification/{id}', [\App\Http\Controllers\NotificationController::class, 'sendNotification'])->name('send.notification');
 
+Route::get('/home', [\App\Http\Controllers\NotificationController::class, 'index'])->name('home');
+Route::post('/fcm-token', [\App\Http\Controllers\NotificationController::class, 'updateToken'])->name('fcmToken');
+Route::post('/send-notification', [\App\Http\Controllers\NotificationController::class, 'notification'])->name('notification');
 
 Route::get('/clear-cache', function () {
     \Illuminate\Support\Facades\Artisan::call('optimize:clear');

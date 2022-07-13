@@ -144,11 +144,8 @@ class ContainerRentalController extends Controller
 
         DB::beginTransaction();
         $rent = ContainerRental::create($data);
-
         $rent->container->update(['status' => 'notAvailable']);
-
         $number = $this->getLatestContractSerial();
-
 
         if ($data['contract_type'] == 'contract') {
             $file_name = time() . '_' . $number . '.pdf';
@@ -179,9 +176,7 @@ class ContainerRentalController extends Controller
 //            $pdf = PDF::loadView('company.contracts.pdfTheme.test10', compact('contract'))->save($path);
 //        }
 
-
         DB::commit();
-
         return $this->setAddedSuccess();
     }
 
@@ -193,18 +188,15 @@ class ContainerRentalController extends Controller
      */
     public function show(ContainerRental $containerRental)
     {
-
         $drivers = Employee::query()->where('company_id', auth()->user()->company->id)->where('job_type', 'driver')->where('status', 'active');
         if (auth()->user()->branch) {
             $drivers = $drivers->where('branch_id', auth()->user()->branch->id)->get();
 
         } else {
-
             $drivers = $drivers->get();
         }
 
         return view('company.container_rentals.show', compact('containerRental', 'drivers'));
-
     }
 
     /**
@@ -269,7 +261,6 @@ class ContainerRentalController extends Controller
             ->where('company_id', auth()->user()->company->id)
             ->where('status', 'available')
             ->get();
-
         return $this->setData($containers);
 
     }//end of getContainers function

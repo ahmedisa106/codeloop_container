@@ -21,15 +21,16 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('send.notification') }}" method="POST">
+                    <form action="{{ route('notification') }}" method="post">
                         @csrf
+
                         <div class="form-group">
                             <label>Title</label>
                             <input type="text" class="form-control" name="title">
                         </div>
                         <div class="form-group">
                             <label>Body</label>
-                            <textarea class="form-control" name="body"></textarea>
+                            <textarea class="form-control" name="message"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Send Notification</button>
                     </form>
@@ -39,5 +40,58 @@
         </div>
     </div>
 </div>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import {initializeApp} from "https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js";
+    import {getAnalytics} from "https://www.gstatic.com/firebasejs/9.9.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyD-P8oQ5fnwDIJsetrLmZItm55_pMCFxXg",
+        authDomain: "push-notification-b5bac.firebaseapp.com",
+        projectId: "push-notification-b5bac",
+        storageBucket: "push-notification-b5bac.appspot.com",
+        messagingSenderId: "75946099069",
+        appId: "1:75946099069:web:3ac4b668675db393848c14",
+        measurementId: "G-NE3DFY0G6W"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    //firebase.initializeApp(firebaseConfig);
+
+    const messaging = app.messaging();
+
+    function initFirebaseMessagingRegistration() {
+        messaging.requestPermission().then(function () {
+            return messaging.getToken()
+        }).then(function (token) {
+
+            axios.post("{{ route('fcmToken') }}", {
+                _method: "PATCH",
+                token
+            }).then(({data}) => {
+                console.log(data)
+            }).catch(({response: {data}}) => {
+                console.error(data)
+            })
+
+        }).catch(function (err) {
+            console.log(`Token Error :: ${err}`);
+        });
+    }
+
+    initFirebaseMessagingRegistration();
+
+    messaging.onMessage(function ({data: {body, title}}) {
+        new Notification(title, {body});
+    });
+</script>
 </body>
 </html>
