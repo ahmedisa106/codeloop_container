@@ -108,6 +108,7 @@ class AuthController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name' => 'required',
+            'password' => 'required',
             'email' => 'required',
             'phone' => 'required',
             'commercial_number' => 'required',
@@ -115,6 +116,7 @@ class AuthController extends Controller
             'logo' => 'sometimes|nullable|image'
         ], [], [
             'name' => 'الاسم',
+            'password' => 'كلمه المرور',
             'email' => 'البريد الالكتروني',
             'phone' => 'الهاتف',
             'commercial_number' => 'رقم السجل التجاري',
@@ -124,18 +126,22 @@ class AuthController extends Controller
         if ($validator->fails()) {
             return $this->setStatus('Error')->setCode(401)->setMessage($validator->errors()->first())->send();
         }
+
         $data = $validator->validated();
 
+        if ($request->has('password')) {
+            $data['password'] = bcrypt($request->password);
+        }
 
         if ($request->hasFile('logo')) {
             $photo = $this->upload($request->logo, 'companies', true, \auth('api')->user()->logo);
             $data['logo'] = $photo;
         }
-
-
         \auth('api')->user()->update($data);
 
-        return $this->setStatus('success')->setCode(200)->setMessage('تم تحديث البيانات بنجاح')->send();
+        $token = auth('api')->attempt(['phone' => $request->phone, 'password' => $request->password]);
+
+        return $this->setStatus('success')->setCode(200)->setMessage('تم تحديث البيانات بنجاح')->setData(['token' => $token, 'data' => \auth('api')->user()])->send();
 
     }//end of updateProfile function
 }
