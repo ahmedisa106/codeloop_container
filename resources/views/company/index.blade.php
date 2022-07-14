@@ -150,7 +150,6 @@
                 </div>
             </div>
             @endrole
-
         </div>
         @role(['admin','messenger'])
         <div class="card">

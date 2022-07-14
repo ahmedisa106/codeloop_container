@@ -18,7 +18,6 @@ class ContainerResource extends JsonResource
             'id' => $this->id,
             'number' => $this->number,
             'price' => $this->price,
-
         ];
     }
 }
