@@ -32,18 +32,14 @@ class HomeController extends Controller
         $to = now();
         $from = now()->subMonths(5);
         $duration = $to->diffInMonths($from);
-
         $customers = [];
         $months = [];
-
         for ($x = 1; $x <= $duration; $x++) {
             array_unshift($customers, ['month' => $to->format('M'), 'value' => Customer::query()->whereMonth('created_at', $to->format('m'))->count()]);
             array_unshift($months, $to->format('M'));
             $to->subMonth();
-
         }
         return $customers;
-
     }//end of getCustomers function
 
     public function getContainerRentals()
@@ -51,7 +47,6 @@ class HomeController extends Controller
         $rentals = DB::table('container_rentals')->where('company_id', auth('api')->user()->id)
             ->select('status', DB::raw('count(id) as count'))->groupBy('status')->get();
         return $rentals;
-
     }//end of getContainerRentals function
 
     public function getContracts()
@@ -59,7 +54,6 @@ class HomeController extends Controller
         $contracts = DB::table('contracts')->where('company_id', auth('api')->user()->id)
             ->select('status', DB::raw('count(id) as count'))->groupBy('status')->get();
         return $contracts;
-
     }//end of getContainerRentals function
 
     public function getTerms()
@@ -91,11 +85,7 @@ class HomeController extends Controller
         if ($validator->fails()) {
             return $this->setStatus('Error')->setCode(400)->setMessage($validator->errors()->first())->send();
         }
-
         ContactUs::create($validator->validated());
-
-
         return $this->setStatus('success')->setCode(200)->setMessage('تم إرسال البيانات بنجاح')->send();
-
     }//end of contactUs function
 }

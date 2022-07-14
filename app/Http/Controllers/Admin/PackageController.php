@@ -110,11 +110,9 @@ class PackageController extends Controller
 
     public function bulkDelete(Request $request)
     {
-
         parse_str($request->ids, $items);
         Package::destroy($items['items']);
         return $this->setDeletedSuccess();
-
     }//end of bulkDelete function
 
 
@@ -124,12 +122,9 @@ class PackageController extends Controller
         return response()->json(['data' => $package], 200);
     }//end of getPackage function
 
-    public function updateStatus(Request $request,$id)
+    public function updateStatus(Request $request, $id)
     {
-
-        Package::findOrFail($id)->update(['status'=>$request->status]);
-
+        Package::findOrFail($id)->update(['status' => $request->status]);
         return $this->setUpdatedSuccess();
-
     }//end of updateStatus function
 }

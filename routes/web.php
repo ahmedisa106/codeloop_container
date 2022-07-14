@@ -23,11 +23,14 @@ Route::post('/fcm-token', [\App\Http\Controllers\NotificationController::class, 
 Route::post('/send-notification', [\App\Http\Controllers\NotificationController::class, 'notification'])->name('notification');
 
 Route::get('/clear-cache', function () {
+
+
     \Illuminate\Support\Facades\Artisan::call('optimize:clear');
     \Illuminate\Support\Facades\Artisan::call('config:cache');
     \Illuminate\Support\Facades\Artisan::call('config:clear');
     \Illuminate\Support\Facades\Artisan::call('cache:clear');
-    return 'cache cleared';
+
+    return redirect()->back();
 });
 Route::get('/about', 'HomeController@about')->name('website.about');
 Route::get('/services', 'HomeController@services')->name('website.services');

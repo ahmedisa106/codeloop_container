@@ -25,7 +25,6 @@ class ContainerRentalController extends Controller
 //            ->get();
 
         $rents = ContainerRentalResource::collection(auth('api')->user()->containerRentals);
-
         return $this->setStatus('success')->setCode(200)->setData($rents)->send();
     }//end of getAllRental function
 
@@ -35,9 +34,7 @@ class ContainerRentalController extends Controller
         if (!$containerRental) {
             return $this->setStatus('Error')->setCode(401)->setMessage('للأسف لايوجد بيانات')->send();
         }
-
         $containerRental = new ContainerRentalResource($containerRental);
-
         return $this->setStatus('success')->setCode(200)->setData($containerRental)->send();
 
     }//end of show function
@@ -48,11 +45,7 @@ class ContainerRentalController extends Controller
             ->select('container_rentals.*')
             ->where('container_rentals.status', $request->status)
             ->get();
-
         $rents = ContainerRentalResource::collection($rentals);
-
         return $this->setStatus('success')->setCode(200)->setData($rents)->send();
-
-
     }//end of  function
 }

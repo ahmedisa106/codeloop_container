@@ -5,16 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Helper\ResponseTrait;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SubscriptionRequest;
-use App\Mail\SendEmailToCompany;
 use App\Models\Company;
 use App\Models\CompanyPackage;
 use App\Models\Package;
 use App\Models\Transaction;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Yajra\DataTables\Facades\DataTables;
@@ -24,7 +21,6 @@ class SubscriptionController extends Controller
     use ResponseTrait;
 
     protected $data = [
-
         'page_title' => 'الإشتراكات',
         'create' => 'إضافة إشتراك',
         'edit' => 'تعديل إشتراك',
@@ -48,19 +44,19 @@ class SubscriptionController extends Controller
                     });
                 }
             })
-            ->addColumn('period',function ($raw){
-                return $raw->package->period .' أشهر ';
+            ->addColumn('period', function ($raw) {
+                return $raw->package->period . ' أشهر ';
             })
-            ->addColumn('price',function ($raw){
-                return $raw->package->price .' ر.س';
+            ->addColumn('price', function ($raw) {
+                return $raw->package->price . ' ر.س';
             })
-            ->addColumn('diff',function ($raw){
-                if($raw->status == 'subscribed'){
-                    return Carbon::create($raw->package_finish_at)->diffInDays(now()->toDateString()).' يوماً ';
-                }elseif ($raw->status == 'finished'){
-                    return  0 .' يوماً ';
-                }else{
-                    return  $raw->package->period * 30 .' يوماً ';
+            ->addColumn('diff', function ($raw) {
+                if ($raw->status == 'subscribed') {
+                    return Carbon::create($raw->package_finish_at)->diffInDays(now()->toDateString()) . ' يوماً ';
+                } elseif ($raw->status == 'finished') {
+                    return 0 . ' يوماً ';
+                } else {
+                    return $raw->package->period * 30 . ' يوماً ';
                 }
 
             })
@@ -96,7 +92,7 @@ class SubscriptionController extends Controller
     public function create()
     {
         $companies = Company::with('package')->get();
-        $packages = Package::where('status','active')->get(['id', 'title']);
+        $packages = Package::where('status', 'active')->get(['id', 'title']);
 
         return view('admin.pages.subscriptions.create', ['data' => $this->data], compact('companies', 'packages'));
     }
@@ -131,14 +127,14 @@ class SubscriptionController extends Controller
             'at' => now()->toDateString(),
         ]);
 
-        if($data['status'] !== 'pending'){
+        if ($data['status'] !== 'pending') {
             $company->update([
-                'status'=>'active'
+                'status' => 'active'
             ]);
 
             Transaction::create([
-                'body'=>'إشتراك جديد',
-                'total'=>$data['price_after_discount'],
+                'body' => 'إشتراك جديد',
+                'total' => $data['price_after_discount'],
             ]);
         }
 
@@ -176,11 +172,11 @@ class SubscriptionController extends Controller
         ]);
 
         $company->update([
-            'status'=>'active'
+            'status' => 'active'
         ]);
         Transaction::create([
-            'body'=>'إشتراك جديد',
-            'total'=>$subscription->price_after_discount,
+            'body' => 'إشتراك جديد',
+            'total' => $subscription->price_after_discount,
         ]);
 
         return $this->setUpdatedSuccess();
@@ -190,7 +186,7 @@ class SubscriptionController extends Controller
     public function companyResubscribed($id)
     {
         $subscription = CompanyPackage::find($id);
-        $packages = Package::where('status','active')->get(['id', 'title']);
+        $packages = Package::where('status', 'active')->get(['id', 'title']);
         $this->data['create'] = 'تجديد الإشتراك';
         return view('admin.pages.subscriptions.resubscription', ['data' => $this->data], compact('packages', 'subscription'));
     }//end of companyResubscribed function
@@ -232,12 +228,12 @@ class SubscriptionController extends Controller
         ]);
 
         $company->update([
-            'status'=>'active'
+            'status' => 'active'
         ]);
 
         Transaction::create([
-            'body'=>'تجديد إشتراك',
-            'total'=>$data['price_after_discount'],
+            'body' => 'تجديد إشتراك',
+            'total' => $data['price_after_discount'],
         ]);
 
         CompanyPackage::create($data);

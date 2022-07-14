@@ -105,7 +105,6 @@ class ContactUsController extends Controller
 
     public function bulkDelete(Request $request)
     {
-
         parse_str($request->ids, $items);
         ContactUs::destroy($items['items']);
         return $this->setDeletedSuccess();

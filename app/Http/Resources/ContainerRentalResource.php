@@ -16,12 +16,8 @@ class ContainerRentalResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'contract_type' => $this->contract_type,
-            'category' => $this->category,
-            'customer' => $this->customer,
-            'customer_address' => $this->customerAddress,
-            'container' => $this->container,
-            'discharges' => $this->discharges,
+            'status' => $this->status,
+            'messenger' => new EmployeeResource($this->messenger),
             'discharge_price' => $this->discharge_price,
             'discharge_number' => $this->discharge_number,
             'remaining_discharge' => $this->remaining_discharge,
@@ -29,6 +25,12 @@ class ContainerRentalResource extends JsonResource
             'total' => $this->total,
             'start_at' => $this->start_at,
             'end_at' => $this->end_at,
+            'contract_type' => $this->contract_type,
+            'category' => $this->category,
+            'customer' => $this->customer,
+            'customer_address' => $this->customerAddress,
+            'container' => $this->container,
+            'discharges' => $this->discharges,
         ];
     }
 }

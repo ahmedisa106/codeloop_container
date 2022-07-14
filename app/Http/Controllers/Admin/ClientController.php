@@ -56,7 +56,6 @@ class ClientController extends Controller
         }
         Client::create($data);
         return $this->setAddedSuccess();
-
     }//end of store function
 
     public function edit(Client $client)
@@ -72,14 +71,12 @@ class ClientController extends Controller
         }
         $client->update($data);
         return $this->setUpdatedSuccess();
-
     }//end of store function
 
     public function destroy(Client $client)
     {
         $client->delete();
         return $this->setDeletedSuccess();
-
     }//end of destroy function
 
     public function bulkDelete(Request $request)
@@ -87,8 +84,6 @@ class ClientController extends Controller
         parse_str($request->ids, $items);
         Client::destroy($items['items']);
         return $this->setDeletedSuccess();
-
-
     }//end of destroy function
 
 }

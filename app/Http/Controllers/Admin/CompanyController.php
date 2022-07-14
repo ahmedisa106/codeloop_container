@@ -78,9 +78,7 @@ class CompanyController extends Controller
         $company = Company::create($data);
         $company->attachRole('admin');
         DB::commit();
-
         return $this->setAddedSuccess();
-
     }
 
     /**
@@ -122,12 +120,9 @@ class CompanyController extends Controller
         $data['password'] = $request->password ? bcrypt($request->password) : $company->password;
         $data['status'] = $request->status ? 'active' : 'inactive';
 
-
         DB::beginTransaction();
         $company->update($data);
         DB::commit();
-
-
         return $this->setUpdatedSuccess();
     }
 
@@ -136,12 +131,10 @@ class CompanyController extends Controller
     {
         $company = Company::with('history')->find($id);
         return view('admin.pages.companies.history', compact('company'));
-
     }//end of  function
 
     public function historySearch(Request $request)
     {
-
         $company = Company::with('history')->when($request, function ($q) use ($request) {
 
             $q->with(['history' => function ($q) use ($request) {
@@ -155,14 +148,10 @@ class CompanyController extends Controller
                 }
             }]);
 
-
         })->where('id', $request->company_id)->first();
 
-
         $view = View::make('admin.pages.companies.table', compact('company'))->render();
-
         return response()->json(['data' => $view], 200);
-
     }//end of historySearch function
 
     public function destroy($id)
@@ -170,7 +159,6 @@ class CompanyController extends Controller
         $company = Company::findOrFail($id);
         $company->delete();
         return $this->setDeletedSuccess();
-
     }
 
     public function bulkDelete(Request $request)
@@ -178,6 +166,5 @@ class CompanyController extends Controller
         parse_str($request->ids, $items);
         Company::destroy($items['items']);
         return $this->setDeletedSuccess();
-
     }//end of bulkDelete function
 }

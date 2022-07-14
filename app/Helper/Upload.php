@@ -20,6 +20,4 @@ trait Upload
         return $file_name;
 
     }//end of upload function
-
-
 }

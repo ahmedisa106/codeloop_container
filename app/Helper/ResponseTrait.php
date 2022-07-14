@@ -11,7 +11,6 @@ trait ResponseTrait
     {
         $this->body['data'] = $data;
         return $this->send();
-
     }//end of  function
 
     public function setAddedSuccess($message = null)

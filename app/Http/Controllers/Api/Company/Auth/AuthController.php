@@ -98,7 +98,6 @@ class AuthController extends Controller
 
     public function updateProfile(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'password' => 'required',
@@ -131,10 +130,7 @@ class AuthController extends Controller
             $data['logo'] = $photo;
         }
         \auth('api')->user()->update($data);
-
         $token = auth('api')->attempt(['phone' => $request->phone, 'password' => $request->password]);
-
         return $this->setStatus('success')->setCode(200)->setMessage('تم تحديث البيانات بنجاح')->setData(['token' => $token, 'data' => \auth('api')->user()])->send();
-
     }//end of updateProfile function
 }

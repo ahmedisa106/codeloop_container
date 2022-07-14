@@ -22,7 +22,6 @@ class ServiceController extends Controller
 
     public function data()
     {
-
         $services = Service::get();
         $model = 'services';
         return DataTables::of($services)
@@ -120,11 +119,7 @@ class ServiceController extends Controller
     public function bulkDelete(Request $request)
     {
         parse_str($request->ids, $items);
-
         Service::destroy($items['items']);
-
         return $this->setDeletedSuccess();
-
-
     }//end of bulkDelete function
 }
