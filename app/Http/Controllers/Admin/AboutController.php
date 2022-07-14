@@ -19,7 +19,6 @@ class AboutController extends Controller
     public function index()
     {
         $about = About::first();
-
         return view('admin.pages.about.index', ['data' => $this->data], compact('about'));
     }//end of index function
 
@@ -32,11 +31,8 @@ class AboutController extends Controller
             $about->update($data);
         } else {
             $data['photo'] = $request->hasFile('photo') ? $this->upload($request->photo, 'about') : '';
-
             About::create($data);
         }
-
         return $this->setUpdatedSuccess();
-
     }//end of store function
 }

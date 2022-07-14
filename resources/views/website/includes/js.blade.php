@@ -25,7 +25,7 @@
 
 
 <script>
-        $(document).ready(function () {
+    $(document).ready(function () {
         // preview image
         $('.photo').on('change', function (e) {
             let file = e.target.files[0],
@@ -36,4 +36,6 @@
         // end preview image
     });
 </script>
+
+
 @stack('js')

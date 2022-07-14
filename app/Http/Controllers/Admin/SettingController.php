@@ -18,10 +18,8 @@ class SettingController extends Controller
 
     public function index()
     {
-
         $setting = Setting::first();
         return view('admin.pages.settings.index', ['data' => $this->data], compact('setting'));
-
     }//end of index function
 
     public function update(SettingRequest $request)
@@ -38,8 +36,6 @@ class SettingController extends Controller
 
             Setting::create($data);
         }
-
         return $this->setUpdatedSuccess();
-
     }//end of store function
 }

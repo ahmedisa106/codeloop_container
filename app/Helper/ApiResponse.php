@@ -18,15 +18,12 @@ trait ApiResponse
     {
         $this->body['message'] = $message;
         return $this;
-
     }//end of  function
-
 
     public function setError($error = null)
     {
         $this->body['error'] = $error;
         return $this;
-
     }//end of  function
 
     public function setCode($code = null)

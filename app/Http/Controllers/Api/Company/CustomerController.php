@@ -16,30 +16,23 @@ class CustomerController extends Controller
     {
         $this->middleware('auth:api');
 
-
     }//end of __construct function
 
     public function getCustomers()
     {
         $customers = auth()->user()->company->customers;
         $customers = CustomerResource::collection($customers);
-
         return $this->setStatus('success')->setCode(200)->setData($customers)->send();
-
     }//end of getCustomers function
 
     public function show(Request $request)
     {
         $customer = Customer::find($request->id);
-
         if (!$customer) {
             return $this->setStatus('Error')->setCode(401)->setMessage('للأسف لايوجد بيانات')->send();
         }
-
         $customer = new CustomerResource($customer);
-
         return $this->setStatus('success')->setCode(200)->setData($customer)->send();
-
     }//end of show function
 
     public function filter(Request $request)
@@ -48,11 +41,8 @@ class CustomerController extends Controller
             ->select('customers.*')
             ->where('customers.name', 'like', '%' . $request->name . '%')
             ->get();
-
         $customers = CustomerResource::collection($customers);
-
         return $this->setStatus('success')->setCode(200)->setData($customers)->send();
-
     }//end of filter function
 
 }

@@ -22,7 +22,6 @@ class BlogController extends Controller
 
     public function data()
     {
-
         $blogs = Blog::get();
         $model = 'blogs';
         return DataTables::of($blogs)
@@ -120,7 +119,6 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-
         $blog->delete();
         return $this->setDeletedSuccess();
     }
@@ -128,11 +126,7 @@ class BlogController extends Controller
     public function bulkDelete(Request $request)
     {
         parse_str($request->ids, $items);
-
         Blog::destroy($items['items']);
-
         return $this->setDeletedSuccess();
-
-
     }//end of bulkDelete function
 }

@@ -27,7 +27,6 @@ class ContractController extends Controller
 
     public function show(Request $request)
     {
-
         $contract = Contract::find($request->id);
         if (!$contract) {
             return $this->setStatus('Error')->setCode(401)->setMessage('للأسف لايوجد بيانات')->send();

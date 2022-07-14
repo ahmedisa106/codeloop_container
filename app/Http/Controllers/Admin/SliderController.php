@@ -22,7 +22,6 @@ class SliderController extends Controller
 
     public function data()
     {
-
         $sliders = Slider::get();
         $model = 'sliders';
         return DataTables::of($sliders)
@@ -37,7 +36,6 @@ class SliderController extends Controller
             })
             ->rawColumns(['photo' => 'photo'])
             ->make(true);
-
     }//end of data function
 
     public function index()
@@ -120,11 +118,7 @@ class SliderController extends Controller
     public function bulkDelete(Request $request)
     {
         parse_str($request->ids, $items);
-
         Slider::destroy($items['items']);
-
         return $this->setDeletedSuccess();
-
-
     }//end of bulkDelete function
 }
