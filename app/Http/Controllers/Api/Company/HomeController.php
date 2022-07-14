@@ -71,7 +71,7 @@ class HomeController extends Controller
 
     public function about()
     {
-        $about = About::first(['title', 'description', 'photo']);
+        $about = About::first();
         return $this->setStatus('success')->setCode(200)->setData($about)->send();
     }//end of getTerms function
 
