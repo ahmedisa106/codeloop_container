@@ -139,6 +139,7 @@ class CustomerController extends Controller
     public function destroy(Customer $customer)
     {
         $customer->delete();
+        $customer->addresses()->delete();
         return $this->setDeletedSuccess();
     }
 

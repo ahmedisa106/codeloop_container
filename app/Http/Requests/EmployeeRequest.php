@@ -81,6 +81,7 @@ class EmployeeRequest extends FormRequest
             'job_type' => 'نزع الوظيفه',
             'messenger_type' => 'نوع المندوب',
             'status' => 'الحاله',
+            'category_id' => 'التصنيف'
 
         ];
 
