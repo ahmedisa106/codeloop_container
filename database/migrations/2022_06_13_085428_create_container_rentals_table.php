@@ -41,7 +41,7 @@ class CreateContainerRentalsTable extends Migration
             $table->foreign('driver_id')->references('id')->on('employees')->onDelete('cascade');
             $table->foreign('category_size_id')->references('id')->on('category_sizes')->onDelete('cascade');
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
-            $table->foreign('customer_address_id')->references('id')->on('customer_addresses')->onDelete('cascade');
+            $table->foreign('customer_address_id')->references('id')->on('customer_addresses');
             $table->foreign('container_id')->references('id')->on('containers')->onDelete('cascade');
         });
     }

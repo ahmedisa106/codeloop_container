@@ -34,6 +34,7 @@
                         <div class="box-all">
                             <div class="box-div">
                                 <label class="form-label">العنوان</label>
+                                <input class="form-control" name="address[{{$index}}][customer_address_id]" value="{{$address->id}}" type="text" placeholder="">
                                 <input class="form-control" name="address[{{$index}}][address]" value="{{$address->address}}" type="text" placeholder="">
                             </div>
                             <div class="box-div">

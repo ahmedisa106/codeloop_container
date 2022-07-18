@@ -30,9 +30,7 @@ class BranchController extends Controller
 
     public function data()
     {
-
         $branches = Branch::where('company_id', auth()->user()->company->id)->get();
-
         $model = 'branches';
         return DataTables::of($branches)
             ->addColumn('actions', function ($raw) use ($model) {

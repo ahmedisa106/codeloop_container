@@ -17,9 +17,18 @@ class ContractController extends Controller
         $this->middleware('auth:api');
     }//end of __construct function
 
-    public function getContracts()
+    public function getContracts(Request $request)
     {
-        $contracts = auth('api')->user()->company->contracts;
+        if (isset($request->status)) {
+            $contracts = Contract::query()->join('companies', 'contracts.company_id', '=', 'companies.id')
+                ->where('contracts.status', $request->status)
+                ->select('contracts.*')
+                ->get();
+
+        } else {
+            $contracts = auth('api')->user()->company->contracts;
+
+        }
         $contracts = ContractResource::collection($contracts);
         return $this->setStatus('success')->setCode(200)->setData($contracts)->send();
 

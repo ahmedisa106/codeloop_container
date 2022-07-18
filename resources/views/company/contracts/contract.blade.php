@@ -351,12 +351,13 @@
             </h5>
             <ul>
                 @foreach($clauses as $clause)
-                    <li><span></span>{{$clause->clause}}</li>
-
-                    @endforeach
-
-
+                    <li>
+                        <span></span>{{$clause->clause}}
                     </li>
+
+                @endforeach
+
+
             </ul>
         </div>
         <ul class="signature">
@@ -462,6 +463,7 @@
         });
 
     </script>
+</div>
 
 </body>
 

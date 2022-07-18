@@ -43,7 +43,7 @@ class ContractController extends Controller
             })
             ->addColumn('contract', function ($raw) {
                 return '   <div class="btns-table">
-                                    <a href="' . route('contracts.pdf', $raw->id) . '"
+                                    <a href="' . asset('pdfs/' . $raw->pdf) . '"
                                         target="_balnk" class="btn btn-primary">
                                         <i class="fa fa-file-pdf-o"></i>
                                         معاينة العقد

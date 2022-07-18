@@ -23,7 +23,7 @@ class Customer extends Model
 
     public function addresses()
     {
-        return $this->hasMany(CustomerAddress::class);
+        return $this->hasMany(CustomerAddress::class, 'customer_id');
     }//end of address function
 
     public function contracts()
