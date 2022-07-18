@@ -139,23 +139,29 @@ class ContainerRentalController extends Controller
         $data['company_id'] = auth()->user()->company->id;
         $data['remaining_discharges'] = $data['discharge_number'];
         $data['messenger_id'] = $data['messenger_id'] ?? auth()->user()->id;
+
         $contract_data = ['area_name' => $data['area_name'], 'area_number' => $data['area_number'], 'block_number' => $data['block_number'], 'plan_number' => $data['plan_number']];
         unset($data['area_name'], $data['area_number'], $data['block_number'], $data['plan_number']);
 
+
         DB::beginTransaction();
         $rent = ContainerRental::create($data);
+
         $rent->container->update(['status' => 'notAvailable']);
         $number = $this->getLatestContractSerial();
 
+
         if ($data['contract_type'] == 'contract') {
+
             $file_name = time() . '_' . $number . '.pdf';
+
             $rent->contract()->create([
                 'contract_serial' => $number,
                 'company_id' => $rent['company_id'],
                 'customer_id' => $rent['customer_id'],
                 'messenger_id' => $rent['messenger_id'],
                 'qr' => '',
-                //'pdf' => $file_name,
+                'pdf' => $file_name,
                 'area_name' => $contract_data['area_name'],
                 'area_number' => $contract_data['area_number'],
                 'block_number' => $contract_data['block_number'],
@@ -164,17 +170,21 @@ class ContainerRentalController extends Controller
             $rent->contract()->update([
                 'qr' => QrCode::size(100)->generate(route('contracts.pdf', $rent->contract->id))
             ]);
+
+            $data['contract'] = $rent->contract;
+
+            $data['clauses'] = auth()->user()->company->clauses;
+
+            $path = public_path('pdfs/' . $file_name);
+            if (!file_exists(public_path('pdfs/'))) {
+                mkdir(public_path('pdfs'), 0777, true);
+                $pdf = \PDF::loadView('company.contracts.pdfTheme.theme1', compact('data'))->save($path);
+            } else {
+
+                $pdf = PDF::loadView('company.contracts.pdfTheme.theme1', compact('data'))->save($path);
+            }
         }
 
-
-//        $contract = $rent->contract;
-//        $path = public_path('pdfs/' . $file_name);
-//        if (!file_exists(public_path('pdfs/'))) {
-//            mkdir(public_path('pdfs'), 0777, true);
-//            $pdf = PDF::loadView('company.contracts.pdfTheme.test10', compact('contract'))->save($path);
-//        } else {
-//            $pdf = PDF::loadView('company.contracts.pdfTheme.test10', compact('contract'))->save($path);
-//        }
 
         DB::commit();
         return $this->setAddedSuccess();
@@ -312,13 +322,10 @@ class ContainerRentalController extends Controller
     public function contractBroken(Request $request)
     {
         $containerRental = ContainerRental::find($request->container_rental_id);
-
         $containerRental->update(['status' => 'broken', 'remaining_discharges' => 0]);
         $containerRental->contract()->update(['status' => 'broken']);
         $containerRental->container()->update(['status' => 'available']);
-
         return redirect()->back()->with('success', 'تم فسخ العقد');
-
     }//end of contractBroken function
 
 }

@@ -6,7 +6,9 @@ use App\Helper\ResponseTrait;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CustomerRequest;
 use App\Models\Customer;
+use App\Models\CustomerAddress;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
 class CustomerController extends Controller
@@ -105,11 +107,26 @@ class CustomerController extends Controller
      */
     public function update(CustomerRequest $request, Customer $customer)
     {
+
+        DB::beginTransaction();
         $data = $request->validated();
         unset($data['address']);
         $customer->update($data);
-        $customer->addresses()->delete();
-        $customer->addresses()->createMany($request->address);
+
+        foreach ($request->address as $address) {
+            if (isset($address['customer_address_id'])) {
+                $updated_address = CustomerAddress::where('id', $address['customer_address_id'])->first();
+                unset($address['customer_address_id']);
+                $updated_address->update($address);
+
+            } else {
+                $address['customer_id'] = $customer->id;
+                CustomerAddress::create($address);
+            }
+
+        }
+
+        DB::commit();
         return $this->setUpdatedSuccess();
     }
 
