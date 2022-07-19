@@ -21,14 +21,12 @@ class HomeController extends Controller
 {
     use Upload, ResponseTrait;
 
-
     public function index()
     {
         $sliders = Slider::get(['title', 'photo']);
         $about = About::first(['title', 'photo', 'description']);
         $services = Service::get(['title', 'photo', 'id']);
         $blogs = Blog::get(['title', 'photo', 'created_at', 'id']);
-
         return view('website.index', compact('sliders', 'about', 'services', 'blogs'));
     }
 
@@ -68,8 +66,6 @@ class HomeController extends Controller
 
     public function packageRequest(Request $request)
     {
-
-
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:companies,name',
             'commercial_number' => 'required|unique:companies,commercial_number',
