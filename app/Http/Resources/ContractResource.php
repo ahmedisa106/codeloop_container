@@ -24,8 +24,8 @@ class ContractResource extends JsonResource
             'block_number' => $this->block_number,
             'plan_number' => $this->plan_number,
             'status' => $this->status,
-            'customer' => $this->customer_id,
-            'messenger' => $this->messenger_id,
+            'customer' => $this->customer->name,
+            'messenger' => $this->messenger->name,
             'container_rental' => $this->container_rental_id,
             'created_at' => Carbon::make($this->created_at)->format('Y-m-d')
         ];
